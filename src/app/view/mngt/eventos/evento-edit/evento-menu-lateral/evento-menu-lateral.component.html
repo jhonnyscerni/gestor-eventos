@@ -1,0 +1,48 @@
+<mat-nav-list dense td-sidenav-content>
+    <h3 matSubheader>Edição do Evento</h3>
+    <a mat-list-item routerLinkActive="color-primary active-section" [routerLink]="['geral']">
+      <mat-icon svgIcon="information" matListIcon></mat-icon>
+      Informações Gerais
+    </a>
+    <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['vagas']">
+      <mat-icon svgIcon="account-group" matListIcon></mat-icon>
+      Categorias de Inscrição
+    </a>
+    <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+      <mat-icon svgIcon="web" matListIcon></mat-icon>
+      Página do Evento
+    </a>
+    <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+      <mat-icon svgIcon="account-circle" matListIcon></mat-icon>
+      Facilitadores
+    </a>
+    <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+      <mat-icon svgIcon="calendar" matListIcon></mat-icon>
+      Atividades
+    </a>
+    <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+      <mat-icon svgIcon="clipboard-account" matListIcon></mat-icon>
+      Crachá
+    </a>
+    <a disabled mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+      <mat-icon svgIcon="certificate" matListIcon></mat-icon>
+      Certificado
+    </a>
+    <h3 matSubheader>Gestão do Evento</h3>
+    <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+      <mat-icon svgIcon="account-edit" matListIcon></mat-icon>
+      Inscrições
+    </a>
+    <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+      <mat-icon svgIcon="account-check" matListIcon></mat-icon>
+      Frequência
+    </a>
+    <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+      <mat-icon svgIcon="certificate" matListIcon></mat-icon>
+      Certificados
+    </a>
+    <a mat-list-item>
+      <mat-icon svgIcon="settings" matListIcon></mat-icon>
+      Configurações
+    </a>
+  </mat-nav-list>
