@@ -1,0 +1,14 @@
+<td-layout #layout>
+  <td-navigation-drawer sidenavTitle="Módulo de Gestão de Eventos" [name]="" [email]="">
+    <mat-nav-list>
+      <ng-template let-item let-last="last" ngFor [ngForOf]="routes">
+        <a mat-list-item [routerLink]="[item.route]" (click)="layout.close()">
+          <mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      </ng-template>
+    </mat-nav-list>
+    <mat-nav-list td-navigation-drawer-menu>
+      <a mat-list-item (click)="logout()"><mat-icon>exit_to_app</mat-icon>Sair do Módulo de Gestão</a>
+    </mat-nav-list>
+  </td-navigation-drawer>
+  <router-outlet></router-outlet>
+</td-layout>

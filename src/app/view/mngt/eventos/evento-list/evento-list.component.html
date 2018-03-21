@@ -1,0 +1,62 @@
+<nav-view-layout layout="column" flex style="height:100%">
+
+  
+  
+  <div main-content flex layout="column" style="height:100%">
+    <div layout="column">
+      <div 
+        layout-wrap 
+        layout="row" 
+        layout-align="center">
+         <mat-card 
+        flex-gt-xs="40" 
+        flex-xs="100" 
+        tdMediaToggle="gt-xs" 
+        [mediaClasses]="['push']" 
+        *ngFor="let evento of eventoPage.content"
+        style="padding-bottom:40px;">
+            <!-- <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div> -->
+              <mat-card-title>
+                  <p mat-line> <i class="material-icons">event</i> {{ evento?.nome }} </p>
+              </mat-card-title>
+              <mat-divider></mat-divider>
+            <mat-card-header>
+              <mat-card-title>
+                  <p mat-line>Inicio do Evento: {{ dateLayout(evento?.inicioEvento) }}</p>
+                  <p mat-line>Fim do Evento: {{ dateLayout(evento?.fimEvento) }}</p>
+              </mat-card-title>
+            </mat-card-header>
+            <!-- </mat-card-header> -->
+             <mat-card-content>
+              <p>
+                  {{ evento?.descricao }}
+              </p>
+            </mat-card-content>
+            <div style="position:absolute; bottom:0; width:100%;">
+                <mat-divider></mat-divider>
+                <mat-card-actions>
+                  <div layout="row" layout-align="end center">
+                    <button 
+                      mat-button 
+                      color="primary" 
+                      class="text-upper" 
+                      (click)="excluirEvento(evento?.id)">
+                      EXCLUIR
+                    </button>
+    
+                    <a mat-button  [routerLink]="['/evento/edit', evento?.id]">EDITAR</a>
+                  </div>
+                </mat-card-actions>
+              </div>
+          </mat-card>
+      </div>
+    </div>
+    
+    
+  </div>
+  
+</nav-view-layout>
+
+
+

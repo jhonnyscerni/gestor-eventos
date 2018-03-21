@@ -1,0 +1,77 @@
+<!-- toolbarTitle="demo" -->
+<td-layout-nav-list #navList
+[opened]="media.registerQuery('gt-sm') | async"
+[mode]="(media.registerQuery('gt-sm') | async) ? 'side' : 'over'"
+[sidenavWidth]="(media.registerQuery('gt-xs') | async) ? sidenavWidth + 'px' : '100%'"
+navigationRoute="/">
+<!-- -->
+<mat-toolbar td-sidenav-content *ngIf="isToolbarSidNav">
+  <span>{{toolbarSidNavTitle}}</span>
+ <ng-content select="[left-toolbar]"></ng-content>
+</mat-toolbar>
+
+ <!-- Região do topo com titulo e botão -->
+ <div td-sidenav-toolbar-content layout="row" layout-align="start center" flex>
+ <!-- Região do topo sem titulo e botão -->
+  <!-- <div td-sidenav-toolbar-content (click)="!media.query('gt-sm') && navList.close()"> -->
+  
+  <!-- Botão do topo que abre o menu lateral -->
+  <button mat-icon-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div style="display: inherit;">
+        <!-- <img 
+          [routerLink]="['/']" 
+          src="assets/aelis2018-logo-white.png" 
+          style="width: 48px; height: 48px; margin-right: 10px;margin-top: 4px; cursor: pointer;"> -->
+        <div layout="column">
+          <span 
+            [routerLink]="['/']"
+            style="text-transform: uppercase; cursor: pointer;">
+           <!-- {{ recursoTypeLabel }} -->
+            Seven
+          </span>
+          <!-- <h3 class="md-subhead">
+              {{ unidade?.sigla }} - {{ unidade?.municipio?.nome }}
+              Sistema gestor de eventos
+          </h3> -->
+        </div>
+      </div>
+</div>
+
+<!-- BARRA LATERAL ESQUERDA -->
+<div td-sidenav-content (click)="!media.query('gt-sm') && navList.close()" layout="column" flex style="height:100%">
+<!--<mat-nav-list dense td-sidenav-content (click)="!media.query('gt-sm') && navList.close()"> -->
+<mat-nav-list layout="column" flex style="height:100%; border: 1px solid #ddd" layout-fill>
+  <ng-content select="[sidenav]"></ng-content>
+  
+  <!-- MENU LATERAL ESQUERDA-->
+  <ng-content select="[menu-lateral]" layout="column" flex style="height:100%"></ng-content>
+</mat-nav-list>
+</div>
+
+
+<!--TOOLBAR -->
+<!-- <div td-toolbar-content layout="row" layout-align="left center" flex> -->
+<div td-toolbar-content layout="row" layout-align="left center" flex>
+ <!-- <span>{{ toolbarContentTitle }}</span> -->
+
+ <!-- CAMPO DE PESQUISA -->
+   
+  <span flex></span>
+      <!-- <menu-layout layout="row" layout-align="center center"></menu-layout>-->
+  <!-- <ng-content select="[right-toolbar]"></ng-content> -->
+</div>
+
+<!--MAIN CONTENT -->
+<ng-content select="[main-content]"></ng-content>
+
+<!--FOOTER-->
+<td-layout-footer-inner *ngIf="isSubFooter">
+  <ng-content select="sub-footer"></ng-content>
+</td-layout-footer-inner>
+<td-layout-footer *ngIf="isMainFooter">
+  <ng-content select="[main-footer]"></ng-content>
+</td-layout-footer>
+</td-layout-nav-list>
