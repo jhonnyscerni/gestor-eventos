@@ -1,0 +1,115 @@
+<!-- menus da barra princiapl: este modelo é dividido em: menu horizontal princiapal | sub-menus verticais -->
+
+<!-- menu: Eventos (corrigir: colocar mat-button quando paisagem, colocar mat-icon-button quando retrato) -->
+
+<button mat-button matTooltip="Eventos Disponíveis" matTooltipPosition="below" [mat-menu-trigger-for]="eventosMenu">
+    <span hide-xs hide-gt-xs show-gt-sm>EVENTOS</span>
+    <mat-icon>event</mat-icon>
+</button>
+
+<mat-menu xPosition="after" yPosition="below" #eventosMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item>
+        <mat-icon>menu</mat-icon>
+        <span>Agenda</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>menu</mat-icon>
+        <span>Inscrições Abertas</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>menu</mat-icon>
+        <span>Buscar Eventos</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>menu</mat-icon>
+        <span>Autenticar Certificado</span>
+    </button>
+</mat-menu>
+
+<!-- menu: Usuário -->
+
+<button mat-button matTooltip="Opções de Usuário" matTooltipPosition="below" [mat-menu-trigger-for]="usuarioMenu">
+    <span hide-xs hide-gt-xs show-gt-sm>USUÁRIO</span>
+    <mat-icon svgIcon="account}}"></mat-icon>
+</button>
+
+<mat-menu xPosition="after" yPosition="below" #usuarioMenu="matMenu" [overlapTrigger]="false">
+    <!-- itens de menu com usuário -->
+    <ng-container >
+        <button mat-menu-item>
+            <mat-icon>menu</mat-icon>
+            <span>Meu Cadastro</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>menu</mat-icon>
+            <span>Minhas Inscrições</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>menu</mat-icon>
+            <span>Sair</span>
+        </button>
+    </ng-container>
+    <!-- itens de menu sem usuário logado -->
+    <ng-container>
+            <button mat-menu-item>
+                <mat-icon>menu</mat-icon>
+                <span>Entrar</span>
+            </button>
+            <button mat-menu-item>
+                <mat-icon>menu</mat-icon>
+                <span>Criar Cadastro</span>
+            </button>
+        </ng-container>
+    </mat-menu>
+
+
+<!-- menu: Ajuda -->
+
+<button mat-button matTooltip="Ajuda do Site" matTooltipPosition="below" [mat-menu-trigger-for]="ajudaMenu">
+    <span hide-xs hide-gt-xs show-gt-sm>AJUDA</span>
+    <mat-icon>help_outline</mat-icon>
+</button>
+
+<mat-menu xPosition="after" yPosition="below" #ajudaMenu="matMenu" [overlapTrigger]="false">
+    <button mat-menu-item>
+        <mat-icon>menu</mat-icon>
+        <span>Acessibilidade</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>menu</mat-icon>
+        <span>Alto Contraste</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>menu</mat-icon>
+        <span>Dúvidas Frequêntes</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>menu</mat-icon>
+        <span>Mapa do Site</span>
+    </button>
+    <button mat-menu-item>
+        <mat-icon>menu</mat-icon>
+        <span>Contato</span>
+    </button>
+</mat-menu>
+
+<!-- BOTÃO DE OPÇÕES -->
+<button mat-icon-button [matMenuTriggerFor]="toolbarMenu1">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<!-- MENU DE OPÇÕES -->
+<mat-menu #toolbarMenu1="matMenu">
+  <!-- LINK USERGUIDE -->
+  <a mat-menu-item>
+    <mat-icon>help_outline</mat-icon>
+    <span>Manual do Usuário</span>
+  </a>
+  <mat-divider></mat-divider>
+  <!-- BOTÃO SAIR -->
+  <button mat-menu-item >
+    <mat-icon>exit_to_app</mat-icon>
+    <span>Sair</span>
+  </button>
+</mat-menu>
+
+

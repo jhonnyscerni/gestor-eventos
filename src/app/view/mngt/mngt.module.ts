@@ -1,3 +1,4 @@
+import { MenuLayoutComponent } from './../../@core/layout/menu-layout/menu-layout.component';
 import { EventoMenuLateralComponent } from './eventos/evento-edit/evento-menu-lateral/evento-menu-lateral.component';
 import { EventoEditComponent } from './eventos/evento-edit/evento-edit.component';
 import { NgModule, LOCALE_ID, Inject } from '@angular/core';
@@ -54,7 +55,8 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     NavListLayoutComponent,
     EventoDetailComponent,
     EventoMenuLateralComponent,
-    NavViewLayoutComponent
+    NavViewLayoutComponent,
+    MenuLayoutComponent
 ],
 providers: [
     EventoService,

@@ -1,13 +1,30 @@
-<td-layout-nav toolbarTitle="demo" color="primary" navigationRoute="/">
-  
-  <div td-toolbar-content layout="row" layout-align="left center" flex>
+<td-layout-nav color="primary" navigationRoute="/">
+
+  <div td-toolbar-content layout="row" layout-align="start center" flex>
+    <button mat-icon-button td-menu-button tdLayoutToggle>
+      <mat-icon>menu</mat-icon>
+    </button>
+
+    <div style="display: inherit;">
+      <img [routerLink]="['/']" src="assets/imagens/je-mini-logo-white.png" class="je-logo" style="width: 48px; height: 48px; margin-right: 10px;margin-top: 4px; cursor: pointer;">
+      <div layout="column">
+        <span [routerLink]="['/']" style="text-transform: uppercase; cursor: pointer;">
+          <!-- {{ recursoTypeLabel }} -->
+          Seven
+        </span>
+        <h3 class="md-subhead">
+          Sistema gestor de eventos
+        </h3>
+      </div>
+    </div>
+
     <!-- TOOLBAR CONTENT -->
-    <ng-content select="[toolbar-content]"></ng-content>
+    <!-- <ng-content select="[toolbar-content]"></ng-content> -->
     <span flex></span>
+    <app-menu-layout></app-menu-layout>
   </div>
   <!--MAIN CONTENT -->
   <ng-content select="[main-content]"></ng-content>
   <td-layout-footer color="primary" *ngIf="isFooter">
   </td-layout-footer>
 </td-layout-nav>
-
