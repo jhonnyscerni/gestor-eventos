@@ -98,7 +98,8 @@ export class EventoFormComponent implements OnInit {
     this.isNew = false;
 
     this.eventoService.getEvento(this.id).subscribe(evento => {
-      this.evento = evento;
+      this.eventoService.evento = evento;
+      this.evento = this.eventoService.evento;
       this.atualizarTituloEdicao();
     });
 

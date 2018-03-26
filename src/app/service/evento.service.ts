@@ -11,6 +11,7 @@ import { EventoFiltro } from '../domain/evento-filtro';
 @Injectable()
 export class EventoService {
 
+  evento: Evento;
   private url: string = `${environment.urlbase}/eventos`;
   eventoPage: Page<Evento> = new Page<Evento>();
 
