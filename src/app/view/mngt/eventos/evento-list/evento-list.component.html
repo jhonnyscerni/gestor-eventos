@@ -2,7 +2,8 @@
 
   <div main-content flex layout="column" style="height:100%">
 
-    <div layout="row" layout-align="center">
+
+    <div layout-wrap layout="row" layout-align="center">
       <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
         <mat-card-title>
           <span>Eventos Ativos na Gestão da EJE</span>
@@ -16,11 +17,10 @@
         </mat-card-content>
       </mat-card>
     </div>
-
-
-
+    
     <div layout="column">
-      <div layout-wrap layout="row" layout-align="center">
+
+      <div layout layout="row" layout-align="center">
         <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngFor="let evento of eventoPage.content"
           style="padding-bottom:40px;">
           <!-- <mat-card-header>
@@ -50,8 +50,8 @@
                   EXCLUIR
                 </button>
 
-                <!-- <a mat-button [routerLink]="['/evento/edit', evento?.id]">EDITAR</a> -->
-                <button mat-button color="primary" [routerLink]="['editar', evento?.id]">EDITAR</button>
+                <a mat-button [routerLink]="['/evento/edit', evento?.id]">EDITAR</a>
+                <!-- <button mat-button color="primary" [routerLink]="['editar', evento?.id]">EDITAR</button> -->
               </div>
             </mat-card-actions>
           </div>
