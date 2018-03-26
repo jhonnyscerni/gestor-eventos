@@ -7,15 +7,18 @@ import { Router } from '@angular/router';
 import { TdDialogService } from '@covalent/core';
 
 import * as Moment from 'moment'; /*  biblioteca de formatação de data/hora */
+import { EventoFiltro } from '../../../../domain/evento-filtro';
 
 @Component({
   selector: 'app-evento-list',
   templateUrl: './evento-list.component.html',
-  styleUrls: ['./evento-list.component.css']
+  styleUrls: ['./evento-list.component.scss']
 })
 export class EventoListComponent implements OnInit {
 
   eventoPage: Page<Evento> = new Page<Evento>();
+
+  filtro = new EventoFiltro();
 
   constructor(
     private _titleService: Title,
@@ -57,9 +60,23 @@ export class EventoListComponent implements OnInit {
     })
   }
 
+  getEventosPorNome(nome: String) {
+    this.eventoService.getEventosPorNome(nome).subscribe(page => {
+      this.eventoPage = page;
+    })
+  }
+
   public dateLayout(dt: any): String {
     return Moment(dt).format('dddd, DD [de] MMMM [de] YYYY [às] HH:mm:ss');
 }
- 
+
+public pesquisaDescritiva(nome: String): void {
+  if (nome == '') {
+    this.getEventos();
+  } else {
+    this.getEventosPorNome(nome);
+  }
+}
+
 
 }

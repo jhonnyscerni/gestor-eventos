@@ -1,0 +1,159 @@
+<div main-content layout="row" layout-align="center start">
+
+    <mat-card flex-gt-xs="70" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="evento">
+  
+      <mat-card-title>Informações Gerais </mat-card-title>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <!-- FORMULÁRIO -->
+        <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+  
+          <!-- FORMULÁRIO -->
+          <div layout="column">
+            <!-- NOME -->
+            <mat-input-container floatPlaceholder="auto" flex="100">
+              <input matInput [(ngModel)]="evento.nome" name="nome" type="text" placeholder="Nome do Evento">
+            </mat-input-container>
+  
+            <!-- SIGLA -->
+            <mat-input-container floatPlaceholder="auto" flex="100">
+              <input matInput [(ngModel)]="evento.sigla" name="sigla" type="text" placeholder="Sigla">
+            </mat-input-container>
+  
+            <!-- EMAIL -->
+            <mat-input-container floatPlaceholder="auto" flex="100">
+              <input matInput [(ngModel)]="evento.email" name="email" type="email" placeholder="Email para Contato">
+            </mat-input-container>
+  
+            <!-- DESCRIÇÃO -->
+            <mat-input-container floatPlaceholder="auto" flex="100">
+              <textarea matInput placeholder="Descrição" name="descricao" [(ngModel)]="evento.descricao"></textarea>
+            </mat-input-container>
+  
+            <!-- TIPO DE EVENTO -->
+            <mat-form-field>
+              <mat-select placeholder="Tipo de Evento" name="tipoEvento" [(ngModel)]="evento.tipoDeEvento" required>
+                <mat-option *ngFor="let tipoEvento of tipoEventos" [value]="tipoEvento">
+                  {{ tipoEvento.nomeSingular }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+  
+            <!-- QUANTIDADE DE ATIVIDADES -->
+            <mat-input-container floatPlaceholder="auto" flex="100">
+              <input matInput [(ngModel)]="evento.qtdAtividade" name="qtdAtividade" type="text" placeholder="Quantidade de Atividades">
+            </mat-input-container>
+  
+            <!-- CARGA HORARIA -->
+            <mat-input-container floatPlaceholder="auto" flex="100">
+              <input matInput [(ngModel)]="evento.cargaHoraria" name="cargaHoraria" type="text" placeholder="CargaHoraria">
+            </mat-input-container>
+  
+  
+            <!-- Data Inicial -->
+            <mat-input-container floatPlaceholder="auto" flex="50">
+              <label>
+                Data e Hora do Início do Período de Inscrições:
+                <br/>
+                <br/>
+                <input matInput #inicioInscricao="ngModel" [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" [(ngModel)]="evento.inicioInscricao"
+                  name="inicioInscricao" required>
+                <owl-date-time [pickerMode]="'dialog'" #dt1></owl-date-time>
+              </label>
+            </mat-input-container>
+            <mat-hint *ngIf="!isSubscriptionStartConflicsWithSubscriptionEnd() && !isSubscriptionStartConflicsWithEventStart()">
+              Esta será a data/hora em que os interessados poderão começar a se inscrever no site.
+            </mat-hint>
+            <mat-error *ngIf="isSubscriptionStartConflicsWithSubscriptionEnd()">
+              A data/hora de início das inscrições não pode ser posterior à data/hora de término das inscrições.
+            </mat-error>
+            <mat-error *ngIf="isSubscriptionStartConflicsWithEventStart()">
+              A data/hora de início das inscrições não pode ser posterior à data/hora de início do Evento.
+            </mat-error>
+  
+  
+            <!-- Data Fim -->
+            <mat-input-container floatPlaceholder="auto" flex="50">
+              <label>
+                Data e Hora do Fim do Período de Inscrições:
+                <br/>
+                <br/>
+                <input matInput #fimInscricao="ngModel" [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" [(ngModel)]="evento.fimInscricao"
+                  name="fimInscricao" required>
+                <owl-date-time [pickerMode]="'dialog'" #dt2></owl-date-time>
+              </label>
+            </mat-input-container>
+            <mat-hint *ngIf="!isSubscriptionStartConflicsWithSubscriptionEnd() && !isSubscriptionEndConflicsWithEventEnd()">
+              Esta será a data/hora em que as inscrições no Evento se encerrarão ao público, podendo haver inscrições somente pelo Gestor.
+            </mat-hint>
+            <mat-error *ngIf="isSubscriptionStartConflicsWithSubscriptionEnd()">
+              A data/hora de término das inscrições não pode ser anterior à data/hora de início das inscrições.
+            </mat-error>
+            <mat-error *ngIf="isSubscriptionEndConflicsWithEventEnd()">
+              A data/hora de término das inscrições não pode ser posterior à data/hora de término do Evento.
+            </mat-error>
+  
+  
+            <!-- Data Inicial -->
+            <mat-input-container floatPlaceholder="auto" flex="50">
+              <label>
+                Data e Hora do Início do Evento:
+                <br/>
+                <br/>
+                <input matInput #inicioEvento="ngModel" [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" [(ngModel)]="evento.inicioEvento"
+                  name="inicioEvento" required>
+                <owl-date-time [pickerMode]="'dialog'" #dt3></owl-date-time>
+              </label>
+            </mat-input-container>
+            <mat-hint *ngIf="!isEventStartConflicsWithEventEnd() && !isSubscriptionStartConflicsWithEventStart()">
+              Esta será a data/hora em que o Evento começa oficialmente.
+            </mat-hint>
+            <mat-error *ngIf="isEventStartConflicsWithEventEnd()">
+              A data/hora de início do Evento não pode ser posterior à data/hora de término do Evento.
+            </mat-error>
+            <mat-error *ngIf="isSubscriptionStartConflicsWithEventStart()">
+              A data/hora de início do Evento não pode ser anterior à data/hora de início das inscrições.
+            </mat-error>
+  
+  
+  
+            <!-- Data Fim -->
+            <mat-input-container floatPlaceholder="auto" flex="50">
+              <label>
+                Data e Hora do Fim do Evento:
+                <br/>
+                <br/>
+                <input matInput #fimEvento="ngModel" [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" [(ngModel)]="evento.fimEvento" name="fimEvento"
+                  required>
+                <owl-date-time [pickerMode]="'dialog'" #dt4></owl-date-time>
+              </label>
+            </mat-input-container>
+            <mat-hint *ngIf="!isEventStartConflicsWithEventEnd() && !isSubscriptionEndConflicsWithEventEnd()">
+              Esta será a data/hora em que o Evento termina oficialmente (carga horária completada).
+            </mat-hint>
+            <mat-error *ngIf="isEventStartConflicsWithEventEnd()">
+              A data/hora de término do Evento não pode ser anterior à data/hora de início do Evento.
+            </mat-error>
+            <mat-error *ngIf="isSubscriptionEndConflicsWithEventEnd()">
+              A data/hora de término do Evento não pode ser anterior à data/hora de término das inscrições.
+            </mat-error>
+  
+  
+          </div>
+  
+          <div layout="column">
+            <mat-card-actions>
+              <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">SALVAR</button>
+              <button mat-button (click)="voltar()">CANCELAR</button>
+            </mat-card-actions>
+          </div>
+  
+  
+  
+  
+        </form>
+      </mat-card-content>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+  </div>

@@ -1,3 +1,5 @@
+import { EventoFormComponent } from './eventos/evento-form/evento-form.component';
+import { EventoNovoComponent } from './eventos/evento-novo/evento-novo.component';
 import { MenuLayoutComponent } from './../../@core/layout/menu-layout/menu-layout.component';
 import { EventoMenuLateralComponent } from './eventos/evento-edit/evento-menu-lateral/evento-menu-lateral.component';
 import { EventoEditComponent } from './eventos/evento-edit/evento-edit.component';
@@ -19,7 +21,6 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
-import { EventoDetailComponent } from './eventos/evento-edit/evento-detail/evento-detail.component';
 // import { OwlDateTimeModule, OWL_DATE_TIME_LOCALE, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 
 
@@ -51,9 +52,10 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
   ],
   declarations: [
     EventoEditComponent,
+    EventoNovoComponent,
+    EventoFormComponent,
     EventoListComponent,
     NavListLayoutComponent,
-    EventoDetailComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,
     MenuLayoutComponent

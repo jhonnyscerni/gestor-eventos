@@ -1,38 +1,44 @@
+import { Observable } from 'rxjs/Observable';
 import { Evento } from './../domain/evento';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Http } from '@angular/http';
-import { Observable } from 'rxjs/Rx';
 import { Page } from '../@core/model/page';
 import 'rxjs/add/operator/map';
 import { DateTimeService } from '../@core/util/date-time.service';
+import { EventoFiltro } from '../domain/evento-filtro';
 
 @Injectable()
 export class EventoService {
 
-    private url: string = `${environment.urlbase}/eventos`;
+  private url: string = `${environment.urlbase}/eventos`;
+  eventoPage: Page<Evento> = new Page<Evento>();
 
-    constructor(private http: Http, private dtService: DateTimeService) { }
+  constructor(private http: Http, private dtService: DateTimeService) { }
 
-     /**
-     * Find all Eventos
-     */
-    public getEventos(): Observable<Page<Evento>> {
-        return this.http.get(this.url)
-            .map(res => res.json());
-    }
+  /**
+  * Find all Eventos
+  */
+  public getEventos(): Observable<Page<Evento>> {
+    return this.http.get(this.url)
+      .map(res => res.json());
+  }
 
+  public getEventosPorNome(nome: String): Observable<Page<Evento>> {
+    return this.http.get(this.url + '?nome=' + nome)
+      .map(res => res.json());
+  }
 
-    /**
-     * @param id
-     */
-    getEvento(id: number): Observable<Evento> {
-      return this.http.get(`${this.url}/${id}`).map((res: any) => {
-            const eventoAlterado: Evento = res.json() as Evento;
-            this.localAdjustDateTimeFromJSON([eventoAlterado]);
-            return eventoAlterado;
-           });
-    }
+  /**
+   * @param id
+   */
+  getEvento(id: number): Observable<Evento> {
+    return this.http.get(`${this.url}/${id}`).map((res: any) => {
+      const eventoAlterado: Evento = res.json() as Evento;
+      this.localAdjustDateTimeFromJSON([eventoAlterado]);
+      return eventoAlterado;
+    });
+  }
 
   public salvar(evento: Evento): Observable<Evento> {
     this.localAdjustDateTimeToJSON([evento]);
@@ -64,7 +70,7 @@ export class EventoService {
       }
     }
   }
- 
+
   private localAdjustDateTimeToJSON(eventos: Evento[]): void {
     for (const evento of eventos) {
       if (evento.inicioEvento) {
