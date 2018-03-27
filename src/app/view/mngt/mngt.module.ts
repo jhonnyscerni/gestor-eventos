@@ -1,3 +1,4 @@
+import { CategoriaParticipanteComponent } from './eventos/evento-edit/categoria-participante/categoria-participante.component';
 import { EventoFormComponent } from './eventos/evento-form/evento-form.component';
 import { EventoNovoComponent } from './eventos/evento-novo/evento-novo.component';
 import { MenuLayoutComponent } from './../../@core/layout/menu-layout/menu-layout.component';
@@ -55,6 +56,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     EventoNovoComponent,
     EventoFormComponent,
     EventoListComponent,
+    CategoriaParticipanteComponent,
     NavListLayoutComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,

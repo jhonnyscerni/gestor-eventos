@@ -74,10 +74,10 @@
 
           <!-- QUANTIDADE DE ATIVIDADES -->
           <mat-input-container floatPlaceholder="auto" flex="20">
-            <input matInput #quantAtividades="ngModel" [(ngModel)]="evento.quantAtividades" name="quantAtividades" type="number"
+            <input matInput #qtdAtividade="ngModel" [(ngModel)]="evento.qtdAtividade" name="qtdAtividade" type="number"
               placeholder="Quantidade de Atividades" required min="1" max="99999" pattern="^[1-9][0-9]*$">
-            <mat-hint [hidden]="!quantAtividades.valid">A quantidade de atividades do Evento define a contagem de frequência dos seus participantes.</mat-hint>
-            <mat-error [hidden]="quantAtividades.valid || (quantAtividades.pristine && !vform.submitted)">
+            <mat-hint [hidden]="!qtdAtividade.valid">A quantidade de atividades do Evento define a contagem de frequência dos seus participantes.</mat-hint>
+            <mat-error [hidden]="qtdAtividade.valid || (qtdAtividade.pristine && !vform.submitted)">
               O mínimo necessário de atividades é 1 (uma atividade).
             </mat-error>
           </mat-input-container>

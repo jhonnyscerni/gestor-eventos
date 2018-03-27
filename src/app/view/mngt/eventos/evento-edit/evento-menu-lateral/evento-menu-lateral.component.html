@@ -1,10 +1,10 @@
 <mat-nav-list dense td-sidenav-content>
     <h3 matSubheader>Edição do Evento</h3>
-    <a mat-list-item routerLinkActive="color-primary active-section" [routerLink]="['geral']">
+    <a mat-list-item routerLinkActive="color-primary active-section" [routerLink]="['/evento/edit', id]">
       <mat-icon svgIcon="information" matListIcon></mat-icon>
       Informações Gerais
     </a>
-    <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['vagas']">
+    <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/evento/edit', id, 'vagas']">
       <mat-icon svgIcon="account-group" matListIcon></mat-icon>
       Categorias de Inscrição
     </a>
