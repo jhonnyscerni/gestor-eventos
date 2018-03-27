@@ -1,3 +1,48 @@
-<p>
-  categoria-participante works!
-</p>
+<div main-content layout="row" layout-align="center start">
+
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+    <mat-card-title>Reserva de Vagas por Categoria de Participantes</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <form #vform="ngForm" autocomplete="off">
+
+        <!-- FORMULÁRIO -->
+        <div layout="row" layout-align="center start">
+
+
+          <!-- CATEGORIA PARTICIPANTE -->
+          <mat-form-field flex-gt-xs="60" flex="100" style="margin-right: 10px">
+            <mat-select placeholder="Categoria de Participante">
+              <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante.value">
+                {{ categoriaParticipante.viewValue }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- VAGAS -->
+          <mat-form-field class="example-full-width" flex-gt-xs="10" flex="100">
+            <input matInput placeholder="Vagas">
+          </mat-form-field>
+
+          <div layout="row" flex-gt-xs="25" flex="100">
+            <mat-card-actions>
+              <button mat-button mat-raised-button color="primary" type="submit">INSERIR</button>
+              <button mat-raised-button>CANCELAR</button>
+            </mat-card-actions>
+          </div>
+
+        </div>
+
+      </form>
+
+      <div layout="row" layout-align="center">
+        <td-data-table [data]="data" [columns]="configWidthColumns"></td-data-table>
+      </div>
+
+
+    </mat-card-content>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+</div>
