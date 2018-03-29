@@ -1,3 +1,5 @@
+import { CategoriaParticipanteEventoService } from './../../service/categoria-participante-evento.service';
+import { CategoriaParticipanteService } from './../../service/categoria-participante.service';
 import { CategoriaParticipanteComponent } from './eventos/evento-edit/categoria-participante/categoria-participante.component';
 import { EventoFormComponent } from './eventos/evento-form/evento-form.component';
 import { EventoNovoComponent } from './eventos/evento-novo/evento-novo.component';
@@ -64,6 +66,8 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
 ],
 providers: [
     EventoService,
+    CategoriaParticipanteService,
+    CategoriaParticipanteEventoService,
     TipoEventoService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
