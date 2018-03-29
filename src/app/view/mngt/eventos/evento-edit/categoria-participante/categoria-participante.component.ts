@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Rx';
 import { Evento } from './../../../../../domain/evento';
 import { CategoriaParticipanteEventoService } from './../../../../../service/categoria-participante-evento.service';
 import { CategoriaParticipanteEvento } from './../../../../../domain/categoria-participante-evento';
@@ -23,7 +24,9 @@ export class CategoriaParticipanteComponent implements OnInit {
 
   evento: Evento = new Evento();
 
-  id: number;
+  idEvento: number;
+
+  idCategoriaParticipanteEvento: number;
 
   q: number;
 
@@ -53,17 +56,16 @@ export class CategoriaParticipanteComponent implements OnInit {
     this.isNew = true;
     this.title.setTitle('Novo Categoria Participante Evento');
     this.route.parent.params.subscribe(param => {
-      this.id = param['id'];
-      console.log(this.id);
-      this.processaCategoriaParticipanteEvento();
+      this.idEvento = param['id'];
+      console.log(this.idEvento);
       this.carregaCategoriaParticipantes();
       this.getCategoriaParticipantesEvento();
-      this.evento.id = this.id;
+      this.evento.id = this.idEvento;
     });
   }
 
   getCategoriaParticipantesEvento() {
-    this.categoriaParticipanteEventoService.getCategoriaParticipantesEventoByEvento(this.id)
+    this.categoriaParticipanteEventoService.getCategoriaParticipantesEventoByEvento(this.idEvento)
       .subscribe(data => this.data = data);
   }
 
@@ -77,37 +79,17 @@ export class CategoriaParticipanteComponent implements OnInit {
   }
 
   /**
-* Captura o id do Categoria Participante Evento
-*/
-  processaCategoriaParticipanteEvento() {
-    if (this.id && !isNaN(this.id)) {
-      // this.editar();
-    } else {//se id não informado
-      this.isNew = false;
-    }
-  }
-
-  /**
      * Preparo para edição
      */
-  // private editar() {
-  //   this.isNew = false;
-
-  //   this.categoriaParticipanteEventoService.getCategoriaParticipanteEvento(this.id).subscribe(categoriaParticipanteEvento => {
-  //     this.categoriaParticipanteEventoService.categoriaParticipanteEvento = categoriaParticipanteEvento;
-  //     this.categoriaParticipanteEvento = this.categoriaParticipanteEventoService.categoriaParticipanteEvento;
-  //     this.atualizarTituloEdicao();
-  //   });
-
-  // }
 
   onSubmit() {
     this.categoriaParticipanteEvento.evento = this.evento;
-    this.categoriaParticipanteEventoService.salvar(this.categoriaParticipanteEvento, this.id).subscribe(categoriaParticipanteEvento => {
-      // this.router.navigate(['/evento/edit', evento.id]);
-      this.getCategoriaParticipantesEvento();
-      this.snackBar.open(`${categoriaParticipanteEvento.categoriaParticipante.titulo} salvo com sucesso!`, '', { duration: 10000 });
-    });
+    this.categoriaParticipanteEventoService.salvar(this.categoriaParticipanteEvento, this.idEvento)
+      .subscribe(categoriaParticipanteEvento => {
+        this.getCategoriaParticipantesEvento();
+        this.snackBar.open(`Categoria Participante Evento: ${categoriaParticipanteEvento.categoriaParticipante.titulo}
+         salvo com sucesso!`, '', { duration: 10000 });
+      });
 
   }
 
@@ -130,9 +112,9 @@ export class CategoriaParticipanteComponent implements OnInit {
     }).afterClosed().subscribe((aceitou: boolean) => {
       if (aceitou) {
         this.categoriaParticipanteEventoService.excluirCategoriaParticipanteEvento(id)
-            .subscribe(() => {
-              this.getCategoriaParticipantesEvento();
-            })
+          .subscribe(() => {
+            this.getCategoriaParticipantesEvento();
+          })
       } else {
         console.log('Não aceitou excluir o categoria participante evento');
       }

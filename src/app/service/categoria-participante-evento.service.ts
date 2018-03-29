@@ -21,12 +21,12 @@ export class CategoriaParticipanteEventoService {
             .map(res => res.json());
     }
 
-    // getCategoriaParticipanteEvento(id: number): Observable<CategoriaParticipanteEvento> {
-    //     return this.http.get(`${this.url}/${id}`).map((res: any) => {
-    //         const categoriaParticipanteEventoAlterado: CategoriaParticipanteEvento = res.json() as CategoriaParticipanteEvento;
-    //         return categoriaParticipanteEventoAlterado;
-    //       });
-    // }
+    getCategoriaParticipanteEvento(id: number): Observable<CategoriaParticipanteEvento> {
+        return this.http.get(`${this.url}/${id}`).map((res: any) => {
+            const categoriaParticipanteEventoAlterado: CategoriaParticipanteEvento = res.json() as CategoriaParticipanteEvento;
+            return categoriaParticipanteEventoAlterado;
+          });
+    }
 
     public salvar(categoriaParticipanteEvento: CategoriaParticipanteEvento, idEvento: number): Observable<CategoriaParticipanteEvento> {
         if (categoriaParticipanteEvento.id || categoriaParticipanteEvento.id == 0) {

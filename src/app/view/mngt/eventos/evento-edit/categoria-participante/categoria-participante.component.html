@@ -40,8 +40,13 @@
         <td-data-table [data]="data" [columns]="configWidthColumns">
           <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
 
-            <button mat-button color="warn" class="text-upper" (click)="excluirCategoriaParticipanteEvento(row.id)">
-              EXCLUIR
+            <button mat-button color="warn"  (click)="excluirCategoriaParticipanteEvento(row.id)">
+                <!-- <mat-icon svgIcon="delete" matListIcon></mat-icon> -->
+                <i class="material-icons">delete_forever</i>
+            </button>
+
+            <button mat-button>
+                <i class="material-icons">mode_edit</i>
             </button>
 
           </ng-template>
