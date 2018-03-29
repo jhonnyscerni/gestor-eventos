@@ -4,7 +4,7 @@ import { CategoriaParticipanteEvento } from './../../../../../domain/categoria-p
 import { CategoriaParticipanteService } from './../../../../../service/categoria-participante.service';
 import { CategoriaParticipante } from './../../../../../domain/categoria-participante';
 import { Component, OnInit } from '@angular/core';
-import { ITdDataTableColumn } from '@covalent/core';
+import { ITdDataTableColumn, TdDialogService } from '@covalent/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material';
@@ -46,6 +46,7 @@ export class CategoriaParticipanteComponent implements OnInit {
     private route: ActivatedRoute,
     private title: Title,
     public snackBar: MatSnackBar,
+    private _dialogService: TdDialogService
   ) { }
 
   ngOnInit() {
@@ -118,5 +119,24 @@ export class CategoriaParticipanteComponent implements OnInit {
     this.title.setTitle(`Edição de Categoria Participante Evento: ${this.categoriaParticipanteEvento.categoriaParticipante.titulo}`);
   }
 
+
+  excluirCategoriaParticipanteEvento(id: number) {
+    this._dialogService.openConfirm({
+      message: 'Deseja excluir essa Categoria Participante Evento ?',
+      disableClose: true,
+      title: 'Exclusão',
+      cancelButton: 'Não',
+      acceptButton: 'Sim',
+    }).afterClosed().subscribe((aceitou: boolean) => {
+      if (aceitou) {
+        this.categoriaParticipanteEventoService.excluirCategoriaParticipanteEvento(id)
+            .subscribe(() => {
+              this.getCategoriaParticipantesEvento();
+            })
+      } else {
+        console.log('Não aceitou excluir o categoria participante evento');
+      }
+    })
+  }
 
 }

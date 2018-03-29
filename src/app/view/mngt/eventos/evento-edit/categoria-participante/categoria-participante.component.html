@@ -23,7 +23,7 @@
           <!-- VAGAS -->
           <mat-form-field class="example-full-width" flex-gt-xs="10" flex="100">
             <input matInput placeholder="Vagas" name="vagas" [(ngModel)]="categoriaParticipanteEvento.vagas">
-          </mat-form-field> 
+          </mat-form-field>
 
           <div layout="row" flex-gt-xs="25" flex="100">
             <mat-card-actions>
@@ -38,10 +38,13 @@
 
       <div layout="row" layout-align="center">
         <td-data-table [data]="data" [columns]="configWidthColumns">
-            <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
-                Excluir
-                {{row.vagas}}
-            </ng-template>
+          <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
+
+            <button mat-button color="warn" class="text-upper" (click)="excluirCategoriaParticipanteEvento(row.id)">
+              EXCLUIR
+            </button>
+
+          </ng-template>
 
         </td-data-table>
       </div>
