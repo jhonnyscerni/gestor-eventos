@@ -9,19 +9,21 @@ import { RouterModule, Routes } from "@angular/router";
 import { NgModule, ModuleWithProviders } from "@angular/core";
 
 const routes: Routes = [
-    { path: 'evento/novo', component: EventoNovoComponent},
-    { path: 'evento/edit/:id', component: EventoEditComponent , children: [
-          { path: '' , component: EventoFormComponent },
-          { path: 'vagas', component: CategoriaParticipanteComponent},
-          { path: 'facilitadores', component: FacilitadorListComponent},
-          { path: 'facilitador/novo', component: FacilitadorEditComponent}
-    ]},
+    { path: 'evento/novo', component: EventoNovoComponent },
     {
-        path: 'eventos', component: EventoListComponent, children: [
-            { path: '', component: EventoListComponent}
+        path: 'evento/edit/:id', component: EventoEditComponent, children: [
+            { path: 'geral', component: EventoFormComponent },
+            { path: 'vagas', component: CategoriaParticipanteComponent },
+            { path: 'facilitadores', component: FacilitadorListComponent },
+            { path: 'facilitador/novo', component: FacilitadorEditComponent }
         ]
     },
-    {path: '', redirectTo: 'eventos'}
+    {
+        path: 'eventos', component: EventoListComponent, children: [
+            { path: '', component: EventoListComponent }
+        ]
+    },
+    { path: '', redirectTo: 'eventos' }
 ];
 
 export const mgntRoutes: ModuleWithProviders = RouterModule.forChild(routes);

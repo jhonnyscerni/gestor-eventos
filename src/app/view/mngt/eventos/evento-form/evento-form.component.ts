@@ -16,7 +16,7 @@ import { TdDialogService } from '@covalent/core';
 })
 export class EventoFormComponent implements OnInit {
 
-  id: number;
+  idEvento: number;
 
   q: number;
 
@@ -38,66 +38,74 @@ export class EventoFormComponent implements OnInit {
   ) { }
 
   /* EDU: validação customizada do formulário, relacionada às datas do evento */
-    // verifica se a data de início das inscrições é maior ou igual à data de fim das inscrições
-    isSubscriptionStartConflicsWithSubscriptionEnd(): Boolean {
-      if (!this.evento.inicioInscricao || !this.evento.fimInscricao) { return false; }
-      if (this.dtService.isAfterOrEqual(this.evento.inicioInscricao, this.evento.fimInscricao)) { return true; }
-      return false; // validação não encontrou erro
-    }
-    // verifica se a data de início do evento é maior ou igual à data de fim do evento
-    isEventStartConflicsWithEventEnd(): Boolean {
-      if (!this.evento.inicioEvento || !this.evento.fimEvento) { return false; }
-      if (this.dtService.isAfterOrEqual(this.evento.inicioEvento, this.evento.fimEvento)) { return true; }
-      return false; // validação não encontrou erro
-    }
-    // verifica se a data de fim das inscrições é maior que a data de fim do evento
-    isSubscriptionEndConflicsWithEventEnd(): Boolean {
-      if (!this.evento.fimInscricao || !this.evento.fimEvento) { return false; }
-      if (this.dtService.isAfterOrEqual(this.evento.fimInscricao, this.evento.fimEvento)) { return true; }
-      return false; // validação não encontrou erro
-    }
-    // verifica se a data de início do evento é menor que a data de início das inscrições
-    isSubscriptionStartConflicsWithEventStart(): Boolean {
-      if (!this.evento.inicioEvento || !this.evento.inicioInscricao) { return false; }
-      if (this.dtService.isBeforeOrEqual(this.evento.inicioEvento, this.evento.inicioInscricao)) { return true; }
-      return false; // validação não encontrou erro
-    }
+  // verifica se a data de início das inscrições é maior ou igual à data de fim das inscrições
+  isSubscriptionStartConflicsWithSubscriptionEnd(): Boolean {
+    if (!this.evento.inicioInscricao || !this.evento.fimInscricao) { return false; }
+    if (this.dtService.isAfterOrEqual(this.evento.inicioInscricao, this.evento.fimInscricao)) { return true; }
+    return false; // validação não encontrou erro
+  }
+  // verifica se a data de início do evento é maior ou igual à data de fim do evento
+  isEventStartConflicsWithEventEnd(): Boolean {
+    if (!this.evento.inicioEvento || !this.evento.fimEvento) { return false; }
+    if (this.dtService.isAfterOrEqual(this.evento.inicioEvento, this.evento.fimEvento)) { return true; }
+    return false; // validação não encontrou erro
+  }
+  // verifica se a data de fim das inscrições é maior que a data de fim do evento
+  isSubscriptionEndConflicsWithEventEnd(): Boolean {
+    if (!this.evento.fimInscricao || !this.evento.fimEvento) { return false; }
+    if (this.dtService.isAfterOrEqual(this.evento.fimInscricao, this.evento.fimEvento)) { return true; }
+    return false; // validação não encontrou erro
+  }
+  // verifica se a data de início do evento é menor que a data de início das inscrições
+  isSubscriptionStartConflicsWithEventStart(): Boolean {
+    if (!this.evento.inicioEvento || !this.evento.inicioInscricao) { return false; }
+    if (this.dtService.isBeforeOrEqual(this.evento.inicioEvento, this.evento.inicioInscricao)) { return true; }
+    return false; // validação não encontrou erro
+  }
 
 
   ngOnInit() {
     this.isNew = true;
     this.title.setTitle('Novo Evento');
-    this.id = this.route.snapshot.params['id'];
-    this.processaEvento();
-    this.carregarTipoEvento();
+    //this.id = this.route.snapshot.params['id'];
+
+    this.route.parent.params.subscribe(param => {
+      this.idEvento = param['id'];
+      console.log(this.idEvento);
+
+      this.processaEvento();
+      this.carregarTipoEvento();
+      this.evento.id = this.idEvento;
+    });
+
   }
 
-   /**
-   *Carregando Tipo Evento
-  */
+  /**
+  *Carregando Tipo Evento
+ */
 
- carregarTipoEvento() {
-  return this.tipoEventoService.getTipoEventos()
-  .subscribe( tipoEventos => this.tipoEventos = tipoEventos);
- }
+  carregarTipoEvento() {
+    return this.tipoEventoService.getTipoEventos()
+      .subscribe(tipoEventos => this.tipoEventos = tipoEventos);
+  }
 
   /**
   * Captura o id do Pessoa
   */
- processaEvento() {
-  if (this.id && !isNaN(this.id)) {
-    this.editar();
-  } else {//se id não informado
-    this.isNew = false;
+  processaEvento() {
+    if (this.idEvento && !isNaN(this.idEvento)) {
+      this.editar();
+    } else {//se id não informado
+      this.isNew = false;
+    }
   }
-}
-/**
-   * Preparo para edição
-   */
+  /**
+     * Preparo para edição
+     */
   private editar() {
     this.isNew = false;
 
-    this.eventoService.getEvento(this.id).subscribe(evento => {
+    this.eventoService.getEvento(this.idEvento).subscribe(evento => {
       this.eventoService.evento = evento;
       this.evento = this.eventoService.evento;
       this.atualizarTituloEdicao();
@@ -110,7 +118,7 @@ export class EventoFormComponent implements OnInit {
 
     this.eventoService.salvar(this.evento).subscribe(evento => {
       // this.router.navigate(['/evento/edit', evento.id]);
-      this.snackBar.open(`${evento.nome} salvo com sucesso!`, '', {duration: 10000});
+      this.snackBar.open(`${evento.nome} salvo com sucesso!`, '', { duration: 10000 });
     });
 
   }
