@@ -1,3 +1,4 @@
+import { InscricoesComponent } from './eventos/evento-edit/inscricoes/inscricoes.component';
 import { FacilitadorEditComponent } from './eventos/evento-edit/facilitadores/facilitador-edit/facilitador-edit.component';
 import { FacilitadorListComponent } from './eventos/evento-edit/facilitadores/facilitador-list/facilitador-list.component';
 import { CategoriaParticipanteEventoService } from './../../service/categoria-participante-evento.service';
@@ -26,6 +27,7 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
+import { FacilitadorService } from '../../service/facilitador.service';
 // import { OwlDateTimeModule, OWL_DATE_TIME_LOCALE, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 
 
@@ -63,6 +65,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     CategoriaParticipanteComponent,
     FacilitadorListComponent,
     FacilitadorEditComponent,
+    InscricoesComponent,
     NavListLayoutComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,
@@ -73,6 +76,7 @@ providers: [
     CategoriaParticipanteService,
     CategoriaParticipanteEventoService,
     TipoEventoService,
+    FacilitadorService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
 

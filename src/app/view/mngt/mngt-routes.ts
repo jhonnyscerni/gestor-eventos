@@ -1,3 +1,4 @@
+import { InscricoesComponent } from './eventos/evento-edit/inscricoes/inscricoes.component';
 import { FacilitadorEditComponent } from './eventos/evento-edit/facilitadores/facilitador-edit/facilitador-edit.component';
 import { FacilitadorListComponent } from './eventos/evento-edit/facilitadores/facilitador-list/facilitador-list.component';
 import { CategoriaParticipanteComponent } from './eventos/evento-edit/categoria-participante/categoria-participante.component';
@@ -15,7 +16,8 @@ const routes: Routes = [
             { path: 'geral', component: EventoFormComponent },
             { path: 'vagas', component: CategoriaParticipanteComponent },
             { path: 'facilitadores', component: FacilitadorListComponent },
-            { path: 'facilitador/novo', component: FacilitadorEditComponent }
+            { path: 'facilitador/novo', component: FacilitadorEditComponent },
+            { path: 'inscricoes', component: InscricoesComponent },
         ]
     },
     {
