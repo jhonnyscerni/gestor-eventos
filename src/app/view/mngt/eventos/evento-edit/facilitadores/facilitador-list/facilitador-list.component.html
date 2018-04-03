@@ -1,0 +1,40 @@
+<div main-content layout="row" layout-align="center start">
+
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+    <mat-card-title>Lista de Facilitadores do Evento</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+
+      <div layout="row" flex-gt-xs="25" flex="100">
+        <mat-card-actions>
+            <a mat-raised-button [routerLink]="['../facilitador/novo']">Novo</a>
+        </mat-card-actions>
+      </div>
+
+      <div layout="row" layout-align="center">
+        <td-data-table [data]="data" [columns]="configWidthColumns">
+
+          <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
+
+            <button mat-button color="warn">
+              <!-- <mat-icon svgIcon="delete" matListIcon></mat-icon> -->
+              <i class="material-icons">delete_forever</i>
+            </button>
+
+            <button mat-button>
+              <i class="material-icons">mode_edit</i>
+            </button>
+
+          </ng-template>
+
+        </td-data-table>
+      </div>
+
+
+    </mat-card-content>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+</div>
