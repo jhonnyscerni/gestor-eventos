@@ -42,15 +42,34 @@ export class FacilitadorListComponent implements OnInit {
     this.route.parent.params.subscribe(param => {
       this.idEvento = param['id'];
       console.log(`idEvento na area de Facilitadores:` + this.idEvento);
-      this.getFacilitadoresbyEvento();
+      this.getFacilitadoresByEvento();
       this.evento.id = this.idEvento;
     });
   }
 
-  getFacilitadoresbyEvento() {
+  getFacilitadoresByEvento() {
     this.facilitadorService.getfacilitadoresByEvento(this.idEvento).subscribe(
       data => this.data = data
     );
   }
+
+  excluirFacilitadorByEvento(id: number) {
+        this._dialogService.openConfirm({
+          message: 'Deseja excluir esse Facilitador do Evento ?',
+          disableClose: true,
+          title: 'Exclusão',
+          cancelButton: 'Não',
+          acceptButton: 'Sim',
+        }).afterClosed().subscribe((aceitou: boolean) => {
+          if (aceitou) {
+            this.facilitadorService.excluirFacilitadorByEvento(id)
+                .subscribe(() => {
+                  this.getFacilitadoresByEvento();
+                })
+          } else {
+            console.log('Não aceitou excluir o categoria participante evento');
+          }
+        })
+      }
 
 }

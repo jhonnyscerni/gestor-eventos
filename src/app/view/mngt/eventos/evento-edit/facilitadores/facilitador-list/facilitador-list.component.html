@@ -9,7 +9,7 @@
 
       <div layout="row" flex-gt-xs="25" flex="100">
         <mat-card-actions>
-            <a mat-raised-button [routerLink]="['../facilitador/novo']">Novo</a>
+          <a mat-raised-button [routerLink]="['../facilitador/novo']">Novo</a>
         </mat-card-actions>
       </div>
 
@@ -18,14 +18,14 @@
 
           <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
 
-            <button mat-button color="warn">
+            <button mat-button color="warn" (click)="excluirFacilitadorByEvento(row.id)">
               <!-- <mat-icon svgIcon="delete" matListIcon></mat-icon> -->
               <i class="material-icons">delete_forever</i>
             </button>
 
-            <button mat-button>
+            <a mat-button [routerLink]="['../facilitador/edit', row?.id]"> 
               <i class="material-icons">mode_edit</i>
-            </button>
+            </a>
 
           </ng-template>
 

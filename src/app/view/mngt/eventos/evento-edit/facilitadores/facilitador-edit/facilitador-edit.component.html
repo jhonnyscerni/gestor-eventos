@@ -1,6 +1,6 @@
 <div main-content layout="row" layout-align="center start">
 
-  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="facilitador">
 
     <mat-card-title>Cadastro Facilitador </mat-card-title>
     <mat-divider></mat-divider>
@@ -14,33 +14,36 @@
 
           <!-- NOME -->
           <mat-input-container floatPlaceholder="auto" flex="100">
-            <input matInput minlength="5" maxlength="250" ngModel name="nome" type="text" placeholder="Nome do Facilitador">
+            <input matInput minlength="5" maxlength="250" #nome="ngModel" [(ngModel)]="facilitador.nome" name="nome" type="text" placeholder="Nome do Facilitador">
+            <mat-error [hidden]="nome.valid || (nome.pristine && !vform.submitted)">
+                O nome do Evento é um campo obrigatório de 5 até 250 caracteres.
+            </mat-error>
           </mat-input-container>
 
           <!-- TITULO DE ELEITOR -->
           <mat-input-container floatPlaceholder="auto" flex="20">
-            <input matInput name="qtdAtividade" type="number" ngModel placeholder="Título de Eleitor" required min="1" max="99999" pattern="^[1-9][0-9]*$">
+            <input matInput name="tituloEleitor" type="number" [(ngModel)]="facilitador.tituloEleitor" placeholder="Título de Eleitor">
           </mat-input-container>
           <br/>
 
           <!-- TITULO PROFISSIONAL -->
           <mat-input-container floatPlaceholder="auto" flex="100">
-            <input matInput name="tituloProfissional" type="text" ngModel placeholder="Titulo Profissional">
+            <input matInput name="tituloProfissional" type="text" [(ngModel)]="facilitador.tituloProfissional" placeholder="Titulo Profissional">
           </mat-input-container>
 
           <!-- INSTITUICAO -->
           <mat-input-container floatPlaceholder="auto" flex="100">
-            <input matInput minlength="5" maxlength="250" ngModel name="instituicao" type="text" placeholder="Instituição">
+            <input matInput name="instituicao" [(ngModel)]="facilitador.instituicao" type="text" placeholder="Instituição">
           </mat-input-container>
 
           <!-- ORIGEM -->
           <mat-input-container floatPlaceholder="auto" flex="100">
-            <input matInput name="origem" type="text" ngModel placeholder="Origem">
+            <input matInput name="origem" type="text" [(ngModel)]="facilitador.origem" placeholder="Origem">
           </mat-input-container>
 
           <!-- EMAIL -->
           <mat-input-container floatPlaceholder="auto" flex="50">
-            <input matInput name="email" type="email" ngModel placeholder="Email do Evento">
+            <input matInput name="email" type="email" [(ngModel)]="facilitador.email" placeholder="Email do Facilitador">
           </mat-input-container>
 
         </div>

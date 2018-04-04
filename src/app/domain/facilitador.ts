@@ -7,5 +7,5 @@ export class Facilitador {
     instituicao?: string;
     origem?: string;
     email?: string;
-    evento?: Evento;
+    evento?: Evento = new Evento();
 }
