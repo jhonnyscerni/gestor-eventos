@@ -4,6 +4,6 @@ import { Evento } from './evento';
 export class CategoriaParticipanteEvento {
     id?: number;
     vagas?: number;
-    evento?: Evento;
+    evento?: Evento = new Evento();
     categoriaParticipante?: CategoriaParticipante;
 }

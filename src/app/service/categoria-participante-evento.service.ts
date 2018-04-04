@@ -30,7 +30,8 @@ export class CategoriaParticipanteEventoService {
 
     public salvar(categoriaParticipanteEvento: CategoriaParticipanteEvento, idEvento: number): Observable<CategoriaParticipanteEvento> {
         if (categoriaParticipanteEvento.id || categoriaParticipanteEvento.id == 0) {
-          return this.http.put(`${this.url}/${categoriaParticipanteEvento.id}`, categoriaParticipanteEvento).map(res => res.json());
+          return this.http.put(`${environment.urlbase}/eventos/${idEvento}/categoria-participante-evento/${categoriaParticipanteEvento.id}`
+          , categoriaParticipanteEvento).map(res => res.json());
         } else {
           return this.http.post(`${environment.urlbase}/eventos/${idEvento}/categoria-participante-evento`
           , categoriaParticipanteEvento).map(res => res.json());

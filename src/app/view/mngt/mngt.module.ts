@@ -1,3 +1,5 @@
+// tslint:disable-next-line:max-line-length
+import { CategoriaParticipanteEditDialogComponent } from './eventos/evento-edit/categoria-participante/categoria-participante-edit-dialog/categoria-participante-edit-dialog.component';
 import { InscricoesComponent } from './eventos/evento-edit/inscricoes/inscricoes.component';
 import { FacilitadorEditComponent } from './eventos/evento-edit/facilitadores/facilitador-edit/facilitador-edit.component';
 import { FacilitadorListComponent } from './eventos/evento-edit/facilitadores/facilitador-list/facilitador-list.component';
@@ -63,6 +65,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     EventoFormComponent,
     EventoListComponent,
     CategoriaParticipanteComponent,
+    CategoriaParticipanteEditDialogComponent,
     FacilitadorListComponent,
     FacilitadorEditComponent,
     InscricoesComponent,
@@ -70,8 +73,9 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     EventoMenuLateralComponent,
     NavViewLayoutComponent,
     MenuLayoutComponent
-],
-providers: [
+  ],
+  entryComponents: [CategoriaParticipanteEditDialogComponent],
+  providers: [
     EventoService,
     CategoriaParticipanteService,
     CategoriaParticipanteEventoService,
@@ -85,21 +89,21 @@ providers: [
     { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },
 
     DateTimeService,
-],
+  ],
 })
 export class MngtModule {
 
   constructor(@Inject('moment') public moment: any,
 
-              matIconRegistry: MatIconRegistry,
+    matIconRegistry: MatIconRegistry,
 
-              domSanitizer: DomSanitizer) {
+    domSanitizer: DomSanitizer) {
 
-      /* EDU: declarar matIconRegistry para adicionar os ícones customizados da comunidade de desenvolvimento */
+    /* EDU: declarar matIconRegistry para adicionar os ícones customizados da comunidade de desenvolvimento */
 
-      matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/mdi.svg'));
+    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/mdi.svg'));
 
-      this.moment.locale('pt-br');
+    this.moment.locale('pt-br');
 
   }
 

@@ -28,7 +28,7 @@
           <div layout="row" flex-gt-xs="25" flex="100">
             <mat-card-actions>
               <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">INSERIR</button>
-              <button mat-raised-button (click)="voltar()">CANCELAR</button>
+              <button mat-raised-button >LIMPAR</button>
             </mat-card-actions>
           </div>
 
@@ -45,7 +45,7 @@
                 <i class="material-icons">delete_forever</i>
             </button>
 
-            <button mat-button>
+            <button mat-button (click)="openDialogEditCategoriaParticipante(row.id)">
                 <i class="material-icons">mode_edit</i>
             </button>
 

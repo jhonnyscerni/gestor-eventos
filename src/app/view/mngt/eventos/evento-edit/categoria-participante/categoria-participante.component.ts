@@ -1,3 +1,4 @@
+import { CategoriaParticipanteEditDialogComponent } from './categoria-participante-edit-dialog/categoria-participante-edit-dialog.component';
 import { Observable } from 'rxjs/Rx';
 import { Evento } from './../../../../../domain/evento';
 import { CategoriaParticipanteEventoService } from './../../../../../service/categoria-participante-evento.service';
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 import { ITdDataTableColumn, TdDialogService } from '@covalent/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 
 
 @Component({
@@ -21,8 +22,6 @@ export class CategoriaParticipanteComponent implements OnInit {
   categoriaParticipantes: CategoriaParticipante[] = [];
 
   categoriaParticipanteEvento: CategoriaParticipanteEvento = new CategoriaParticipanteEvento();
-
-  evento: Evento = new Evento();
 
   idEvento: number;
 
@@ -49,20 +48,45 @@ export class CategoriaParticipanteComponent implements OnInit {
     private route: ActivatedRoute,
     private title: Title,
     public snackBar: MatSnackBar,
-    private _dialogService: TdDialogService
+    private _dialogService: TdDialogService,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit() {
     this.isNew = true;
     this.title.setTitle('Novo Categoria Participante Evento');
+    this.idCategoriaParticipanteEvento = this.route.snapshot.params['id'];
     this.route.parent.params.subscribe(param => {
       this.idEvento = param['id'];
       console.log(this.idEvento);
       this.carregaCategoriaParticipantes();
       this.getCategoriaParticipantesEvento();
-      this.evento.id = this.idEvento;
+      this.processaCategoriaParticipanteEvento();
+      this.categoriaParticipanteEvento.evento.id = this.idEvento;
     });
   }
+
+
+      /**
+  * Captura o id do Componente
+  */
+ processaCategoriaParticipanteEvento() {
+  if (this.idCategoriaParticipanteEvento && !isNaN(this.idCategoriaParticipanteEvento)) {
+    this.editar();
+  } else {//se id não informado
+    this.isNew = false;
+  }
+}
+
+private editar() {
+  this.categoriaParticipanteEventoService.getCategoriaParticipanteEvento(this.idCategoriaParticipanteEvento)
+  .subscribe( categoriaParticipanteEvento => {
+    this.categoriaParticipanteEventoService.categoriaParticipanteEvento = categoriaParticipanteEvento;
+    this.categoriaParticipanteEvento = this.categoriaParticipanteEventoService.categoriaParticipanteEvento;
+    this.atualizarTituloEdicao();
+  });
+}
+
 
   getCategoriaParticipantesEvento() {
     this.categoriaParticipanteEventoService.getCategoriaParticipantesEventoByEvento(this.idEvento)
@@ -83,9 +107,8 @@ export class CategoriaParticipanteComponent implements OnInit {
      */
 
   onSubmit() {
-    this.categoriaParticipanteEvento.evento = this.evento;
     this.categoriaParticipanteEventoService.salvar(this.categoriaParticipanteEvento, this.idEvento)
-      .subscribe(categoriaParticipanteEvento => {
+      .subscribe((categoriaParticipanteEvento) => {
         this.getCategoriaParticipantesEvento();
         this.snackBar.open(`Categoria Participante Evento: ${categoriaParticipanteEvento.categoriaParticipante.titulo}
          salvo com sucesso!`, '', { duration: 10000 });
@@ -94,7 +117,7 @@ export class CategoriaParticipanteComponent implements OnInit {
   }
 
   voltar() {
-    this.router.navigate(['eventos'])
+    this.router.navigate(['vagas'])
   }
 
   atualizarTituloEdicao() {
@@ -119,6 +142,26 @@ export class CategoriaParticipanteComponent implements OnInit {
         console.log('Não aceitou excluir o categoria participante evento');
       }
     })
+  }
+
+  openDialogEditCategoriaParticipante(id: number) {
+    let dialogRef = this.dialog.open(CategoriaParticipanteEditDialogComponent,
+      {
+        data: {
+          idCategoriaParticipanteEvento: id,
+          idEvento: this.idEvento
+        },
+        width: '600px',
+      });
+
+    dialogRef.afterClosed()
+      .subscribe(categoriaParticipanteEvento => {
+        if (categoriaParticipanteEvento) {
+          this.getCategoriaParticipantesEvento();
+          this.snackBar.open('Categoria Participante salvo com sucesso', '', { duration: 10000 })
+        }
+      });
+
   }
 
 }

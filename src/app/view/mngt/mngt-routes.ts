@@ -14,10 +14,13 @@ const routes: Routes = [
     {
         path: 'evento/edit/:id', component: EventoEditComponent, children: [
             { path: 'geral', component: EventoFormComponent },
+
             { path: 'vagas', component: CategoriaParticipanteComponent },
+
             { path: 'facilitadores', component: FacilitadorListComponent },
             { path: 'facilitador/novo', component: FacilitadorEditComponent },
             { path: 'facilitador/edit/:id', component: FacilitadorEditComponent },
+
             { path: 'inscricoes', component: InscricoesComponent },
         ]
     },

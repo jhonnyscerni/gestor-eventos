@@ -37,7 +37,7 @@ export class FacilitadorEditComponent implements OnInit {
     console.log(`id Facilitador : ` + this.idFacilitador);
     this.route.parent.params.subscribe(param => {
       this.idEvento = param['id'];
-      this.processaEvento();
+      this.processaFacilitador();
       console.log(`id de evento em Facilitador : ` + this.idEvento);
       this.facilitador.evento.id = this.idEvento;
     });
@@ -47,7 +47,7 @@ export class FacilitadorEditComponent implements OnInit {
     /**
   * Captura o id do Componente
   */
- processaEvento() {
+ processaFacilitador() {
   if (this.idFacilitador && !isNaN(this.idFacilitador)) {
     this.editar();
   } else {//se id não informado

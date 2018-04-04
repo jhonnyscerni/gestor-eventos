@@ -1,0 +1,37 @@
+<h3 matDialogTitle><mat-icon svgIcon="account-group" matListIcon style="margin-right:10px"></mat-icon>Editar Dados da Categoria Participante</h3>
+
+<mat-divider></mat-divider>
+
+<!-- FORMULÁRIO -->
+<div layout="row" *ngIf="categoriaParticipanteEvento" flex>
+    <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+
+        <!-- FORMULÁRIO -->
+        <div layout="row" layout-align="center start">
+
+
+          <!-- CATEGORIA PARTICIPANTE -->
+          <mat-form-field flex-gt-xs="35" flex="100" >
+            <mat-select placeholder="Categoria de Participante" name="categoriaParticipante" [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante">
+              <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante">
+                {{ categoriaParticipante.titulo }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <!-- VAGAS -->
+          <mat-form-field class="example-full-width" style="margin-left:2%" flex-gt-xs="10" flex="100">
+            <input matInput placeholder="Vagas" name="vagas" [(ngModel)]="categoriaParticipanteEvento.vagas">
+          </mat-form-field>
+
+            <mat-card-actions style="margin-left: 2%" flex-gt-xs="40" flex="100">
+              <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">INSERIR</button>
+              <a mat-button (click)="dialogRef.close()">CANCELAR</a>
+            </mat-card-actions>
+         
+
+        </div>
+
+      </form>
+
+</div>
+<!-- FIM FORM -->
