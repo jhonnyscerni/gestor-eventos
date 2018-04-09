@@ -56,10 +56,6 @@ export class FacilitadorEditComponent implements OnInit {
   }
 }
 
-private criar() {
-
-}
-
 private editar() {
   this.facilitadorService.getFacilitador(this.idFacilitador).subscribe( facilitador => {
     this.facilitadorService.facilitador = facilitador;

@@ -1,4 +1,5 @@
-import { InscricoesComponent } from './eventos/evento-edit/inscricoes/inscricoes.component';
+import { InscricaoEditComponent } from './eventos/evento-edit/inscricoes/inscricao-edit/inscricao-edit.component';
+import { InscricaoListComponent } from './eventos/evento-edit/inscricoes/inscricao-list/inscricao-list.component';
 import { FacilitadorEditComponent } from './eventos/evento-edit/facilitadores/facilitador-edit/facilitador-edit.component';
 import { FacilitadorListComponent } from './eventos/evento-edit/facilitadores/facilitador-list/facilitador-list.component';
 import { CategoriaParticipanteComponent } from './eventos/evento-edit/categoria-participante/categoria-participante.component';
@@ -21,7 +22,9 @@ const routes: Routes = [
             { path: 'facilitador/novo', component: FacilitadorEditComponent },
             { path: 'facilitador/edit/:id', component: FacilitadorEditComponent },
 
-            { path: 'inscricoes', component: InscricoesComponent },
+            { path: 'inscricoes', component: InscricaoListComponent },
+            { path: 'inscricao/novo', component: InscricaoEditComponent },
+            { path: 'inscricao/edit/:id', component: InscricaoEditComponent },
         ]
     },
     {

@@ -1,6 +1,7 @@
+import { InscricaoService } from './../../service/inscricao.service';
+import { InscricaoListComponent } from './eventos/evento-edit/inscricoes/inscricao-list/inscricao-list.component';
 // tslint:disable-next-line:max-line-length
 import { CategoriaParticipanteEditDialogComponent } from './eventos/evento-edit/categoria-participante/categoria-participante-edit-dialog/categoria-participante-edit-dialog.component';
-import { InscricoesComponent } from './eventos/evento-edit/inscricoes/inscricoes.component';
 import { FacilitadorEditComponent } from './eventos/evento-edit/facilitadores/facilitador-edit/facilitador-edit.component';
 import { FacilitadorListComponent } from './eventos/evento-edit/facilitadores/facilitador-list/facilitador-list.component';
 import { CategoriaParticipanteEventoService } from './../../service/categoria-participante-evento.service';
@@ -30,6 +31,7 @@ import { MatIconRegistry } from '@angular/material';
 import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { FacilitadorService } from '../../service/facilitador.service';
+import { InscricaoEditComponent } from './eventos/evento-edit/inscricoes/inscricao-edit/inscricao-edit.component';
 // import { OwlDateTimeModule, OWL_DATE_TIME_LOCALE, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 
 
@@ -68,7 +70,8 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     CategoriaParticipanteEditDialogComponent,
     FacilitadorListComponent,
     FacilitadorEditComponent,
-    InscricoesComponent,
+    InscricaoListComponent,
+    InscricaoEditComponent,
     NavListLayoutComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,
@@ -81,6 +84,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     CategoriaParticipanteEventoService,
     TipoEventoService,
     FacilitadorService,
+    InscricaoService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
 
@@ -99,7 +103,7 @@ export class MngtModule {
 
     domSanitizer: DomSanitizer) {
 
-    /* EDU: declarar matIconRegistry para adicionar os ícones customizados da comunidade de desenvolvimento */
+    /* : declarar matIconRegistry para adicionar os ícones customizados da comunidade de desenvolvimento */
 
     matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/mdi.svg'));
 

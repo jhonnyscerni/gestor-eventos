@@ -37,7 +37,7 @@ export class EventoFormComponent implements OnInit {
     private _dialogService: TdDialogService,
   ) { }
 
-  /* EDU: validação customizada do formulário, relacionada às datas do evento */
+  /* : validação customizada do formulário, relacionada às datas do evento */
   // verifica se a data de início das inscrições é maior ou igual à data de fim das inscrições
   isSubscriptionStartConflicsWithSubscriptionEnd(): Boolean {
     if (!this.evento.inicioInscricao || !this.evento.fimInscricao) { return false; }
