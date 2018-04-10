@@ -13,7 +13,18 @@
         <div layout="column">
 
 
-        
+         <!-- Data Inicial -->
+         <mat-input-container floatPlaceholder="auto" flex="50">
+            <label>
+              Data e Hora do Início do Período de Inscrições:
+              <br/>
+              <br/>
+              <input matInput [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" [(ngModel)]="inscricao.dtInscricao"
+                name="dtInscricao" required>
+              <owl-date-time [pickerMode]="'dialog'" #dt1></owl-date-time>
+            </label>
+          </mat-input-container>
+       
 
         </div>
 

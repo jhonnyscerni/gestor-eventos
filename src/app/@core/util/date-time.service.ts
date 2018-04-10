@@ -1,14 +1,14 @@
-/* EDU: este serviço DateTimeService oferece métodos de trabalho com data-hora que serão extensivamente usados */
+/* : este serviço DateTimeService oferece métodos de trabalho com data-hora que serão extensivamente usados */
 
  
 
 import { Injectable } from '@angular/core';
 
-import * as Moment from 'moment'; /* EDU: biblioteca de formatação de data/hora */
+import * as Moment from 'moment'; /* : biblioteca de formatação de data/hora */
 
  
 
-/* EDU: formato padrão de timestamp de data e hora que será intercambiado com o back-end */
+/* : formato padrão de timestamp de data e hora que será intercambiado com o back-end */
 
 export const DATE_FORMAT: Moment.MomentFormatSpecification = "YYYY-MM-DD'T'HH:mm:ss.zzz'Z'";
 
@@ -24,7 +24,7 @@ export class DateTimeService {
 
  
 
-    /* EDU: corrige uma DataHora extraindo horas referentes a TimeZoneLocal,
+    /* : corrige uma DataHora extraindo horas referentes a TimeZoneLocal,
 
             pois após sua serialização em JSON, esta data será adicionada da mesma quantidade,
 
@@ -46,7 +46,7 @@ export class DateTimeService {
 
  
 
-    /* EDU: quando uma DataHora chega de um JSON, usamos a biblioteca Moment
+    /* : quando uma DataHora chega de um JSON, usamos a biblioteca Moment
 
             para formatar para o padrão da classe Date.
 
@@ -60,7 +60,7 @@ export class DateTimeService {
 
  
 
-    /* EDU: retorna verdadeiro se a DataHora for válida */
+    /* : retorna verdadeiro se a DataHora for válida */
 
     public isValid(pDateTime: Date): Boolean {
 
@@ -70,7 +70,7 @@ export class DateTimeService {
 
  
 
-    /* EDU: retorna verdadeiro quando as duas DataHora informadas são iguais */
+    /* : retorna verdadeiro quando as duas DataHora informadas são iguais */
 
     public isEqual(firstDateTime: Date, secondDateTime: Date): Boolean {
 
@@ -80,7 +80,7 @@ export class DateTimeService {
 
  
 
-    /* EDU: retorna verdadeiro se a primeira DataHora for menor (anterior) ou igual à segunda */
+    /* : retorna verdadeiro se a primeira DataHora for menor (anterior) ou igual à segunda */
 
     public isBeforeOrEqual(firstDateTime: Date, secondDateTime: Date): Boolean {
 
@@ -90,7 +90,7 @@ export class DateTimeService {
 
  
 
-    /* EDU: retorna verdadeiro se a primeira DataHora for menor (anterior) que a segunda */
+    /* : retorna verdadeiro se a primeira DataHora for menor (anterior) que a segunda */
 
     public isBefore(firstDateTime: Date, secondDateTime: Date): Boolean {
 
@@ -100,7 +100,7 @@ export class DateTimeService {
 
  
 
-    /* EDU: retorna verdadeiro se a primeira DataHora for maior (posterior) ou igual à segunda */
+    /* : retorna verdadeiro se a primeira DataHora for maior (posterior) ou igual à segunda */
 
     public isAfterOrEqual(firstDateTime: Date, secondDateTime: Date): Boolean {
 
@@ -110,7 +110,7 @@ export class DateTimeService {
 
  
 
-    /* EDU: retorna verdadeiro se a primeira DataHora for maior (posterior) que a segunda */
+    /* : retorna verdadeiro se a primeira DataHora for maior (posterior) que a segunda */
 
     public isAfter(firstDateTime: Date, secondDateTime: Date): Boolean {
 

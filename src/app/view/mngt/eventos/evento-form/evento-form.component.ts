@@ -71,7 +71,6 @@ export class EventoFormComponent implements OnInit {
 
     this.route.parent.params.subscribe(param => {
       this.idEvento = param['id'];
-      console.log(this.idEvento);
 
       this.processaEvento();
       this.carregarTipoEvento();

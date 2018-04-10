@@ -22,8 +22,6 @@ export class InscricaoListComponent implements OnInit {
 
   configWidthColumns: ITdDataTableColumn[] = [
     { name: 'id', label: '#', width: 50 },
-    { name: 'dtCertificado', label: 'Data do Certificado', width: 200 },
-    { name: 'status', label: 'Status', width: 150 },
     { name: 'acoes', label: 'Ações', width: 200 },
   ];
 

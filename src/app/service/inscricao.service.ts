@@ -13,6 +13,7 @@ export class InscricaoService {
     private url: string = `${environment.urlbase}/inscricoes`;
 
     constructor(
+        private dtService: DateTimeService,
         private http: Http
     ) { }
 
@@ -22,7 +23,11 @@ export class InscricaoService {
     }
 
     getInscricao(idInscricao: number): Observable<Inscricao> {
-        return this.http.get(`${this.url}/${idInscricao}`).map(res => res.json());
+        return this.http.get(`${this.url}/${idInscricao}`).map((res: any)  => {
+
+            const inscricaoAlterado: Inscricao = res.json() as Inscricao;
+            this.localAdjustDateTimeFromJSON([inscricaoAlterado]);
+            return inscricaoAlterado });
     }
 
     excluirInscricaoByEvento(idInscricao: number) {
@@ -30,6 +35,7 @@ export class InscricaoService {
     }
 
     public salvar(inscricao: Inscricao, idEvento: number): Observable<Inscricao> {
+        this.localAdjustDateTimeToJSON([inscricao]);
         if (inscricao.id || inscricao.id == 0) {
             return this.http.put(`${environment.urlbase}/eventos/${idEvento}/inscricao/${inscricao.id}`, inscricao)
                 .map(res => res.json());
@@ -38,5 +44,21 @@ export class InscricaoService {
                 .map(res => res.json());
         }
     }
+
+    private localAdjustDateTimeFromJSON(inscritos: Inscricao[]): void {
+        for (const inscrito of inscritos) {
+          if (inscrito.dtInscricao) {
+            inscrito.dtInscricao = this.dtService.adjustDateTimeFromJSON(inscrito.dtInscricao);
+          }
+        }
+      }
+
+      private localAdjustDateTimeToJSON(inscritos: Inscricao[]): void {
+        for (const inscrito of inscritos) {
+          if (inscrito.dtInscricao) {
+            inscrito.dtInscricao = this.dtService.adjustDateTimeToJSON(inscrito.dtInscricao);
+          }
+        }
+      }
 
 }
