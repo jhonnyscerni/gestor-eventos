@@ -26,6 +26,8 @@ import { NavViewLayoutComponent } from '../../@core/layout/nav-view-layout/nav-v
 
 import { DateTimeService } from '../../@core/util/date-time.service';
 
+import { NgxQRCodeModule } from 'ngx-qrcode2';
+
 import * as Moment from 'moment';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
@@ -61,6 +63,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     mgntRoutes,
     OwlDateTimeModule,
     OwlMomentDateTimeModule,
+    NgxQRCodeModule
   ],
   declarations: [
     EventoEditComponent,

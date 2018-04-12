@@ -41,6 +41,10 @@
       <mat-icon svgIcon="certificate" matListIcon></mat-icon>
       Certificados
     </a>
+    <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+      <mat-icon svgIcon="qrcode-scan" matListIcon></mat-icon>
+      Leitor de Qr-Code
+    </a>
     <a mat-list-item>
       <mat-icon svgIcon="settings" matListIcon></mat-icon>
       Configurações

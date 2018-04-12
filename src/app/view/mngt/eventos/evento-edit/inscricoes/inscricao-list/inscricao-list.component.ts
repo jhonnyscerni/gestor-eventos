@@ -16,6 +16,21 @@ import * as Moment from 'moment'; /*  biblioteca de formatação de data/hora */
 })
 export class InscricaoListComponent implements OnInit {
 
+  /**
+   * Teste QrCode
+   */
+
+  elementType = 'url';
+  value = 'Techiediaries';
+  get values(): string[] {
+    return this.value.split('\n');
+  }
+
+  /**
+   ********************************************************************************************
+   */
+
+
   idEvento: number;
 
   inscricao: Inscricao = new Inscricao();
@@ -23,9 +38,9 @@ export class InscricaoListComponent implements OnInit {
   configWidthColumns: ITdDataTableColumn[] = [
     { name: 'id', label: '#', width: 50 },
     { name: 'participante.nome', label: 'Participante', width: 220 },
-    { name: 'dtInscricao', label: 'Data de Inscrição', width: 150 , format: (value) => { return this.dateLayout(value)} },
-    { name: 'dtDeferimento', label: 'Data de Deferimento', width: 150 , format: (value) => { return this.dateLayout(value)} },
-    { name: 'dtCertificado', label: 'Data do Certificado', width: 150 , format: (value) => { return this.dateLayout(value)}},
+    { name: 'dtInscricao', label: 'Data de Inscrição', width: 150, format: (value) => { return this.dateLayout(value) } },
+    { name: 'dtDeferimento', label: 'Data de Deferimento', width: 150, format: (value) => { return this.dateLayout(value) } },
+    { name: 'dtCertificado', label: 'Data do Certificado', width: 150, format: (value) => { return this.dateLayout(value) } },
     { name: 'codigoCertificado', label: 'Cod. Certificado', width: 100 },
     { name: 'acoes', label: 'Ações', width: 200 },
   ];
@@ -79,6 +94,6 @@ export class InscricaoListComponent implements OnInit {
 
   public dateLayout(dt: any): String {
     return Moment(dt).format('DD/MM/YYYY [às] HH:mm:ss');
-}
+  }
 
 }
