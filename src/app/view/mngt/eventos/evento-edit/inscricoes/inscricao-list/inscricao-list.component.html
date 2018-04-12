@@ -22,6 +22,10 @@
                 <!-- <mat-icon svgIcon="delete" matListIcon></mat-icon> -->
                 <i class="material-icons">delete_forever</i>
               </button>
+
+              <a mat-button [routerLink]="['../inscricao/edit', row?.id]"> 
+                <i class="material-icons">mode_edit</i>
+              </a>
   
   
             </ng-template>

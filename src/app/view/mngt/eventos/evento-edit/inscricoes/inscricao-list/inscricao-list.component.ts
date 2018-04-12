@@ -22,6 +22,10 @@ export class InscricaoListComponent implements OnInit {
 
   configWidthColumns: ITdDataTableColumn[] = [
     { name: 'id', label: '#', width: 50 },
+    { name: 'dtInscricao', label: 'Data de Inscrição', width: 180 , format: (value) => { return this.dateLayout(value)} },
+    { name: 'dtDeferimento', label: 'Data de Deferimento', width: 180 , format: (value) => { return this.dateLayout(value)} },
+    { name: 'dtCertificado', label: 'Data do Certificado', width: 180 , format: (value) => { return this.dateLayout(value)}},
+    { name: 'codigoCertificado', label: 'Codigo do Certificado', width: 150 },
     { name: 'acoes', label: 'Ações', width: 200 },
   ];
 
@@ -73,7 +77,7 @@ export class InscricaoListComponent implements OnInit {
   }
 
   public dateLayout(dt: any): String {
-    return Moment(dt).format('dddd, DD [de] MMMM [de] YYYY [às] HH:mm:ss');
+    return Moment(dt).format('DD/MM/YYYY [às] HH:mm:ss');
 }
 
 }
