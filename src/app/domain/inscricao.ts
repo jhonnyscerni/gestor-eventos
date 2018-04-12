@@ -1,4 +1,5 @@
 import { Evento } from './evento';
+import { Participante } from './participante';
 
 export class Inscricao {
     id?: number;
@@ -13,4 +14,5 @@ export class Inscricao {
     codigoCracha?: string;
     observacao?: string;
     evento?: Evento = new Evento();
+    participante?: Participante = new Participante();
 }

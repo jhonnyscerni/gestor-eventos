@@ -1,3 +1,4 @@
+import { ParticipanteService } from './../../service/participante.service';
 import { InscricaoService } from './../../service/inscricao.service';
 import { InscricaoListComponent } from './eventos/evento-edit/inscricoes/inscricao-list/inscricao-list.component';
 // tslint:disable-next-line:max-line-length
@@ -85,6 +86,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     TipoEventoService,
     FacilitadorService,
     InscricaoService,
+    ParticipanteService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
 

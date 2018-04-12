@@ -22,10 +22,11 @@ export class InscricaoListComponent implements OnInit {
 
   configWidthColumns: ITdDataTableColumn[] = [
     { name: 'id', label: '#', width: 50 },
-    { name: 'dtInscricao', label: 'Data de Inscrição', width: 180 , format: (value) => { return this.dateLayout(value)} },
-    { name: 'dtDeferimento', label: 'Data de Deferimento', width: 180 , format: (value) => { return this.dateLayout(value)} },
-    { name: 'dtCertificado', label: 'Data do Certificado', width: 180 , format: (value) => { return this.dateLayout(value)}},
-    { name: 'codigoCertificado', label: 'Codigo do Certificado', width: 150 },
+    { name: 'participante.nome', label: 'Participante', width: 220 },
+    { name: 'dtInscricao', label: 'Data de Inscrição', width: 150 , format: (value) => { return this.dateLayout(value)} },
+    { name: 'dtDeferimento', label: 'Data de Deferimento', width: 150 , format: (value) => { return this.dateLayout(value)} },
+    { name: 'dtCertificado', label: 'Data do Certificado', width: 150 , format: (value) => { return this.dateLayout(value)}},
+    { name: 'codigoCertificado', label: 'Cod. Certificado', width: 100 },
     { name: 'acoes', label: 'Ações', width: 200 },
   ];
 

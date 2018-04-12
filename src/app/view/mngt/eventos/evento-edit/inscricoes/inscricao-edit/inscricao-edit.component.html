@@ -12,66 +12,74 @@
         <!-- FORMULÁRIO -->
         <div layout="column">
 
+          <!-- PARTICIPANTE -->
+          <mat-form-field>
+            <mat-select placeholder="Participante" name="participante" [(ngModel)]="inscricao.participante" required>
+              <mat-option *ngFor="let participante of participantes" [value]="participante">
+                {{ participante.nome }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
-         <!-- Data Inscricao -->
-         <mat-input-container floatPlaceholder="auto" flex="50">
+
+          <!-- Data Inscricao -->
+          <mat-input-container floatPlaceholder="auto" flex="50">
             <label>
               Data de Inscrição:
               <br/>
               <br/>
-              <input matInput [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" [(ngModel)]="inscricao.dtInscricao"
-                name="dtInscricao" required>
+              <input matInput [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" [(ngModel)]="inscricao.dtInscricao" name="dtInscricao" required>
               <owl-date-time [pickerMode]="'dialog'" #dt1></owl-date-time>
             </label>
           </mat-input-container>
 
           <!-- Data de Deferimento -->
-         <mat-input-container floatPlaceholder="auto" flex="50">
-          <label>
-            Data de Deferimento:
-            <br/>
-            <br/>
-            <input matInput [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" [(ngModel)]="inscricao.dtDeferimento"
-              name="dtDeferimento" required>
-            <owl-date-time [pickerMode]="'dialog'" #dt2></owl-date-time>
-          </label>
-        </mat-input-container>
+          <mat-input-container floatPlaceholder="auto" flex="50">
+            <label>
+              Data de Deferimento:
+              <br/>
+              <br/>
+              <input matInput [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" [(ngModel)]="inscricao.dtDeferimento" name="dtDeferimento"
+                required>
+              <owl-date-time [pickerMode]="'dialog'" #dt2></owl-date-time>
+            </label>
+          </mat-input-container>
 
-         <!-- Data do Certificado -->
-         <mat-input-container floatPlaceholder="auto" flex="50">
-          <label>
-            Data do Certificado:
-            <br/>
-            <br/>
-            <input matInput [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" [(ngModel)]="inscricao.dtCertificado"
-              name="dtCertificado" required>
-            <owl-date-time [pickerMode]="'dialog'" #dt3></owl-date-time>
-          </label>
-        </mat-input-container>
-
-
-         <!-- CODIGO DA INSCRICAO -->
-         <mat-input-container floatPlaceholder="auto" flex="100">
-          <input matInput #codigoCertificado="ngModel" minlength="5" maxlength="250" [(ngModel)]="inscricao.codigoCertificado" name="codigoCertificado" type="text" placeholder="Codigo do Certificado"
-            required>
-          <mat-error [hidden]="codigoCertificado.valid || (codigoCertificado.pristine && !vform.submitted)">
-            O Codigo da Inscricao é um campo obrigatório de 5 até 250 caracteres.
-          </mat-error>
-        </mat-input-container>
+          <!-- Data do Certificado -->
+          <mat-input-container floatPlaceholder="auto" flex="50">
+            <label>
+              Data do Certificado:
+              <br/>
+              <br/>
+              <input matInput [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" [(ngModel)]="inscricao.dtCertificado" name="dtCertificado"
+                required>
+              <owl-date-time [pickerMode]="'dialog'" #dt3></owl-date-time>
+            </label>
+          </mat-input-container>
 
 
-        <!-- OBSERVACAO -->
-        <mat-input-container floatPlaceholder="auto" flex="100">
-          <input matInput [(ngModel)]="inscricao.observacao" name="observacao" type="text" placeholder="Observação">
-        </mat-input-container>
-       
+          <!-- CODIGO DA INSCRICAO -->
+          <mat-input-container floatPlaceholder="auto" flex="100">
+            <input matInput #codigoCertificado="ngModel" minlength="5" maxlength="250" [(ngModel)]="inscricao.codigoCertificado" name="codigoCertificado"
+              type="text" placeholder="Codigo do Certificado" required>
+            <mat-error [hidden]="codigoCertificado.valid || (codigoCertificado.pristine && !vform.submitted)">
+              O Codigo da Inscricao é um campo obrigatório de 5 até 250 caracteres.
+            </mat-error>
+          </mat-input-container>
+
+
+          <!-- OBSERVACAO -->
+          <mat-input-container floatPlaceholder="auto" flex="100">
+            <input matInput [(ngModel)]="inscricao.observacao" name="observacao" type="text" placeholder="Observação">
+          </mat-input-container>
+
 
         </div>
 
         <div layout="column">
           <mat-card-actions>
             <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">SALVAR</button>
-        
+
           </mat-card-actions>
         </div>
 

@@ -1,3 +1,5 @@
+import { Participante } from './../../../../../../domain/participante';
+import { ParticipanteService } from './../../../../../../service/participante.service';
 import { InscricaoService } from './../../../../../../service/inscricao.service';
 import { Inscricao } from './../../../../../../domain/inscricao';
 import { Component, OnInit } from '@angular/core';
@@ -20,8 +22,11 @@ export class InscricaoEditComponent implements OnInit {
 
   inscricao: Inscricao = new Inscricao();
 
+  participantes: Participante[] = [];
+
   constructor(
     private inscricaoService: InscricaoService,
+    private participanteService: ParticipanteService,
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
@@ -35,6 +40,7 @@ export class InscricaoEditComponent implements OnInit {
     this.idInscricao = this.route.snapshot.params['id'];
     this.route.parent.params.subscribe(param => {
       this.idEvento = param['id'];
+      this.carregarParticipantes();
       this.processaInscricao();
       this.inscricao.evento.id = this.idEvento;
     });
@@ -69,6 +75,15 @@ onSubmit() {
 
 atualizarTituloEdicao() {
   this.title.setTitle(`Edição de Incricao: ${this.inscricao.dtInscricao}`);
+}
+
+  /**
+  *Carregando Participantes
+ */
+
+carregarParticipantes() {
+  return this.participanteService.getParticipantes()
+    .subscribe(participantes => this.participantes = participantes);
 }
 
 
