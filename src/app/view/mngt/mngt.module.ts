@@ -39,6 +39,7 @@ import { FacilitadorService } from '../../service/facilitador.service';
 import { InscricaoEditComponent } from './eventos/evento-edit/inscricoes/inscricao-edit/inscricao-edit.component';
 import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cracha/gerar-cracha.component';
 import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
+import { FrequenciaService } from '../../service/frequencia.service';
 // import { OwlDateTimeModule, OWL_DATE_TIME_LOCALE, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 
 
@@ -98,6 +99,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     FacilitadorService,
     InscricaoService,
     ParticipanteService,
+    FrequenciaService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
 

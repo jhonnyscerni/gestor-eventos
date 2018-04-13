@@ -12,6 +12,7 @@ export class Inscricao {
     justificativaNaoDeferimento?: string;
     codigoCertificado?: string;
     codigoCracha?: string;
+    codigoQrCode?: string;
     observacao?: string;
     evento?: Evento = new Evento();
     participante?: Participante = new Participante();

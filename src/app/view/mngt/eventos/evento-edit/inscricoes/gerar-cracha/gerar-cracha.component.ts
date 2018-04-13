@@ -12,14 +12,11 @@ import { MatSnackBar } from '@angular/material';
 })
 export class GerarCrachaComponent implements OnInit {
 
-    /**
-   * Teste QrCode
-   */
   elementType = 'url';
-  value = 'http://localhost:4200/eventos/';
-  get values(): string[] {
-    return this.value.split('\n');
-  }
+  value: string ;
+  // get values(): string[] {
+  //   return this.value.split('\n');
+  // }
 
   idInscricao: number;
 
@@ -50,6 +47,7 @@ export class GerarCrachaComponent implements OnInit {
       .subscribe(inscricao => {
         this.inscricaoService.inscricao = inscricao;
         this.inscricao = this.inscricaoService.inscricao;
+        this.value = this.inscricao.codigoQrCode;
         this.atualizarTituloGerarCracha();
       })
 
