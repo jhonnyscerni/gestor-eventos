@@ -1,0 +1,63 @@
+<nav-qrcode-layout layout="column" flex style="height:100%">
+
+    <div main-content flex layout="column" style="height:100%">
+
+
+        <div layout-wrap layout="row" layout-align="center">
+            <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+                <mat-card-title>
+                    <span>QRCODE - EVENTOS</span>
+                </mat-card-title>
+                <mat-divider></mat-divider>
+               
+            </mat-card>
+        </div>
+
+        <div layout="column">
+
+            <div layout layout="row" layout-align="center">
+                <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" 
+                    style="padding-bottom:40px;">
+
+                    <mat-card-content>
+                        <p *ngIf="availableDevices">
+                            <label for="video-input-select">Selecione a sua Câmera:</label>
+                            <select id="video-input-select" (change)="onDeviceSelectChange($event.target.value)">
+                                <option value="" [selected]="!selectedDevice">Sem Dispositivo</option>
+                                <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="selectedDevice && device.deviceId === selectedDevice.deviceId">{{ device.label }}</option>
+                            </select>
+                        </p>
+
+                        <div [hidden]="!hasCameras">
+
+                            <zxing-scanner #scanner class="test-class" [scannerEnabled]="scannerEnabled" [device]="selectedDevice" (camerasFound)="displayCameras($event)"
+                                (scanSuccess)="handleQrCodeResult($event)" [cssClass]="{customClass:true}"></zxing-scanner>
+
+                            <h2 *ngIf="!this.selectedDevice">Nenhuma câmera selecionada.</h2>
+
+                            <p>
+                                <button (click)="scannerEnabled=!scannerEnabled">Alternar Scanner [{{ scannerEnabled ? 'On': 'Off' }}]</button>
+                            </p>
+
+                            <p>
+                                Resultado:
+                                <strong>{{ qrResultString }}</strong>
+                            </p>
+
+                        </div>
+
+                        <div [hidden]="hasCameras">
+
+                            <h1>Parece que o seu dispositivo atual não tem câmeras, ou não consegui encontrá-las.</h1>
+
+                        </div>
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+        </div>
+
+
+    </div>
+
+</nav-qrcode-layout>

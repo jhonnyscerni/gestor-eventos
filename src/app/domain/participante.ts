@@ -3,6 +3,7 @@ export class Participante {
     nome?: string;
     nomeCracha?: string;
     genero?: string;
+    instituicaoOrigem?: string;
     cpf?: string;
     tituloEleitor?: string;
     email?: string;

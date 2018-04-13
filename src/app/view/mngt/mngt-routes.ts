@@ -10,9 +10,11 @@ import { EventoEditComponent } from './eventos/evento-edit/evento-edit.component
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule, ModuleWithProviders } from "@angular/core";
 import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cracha/gerar-cracha.component';
+import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
 
 const routes: Routes = [
     { path: 'evento/novo', component: EventoNovoComponent },
+    { path: 'qr-code', component: LeitorQrcodeComponent },
     {
         path: 'evento/edit/:id', component: EventoEditComponent, children: [
             { path: 'geral', component: EventoFormComponent },
@@ -32,7 +34,7 @@ const routes: Routes = [
     },
     {
         path: 'eventos', component: EventoListComponent, children: [
-            { path: '', component: EventoListComponent }
+            { path: '', component: EventoListComponent },
         ]
     },
     { path: '', redirectTo: 'eventos' }

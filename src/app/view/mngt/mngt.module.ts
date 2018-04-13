@@ -27,6 +27,8 @@ import { NavViewLayoutComponent } from '../../@core/layout/nav-view-layout/nav-v
 import { DateTimeService } from '../../@core/util/date-time.service';
 
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+// Import the package's module
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 import * as Moment from 'moment';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -36,6 +38,7 @@ import { OwlMomentDateTimeModule } from 'ng-pick-datetime-moment';
 import { FacilitadorService } from '../../service/facilitador.service';
 import { InscricaoEditComponent } from './eventos/evento-edit/inscricoes/inscricao-edit/inscricao-edit.component';
 import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cracha/gerar-cracha.component';
+import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
 // import { OwlDateTimeModule, OWL_DATE_TIME_LOCALE, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 
 
@@ -64,7 +67,9 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     mgntRoutes,
     OwlDateTimeModule,
     OwlMomentDateTimeModule,
-    NgxQRCodeModule
+    NgxQRCodeModule,
+    // ZXing scanner module
+    ZXingScannerModule.forRoot(),
   ],
   declarations: [
     EventoEditComponent,
@@ -78,6 +83,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     InscricaoListComponent,
     InscricaoEditComponent,
     GerarCrachaComponent,
+    LeitorQrcodeComponent,
     NavListLayoutComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,
