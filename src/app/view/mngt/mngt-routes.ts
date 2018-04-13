@@ -9,6 +9,7 @@ import { EventoListComponent } from './eventos/evento-list/evento-list.component
 import { EventoEditComponent } from './eventos/evento-edit/evento-edit.component';
 import { RouterModule, Routes } from "@angular/router";
 import { NgModule, ModuleWithProviders } from "@angular/core";
+import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cracha/gerar-cracha.component';
 
 const routes: Routes = [
     { path: 'evento/novo', component: EventoNovoComponent },
@@ -25,6 +26,8 @@ const routes: Routes = [
             { path: 'inscricoes', component: InscricaoListComponent },
             { path: 'inscricao/novo', component: InscricaoEditComponent },
             { path: 'inscricao/edit/:id', component: InscricaoEditComponent },
+
+            { path: 'inscricao/gerar-cracha/:id', component: GerarCrachaComponent },
         ]
     },
     {

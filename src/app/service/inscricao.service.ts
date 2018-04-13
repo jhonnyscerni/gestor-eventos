@@ -22,6 +22,11 @@ export class InscricaoService {
             .map(res => res.json());
     }
 
+    getParticpanteByInscricao(idInscricao: number): Observable<Inscricao> {
+        return this.http.get(`${this.url}/gerar-cracha/${idInscricao}`)
+        .map(res => res.json());
+    }
+
     getInscricao(idInscricao: number): Observable<Inscricao> {
         return this.http.get(`${this.url}/${idInscricao}`).map((res: any)  => {
 

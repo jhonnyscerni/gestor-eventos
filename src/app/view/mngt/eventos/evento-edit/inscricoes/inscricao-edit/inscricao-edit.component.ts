@@ -46,45 +46,45 @@ export class InscricaoEditComponent implements OnInit {
     });
   }
 
-      /**
-  * Captura o id do Componente
-  */
- processaInscricao() {
-  if (this.idInscricao && !isNaN(this.idInscricao)) {
-    this.editar();
-  } else {//se id não informado
-  //  this.criar();
-    this.isNew = false;
+  /**
+* Captura o id do Componente
+*/
+  processaInscricao() {
+    if (this.idInscricao && !isNaN(this.idInscricao)) {
+      this.editar();
+    } else {//se id não informado
+      //  this.criar();
+      this.isNew = false;
+    }
   }
-}
 
-private editar() {
-  this.inscricaoService.getInscricao(this.idInscricao).subscribe( inscricao => {
-    this.inscricaoService.inscricao = inscricao;
-    this.inscricao = this.inscricaoService.inscricao;
-    this.atualizarTituloEdicao();
-  });
-}
+  private editar() {
+    this.inscricaoService.getInscricao(this.idInscricao).subscribe(inscricao => {
+      this.inscricaoService.inscricao = inscricao;
+      this.inscricao = this.inscricaoService.inscricao;
+      this.atualizarTituloEdicao();
+    });
+  }
 
-onSubmit() {
-  this.inscricaoService.salvar(this.inscricao, this.idEvento).subscribe(inscricao => {
-    this.snackBar.open(`${inscricao.dtInscricao} salvo com sucesso!`, '', { duration: 10000 });
-  });
+  onSubmit() {
+    this.inscricaoService.salvar(this.inscricao, this.idEvento).subscribe(inscricao => {
+      this.snackBar.open(`${inscricao.dtInscricao} salvo com sucesso!`, '', { duration: 10000 });
+    });
 
-}
+  }
 
-atualizarTituloEdicao() {
-  this.title.setTitle(`Edição de Incricao: ${this.inscricao.dtInscricao}`);
-}
+  atualizarTituloEdicao() {
+    this.title.setTitle(`Edição de Incricao: ${this.inscricao.dtInscricao}`);
+  }
 
   /**
   *Carregando Participantes
  */
 
-carregarParticipantes() {
-  return this.participanteService.getParticipantes()
-    .subscribe(participantes => this.participantes = participantes);
-}
+  carregarParticipantes() {
+    return this.participanteService.getParticipantes()
+      .subscribe(participantes => this.participantes = participantes);
+  }
 
 
 }

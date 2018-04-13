@@ -27,15 +27,16 @@
               <i class="material-icons">mode_edit</i>
             </a>
 
+            <a mat-button [routerLink]="['../inscricao/gerar-cracha', row?.id]">
+              <i class="material-icons">portrait</i>
+            </a>
+
 
           </ng-template>
 
         </td-data-table>
       </div>
 
-
-      <ngx-qrcode [qrc-element-type]="elementType" [qrc-value]="value" qrc-class="aclass" qrc-errorCorrectionLevel="L">
-      </ngx-qrcode>
     </mat-card-content>
     <mat-card-footer>
     </mat-card-footer>
