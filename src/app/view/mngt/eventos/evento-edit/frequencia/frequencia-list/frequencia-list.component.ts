@@ -21,10 +21,10 @@ export class FrequenciaListComponent implements OnInit {
 
   configWidthColumns: ITdDataTableColumn[] = [
     { name: 'id', label: '#', width: 50 },
-    { name: 'frequencia.inscricao.participante.nomeCracha', label: 'Inscricao', width: 200 },
-    { name: 'frequencia.dataFrequencia', label: 'Data da Frequencia', width: 120, format: (value) => { return this.dateLayout(value) } },
-    { name: 'frequencia.inscricao.codigoQrCode', label: 'Codigo de Inscricao', width: 120},
-    { name: 'acoes', label: 'Ações', width: 280 },
+    { name: 'inscricao.participante.nomeCracha', label: 'Nome', width: 280 },
+    { name: 'dataFrequencia', label: 'Data da Frequencia', width: 120, format: (value) => { return this.dateLayout(value) } },
+    { name: 'inscricao.codigoQrCode', label: 'Codigo de Inscricao', width: 280},
+    { name: 'acoes', label: 'Ações', width: 150 },
   ];
 
   data = [];
