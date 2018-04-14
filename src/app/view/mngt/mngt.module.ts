@@ -1,3 +1,4 @@
+import { FrequenciaListComponent } from './eventos/evento-edit/frequencia/frequencia-list/frequencia-list.component';
 import { ParticipanteService } from './../../service/participante.service';
 import { InscricaoService } from './../../service/inscricao.service';
 import { InscricaoListComponent } from './eventos/evento-edit/inscricoes/inscricao-list/inscricao-list.component';
@@ -85,6 +86,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     InscricaoEditComponent,
     GerarCrachaComponent,
     LeitorQrcodeComponent,
+    FrequenciaListComponent,
     NavListLayoutComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,

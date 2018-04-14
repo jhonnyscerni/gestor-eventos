@@ -1,3 +1,4 @@
+import { FrequenciaListComponent } from './eventos/evento-edit/frequencia/frequencia-list/frequencia-list.component';
 import { InscricaoEditComponent } from './eventos/evento-edit/inscricoes/inscricao-edit/inscricao-edit.component';
 import { InscricaoListComponent } from './eventos/evento-edit/inscricoes/inscricao-list/inscricao-list.component';
 import { FacilitadorEditComponent } from './eventos/evento-edit/facilitadores/facilitador-edit/facilitador-edit.component';
@@ -30,6 +31,8 @@ const routes: Routes = [
             { path: 'inscricao/edit/:id', component: InscricaoEditComponent },
 
             { path: 'inscricao/gerar-cracha/:id', component: GerarCrachaComponent },
+
+            { path: 'frequencia', component: FrequenciaListComponent },
         ]
     },
     {

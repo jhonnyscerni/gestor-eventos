@@ -1,0 +1,27 @@
+<div main-content layout="row" layout-align="center start">
+
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+    <mat-card-title>Lista de Frequencia</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+
+      <div layout="row" layout-align="center">
+        <td-data-table [data]="data" [columns]="configWidthColumns">
+
+          <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
+
+            <button mat-button color="warn" (click)="excluirFrequenciaByEvento(row.id)">
+              <i class="material-icons">delete_forever</i>
+            </button>
+          </ng-template>
+
+        </td-data-table>
+      </div>
+
+    </mat-card-content>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+</div>
