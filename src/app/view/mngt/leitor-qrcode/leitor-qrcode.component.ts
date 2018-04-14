@@ -5,6 +5,9 @@ import { Component, VERSION, OnInit, ViewChild } from '@angular/core';
 
 import { Result } from '@zxing/library';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner/app/modules/zxing-scanner/zxing-scanner.module';
+import { MatSnackBar } from '@angular/material';
+import { Title } from '@angular/platform-browser';
+import { Inscricao } from '../../../domain/inscricao';
 
 @Component({
     selector: 'app-leitor-qrcode',
@@ -18,6 +21,8 @@ export class LeitorQrcodeComponent implements OnInit {
     @ViewChild('scanner')
     scanner: ZXingScannerComponent;
 
+    inscricao: Inscricao = new Inscricao();
+
     hasCameras = false;
     qrResultString: string;
     qrResult: Result;
@@ -28,11 +33,13 @@ export class LeitorQrcodeComponent implements OnInit {
 
 
     constructor(
+        private title: Title,
         private frequenciaService: FrequenciaService,
+        public snackBar: MatSnackBar,
     ) { }
 
     ngOnInit() {
-
+        this.title.setTitle('Leitor QR code');
         this.scanner.camerasFound.subscribe((devices: MediaDeviceInfo[]) => {
             this.hasCameras = true;
 
@@ -61,7 +68,7 @@ export class LeitorQrcodeComponent implements OnInit {
 
             console.log('Result: ', resultString);
             this.qrResultString = resultString;
-            console.log(frequencia);
+            this.snackBar.open(`${frequencia.inscricao.participante.nome} - Frequência Confirmada!`, '', { duration: 10000 });
         });
     }
 
@@ -70,4 +77,15 @@ export class LeitorQrcodeComponent implements OnInit {
         console.log('Selection changed: ', selectedValue);
         this.selectedDevice = this.scanner.getDeviceById(selectedValue);
     }
+
+
+    onSubmit() {
+
+        this.frequenciaService.presenca(this.inscricao.codigoQrCode).subscribe(frequencia => {
+
+            console.log('Result: ', this.inscricao.codigoQrCode);
+            this.qrResultString = this.inscricao.codigoQrCode;
+            this.snackBar.open(`${frequencia.inscricao.participante.nome} - Frequência Confirmada!`, '', { duration: 10000 });
+        });
+      }
 }

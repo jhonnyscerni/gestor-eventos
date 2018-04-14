@@ -1,63 +1,116 @@
-<nav-view-layout layout="column" flex style="height:100%">
+<td-layout-nav color="primary" navigationRoute="/">
 
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+        <div layout-wrap layout="row" layout-align="center">
+            <div style="display: inherit;">
+                <img [routerLink]="['/']" src="assets/imagens/je-mini-logo-white.png" class="je-logo" style="width: 48px; height: 48px; margin-right: 10px;margin-top: 4px; cursor: pointer;">
+                <div layout="column">
+                    <span [routerLink]="['/']" style="text-transform: uppercase; cursor: pointer;">
+                        <!-- {{ recursoTypeLabel }} -->
+                        Seven
+                    </span>
+                    <h3 class="md-subhead">
+                        Sistema gestor de eventos
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- TOOLBAR CONTENT -->
+        <!-- <ng-content select="[toolbar-content]"></ng-content> -->
+        <span flex></span>
+    </div>
+    <!--MAIN CONTENT -->
     <div main-content flex layout="column" style="height:100%">
 
 
         <div layout-wrap layout="row" layout-align="center">
             <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-                <mat-card-title>
-                    <span>QRCODE - EVENTOS</span>
+                <mat-card-title style="text-align: center">
+                    <span class="titulo-leitor-qrcode">
+                        <mat-icon svgIcon="qrcode-scan" matListIcon></mat-icon> Leitor de QR Code </span>
                 </mat-card-title>
                 <mat-divider></mat-divider>
-               
+
             </mat-card>
         </div>
 
-        <div layout="column">
+        <div layout-wrap layout="row" layout-align="center">
+            <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+                <mat-tab-group>
+                    <mat-tab label="LEITOR QR CODE">
+                        <div layout="column">
+                            <mat-card-content>
+                                <p *ngIf="availableDevices">
+                                    <label for="video-input-select">Selecione a sua Câmera:</label>
+                                    <select id="video-input-select" (change)="onDeviceSelectChange($event.target.value)">
+                                        <option value="" [selected]="!selectedDevice">Sem Dispositivo</option>
+                                        <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="selectedDevice && device.deviceId === selectedDevice.deviceId">{{ device.label }}</option>
+                                    </select>
+                                </p>
 
-            <div layout layout="row" layout-align="center">
-                <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" 
-                    style="padding-bottom:40px;">
+                                <div [hidden]="!hasCameras">
 
-                    <mat-card-content>
-                        <p *ngIf="availableDevices">
-                            <label for="video-input-select">Selecione a sua Câmera:</label>
-                            <select id="video-input-select" (change)="onDeviceSelectChange($event.target.value)">
-                                <option value="" [selected]="!selectedDevice">Sem Dispositivo</option>
-                                <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="selectedDevice && device.deviceId === selectedDevice.deviceId">{{ device.label }}</option>
-                            </select>
-                        </p>
+                                    <zxing-scanner #scanner class="test-class" [scannerEnabled]="scannerEnabled" [device]="selectedDevice" (camerasFound)="displayCameras($event)"
+                                        (scanSuccess)="handleQrCodeResult($event)" [cssClass]="{customClass:true}"></zxing-scanner>
 
-                        <div [hidden]="!hasCameras">
+                                    <h2 *ngIf="!this.selectedDevice">Nenhuma câmera selecionada.</h2>
+                                    <!-- <p>
+                                                <button (click)="scannerEnabled=!scannerEnabled">Alternar Scanner [{{ scannerEnabled ? 'On': 'Off' }}]</button>
+                                            </p> -->
+                                    <!-- <p>
+                                                Resultado:
+                                                <strong>{{ qrResultString }}</strong>
+                                            </p> -->
 
-                            <zxing-scanner #scanner class="test-class" [scannerEnabled]="scannerEnabled" [device]="selectedDevice" (camerasFound)="displayCameras($event)"
-                                (scanSuccess)="handleQrCodeResult($event)" [cssClass]="{customClass:true}"></zxing-scanner>
+                                </div>
 
-                            <h2 *ngIf="!this.selectedDevice">Nenhuma câmera selecionada.</h2>
+                                <div [hidden]="hasCameras">
 
-                            <p>
-                                <button (click)="scannerEnabled=!scannerEnabled">Alternar Scanner [{{ scannerEnabled ? 'On': 'Off' }}]</button>
-                            </p>
+                                    <h1>Parece que o seu dispositivo atual não tem câmeras, ou não consegui encontrá-las.</h1>
 
-                            <p>
-                                Resultado:
-                                <strong>{{ qrResultString }}</strong>
-                            </p>
-
+                                </div>
+                            </mat-card-content>
                         </div>
 
-                        <div [hidden]="hasCameras">
+                    </mat-tab>
+                    <mat-tab label="CODIGO DE INSCRIÇÃO">
+                        <div layout="column">
+                            <mat-card-title>
+                                <span class="titulo-leitor-qrcode">
+                                    <mat-icon svgIcon="key" matListIcon></mat-icon> Digite o Codigo de Inscrição</span>
+                            </mat-card-title>
+                            <mat-divider></mat-divider>
+                            <mat-card-content>
+                                <!-- FORMULÁRIO -->
+                                <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+                                    <div layout="column">
+                                        <!-- NOME -->
+                                        <mat-input-container floatPlaceholder="auto" flex="100">
+                                            <input matInput #codigoQrCode="ngModel" [(ngModel)]="inscricao.codigoQrCode" name="codigoQrCode" type="text" placeholder="Codigo de Inscrição"
+                                                required>
+                                            <mat-error [hidden]="codigoQrCode.valid || (codigoQrCode.pristine && !vform.submitted)">
+                                                O codigoQrCode é um campo obrigatório .
+                                            </mat-error>
+                                        </mat-input-container>
 
-                            <h1>Parece que o seu dispositivo atual não tem câmeras, ou não consegui encontrá-las.</h1>
 
+                                        <div layout="column">
+                                            <mat-card-actions>
+                                                <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">VALIDAR</button>
+                                            </mat-card-actions>
+                                        </div>
+                                    </div>
+                                </form>
+                            </mat-card-content>
                         </div>
-                    </mat-card-content>
 
-                </mat-card>
-            </div>
+                    </mat-tab>
+                </mat-tab-group>
+            </mat-card>
         </div>
 
-
     </div>
-
-</nav-view-layout>
+    <td-layout-footer color="primary" *ngIf="isFooter">
+    </td-layout-footer>
+</td-layout-nav>
