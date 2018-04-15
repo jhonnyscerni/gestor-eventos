@@ -23,7 +23,8 @@ export class FrequenciaListComponent implements OnInit {
     { name: 'id', label: '#', width: 50 },
     { name: 'inscricao.participante.nomeCracha', label: 'Nome', width: 280 },
     { name: 'dataFrequencia', label: 'Data da Frequencia', width: 120, format: (value) => { return this.dateLayout(value) } },
-    { name: 'inscricao.codigoQrCode', label: 'Codigo de Inscricao', width: 280},
+    { name: 'frequenciaTurno', label: 'Turno', width: 150 },
+    { name: 'inscricao.codigoQrCode', label: 'Codigo de Inscricao', width: 250},
     { name: 'acoes', label: 'Ações', width: 150 },
   ];
 
