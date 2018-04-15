@@ -88,4 +88,8 @@ export class LeitorQrcodeComponent implements OnInit {
             this.snackBar.open(`${frequencia.inscricao.participante.nome} - Frequência Confirmada!`, '', { duration: 10000 });
         });
       }
+
+    limpar() {
+        this.inscricao.codigoQrCode = '';
+    }
 }

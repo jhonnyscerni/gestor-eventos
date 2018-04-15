@@ -18,7 +18,7 @@ export class FrequenciaService {
     }
 
 
-    public getFrequenciaByEvento(idEvento: number): Observable<Frequencia[]> {
+     getFrequenciaByEvento(idEvento: number): Observable<Frequencia[]> {
         return this.http.get(`${environment.urlbase}/eventos/${idEvento}/frequencia`)
             .map(res => res.json());
     }
