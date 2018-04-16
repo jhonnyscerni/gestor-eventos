@@ -40,7 +40,7 @@ export class FrequenciaListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.title.setTitle('Lista de Inscrições');
+    this.title.setTitle('Lista de Frequencia');
     this.route.parent.params.subscribe(param => {
       this.idEvento = param['id'];
       console.log(`idEvento na area de Inscricoes:` + this.idEvento);

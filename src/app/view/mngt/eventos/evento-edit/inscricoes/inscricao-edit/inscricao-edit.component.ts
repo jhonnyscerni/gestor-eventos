@@ -1,3 +1,4 @@
+import { CategoriaParticipanteEvento } from './../../../../../../domain/categoria-participante-evento';
 import { Participante } from './../../../../../../domain/participante';
 import { ParticipanteService } from './../../../../../../service/participante.service';
 import { InscricaoService } from './../../../../../../service/inscricao.service';
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material';
+import { CategoriaParticipanteEventoService } from '../../../../../../service/categoria-participante-evento.service';
 
 @Component({
   selector: 'app-inscricao-edit',
@@ -24,9 +26,12 @@ export class InscricaoEditComponent implements OnInit {
 
   participantes: Participante[] = [];
 
+  categoriaParticipanteEventos: CategoriaParticipanteEvento[] = [];
+
   constructor(
     private inscricaoService: InscricaoService,
     private participanteService: ParticipanteService,
+    private categoriaParticipanteEventoService: CategoriaParticipanteEventoService,
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
@@ -42,6 +47,7 @@ export class InscricaoEditComponent implements OnInit {
       this.idEvento = param['id'];
       this.carregarParticipantes();
       this.processaInscricao();
+      this.getCategoriaParticipantesEvento();
       this.inscricao.evento.id = this.idEvento;
     });
   }
@@ -68,7 +74,7 @@ export class InscricaoEditComponent implements OnInit {
 
   onSubmit() {
     this.inscricaoService.salvar(this.inscricao, this.idEvento).subscribe(inscricao => {
-      this.snackBar.open(`${inscricao.dtInscricao} salvo com sucesso!`, '', { duration: 10000 });
+      this.snackBar.open(`${inscricao.participante.nome} salvo com sucesso!`, '', { duration: 10000 });
     });
 
   }
@@ -85,6 +91,12 @@ export class InscricaoEditComponent implements OnInit {
     return this.participanteService.getParticipantes()
       .subscribe(participantes => this.participantes = participantes);
   }
+
+  getCategoriaParticipantesEvento() {
+    this.categoriaParticipanteEventoService.getCategoriaParticipantesEventoByEvento(this.idEvento)
+      .subscribe(categoriaParticipanteEventos => this.categoriaParticipanteEventos = categoriaParticipanteEventos);
+  }
+
 
 
 }

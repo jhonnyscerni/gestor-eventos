@@ -21,17 +21,14 @@
             </mat-select>
           </mat-form-field>
 
-
-          <!-- Data Inscricao -->
-          <mat-input-container floatPlaceholder="auto" flex="50">
-            <label>
-              Data de Inscrição:
-              <br/>
-              <br/>
-              <input matInput [owlDateTimeTrigger]="dt1" [owlDateTime]="dt1" [(ngModel)]="inscricao.dtInscricao" name="dtInscricao" required>
-              <owl-date-time [pickerMode]="'dialog'" #dt1></owl-date-time>
-            </label>
-          </mat-input-container>
+           <!-- CATEGORIA PARTICIPANTE EVENTO -->
+           <mat-form-field>
+              <mat-select placeholder="Categoria da Inscricao do Participante" name="categoriaParticipanteEvento" [(ngModel)]="inscricao.categoriaParticipanteEvento" required>
+                <mat-option *ngFor="let categoriaParticipanteEvento of categoriaParticipanteEventos" [value]="categoriaParticipanteEvento">
+                  {{ categoriaParticipanteEvento.categoriaParticipante.titulo }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
           <!-- Data de Deferimento -->
           <mat-input-container floatPlaceholder="auto" flex="50">

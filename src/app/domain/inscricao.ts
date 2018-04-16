@@ -1,3 +1,4 @@
+import { CategoriaParticipanteEvento } from './categoria-participante-evento';
 import { Evento } from './evento';
 import { Participante } from './participante';
 
@@ -16,4 +17,5 @@ export class Inscricao {
     observacao?: string;
     evento?: Evento = new Evento();
     participante?: Participante = new Participante();
+    categoriaParticipanteEvento?: CategoriaParticipanteEvento = new CategoriaParticipanteEvento();
 }
