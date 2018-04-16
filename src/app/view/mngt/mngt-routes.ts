@@ -14,10 +14,10 @@ import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cra
 import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
 
 const routes: Routes = [
-    { path: 'evento/novo', component: EventoNovoComponent },
-    { path: 'qr-code', component: LeitorQrcodeComponent },
+    { path: 'adm/evento/novo', component: EventoNovoComponent },
+    { path: 'adm/qr-code', component: LeitorQrcodeComponent },
     {
-        path: 'evento/edit/:id', component: EventoEditComponent, children: [
+        path: 'adm/evento/edit/:id', component: EventoEditComponent, children: [
             { path: 'geral', component: EventoFormComponent },
 
             { path: 'vagas', component: CategoriaParticipanteComponent },
@@ -36,11 +36,11 @@ const routes: Routes = [
         ]
     },
     {
-        path: 'eventos', component: EventoListComponent, children: [
+        path: 'adm/eventos', component: EventoListComponent, children: [
             { path: '', component: EventoListComponent },
         ]
     },
-    { path: '', redirectTo: 'eventos' }
+    { path: '', redirectTo: 'adm/eventos' }
 ];
 
 export const mgntRoutes: ModuleWithProviders = RouterModule.forChild(routes);
