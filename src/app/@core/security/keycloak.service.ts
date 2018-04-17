@@ -46,10 +46,10 @@ export class KeycloakService {
           }, 60000);
 
 
-          resolve();
+          resolve(true);
         })
         .error(() => {
-          reject();
+          reject(false);
         });
     });
   }

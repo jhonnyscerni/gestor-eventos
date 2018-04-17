@@ -1,3 +1,4 @@
+import { AuthGuardAdmin } from './../../@core/security/auth-guard-admin';
 import { FrequenciaListComponent } from './eventos/evento-edit/frequencia/frequencia-list/frequencia-list.component';
 import { InscricaoEditComponent } from './eventos/evento-edit/inscricoes/inscricao-edit/inscricao-edit.component';
 import { InscricaoListComponent } from './eventos/evento-edit/inscricoes/inscricao-list/inscricao-list.component';
@@ -17,7 +18,7 @@ const routes: Routes = [
     { path: 'evento/novo', component: EventoNovoComponent },
     { path: 'qr-code', component: LeitorQrcodeComponent },
     {
-        path: "adm", children: [
+        path: "adm", canActivate: [AuthGuardAdmin], children: [
 
             {
                 path: 'evento/edit/:id', component: EventoEditComponent, children: [
@@ -46,6 +47,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'eventos' }
         ]
     },
+    { path: '**', redirectTo: 'adm/eventos' }//Rota padrão
 
 ];
 

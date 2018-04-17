@@ -1,3 +1,4 @@
+import { AuthGuardAdmin } from './@core/security/auth-guard-admin';
 import { KeycloakService } from './@core/security/keycloak.service';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentHighlightModule } from '@covalent/highlight';
@@ -33,6 +34,7 @@ registerLocaleData(localePt, 'pt-BR');
   ],
   providers: [
     KeycloakService,
+    AuthGuardAdmin,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   entryComponents: [ ],
