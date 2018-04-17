@@ -14,33 +14,39 @@ import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cra
 import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
 
 const routes: Routes = [
-    { path: 'adm/evento/novo', component: EventoNovoComponent },
-    { path: 'adm/qr-code', component: LeitorQrcodeComponent },
+    { path: 'evento/novo', component: EventoNovoComponent },
+    { path: 'qr-code', component: LeitorQrcodeComponent },
     {
-        path: 'adm/evento/edit/:id', component: EventoEditComponent, children: [
-            { path: 'geral', component: EventoFormComponent },
+        path: "adm", children: [
 
-            { path: 'vagas', component: CategoriaParticipanteComponent },
+            {
+                path: 'evento/edit/:id', component: EventoEditComponent, children: [
+                    { path: 'geral', component: EventoFormComponent },
 
-            { path: 'facilitadores', component: FacilitadorListComponent },
-            { path: 'facilitador/novo', component: FacilitadorEditComponent },
-            { path: 'facilitador/edit/:id', component: FacilitadorEditComponent },
+                    { path: 'vagas', component: CategoriaParticipanteComponent },
 
-            { path: 'inscricoes', component: InscricaoListComponent },
-            { path: 'inscricao/novo', component: InscricaoEditComponent },
-            { path: 'inscricao/edit/:id', component: InscricaoEditComponent },
+                    { path: 'facilitadores', component: FacilitadorListComponent },
+                    { path: 'facilitador/novo', component: FacilitadorEditComponent },
+                    { path: 'facilitador/edit/:id', component: FacilitadorEditComponent },
 
-            { path: 'inscricao/gerar-cracha/:id', component: GerarCrachaComponent },
+                    { path: 'inscricoes', component: InscricaoListComponent },
+                    { path: 'inscricao/novo', component: InscricaoEditComponent },
+                    { path: 'inscricao/edit/:id', component: InscricaoEditComponent },
 
-            { path: 'frequencia', component: FrequenciaListComponent },
+                    { path: 'inscricao/gerar-cracha/:id', component: GerarCrachaComponent },
+
+                    { path: 'frequencia', component: FrequenciaListComponent },
+                ]
+            },
+            {
+                path: 'eventos', component: EventoListComponent, children: [
+                    { path: '', component: EventoListComponent },
+                ]
+            },
+            { path: '', redirectTo: 'eventos' }
         ]
     },
-    {
-        path: 'adm/eventos', component: EventoListComponent, children: [
-            { path: '', component: EventoListComponent },
-        ]
-    },
-    { path: '', redirectTo: 'adm/eventos' }
+
 ];
 
 export const mgntRoutes: ModuleWithProviders = RouterModule.forChild(routes);

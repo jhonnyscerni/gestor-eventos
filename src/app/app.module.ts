@@ -1,3 +1,4 @@
+import { KeycloakService } from './@core/security/keycloak.service';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentHttpModule } from '@covalent/http';
@@ -31,6 +32,7 @@ registerLocaleData(localePt, 'pt-BR');
     CovalentMarkdownModule
   ],
   providers: [
+    KeycloakService,
     { provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   entryComponents: [ ],

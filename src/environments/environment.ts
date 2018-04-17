@@ -5,9 +5,10 @@
 
 export const environment = {
   production: false,
-  urlbase: "http://localhost:8080/seven-service",
+  urlbase: "http://localhost:8081/seven-service",
   //urlbase: "http://dev.tre-pa.jus.br/seven-frontend/api",
-  keycloak_installation: { url: 'http://dev.tre-pa.jus.br/auth', realm: 'TRE-PA', clientId: 'seven-frontend' },
-  keycloak_redirect_uri: "http://dev.tre-pa.jus.br/seven-frontend",
-  keycloak_clientId_sboot: 'seven-frontend-service'
+  keycloak_installation: { url: 'http://localhost:8080/auth', realm: 'TRE-PA', clientId: 'seven-angular' },
+  keycloak_redirect_uri: "/",
+  keycloak_clientId_sboot: 'seven-backend',
+  keycloak_clientId_angular: 'seven-angular'
 };

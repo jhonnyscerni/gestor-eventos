@@ -1,3 +1,4 @@
+import { KeycloakService } from './../../security/keycloak.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuLayoutComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private keycloakService: KeycloakService
+  ) { }
 
   ngOnInit() {
   }
 
+  sair(){
+    console.log("Sair")
+    this.keycloakService.logout();
+  }
 }

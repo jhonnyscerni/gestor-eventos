@@ -7,6 +7,10 @@ declare var Keycloak: any;
 
 @Injectable()
 export class KeycloakService {
+
+  constructor() {
+  }
+
   static auth: any = {};
 
   /**
@@ -14,7 +18,6 @@ export class KeycloakService {
    * Inicializa o timer para atualização do token
    */
   static init(): Promise<any> {
-    console.log('Keycloak init');
     let keycloak = Keycloak(environment.keycloak_installation);
 
     KeycloakService.auth.loggedIn = false;
@@ -24,22 +27,24 @@ export class KeycloakService {
         .success(() => {
           KeycloakService.auth.loggedIn = true;
           KeycloakService.auth.authz = keycloak;
-          KeycloakService.auth.logoutUrl = keycloak.authServerUrl + `/realms/${environment.keycloak_installation.realm}/protocol/openid-connect/logout?redirect_uri=${environment.keycloak_redirect_uri}`;
+          KeycloakService.auth.logoutUrl = keycloak.authServerUrl + `/realms/${environment.keycloak_installation.realm}/protocol/openid-connect/logout?redirect_uri=${window.location.origin}${environment.keycloak_redirect_uri}`;
 
-          //Evento disparado quando token é expirado.
-          keycloak.onTokenExpired = () => {
-            console.info('auth token expired');
+          // refresh login
+          setInterval(function () {
 
-            keycloak.updateToken()
-              .success(() => {
-                console.info('auth token updated');
-              })
-              .error(() => {
-                throw new Error('failed to update token on expired');
-              });
-          };
+            keycloak.updateToken(70).success(function (refreshed) {
+              if (refreshed) {
+              } else {
+                /* console.log('Token not refreshed, valid for '
+                + Math.round(keycloak.tokenParsed.exp + keycloak.timeSkew - new Date().getTime() / 1000) + ' seconds'); */
+              }
+            }).error(function () {
+              location.reload();
+              console.error('Failed to refresh token');
+            });
 
-          console.log("Loading...");
+          }, 60000);
+
 
           resolve();
         })
@@ -47,6 +52,21 @@ export class KeycloakService {
           reject();
         });
     });
+  }
+
+  public initConfig(): void {
+    //Evento disparado quando token é expirado.
+    KeycloakService.auth.authz.onTokenExpired = () => {
+      console.info('auth token expired');
+
+      KeycloakService.auth.authz.updateToken()
+        .success(() => {
+          console.info('auth token updated');
+        })
+        .error(() => {
+          throw new Error('failed to update token on expired');
+        });
+    };
   }
 
   /**
@@ -95,11 +115,23 @@ export class KeycloakService {
    * Verifica se o usuário possui a regra informada.
    * @param role Regra a pesquisar
    */
-  static hasResourceRole(role: string): boolean {
+  static hasResourceRoleSboot(role: string): boolean {
     return KeycloakService.auth.authz.hasResourceRole(role, environment.keycloak_clientId_sboot);
   }
 
-  isTokenExpired() {
+  /**
+   * Verifica se o usuário possui a regra informada para o angular
+   * @param role 
+   */
+  static hasResourceRoleAngular(role: string): boolean {
+    return KeycloakService.auth.authz.hasResourceRole(role, environment.keycloak_clientId_angular);
+  }
+
+  public isTokenExpired() {
     return KeycloakService.auth.authz.isTokenExpired();
+  }
+
+  public getGroupsInToken(): string[] {
+    return KeycloakService.auth.authz.tokenParsed.groups;
   }
 }

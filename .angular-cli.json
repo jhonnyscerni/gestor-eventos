@@ -24,7 +24,9 @@
         "../node_modules/@covalent/core/common/platform.css",
         "../node_modules/roboto-fontface/css/roboto/roboto-fontface.css"
       ],
+      
       "scripts": ["app/@core/security/keycloak.js"],
+      
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
