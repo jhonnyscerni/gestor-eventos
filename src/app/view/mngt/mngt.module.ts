@@ -41,6 +41,7 @@ import { InscricaoEditComponent } from './eventos/evento-edit/inscricoes/inscric
 import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cracha/gerar-cracha.component';
 import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
 import { FrequenciaService } from '../../service/frequencia.service';
+import { UnauthorizedComponent } from '../unauthorized/unauthorized.component';
 // import { OwlDateTimeModule, OWL_DATE_TIME_LOCALE, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 
 
@@ -90,7 +91,8 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     NavListLayoutComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,
-    MenuLayoutComponent
+    MenuLayoutComponent,
+    UnauthorizedComponent
   ],
   entryComponents: [CategoriaParticipanteEditDialogComponent],
   providers: [

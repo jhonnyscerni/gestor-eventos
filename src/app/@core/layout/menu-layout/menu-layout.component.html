@@ -8,6 +8,13 @@
 </button>
 
 <mat-menu xPosition="after" yPosition="below" #eventosMenu="matMenu" [overlapTrigger]="false">
+
+    <a mat-menu-item [href]="getLink('adm/evento/novo')">
+        <mat-icon>menu</mat-icon>
+        <span>Criar Novo Evento</span>
+    </a>
+    
+
     <button mat-menu-item>
         <mat-icon>menu</mat-icon>
         <span>Agenda</span>
@@ -29,14 +36,14 @@
 <!-- menu: Usuário -->
 
 <button mat-button matTooltip="Opções de Usuário" matTooltipPosition="below" [mat-menu-trigger-for]="usuarioMenu">
-    <span hide-xs hide-gt-xs show-gt-sm>USUÁRIO</span>
-     <mat-icon svgIcon="account"></mat-icon>
+    <span hide-xs hide-gt-xs show-gt-sm style="text-transform: uppercase"> {{userInfo.name}}</span>
+    <mat-icon svgIcon="account"></mat-icon>
     <!-- <mat-icon>help_outline</mat-icon> -->
 </button>
 
 <mat-menu xPosition="after" yPosition="below" #usuarioMenu="matMenu" [overlapTrigger]="false">
     <!-- itens de menu com usuário -->
-    <ng-container >
+    <ng-container>
         <button mat-menu-item>
             <mat-icon>menu</mat-icon>
             <span>Meu Cadastro</span>
@@ -45,13 +52,13 @@
             <mat-icon>menu</mat-icon>
             <span>Minhas Inscrições</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="sair()">
             <mat-icon>menu</mat-icon>
             <span>Sair</span>
         </button>
     </ng-container>
     <!-- itens de menu sem usuário logado -->
-    <ng-container>
+    <!-- <ng-container>
             <button mat-menu-item>
                 <mat-icon>menu</mat-icon>
                 <span>Entrar</span>
@@ -60,8 +67,8 @@
                 <mat-icon>menu</mat-icon>
                 <span>Criar Cadastro</span>
             </button>
-        </ng-container>
-    </mat-menu>
+        </ng-container>-->
+</mat-menu>
 
 
 <!-- menu: Ajuda -->
@@ -72,22 +79,22 @@
 </button>
 
 <mat-menu xPosition="after" yPosition="below" #ajudaMenu="matMenu" [overlapTrigger]="false">
-    <button mat-menu-item>
+    <!-- <button mat-menu-item>
         <mat-icon>menu</mat-icon>
         <span>Acessibilidade</span>
-    </button>
+    </button> -->
     <button mat-menu-item>
         <mat-icon>menu</mat-icon>
         <span>Alto Contraste</span>
     </button>
-    <button mat-menu-item>
+    <!-- <button mat-menu-item>
         <mat-icon>menu</mat-icon>
         <span>Dúvidas Frequêntes</span>
     </button>
     <button mat-menu-item>
         <mat-icon>menu</mat-icon>
         <span>Mapa do Site</span>
-    </button>
+    </button> -->
     <button mat-menu-item>
         <mat-icon>menu</mat-icon>
         <span>Contato</span>
@@ -95,22 +102,20 @@
 </mat-menu>
 
 <!-- BOTÃO DE OPÇÕES -->
-<button mat-icon-button [matMenuTriggerFor]="toolbarMenu1">
+<!-- <button mat-icon-button [matMenuTriggerFor]="toolbarMenu1">
   <mat-icon>more_vert</mat-icon>
-</button>
+</button> -->
 <!-- MENU DE OPÇÕES -->
-<mat-menu #toolbarMenu1="matMenu">
-  <!-- LINK USERGUIDE -->
-  <a mat-menu-item>
+<!-- <mat-menu #toolbarMenu1="matMenu"> -->
+<!-- LINK USERGUIDE -->
+<!-- <a mat-menu-item>
     <mat-icon>help_outline</mat-icon>
     <span>Manual do Usuário</span>
   </a>
-  <mat-divider></mat-divider>
-  <!-- BOTÃO SAIR -->
-  <button mat-menu-item (click)="sair()">
+  <mat-divider></mat-divider> -->
+<!-- BOTÃO SAIR -->
+<!-- <button mat-menu-item (click)="sair()">
     <mat-icon>exit_to_app</mat-icon>
     <span>Sair</span>
-  </button>
-</mat-menu>
-
-
+</button> 
+</mat-menu>-->

@@ -18,6 +18,9 @@ import {
   MatTabsModule, MatSelectModule, MatRadioModule,
 } from '@angular/material';
 import { NgxChartsModule, } from '@swimlane/ngx-charts';
+import { KeycloakService } from '../security/keycloak.service';
+import { AuthGuardAdmin } from '../security/auth-guard-admin';
+import { AuthGuard } from '../security/auth-guard';
 
 const FLEX_LAYOUT_MODULES: any[] = [
   FlexLayoutModule,
@@ -53,10 +56,9 @@ const CHART_MODULES: any[] = [
     MATERIAL_MODULES,
     COVALENT_MODULES,
     CHART_MODULES,
-    FLEX_LAYOUT_MODULES,
+    FLEX_LAYOUT_MODULES
   ],
   declarations: [
-
   ],
   exports: [
     ANGULAR_MODULES,
@@ -64,6 +66,12 @@ const CHART_MODULES: any[] = [
     COVALENT_MODULES,
     CHART_MODULES,
     FLEX_LAYOUT_MODULES,
+   
   ],
+  providers:[
+    KeycloakService,
+    AuthGuardAdmin,
+    AuthGuard
+  ]
 })
 export class SharedModule { }

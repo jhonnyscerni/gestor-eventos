@@ -1,3 +1,4 @@
+import { UnauthorizedComponent } from './../unauthorized/unauthorized.component';
 import { AuthGuardAdmin } from './../../@core/security/auth-guard-admin';
 import { FrequenciaListComponent } from './eventos/evento-edit/frequencia/frequencia-list/frequencia-list.component';
 import { InscricaoEditComponent } from './eventos/evento-edit/inscricoes/inscricao-edit/inscricao-edit.component';
@@ -13,13 +14,18 @@ import { RouterModule, Routes } from "@angular/router";
 import { NgModule, ModuleWithProviders } from "@angular/core";
 import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cracha/gerar-cracha.component';
 import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
+import { AuthGuard } from '../../@core/security/auth-guard';
 
 const routes: Routes = [
-    { path: 'evento/novo', component: EventoNovoComponent },
     { path: 'qr-code', component: LeitorQrcodeComponent },
     {
-        path: "adm", canActivate: [AuthGuardAdmin], children: [
-
+        path: "adm",
+        canActivate: [AuthGuard],
+        data: {
+            roles: ['admin'],
+            mensagem: 'Você nao possui permissao de Administrador!'
+        }, children: [
+            { path: 'evento/novo', component: EventoNovoComponent },
             {
                 path: 'evento/edit/:id', component: EventoEditComponent, children: [
                     { path: 'geral', component: EventoFormComponent },
@@ -47,6 +53,7 @@ const routes: Routes = [
             { path: '', redirectTo: 'eventos' }
         ]
     },
+    { path: 'unauthorized', component: UnauthorizedComponent },
     { path: '**', redirectTo: 'adm/eventos' }//Rota padrão
 
 ];

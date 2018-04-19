@@ -7,6 +7,6 @@ import { Injectable } from "@angular/core";
 export class AuthGuardAdmin implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        return KeycloakService.init();
+        return 
     }
 }

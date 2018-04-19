@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { KeycloakService } from '../../security/keycloak.service';
 
 @Component({
   selector: 'main-layout',
@@ -18,9 +19,12 @@ export class MainLayoutComponent implements OnInit{
 
   userInfo: any = { email: '', family_name: '', given_name: '', name: '', preferred_username: '', sub: '' };
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private keycloakService: KeycloakService) { }
 
   ngOnInit(): void {
+    this.keycloakService.getLoadUserInfo().then(info=>{
+      this.userInfo = info;
+    });
   }
 
   logout(): void {
