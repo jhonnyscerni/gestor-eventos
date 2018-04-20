@@ -40,7 +40,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     OwlMomentDateTimeModule,
   ],
   declarations: [PortalComponent,
-    EventoListComponent
+    EventoListComponent,
   ],
   providers: [
     EventoService,
