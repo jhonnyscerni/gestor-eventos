@@ -1,0 +1,71 @@
+<td-layout>
+  <td-navigation-drawer sidenavTitle="Módulo de Gestão de Eventos" [name]="" [email]="">
+    <mat-nav-list>
+      <ng-template let-item let-last="last" ngFor [ngForOf]="routes">
+        <a mat-list-item [routerLink]="[item.route]" (click)="layout.close()">
+          <mat-icon>{{item.icon}}</mat-icon>{{item.title}}</a>
+      </ng-template>
+    </mat-nav-list>
+    <mat-nav-list td-navigation-drawer-menu>
+      <a mat-list-item >
+        <mat-icon>exit_to_app</mat-icon>Sair do Módulo de Gestão</a>
+    </mat-nav-list>
+  </td-navigation-drawer>
+
+  <td-layout-nav color="none" logo="assets:covalent" navigationRoute="/">
+
+   <app-evento-list></app-evento-list>
+   
+    <!-- end content -->
+    <section class="bgc-blue-grey-800 tc-blue-grey-100">
+      <div layout-gt-xs="row" layout-align-gt-xs="center center">
+        <div layout-gt-xs="row" flex-gt-xs="80" layout-margin layout-padding>
+          <div flex-gt-xs>
+            <mat-nav-list>
+              <h3 mat-subheader class="text-upper tc-blue-grey-100">About Teradata</h3>
+              <mat-list-item>
+                <p matLine class="tc-blue-grey-300">Company Info</p>
+              </mat-list-item>
+              <mat-list-item>
+                <p matLine class="tc-blue-grey-300">Our Customers</p>
+              </mat-list-item>
+              <mat-list-item>
+                <p matLine class="tc-blue-grey-300">Press</p>
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+          <div flex-gt-xs>
+            <mat-nav-list>
+              <h3 mat-subheader class="text-upper tc-blue-grey-100">Career Info</h3>
+              <mat-list-item>
+                <p matLine class="tc-blue-grey-300">Benefits</p>
+              </mat-list-item>
+              <mat-list-item>
+                <p matLine class="tc-blue-grey-300">Locations</p>
+              </mat-list-item>
+              <mat-list-item>
+                <p matLine class="tc-blue-grey-300">List item</p>
+              </mat-list-item>
+            </mat-nav-list>
+          </div>
+          <div flex-gt-xs="10">
+          </div>
+          <div flex layout="column" flex-gt-xs="30">
+            <mat-icon class="push-top-md" svgIcon="assets:covalent" style="height:auto;width:auto;"></mat-icon>
+            <p class="mat-body-1">&copy; Copyright 2017 Teradata, Inc. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <a mat-fab color="accent" matTooltip="Contact Us" matTooltipPosition="above" class="mat-fab-position-bottom-right fixed">
+      <mat-icon>send</mat-icon>
+    </a>
+    <td-layout-footer>
+      <div layout="row" layout-align="start center">
+        <span class="mat-caption">Made with
+          <mat-icon class="text-md">favorite</mat-icon> using
+          <a href="http://getcovalent.com" class="text-nodecoration tc-blue-700">Covalent</a>, built on Angular v4 + Angular Material.</span>
+      </div>
+    </td-layout-footer>
+  </td-layout-nav>
+</td-layout>
