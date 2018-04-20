@@ -1,3 +1,4 @@
+import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
 import { UnauthorizedComponent } from './../unauthorized/unauthorized.component';
 import { AuthGuardAdmin } from './../../@core/security/auth-guard-admin';
 import { FrequenciaListComponent } from './eventos/evento-edit/frequencia/frequencia-list/frequencia-list.component';
@@ -15,17 +16,20 @@ import { NgModule, ModuleWithProviders } from "@angular/core";
 import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cracha/gerar-cracha.component';
 import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
 import { AuthGuard } from '../../@core/security/auth-guard';
+import { ParticipanteListComponent } from './participantes/participante-list/participante-list.component';
 
 const routes: Routes = [
     { path: 'qr-code', component: LeitorQrcodeComponent },
     {
-        path: "adm",
+        path: "",
         canActivate: [AuthGuard],
         data: {
             roles: ['admin'],
             mensagem: 'Você nao possui permissao de Administrador!'
         }, children: [
             { path: 'evento/novo', component: EventoNovoComponent },
+            { path: 'participante/novo', component: ParticipanteEditComponent },
+            { path: 'participantes', component: ParticipanteListComponent },
             {
                 path: 'evento/edit/:id', component: EventoEditComponent, children: [
                     { path: 'geral', component: EventoFormComponent },

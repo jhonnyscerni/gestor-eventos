@@ -1,3 +1,5 @@
+import { ParticipanteListComponent } from './participantes/participante-list/participante-list.component';
+import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
 import { FrequenciaListComponent } from './eventos/evento-edit/frequencia/frequencia-list/frequencia-list.component';
 import { ParticipanteService } from './../../service/participante.service';
 import { InscricaoService } from './../../service/inscricao.service';
@@ -88,12 +90,14 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     GerarCrachaComponent,
     LeitorQrcodeComponent,
     FrequenciaListComponent,
+    ParticipanteEditComponent,
+    ParticipanteListComponent,
     NavListLayoutComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,
     MenuLayoutComponent,
-    UnauthorizedComponent
-  ],
+    UnauthorizedComponent,
+],
   entryComponents: [CategoriaParticipanteEditDialogComponent],
   providers: [
     EventoService,
@@ -111,7 +115,6 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
 
     { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },
 
-    DateTimeService,
   ],
 })
 export class MngtModule {
