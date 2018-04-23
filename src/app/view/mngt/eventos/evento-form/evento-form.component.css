@@ -1,0 +1,14 @@
+h3 {
+    padding: 0 !important;
+}
+
+.link {
+/* tira o mouse de drag-and-drop e coloca o ponteiro de link no título do card */
+cursor: pointer;
+}
+
+.link:hover {
+/* deixa o texto do link com linha em baixo quando o usuário passa o mouse em cima */
+text-decoration: underline;
+}
+

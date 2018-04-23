@@ -130,5 +130,9 @@ export class EventoFormComponent implements OnInit {
     this.title.setTitle(`Edição de Evento: ${this.evento.descricao}`);
   }
 
+  compareByOptionId(idFirst: TipoEvento, idSecond: TipoEvento): boolean {
+    return idFirst && idSecond && idFirst.id === idSecond.id;
+  }
+
 
 }
