@@ -19,11 +19,12 @@ export class ParticipanteListComponent implements OnInit {
 
   configWidthColumns: ITdDataTableColumn[] = [
     { name: 'id', label: '#', width: 50 },
-    { name: 'nome', label: 'Nome', width: 250 },
+    { name: 'nome', label: 'Nome', width: 300 },
     { name: 'instituicaoOrigem', label: 'Instituição', width: 150 },
     { name: 'email', label: 'Email', width: 150 },
     { name: 'cpf', label: 'CPF', width: 150 },
     { name: 'tituloEleitor', label: 'Titulo de Eleitor', width: 200 },
+    { name: 'acoes', label: 'Ações', width: 150 },
   ];
 
   data = [];
@@ -49,7 +50,7 @@ export class ParticipanteListComponent implements OnInit {
 
 
 
-  excluirParticipanteByEvento(id: number) {
+  excluirParticipante(id: number) {
     this._dialogService.openConfirm({
       message: 'Deseja excluir esse Participante ?',
       disableClose: true,

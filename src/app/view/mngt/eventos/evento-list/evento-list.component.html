@@ -4,11 +4,15 @@
 
 
     <div layout-wrap layout="row" layout-align="center">
-      <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-        <mat-card-content>
-          <span style="font-size: 20px">Eventos Ativos na Gestão da EJE</span>
-        </mat-card-content>
+      <mat-card flex-gt-xs="40" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+        <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+          <div flex>
+            Eventos Ativos na Gestão da EJE
+          </div>
+        </mat-card-title>
         <mat-divider></mat-divider>
+
         <mat-card-content>
           <mat-icon matPrefix>search</mat-icon>
           <td-search-input class="custom-search-input" placeholder="Pesquisar pelo nome do Evento" [showUnderline]="true" [debounce]="500"

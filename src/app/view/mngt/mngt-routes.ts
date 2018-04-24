@@ -29,6 +29,7 @@ const routes: Routes = [
         }, children: [
             { path: 'evento/novo', component: EventoNovoComponent },
             { path: 'participante/novo', component: ParticipanteEditComponent },
+            { path: 'participante/edit/:id', component: ParticipanteEditComponent },
             { path: 'participantes', component: ParticipanteListComponent },
             {
                 path: 'evento/edit/:id', component: EventoEditComponent, children: [

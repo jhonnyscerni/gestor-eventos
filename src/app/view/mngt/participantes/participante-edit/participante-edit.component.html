@@ -6,11 +6,13 @@
       <div fxLayout="column">
 
       <div main-content layout="row" layout-align="center start">
-
-        <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="participante">
-
-          <mat-card-title>Cadastro de Participante </mat-card-title>
-          <mat-divider></mat-divider>
+          <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="participante">
+              <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+                <div flex>
+                  <mat-icon>list</mat-icon> Cadastro de Participante 
+                </div>
+              </mat-card-title>
+              <mat-divider></mat-divider>
           <mat-card-content>
             <!-- FORMULÁRIO -->
             <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
@@ -36,7 +38,7 @@
                 </mat-input-container>
 
                 <!-- EMAIL -->
-                <mat-input-container floatPlaceholder="auto" flex="50">
+                <mat-input-container floatPlaceholder="auto" flex="100">
                   <input matInput #email="ngModel" [(ngModel)]="participante.email" name="email" type="email" placeholder="Email do Participante"
                     required pattern='\S+@\S+\.\S+'>
                   <mat-hint [hidden]="!email.valid">O email do Participante é um campo obrigatório.
