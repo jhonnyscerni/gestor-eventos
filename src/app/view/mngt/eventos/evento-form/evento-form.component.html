@@ -22,7 +22,7 @@
           <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
 
             <!-- SIGLA -->
-            <mat-input-container floatPlaceholder="auto" flex="25">
+            <mat-input-container floatPlaceholder="auto" fxFlex="25">
               <input matInput #sigla="ngModel" [(ngModel)]="evento.sigla" name="sigla" type="text" placeholder="Sigla Exclusíva do Evento"
                 minlength="5" maxlength="50" required pattern="^[a-zA-Z0–9_.+-]+$">
               <mat-error [hidden]="sigla.valid || (sigla.pristine && !vform.submitted)">
@@ -31,7 +31,7 @@
             </mat-input-container>
 
             <!-- EMAIL -->
-            <mat-input-container floatPlaceholder="auto" flex="25">
+            <mat-input-container floatPlaceholder="auto" fxFlex="25">
               <input matInput #email="ngModel" [(ngModel)]="evento.email" name="email" type="email" placeholder="Email do Evento" required
                 pattern='\S+@\S+\.\S+'>
               <mat-error [hidden]="email.valid || (email.pristine && !vform.submitted)">
@@ -40,7 +40,7 @@
             </mat-input-container>
 
             <!-- TIPO DE EVENTO -->
-            <mat-input-container floatPlaceholder="auto" flex="25">
+            <mat-input-container floatPlaceholder="auto" fxFlex="25">
               <mat-select placeholder="Tipo de Evento" name="tipoEvento" [compareWith]="compareByOptionId" [(ngModel)]="evento.tipoDeEvento" required>
                 <mat-option *ngFor="let tipoEvento of tipoEventos" [value]="tipoEvento">
                   {{ tipoEvento.nomeSingular }}
@@ -49,7 +49,7 @@
             </mat-input-container>
 
             <!-- CARGA HORARIA -->
-            <mat-input-container floatPlaceholder="auto" flex="20">
+            <mat-input-container floatPlaceholder="auto" fxFlex="20">
               <input matInput #cargaHoraria="ngModel" [(ngModel)]="evento.cargaHoraria" name="cargaHoraria" type="number" placeholder="Carga Horária Total do Evento"
                 required min="1" max="99999" pattern="^[1-9][0-9]*$">
               <mat-error [hidden]="cargaHoraria.valid || (cargaHoraria.pristine && !vform.submitted)">
@@ -75,13 +75,13 @@
           <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
 
             <!-- PUBLICO ALVO -->
-            <mat-input-container floatPlaceholder="auto" flex="50">
-              <input matInput [(ngModel)]="evento.local" name="local" type="text" placeholder="Local Principal / Cidades">
+            <mat-input-container floatPlaceholder="auto" fxFlex="50">
+              <input matInput [(ngModel)]="evento.public" name="publico" type="text" placeholder="Publico Alvo">
             </mat-input-container>
 
 
             <!-- LOCAL EVENTO -->
-            <mat-input-container floatPlaceholder="auto" flex="50">
+            <mat-input-container floatPlaceholder="auto" fxFlex="50">
               <input matInput [(ngModel)]="evento.local" name="local" type="text" placeholder="Local Principal / Cidades">
             </mat-input-container>
 

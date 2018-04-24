@@ -8,7 +8,8 @@ export class Evento {
     email?: string;
     descricao?: string;
     tipoDeEvento?: TipoEvento;
-    qtdAtividade?: string;
+    local?: string;
+    publico?: string;
     cargaHoraria?: string;
     inicioEvento?: Date ;
     fimEvento?: Date;
