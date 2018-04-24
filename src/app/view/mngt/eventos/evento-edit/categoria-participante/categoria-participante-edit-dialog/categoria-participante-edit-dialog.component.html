@@ -1,37 +1,41 @@
-<h3 matDialogTitle><mat-icon svgIcon="account-group" matListIcon style="margin-right:10px"></mat-icon>Editar Dados da Categoria Participante</h3>
+<h3 matDialogTitle>
+  <mat-icon svgIcon="account-group" matListIcon style="margin-right:10px"></mat-icon>Editar Dados da Categoria Participante
 
-<mat-divider></mat-divider>
+  <mat-divider></mat-divider>
+</h3>
+
 
 <!-- FORMULÁRIO -->
 <div layout="row" *ngIf="categoriaParticipanteEvento" flex>
-    <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+  <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
 
-        <!-- FORMULÁRIO -->
-        <div layout="row" layout-align="center start">
+    <div fxLayout="column">
+      <!-- FORMULÁRIO -->
+      <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
 
 
-          <!-- CATEGORIA PARTICIPANTE -->
-          <mat-form-field flex-gt-xs="35" flex="100" >
-            <mat-select placeholder="Categoria de Participante" name="categoriaParticipante" [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante">
-              <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante">
-                {{ categoriaParticipante.titulo }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-          <!-- VAGAS -->
-          <mat-form-field class="example-full-width" style="margin-left:2%" flex-gt-xs="10" flex="100">
-            <input matInput placeholder="Vagas" name="vagas" [(ngModel)]="categoriaParticipanteEvento.vagas">
-          </mat-form-field>
+        <!-- CATEGORIA PARTICIPANTE -->
+        <mat-input-container floatPlaceholder="auto" fxFlex="40">
+          <mat-select [compareWith]="compareByOptionId" placeholder="Categoria de Participante" name="categoriaParticipante" [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante">
+            <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante">
+              {{ categoriaParticipante.titulo }}
+            </mat-option>
+          </mat-select>
+        </mat-input-container>
+        <!-- VAGAS -->
+        <mat-input-container floatPlaceholder="auto" fxFlex="15">
+          <input matInput placeholder="Vagas" name="vagas" [(ngModel)]="categoriaParticipanteEvento.vagas">
+        </mat-input-container>
 
-            <mat-card-actions style="margin-left: 2%" flex-gt-xs="40" flex="100">
-              <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">INSERIR</button>
-              <a mat-button (click)="dialogRef.close()">CANCELAR</a>
-            </mat-card-actions>
-         
+        <mat-card-actions>
+          <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">ATUALIZAR</button>
+          <a mat-button (click)="dialogRef.close()">CANCELAR</a>
+        </mat-card-actions>
 
-        </div>
 
-      </form>
+      </div>
+    </div>
+  </form>
 
 </div>
 <!-- FIM FORM -->

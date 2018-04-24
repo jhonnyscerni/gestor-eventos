@@ -2,28 +2,30 @@
 
   <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="categoriaParticipanteEvento">
 
-    <mat-card-title>Reserva de Vagas por Categoria de Participantes</mat-card-title>
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Reserva de Vagas por Categoria de Participantes
+      </div>
+    </mat-card-title>
     <mat-divider></mat-divider>
     <mat-card-content>
 
       <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
 
         <!-- FORMULÁRIO -->
-        <div layout="row" layout-align="center start">
-
-
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
           <!-- CATEGORIA PARTICIPANTE -->
-          <mat-form-field flex-gt-xs="60" flex="100" style="margin-right: 10px">
+          <mat-input-container  floatPlaceholder="auto" fxFlex="40">
             <mat-select placeholder="Categoria de Participante" name="categoriaParticipante" [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante">
               <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante">
                 {{ categoriaParticipante.titulo }}
               </mat-option>
             </mat-select>
-          </mat-form-field>
+          </mat-input-container >
           <!-- VAGAS -->
-          <mat-form-field class="example-full-width" flex-gt-xs="10" flex="100">
+          <mat-input-container floatPlaceholder="auto" fxFlex="40">
             <input matInput placeholder="Vagas" name="vagas" [(ngModel)]="categoriaParticipanteEvento.vagas">
-          </mat-form-field>
+          </mat-input-container >
 
           <div layout="row" flex-gt-xs="25" flex="100">
             <mat-card-actions>
@@ -35,17 +37,16 @@
 
       </form>
 
-      <div layout="row" layout-align="center">
+      <div fxLayout="column">
         <td-data-table [data]="data" [columns]="configWidthColumns">
           <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
 
-            <button mat-button color="warn"  (click)="excluirCategoriaParticipanteEvento(row.id)">
-                <!-- <mat-icon svgIcon="delete" matListIcon></mat-icon> -->
-                <i class="material-icons">delete_forever</i>
+            <button mat-icon-button class="color-primary" matTooltip="Editar o Registro" matTooltipPosition="below" (click)="openDialogEditCategoriaParticipante(row.id)">
+              <i class="material-icons">mode_edit</i>
             </button>
-
-            <button mat-button (click)="openDialogEditCategoriaParticipante(row.id)">
-                <i class="material-icons">mode_edit</i>
+            <button mat-icon-button (click)="excluirCategoriaParticipanteEvento(row.id)" color="warn" matTooltip="Apagar o Registro"
+              matTooltipPosition="below">
+              <i class="material-icons">delete_forever</i>
             </button>
 
           </ng-template>

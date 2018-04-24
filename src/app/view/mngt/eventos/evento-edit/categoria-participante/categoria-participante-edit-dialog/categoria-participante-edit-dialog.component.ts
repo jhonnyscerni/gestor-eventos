@@ -4,6 +4,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MatSnackBar, MAT_DIALOG_DATA } from '@angular/material';
 import { duration } from 'moment';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CategoriaParticipante } from '../../../../../../domain/categoria-participante';
+import { CategoriaParticipanteService } from '../../../../../../service/categoria-participante.service';
 
 @Component({
   selector: 'app-categoria-participante-edit-dialog',
@@ -12,11 +14,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class CategoriaParticipanteEditDialogComponent implements OnInit {
 
+  categoriaParticipantes: CategoriaParticipante[] = [];
+
   idEvento: number;
 
   categoriaParticipanteEvento: CategoriaParticipanteEvento;
 
   constructor(
+    private categoriaParticipanteService: CategoriaParticipanteService,
     private router: Router,
     private route: ActivatedRoute,
     private categoriaParticipanteEventoService: CategoriaParticipanteEventoService,
@@ -29,14 +34,15 @@ export class CategoriaParticipanteEditDialogComponent implements OnInit {
   ngOnInit() {
     this.categoriaParticipanteEventoService.getCategoriaParticipanteEvento(this.data.idCategoriaParticipanteEvento)
       .subscribe(categoriaParticipanteEvento => {
-       // this.getCategoriaParticipantesEvento();
+        // this.getCategoriaParticipantesEvento();
         this.categoriaParticipanteEvento = categoriaParticipanteEvento;
       })
+    this.carregaCategoriaParticipantes();
   }
 
   onSubmit() {
 
-    this.categoriaParticipanteEventoService.salvar(this.categoriaParticipanteEvento, this.data.idEvento )
+    this.categoriaParticipanteEventoService.salvar(this.categoriaParticipanteEvento, this.data.idEvento)
       .subscribe(categoriaParticipanteEvento => {
         this.dialogRef.close(categoriaParticipanteEvento);
       },
@@ -45,5 +51,19 @@ export class CategoriaParticipanteEditDialogComponent implements OnInit {
         }
       )
   }
+
+
+  compareByOptionId(idFirst: CategoriaParticipante, idSecond: CategoriaParticipante): boolean {
+    return idFirst && idSecond && idFirst.id === idSecond.id;
+  }
+
+  /**
+ *Carregando CategoriaParticipante
+*/
+
+carregaCategoriaParticipantes() {
+  this.categoriaParticipanteService.getCategoriaParticipantes()
+    .subscribe(categoriaParticipantes => this.categoriaParticipantes = categoriaParticipantes);
+}
 
 }
