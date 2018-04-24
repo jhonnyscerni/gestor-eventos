@@ -15,17 +15,23 @@
         <!-- FORMULÁRIO -->
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
           <!-- CATEGORIA PARTICIPANTE -->
-          <mat-input-container  floatPlaceholder="auto" fxFlex="40">
-            <mat-select placeholder="Categoria de Participante" name="categoriaParticipante" [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante">
-              <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante">
+          <mat-input-container floatPlaceholder="auto" fxFlex="40">
+            <mat-select #catParticipanteEvento="ngModel" required placeholder="Categoria de Participante" name="categoriaParticipante" [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante">
+              <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante" >
                 {{ categoriaParticipante.titulo }}
               </mat-option>
             </mat-select>
-          </mat-input-container >
+            <mat-error [hidden]="catParticipanteEvento.valid || (catParticipanteEvento.pristine && !vform.submitted)">
+              O Categoria Participante do Evento é um campo obrigatório .
+            </mat-error>
+          </mat-input-container>
           <!-- VAGAS -->
           <mat-input-container floatPlaceholder="auto" fxFlex="40">
-            <input matInput placeholder="Vagas" name="vagas" [(ngModel)]="categoriaParticipanteEvento.vagas">
-          </mat-input-container >
+            <input matInput #vagas="ngModel" required placeholder="Vagas" name="vagas" [(ngModel)]="categoriaParticipanteEvento.vagas">
+            <mat-error [hidden]="vagas.valid || (vagas.pristine && !vform.submitted)">
+              Vagas é um campo obrigatório .
+            </mat-error>
+          </mat-input-container>
 
           <div layout="row" flex-gt-xs="25" flex="100">
             <mat-card-actions>

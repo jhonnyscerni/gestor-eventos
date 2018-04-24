@@ -16,15 +16,22 @@
 
         <!-- CATEGORIA PARTICIPANTE -->
         <mat-input-container floatPlaceholder="auto" fxFlex="40">
-          <mat-select [compareWith]="compareByOptionId" placeholder="Categoria de Participante" name="categoriaParticipante" [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante">
+          <mat-select #catParticipanteEvento="ngModel" [compareWith]="compareByOptionId" placeholder="Categoria de Participante" name="categoriaParticipante"
+            [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante" required>
             <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante">
               {{ categoriaParticipante.titulo }}
             </mat-option>
           </mat-select>
+          <mat-error [hidden]="catParticipanteEvento.valid || (catParticipanteEvento.pristine && !vform.submitted)">
+            O Categoria Participante do Evento é um campo obrigatório .
+          </mat-error>
         </mat-input-container>
         <!-- VAGAS -->
         <mat-input-container floatPlaceholder="auto" fxFlex="15">
-          <input matInput placeholder="Vagas" name="vagas" [(ngModel)]="categoriaParticipanteEvento.vagas">
+          <input matInput #vagas="ngModel" placeholder="Vagas" name="vagas" [(ngModel)]="categoriaParticipanteEvento.vagas" required>
+          <mat-error [hidden]="vagas.valid || (vagas.pristine && !vform.submitted)">
+            Vagas é um campo obrigatório .
+          </mat-error>
         </mat-input-container>
 
         <mat-card-actions>
