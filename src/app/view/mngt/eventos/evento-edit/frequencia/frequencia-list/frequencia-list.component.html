@@ -1,19 +1,26 @@
 <div main-content layout="row" layout-align="center start">
 
-  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="frequencia">
 
-    <mat-card-title>Lista de Frequencia</mat-card-title>
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Lista de Frequencia
+      </div>
+    </mat-card-title>
     <mat-divider></mat-divider>
     <mat-card-content>
 
-      <div layout="row" layout-align="center">
+      <div fxLayout="column">
         <td-data-table [data]="data" [columns]="configWidthColumns">
 
           <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
 
-            <button mat-button color="warn" (click)="excluirFrequenciaByEvento(row.id)">
+            <button mat-icon-button (click)="excluirFrequenciaByEvento(row.id)" color="warn" matTooltip="Apagar o Registro" matTooltipPosition="below">
               <i class="material-icons">delete_forever</i>
             </button>
+
+
+
           </ng-template>
 
         </td-data-table>

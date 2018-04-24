@@ -98,5 +98,12 @@ export class InscricaoEditComponent implements OnInit {
   }
 
 
+  compareByOptionId(idFirst: CategoriaParticipanteEvento, idSecond: CategoriaParticipanteEvento): boolean {
+    return idFirst && idSecond && idFirst.id === idSecond.id;
+  }
+
+  compareByOptionIdParticipante(idFirst: Participante, idSecond: Participante): boolean {
+    return idFirst && idSecond && idFirst.id === idSecond.id;
+  }
 
 }

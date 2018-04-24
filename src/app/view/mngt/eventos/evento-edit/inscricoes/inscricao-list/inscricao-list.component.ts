@@ -22,11 +22,11 @@ export class InscricaoListComponent implements OnInit {
 
   configWidthColumns: ITdDataTableColumn[] = [
     { name: 'id', label: '#', width: 40 },
-    { name: 'participante.nome', label: 'Participante', width: 180 },
-    { name: 'categoriaParticipanteEvento.categoriaParticipante.titulo', label: 'Categoria', width: 90 },
-    { name: 'dtInscricao', label: 'Dt. de Inscrição', width: 100, format: (value) => { return this.dateLayout(value) } },
-    { name: 'dtDeferimento', label: 'Dt. de Deferimento', width: 110, format: (value) => { return this.dateLayout(value) } },
-    { name: 'dtCertificado', label: 'Dt.do Certificado', width: 100, format: (value) => { return this.dateLayout(value) } },
+    { name: 'participante.nome', label: 'Participante', width: 250 },
+    { name: 'categoriaParticipanteEvento.categoriaParticipante.titulo', label: 'Categoria', width: 100 },
+    { name: 'dtInscricao', label: 'Dt. de Inscrição', width: 120, format: (value) => { return this.dateLayout(value) } },
+    { name: 'dtDeferimento', label: 'Dt. de Deferimento', width: 120, format: (value) => { return this.dateLayout(value) } },
+    { name: 'dtCertificado', label: 'Dt.do Certificado', width: 120, format: (value) => { return this.dateLayout(value) } },
     { name: 'codigoCertificado', label: 'Cod. Certificado', width: 100 },
     { name: 'acoes', label: 'Ações', width: 280 },
   ];

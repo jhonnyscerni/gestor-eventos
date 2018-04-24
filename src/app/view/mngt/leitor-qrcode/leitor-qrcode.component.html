@@ -25,13 +25,13 @@
 
 
         <div layout-wrap layout="row" layout-align="center">
-            <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-                <mat-card-title style="text-align: center">
-                    <span class="titulo-leitor-qrcode">
-                        <mat-icon svgIcon="qrcode-scan" matListIcon></mat-icon> Leitor de QR Code </span>
-                </mat-card-title>
-                <mat-divider></mat-divider>
+            <mat-card flex-gt-xs="40" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
 
+                <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+                    <div flex>
+                        <mat-icon svgIcon="qrcode-scan" matListIcon></mat-icon> Leitor de QR Code
+                    </div>
+                </mat-card-title>
             </mat-card>
         </div>
 

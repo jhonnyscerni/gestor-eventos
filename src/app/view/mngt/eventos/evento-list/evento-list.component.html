@@ -5,9 +5,9 @@
 
     <div layout-wrap layout="row" layout-align="center">
       <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-        <mat-card-title>
-          <span>Eventos Ativos na Gestão da EJE</span>
-        </mat-card-title>
+        <mat-card-content>
+          <span style="font-size: 20px">Eventos Ativos na Gestão da EJE</span>
+        </mat-card-content>
         <mat-divider></mat-divider>
         <mat-card-content>
           <mat-icon matPrefix>search</mat-icon>
@@ -17,32 +17,30 @@
         </mat-card-content>
       </mat-card>
     </div>
-    
+
     <div layout="column">
 
       <div layout layout="row" layout-align="center">
-        <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngFor="let evento of eventoPage.content"
-          style="padding-bottom:40px;">
-          <!-- <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div> -->
-          <mat-card-title>
-            <p mat-line>
-              <i class="material-icons">event</i> {{ evento?.nome }} </p>
+        <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngFor="let evento of eventoPage.content">
+
+          <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+            <div flex>
+              <i class="material-icons">event</i> {{ evento?.nome }}
+            </div>
           </mat-card-title>
           <mat-divider></mat-divider>
           <mat-card-header>
-            <mat-card-title>
+            <mat-card-content>
               <p mat-line>Inicio do Evento: {{ dateLayout(evento?.inicioEvento) }}</p>
               <p mat-line>Fim do Evento: {{ dateLayout(evento?.fimEvento) }}</p>
-            </mat-card-title>
+              <mat-divider></mat-divider>
+              <p>
+                {{ evento?.descricao }}
+              </p>
+            </mat-card-content>
           </mat-card-header>
           <!-- </mat-card-header> -->
-          <mat-card-content>
-            <p>
-              {{ evento?.descricao }}
-            </p>
-          </mat-card-content>
-          <div style="position:absolute; bottom:0; width:100%;">
+          <div>
             <mat-divider></mat-divider>
             <mat-card-actions>
               <div layout="row" layout-align="end center">

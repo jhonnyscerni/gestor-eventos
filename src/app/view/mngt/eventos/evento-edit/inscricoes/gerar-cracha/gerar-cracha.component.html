@@ -1,11 +1,16 @@
 <div main-content flex layout="column" style="height:100%">
 
+
     <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="inscricao">
 
-        <mat-card-title>Crachá - {{inscricao?.participante.nome}} </mat-card-title>
+        <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+            <div flex>
+                <mat-icon>list</mat-icon> Crachá - {{inscricao?.participante.nome}}
+            </div>
+        </mat-card-title>
         <mat-divider></mat-divider>
-
     </mat-card>
+
     <div layout="column">
 
         <div layout layout="row" layout-align="center">
@@ -20,12 +25,12 @@
                     <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
 
                         <div style="border: 1px solid #cecece; ">
-                            <mat-card-title>
+                            <mat-card-content>
                                 <div style="text-align: center">
                                     <img [routerLink]="['/']" src="/assets/imagens/logo_tre.png" style="width: 80%;margin-top: 20px; cursor: pointer;">
                                 </div>
-                            </mat-card-title>
-                            <mat-card-title>
+                            </mat-card-content>
+                            <mat-card-content>
                                 <p mat-line style="
                                             text-align: center;
                                             font-family: Arial, Helvetica, sans-serif;
@@ -40,7 +45,7 @@
 
                                 <ngx-qrcode style="text-align: center" [qrc-element-type]="elementType" [qrc-value]="value" qrc-class="aclass" qrc-errorCorrectionLevel="L">
                                 </ngx-qrcode>
-                            </mat-card-title>
+                            </mat-card-content>
                             <mat-card-content>
                                 <p mat-line style="
                                             text-align: center;

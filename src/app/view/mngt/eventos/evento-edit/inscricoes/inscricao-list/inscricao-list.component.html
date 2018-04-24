@@ -2,34 +2,31 @@
 
   <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
 
-    <mat-card-title>Lista de Inscrições do Evento</mat-card-title>
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Lista de Inscrições do Evento
+      </div>
+      <button mat-mini-fab class="fab-in-tittle" matTooltip="Adicionar um Novo Registro" matTooltipPosition="below" [routerLink]="['../inscricao/novo']">
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-card-title>
     <mat-divider></mat-divider>
     <mat-card-content>
 
-
-      <div layout="row" flex-gt-xs="25" flex="100">
-        <mat-card-actions>
-          <a mat-raised-button [routerLink]="['../inscricao/novo']">Novo</a>
-        </mat-card-actions>
-      </div>
-
-      <div layout="row" layout-align="center">
+      <div fxLayout="column">
         <td-data-table [data]="data" [columns]="configWidthColumns">
 
           <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
 
-            <button mat-button color="warn" (click)="excluirInscricaoByEvento(row.id)">
-              <!-- <mat-icon svgIcon="delete" matListIcon></mat-icon> -->
+            <button mat-icon-button class="color-primary" matTooltip="Editar Registro" matTooltipPosition="below" [routerLink]="['../inscricao/edit', row?.id]">
+              <i class="material-icons">mode_edit</i>
+            </button>
+            <button mat-icon-button (click)="excluirInscricaoByEvento(row.id)" color="warn" matTooltip="Apagar o Registro" matTooltipPosition="below">
               <i class="material-icons">delete_forever</i>
             </button>
-
-            <a mat-button [routerLink]="['../inscricao/edit', row?.id]">
-              <i class="material-icons">mode_edit</i>
-            </a>
-
-            <a mat-button [routerLink]="['../inscricao/gerar-cracha', row?.id]">
+            <button mat-icon-button class="color-primary" matTooltip="Gerar Crachá" matTooltipPosition="below" [routerLink]="['../inscricao/gerar-cracha', row?.id]">
               <i class="material-icons">portrait</i>
-            </a>
+            </button>
 
 
           </ng-template>

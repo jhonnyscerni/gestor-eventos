@@ -1,16 +1,20 @@
 <div main-content layout="row" layout-align="center start">
 
-  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="facilitador">
+    <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="facilitador">
 
-    <mat-card-title>Cadastro Facilitador </mat-card-title>
-    <mat-divider></mat-divider>
+        <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+          <div flex>
+            <mat-icon>list</mat-icon> Cadastro Facilitador 
+          </div>
+        </mat-card-title>
+        <mat-divider></mat-divider>
     <mat-card-content>
 
       <!-- FORMULÁRIO -->
       <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
 
         <!-- FORMULÁRIO -->
-        <div layout="column">
+        <div fxLayout="column">
 
           <!-- NOME -->
           <mat-input-container floatPlaceholder="auto" flex="100">
@@ -22,7 +26,7 @@
           </mat-input-container>
 
           <!-- TITULO DE ELEITOR -->
-          <mat-input-container floatPlaceholder="auto" flex="20">
+          <mat-input-container floatPlaceholder="auto" flex="100">
             <input matInput name="tituloEleitor" type="number" [(ngModel)]="facilitador.tituloEleitor" placeholder="Título de Eleitor">
           </mat-input-container>
           <br/>
@@ -43,7 +47,7 @@
           </mat-input-container>
 
           <!-- EMAIL -->
-          <mat-input-container floatPlaceholder="auto" flex="50">
+          <mat-input-container floatPlaceholder="auto" flex="100">
             <input matInput #email="ngModel" [(ngModel)]="facilitador.email" name="email" type="email" placeholder="Email do Facilitador"
               required pattern='\S+@\S+\.\S+'>
             <mat-error [hidden]="email.valid || (email.pristine && !vform.submitted)">

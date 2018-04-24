@@ -2,7 +2,11 @@
 
   <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="inscricao">
 
-    <mat-card-title>Cadastro de Inscricao </mat-card-title>
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Cadastro de Inscricao
+      </div>
+    </mat-card-title>
     <mat-divider></mat-divider>
     <mat-card-content>
 
@@ -10,28 +14,29 @@
       <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
 
         <!-- FORMULÁRIO -->
-        <div layout="column">
+        <div fxLayout="column">
 
           <!-- PARTICIPANTE -->
           <mat-form-field>
-            <mat-select placeholder="Participante" name="participante" [(ngModel)]="inscricao.participante" required>
+            <mat-select [compareWith]="compareByOptionIdParticipante" placeholder="Participante" name="participante" [(ngModel)]="inscricao.participante" required>
               <mat-option *ngFor="let participante of participantes" [value]="participante">
                 {{ participante.nome }}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-           <!-- CATEGORIA PARTICIPANTE EVENTO -->
-           <mat-form-field>
-              <mat-select placeholder="Categoria da Inscricao do Participante" name="categoriaParticipanteEvento" [(ngModel)]="inscricao.categoriaParticipanteEvento" required>
-                <mat-option *ngFor="let categoriaParticipanteEvento of categoriaParticipanteEventos" [value]="categoriaParticipanteEvento">
-                  {{ categoriaParticipanteEvento.categoriaParticipante.titulo }}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
+          <!-- CATEGORIA PARTICIPANTE EVENTO -->
+          <mat-form-field>
+            <mat-select [compareWith]="compareByOptionId" placeholder="Categoria da Inscricao do Participante" name="categoriaParticipanteEvento" [(ngModel)]="inscricao.categoriaParticipanteEvento"
+              required>
+              <mat-option *ngFor="let categoriaParticipanteEvento of categoriaParticipanteEventos" [value]="categoriaParticipanteEvento">
+                {{ categoriaParticipanteEvento.categoriaParticipante.titulo }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
 
           <!-- Data de Deferimento -->
-          <mat-input-container floatPlaceholder="auto" flex="50">
+          <mat-input-container floatPlaceholder="auto" flex="100">
             <label>
               Data de Deferimento:
               <br/>
@@ -43,7 +48,7 @@
           </mat-input-container>
 
           <!-- Data do Certificado -->
-          <mat-input-container floatPlaceholder="auto" flex="50">
+          <mat-input-container floatPlaceholder="auto" flex="100">
             <label>
               Data do Certificado:
               <br/>
@@ -76,7 +81,6 @@
         <div layout="column">
           <mat-card-actions>
             <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">SALVAR</button>
-            <a mat-button [routerLink]="['../../../inscricoes']">CANCELAR </a>
           </mat-card-actions>
         </div>
 
