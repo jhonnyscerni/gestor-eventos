@@ -1,8 +1,11 @@
 <div main-content layout="row" layout-align="center start">
 
   <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="evento">
-
-    <mat-card-title class="background-color-primary">Informações Gerais </mat-card-title>
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Informações Gerais
+      </div>
+    </mat-card-title>
     <mat-divider></mat-divider>
     <mat-card-content>
       <!-- FORMULÁRIO -->
@@ -41,7 +44,8 @@
 
             <!-- TIPO DE EVENTO -->
             <mat-input-container floatPlaceholder="auto" fxFlex="25">
-              <mat-select placeholder="Tipo de Evento" name="tipoEvento" [compareWith]="compareByOptionId" [(ngModel)]="evento.tipoDeEvento" required>
+              <mat-select placeholder="Tipo de Evento" name="tipoEvento" [compareWith]="compareByOptionId" [(ngModel)]="evento.tipoDeEvento"
+                required>
                 <mat-option *ngFor="let tipoEvento of tipoEventos" [value]="tipoEvento">
                   {{ tipoEvento.nomeSingular }}
                 </mat-option>
