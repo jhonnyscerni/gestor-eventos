@@ -8,8 +8,7 @@ const appRoutes: Routes = [
     path: '',
     component: MainLayoutComponent,
     children: [
-        { path: 'adm', loadChildren: './view/mngt/mngt.module#MngtModule'},
-        { path: '', loadChildren: './view/portal/portal.module#PortalModule'},
+        { path: '', loadChildren: './view/mngt/mngt.module#MngtModule'},
     ]
 }
 ];

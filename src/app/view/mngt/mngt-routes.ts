@@ -21,7 +21,7 @@ import { ParticipanteListComponent } from './participantes/participante-list/par
 const routes: Routes = [
     { path: 'qr-code', component: LeitorQrcodeComponent },
     {
-        path: "",
+        path: "adm",
         canActivate: [AuthGuard],
         data: {
             roles: ['admin'],
