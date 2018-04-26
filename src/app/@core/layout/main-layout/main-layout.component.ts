@@ -16,15 +16,9 @@ export class MainLayoutComponent implements OnInit{
       icon: 'dashboard',
     }
   ];
-
-  userInfo: any = { email: '', family_name: '', given_name: '', name: '', preferred_username: '', sub: '' };
-
   constructor(private _router: Router, private keycloakService: KeycloakService) { }
 
   ngOnInit(): void {
-    this.keycloakService.getLoadUserInfo().then(info=>{
-      this.userInfo = info;
-    });
   }
 
   logout(): void {
