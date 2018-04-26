@@ -75,6 +75,17 @@
             </mat-error>
           </mat-input-container>
 
+          <!-- DESCRIÇÃO -->
+          <mat-input-container floatPlaceholder="auto" flex="100">
+            <textarea matInput #conteudo="ngModel" placeholder="Conteudo" name="conteudo" [(ngModel)]="evento.conteudo" matTextareaAutosize
+              matAutosizeMinRows="3" matAutosizeMaxRows="5" required></textarea>
+            <mat-hint [hidden]="!conteudo.valid">A Conteudo do Evento aparecerá na página do Evento no Portal de Eventos e no email de aviso dos que assinaram
+              o Push.</mat-hint>
+            <mat-error [hidden]="conteudo.valid || (conteudo.pristine && !vform.submitted)">
+              Digite ao menos uma linha para o conteudo.
+            </mat-error>
+          </mat-input-container>
+
 
           <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
 

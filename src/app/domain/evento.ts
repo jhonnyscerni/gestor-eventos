@@ -7,6 +7,7 @@ export class Evento {
     sigla?: string;
     email?: string;
     descricao?: string;
+    conteudo?: string;
     tipoDeEvento?: TipoEvento;
     local?: string;
     publico?: string;
