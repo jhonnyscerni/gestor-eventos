@@ -5,17 +5,18 @@ import { MainLayoutComponent } from './@core/layout/main-layout/main-layout.comp
 
 const appRoutes: Routes = [
     {
-    path: '',
-    component: MainLayoutComponent,
-    children: [
-        { path: '', loadChildren: './view/mngt/mngt.module#MngtModule'},
-    ]
-}
+        path: '',
+        component: MainLayoutComponent,
+        children: [
+            { path: 'adm', loadChildren: './view/mngt/mngt.module#MngtModule' },
+            { path: '', loadChildren: './view/user/user.module#UserModule' },
+        ]
+    }
 ];
 
 @NgModule({
     imports: [
-        RouterModule.forRoot(appRoutes, {useHash: true})
+        RouterModule.forRoot(appRoutes, { useHash: true })
     ],
     exports: [
         RouterModule
