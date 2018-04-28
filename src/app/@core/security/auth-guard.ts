@@ -20,6 +20,10 @@ export class AuthGuard implements CanActivate {
             let routeMapping: RouteMapping = this.createRouteMappingFromData(route.data);
             let isAuthorizedRoute: boolean = false;
 
+            if(routeMapping.roles.length == 0){
+                isAuthorizedRoute = true;
+            }
+
             for (let role of routeMapping.roles) {
                 if (KeycloakService.hasResourceRoleAngular(role)) {
                     isAuthorizedRoute = true;
