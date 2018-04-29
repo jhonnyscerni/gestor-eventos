@@ -1,3 +1,4 @@
+import { CertificadosComponent } from './eventos/evento-edit/certificados/certificados.component';
 import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
 import { UnauthorizedComponent } from './../unauthorized/unauthorized.component';
 import { AuthGuardAdmin } from './../../@core/security/auth-guard-admin';
@@ -20,6 +21,7 @@ import { ParticipanteListComponent } from './participantes/participante-list/par
 
 const routes: Routes = [
     { path: 'qr-code', component: LeitorQrcodeComponent },
+    { path: 'certificados', component: CertificadosComponent },
     {
         path: "",
         canActivate: [AuthGuard],

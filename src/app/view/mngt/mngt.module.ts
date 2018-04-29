@@ -1,3 +1,4 @@
+import { CertificadosComponent } from './eventos/evento-edit/certificados/certificados.component';
 import { ParticipanteListComponent } from './participantes/participante-list/participante-list.component';
 import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
 import { FrequenciaListComponent } from './eventos/evento-edit/frequencia/frequencia-list/frequencia-list.component';
@@ -44,8 +45,8 @@ import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cra
 import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
 import { FrequenciaService } from '../../service/frequencia.service';
 import { UnauthorizedComponent } from '../unauthorized/unauthorized.component';
+import { CovalentTextEditorModule } from '../../../platform/text-editor';
 // import { OwlDateTimeModule, OWL_DATE_TIME_LOCALE, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
-
 
 export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meaning of these formats: https://momentjs.com/docs/#/displaying/format/
 
@@ -75,6 +76,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     NgxQRCodeModule,
     // ZXing scanner module
     ZXingScannerModule.forRoot(),
+    CovalentTextEditorModule,
   ],
   declarations: [
     EventoEditComponent,
@@ -92,6 +94,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     FrequenciaListComponent,
     ParticipanteEditComponent,
     ParticipanteListComponent,
+    CertificadosComponent,
     NavListLayoutComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,
