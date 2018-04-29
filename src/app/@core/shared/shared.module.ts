@@ -21,6 +21,7 @@ import { NgxChartsModule, } from '@swimlane/ngx-charts';
 import { KeycloakService } from '../security/keycloak.service';
 import { AuthGuardAdmin } from '../security/auth-guard-admin';
 import { AuthGuard } from '../security/auth-guard';
+import { CovalentTextEditorModule } from './text-editor/text-editor.module';
 
 const FLEX_LAYOUT_MODULES: any[] = [
   FlexLayoutModule,
@@ -56,7 +57,8 @@ const CHART_MODULES: any[] = [
     MATERIAL_MODULES,
     COVALENT_MODULES,
     CHART_MODULES,
-    FLEX_LAYOUT_MODULES
+    FLEX_LAYOUT_MODULES,
+    CovalentTextEditorModule,
   ],
   declarations: [
   ],
@@ -66,6 +68,7 @@ const CHART_MODULES: any[] = [
     COVALENT_MODULES,
     CHART_MODULES,
     FLEX_LAYOUT_MODULES,
+    CovalentTextEditorModule,
    
   ],
   providers:[
