@@ -15,13 +15,14 @@
 
         <!-- FORMULÁRIO -->
         <div fxLayout="column">
-      
+
           <div class="form-group">
-            <label for="post-body">Body</label>
-            <text-editor [elementId]="'post-body'" (onEditorKeyup)="onBodyTextEditorKeyUp($event)"></text-editor>
-          
+            <label for="ModeloCertificadoTexto">Texto para o certificado de participação no evento* </label>
+            <text-editor [elementId]="'ModeloCertificadoTexto'" (onEditorKeyup)="onBodyTextEditorKeyUp($event)">
+            </text-editor>
+
           </div>
-       
+
         </div>
 
         <div fxLayout="column">
