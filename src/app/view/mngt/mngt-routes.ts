@@ -1,3 +1,4 @@
+import { CertificadoParticipanteEditComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-edit/certificado-participante-edit.component';
 import { CertificadosComponent } from './eventos/evento-edit/certificados/certificados.component';
 import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
 import { UnauthorizedComponent } from './../unauthorized/unauthorized.component';
@@ -21,7 +22,6 @@ import { ParticipanteListComponent } from './participantes/participante-list/par
 
 const routes: Routes = [
     { path: 'qr-code', component: LeitorQrcodeComponent },
-    { path: 'certificados', component: CertificadosComponent },
     {
         path: "",
         canActivate: [AuthGuard],
@@ -50,6 +50,8 @@ const routes: Routes = [
                     { path: 'inscricao/gerar-cracha/:id', component: GerarCrachaComponent },
 
                     { path: 'frequencia', component: FrequenciaListComponent },
+
+                    { path: 'certificado/novo', component: CertificadoParticipanteEditComponent },
                 ]
             },
             {

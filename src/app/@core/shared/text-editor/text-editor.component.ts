@@ -28,7 +28,7 @@ const noop: any = () => {
 })
 export class TdTextEditorComponent implements AfterViewInit, ControlValueAccessor {
 
-  private _value: string = '';
+  private _value: string = "";
   private _simpleMDE: any;
   private _fromEditor: boolean = false;
 

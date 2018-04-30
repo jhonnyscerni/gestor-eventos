@@ -1,3 +1,5 @@
+import { CertificadoParticipanteEditComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-edit/certificado-participante-edit.component';
+import { CertificadoParticipanteComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante.component';
 import { CertificadosComponent } from './eventos/evento-edit/certificados/certificados.component';
 import { ParticipanteListComponent } from './participantes/participante-list/participante-list.component';
 import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
@@ -93,6 +95,8 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     ParticipanteEditComponent,
     ParticipanteListComponent,
     CertificadosComponent,
+    CertificadoParticipanteComponent,
+    CertificadoParticipanteEditComponent,
     NavListLayoutComponent,
     EventoMenuLateralComponent,
     NavViewLayoutComponent,

@@ -1,3 +1,35 @@
-<p>
-  certificado-participante-edit works!
-</p>
+<div main-content layout="row" layout-align="center start">
+
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> CRIAR MODELO DE CERTIFICADO DE PARTICIPANTES
+      </div>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <!-- FORMULÁRIO -->
+      <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+
+        <!-- FORMULÁRIO -->
+        <div fxLayout="column">
+
+          <td-text-editor></td-text-editor>
+
+        </div>
+
+        <div fxLayout="column">
+          <mat-card-actions>
+            <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">SALVAR</button>
+          </mat-card-actions>
+        </div>
+
+      </form>
+
+    </mat-card-content>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+</div>
