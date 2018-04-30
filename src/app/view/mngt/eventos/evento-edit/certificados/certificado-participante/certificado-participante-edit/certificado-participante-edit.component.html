@@ -15,9 +15,13 @@
 
         <!-- FORMULÁRIO -->
         <div fxLayout="column">
-
-          <td-text-editor></td-text-editor>
-
+      
+          <div class="form-group">
+            <label for="post-body">Body</label>
+            <text-editor [elementId]="'post-body'" (onEditorKeyup)="onBodyTextEditorKeyUp($event)"></text-editor>
+          
+          </div>
+       
         </div>
 
         <div fxLayout="column">

@@ -9,7 +9,15 @@ export class CertificadoParticipanteEditComponent implements OnInit {
 
   constructor() { }
 
+
+
   ngOnInit() {
+  }
+
+
+  onBodyTextEditorKeyUp(textValue) {
+
+    console.log("Text is change" , event)
   }
 
 }

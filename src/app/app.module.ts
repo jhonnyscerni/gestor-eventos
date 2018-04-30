@@ -19,7 +19,8 @@ registerLocaleData(localePt, 'pt-BR');
 @NgModule({
   declarations: [
     AppComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+
   ],
   imports: [
     AppRoutingModule,
