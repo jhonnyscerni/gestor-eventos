@@ -1,1 +1,0 @@
-## TdTextEditorComponent: td-text-editor
