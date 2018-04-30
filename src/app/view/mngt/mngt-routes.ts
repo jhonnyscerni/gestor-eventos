@@ -1,5 +1,5 @@
+import { CertificadoParticipanteDetailComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-detail/certificado-participante-detail.component';
 import { CertificadoParticipanteEditComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-edit/certificado-participante-edit.component';
-import { CertificadosComponent } from './eventos/evento-edit/certificados/certificados.component';
 import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
 import { UnauthorizedComponent } from './../unauthorized/unauthorized.component';
 import { AuthGuardAdmin } from './../../@core/security/auth-guard-admin';
@@ -52,6 +52,8 @@ const routes: Routes = [
                     { path: 'frequencia', component: FrequenciaListComponent },
 
                     { path: 'certificado/novo', component: CertificadoParticipanteEditComponent },
+                    { path: 'certificado/:id', component: CertificadoParticipanteDetailComponent },
+                    { path: 'certificado/edit/:id', component: CertificadoParticipanteEditComponent },
                 ]
             },
             {

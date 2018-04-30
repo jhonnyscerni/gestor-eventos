@@ -1,0 +1,56 @@
+<div main-content layout="row" layout-align="center start">
+
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Certificado
+      </div>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div fxLayout="column">
+        <div class="actions">
+          <ul>
+            <li>
+              <a mat-button class="cinza" href="#">Editar</a>
+            </li>
+            <li>
+              <a mat-button class="cinza" href="#" target="_blank">Imprimir teste</a>
+            </li>
+
+            <li>
+              <a mat-button href="#" id="ln_liberar_certificado" class="green">Liberar certificados agora</a>
+            </li>
+          </ul>
+        </div>
+        <div class="page-preview">
+          <div id="page-certificado">
+            <div class="codigoValidacao">
+              <p style="text-align: right; font-size: 11px; padding-right: 50px;margin-top: 3px;">
+                Acesse
+                <b>https://gestor-eventos/validar-certificado</b> para verificar se este certificado é válido.
+                <b>Código de validação:</b> XXXXXX </p>
+            </div>
+
+
+            <div class="texto" [innerHTML]="certificado.conteudo | safeHtml"></div>
+          </div>
+        </div>
+
+        <div class="info">
+          <strong>ATENÇÃO:</strong>
+
+          <p>1. Os certificados estarão disponíveis através do link: xxxxxx/</p>
+
+          <p>2. Apenas os participantes que foram marcados como presentes (no credenciamento) poderão imprimir os seus certificados</p>
+
+          <p>3. O formato apresentado nessa imagem pode estar diferente do PDF gerado, sugerimos que você faça um teste no link
+            "Imprimir teste"</p>
+
+        </div>
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

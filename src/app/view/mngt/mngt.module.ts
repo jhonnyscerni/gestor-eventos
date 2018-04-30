@@ -1,6 +1,7 @@
+import { SafeHtmlPipe } from './../../@core/pipe/safe-html.pipe';
+import { CertificadoService } from './../../service/certificado.service';
+import { CertificadoParticipanteDetailComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-detail/certificado-participante-detail.component';
 import { CertificadoParticipanteEditComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-edit/certificado-participante-edit.component';
-import { CertificadoParticipanteComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante.component';
-import { CertificadosComponent } from './eventos/evento-edit/certificados/certificados.component';
 import { ParticipanteListComponent } from './participantes/participante-list/participante-list.component';
 import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
 import { FrequenciaListComponent } from './eventos/evento-edit/frequencia/frequencia-list/frequencia-list.component';
@@ -96,11 +97,11 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     FrequenciaListComponent,
     ParticipanteEditComponent,
     ParticipanteListComponent,
-    CertificadosComponent,
-    CertificadoParticipanteComponent,
     CertificadoParticipanteEditComponent,
+    CertificadoParticipanteDetailComponent,
     NavListLayoutComponent,
     EventoMenuLateralComponent,
+    SafeHtmlPipe,
     NavViewLayoutComponent,
     MenuLayoutComponent,
     UnauthorizedComponent,
@@ -116,6 +117,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     InscricaoService,
     ParticipanteService,
     FrequenciaService,
+    CertificadoService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
 
