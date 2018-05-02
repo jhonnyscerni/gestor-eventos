@@ -1,3 +1,4 @@
+import { GerarCertificadoComponent } from './eventos/evento-edit/inscricoes/gerar-certificado/gerar-certificado.component';
 import { CertificadoParticipanteDetailComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-detail/certificado-participante-detail.component';
 import { CertificadoParticipanteEditComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-edit/certificado-participante-edit.component';
 import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
                     { path: 'inscricao/edit/:id', component: InscricaoEditComponent },
 
                     { path: 'inscricao/gerar-cracha/:id', component: GerarCrachaComponent },
+                    { path: 'inscricao/gerar-certificado/:id', component: GerarCertificadoComponent },
 
                     { path: 'frequencia', component: FrequenciaListComponent },
 

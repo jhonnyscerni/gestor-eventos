@@ -1,0 +1,45 @@
+<div main-content layout="row" layout-align="center start">
+
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Certificado
+      </div>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div fxLayout="column">
+        <div class="page-preview">
+          <div id="page-certificado">
+            <div class="codigoValidacao">
+              <p style="text-align: right; font-size: 11px; padding-right: 50px;margin-top: 3px;">
+                Acesse
+                <b>https://gestor-eventos/validar-certificado</b> para verificar se este certificado é válido.
+                <b>Código de validação:</b> {{inscricao?.codigoQrCode}} </p>
+            </div>
+
+            <div class="texto">
+
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p style="text-align:center">
+                <span style="font-size:24pt">CERTIFICADO</span>
+              </p>
+              <p>&nbsp;</p>
+              <p>&nbsp;</p>
+              <p>
+                <span style="font-size:20pt">Certificamos que {{inscricao?.participante?.nome}} participou do(a) {{inscricao?.evento?.nome}} em {{inscricao?.evento?.local}}, durante o per&iacute;odo de {{inscricao?.evento?.inicioEvento}}
+                  a {{inscricao?.evento?.fimEvento}}, com carga hor&aacute;ria de {{inscricao?.evento?.cargaHoraria}} hora(s).</span>
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

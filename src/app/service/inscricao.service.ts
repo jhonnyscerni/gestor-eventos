@@ -27,6 +27,11 @@ export class InscricaoService {
         .map(res => res.json());
     }
 
+    getCertificadoByInscricaoByParticpanteByEvento(idInscricao: number): Observable<Inscricao> {
+        return this.http.get(`${this.url}/gerar-certificado/${idInscricao}`)
+        .map(res => res.json());
+    }
+
     getInscricao(idInscricao: number): Observable<Inscricao> {
         return this.http.get(`${this.url}/${idInscricao}`).map((res: any)  => {
 

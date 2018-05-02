@@ -1,5 +1,6 @@
 
 import { TipoEvento } from "./tipo-evento";
+import { Inscricao } from "./inscricao";
 
 export class Evento {
     id?: number;
@@ -16,5 +17,6 @@ export class Evento {
     fimEvento?: Date;
     inicioInscricao?: Date;
     fimInscricao?: Date;
+    inscricoes?: Inscricao[];
 
 }
