@@ -41,15 +41,15 @@ const routes: Routes = [
                     { path: 'vagas', component: CategoriaParticipanteComponent },
 
                     { path: 'facilitadores', component: FacilitadorListComponent },
-                    { path: 'facilitador/novo', component: FacilitadorEditComponent },
-                    { path: 'facilitador/edit/:id', component: FacilitadorEditComponent },
+                    { path: 'facilitadores/novo', component: FacilitadorEditComponent },
+                    { path: 'facilitadores/edit/:id', component: FacilitadorEditComponent },
 
                     { path: 'inscricoes', component: InscricaoListComponent },
-                    { path: 'inscricao/novo', component: InscricaoEditComponent },
-                    { path: 'inscricao/edit/:id', component: InscricaoEditComponent },
+                    { path: 'inscricoes/novo', component: InscricaoEditComponent },
+                    { path: 'inscricoes/edit/:id', component: InscricaoEditComponent },
 
-                    { path: 'inscricao/gerar-cracha/:id', component: GerarCrachaComponent },
-                    { path: 'inscricao/gerar-certificado/:id', component: GerarCertificadoComponent },
+                    { path: 'inscricoes/gerar-cracha/:id', component: GerarCrachaComponent },
+                    { path: 'inscricoes/gerar-certificado/:id', component: GerarCertificadoComponent },
 
                     { path: 'frequencia', component: FrequenciaListComponent },
 
