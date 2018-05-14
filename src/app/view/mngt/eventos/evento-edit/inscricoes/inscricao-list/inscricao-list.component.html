@@ -6,7 +6,7 @@
       <div flex>
         <mat-icon>list</mat-icon> Lista de Inscrições do Evento
       </div>
-      <button mat-mini-fab class="fab-in-tittle" matTooltip="Adicionar um Novo Registro" matTooltipPosition="below" [routerLink]="['../inscricao/novo']">
+      <button mat-mini-fab class="fab-in-tittle" matTooltip="Adicionar um Novo Registro" matTooltipPosition="below" [routerLink]="['novo']">
         <mat-icon>add</mat-icon>
       </button>
     </mat-card-title>
@@ -18,17 +18,17 @@
 
           <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
 
-            <button mat-icon-button class="color-primary" matTooltip="Editar Registro" matTooltipPosition="below" [routerLink]="['../inscricao/edit', row?.id]">
+            <button mat-icon-button class="color-primary" matTooltip="Editar Registro" matTooltipPosition="below" [routerLink]="['edit', row?.id]">
               <i class="material-icons">mode_edit</i>
             </button>
             <button mat-icon-button (click)="excluirInscricaoByEvento(row.id)" color="warn" matTooltip="Apagar o Registro" matTooltipPosition="below">
               <i class="material-icons">delete_forever</i>
             </button>
-            <button mat-icon-button class="color-primary" matTooltip="Gerar Crachá" matTooltipPosition="below" [routerLink]="['../inscricao/gerar-cracha', row?.id]">
+            <button mat-icon-button class="color-primary" matTooltip="Gerar Crachá" matTooltipPosition="below" [routerLink]="['gerar-cracha', row?.id]">
               <i class="material-icons">portrait</i>
             </button>
 
-            <button mat-icon-button class="color-primary" matTooltip="Gerar Certificado" matTooltipPosition="below" [routerLink]="['../inscricao/gerar-certificado', row?.id]">
+            <button mat-icon-button class="color-primary" matTooltip="Gerar Certificado" matTooltipPosition="below" [routerLink]="['gerar-certificado', row?.id]">
               <i class="material-icons">image</i>
             </button>
 
