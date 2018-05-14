@@ -1,13 +1,13 @@
 <div main-content layout="row" layout-align="center start">
 
-    <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="facilitador">
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="facilitador">
 
-        <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
-          <div flex>
-            <mat-icon>list</mat-icon> Cadastro Facilitador 
-          </div>
-        </mat-card-title>
-        <mat-divider></mat-divider>
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Cadastro Facilitador
+      </div>
+    </mat-card-title>
+    <mat-divider></mat-divider>
     <mat-card-content>
 
       <!-- FORMULÁRIO -->
@@ -60,6 +60,9 @@
         <div fxLayout="column">
           <mat-card-actions>
             <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">SALVAR</button>
+
+            <a mat-button color="warn" [routerLink]="['/adm/evento/edit', idEvento, 'facilitadores']">CANCELAR</a>
+
           </mat-card-actions>
         </div>
 
