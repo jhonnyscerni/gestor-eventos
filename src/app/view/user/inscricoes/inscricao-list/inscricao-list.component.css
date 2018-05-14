@@ -1,0 +1,51 @@
+.left-menu-header {
+    min-width: 257px;    
+}
+
+.custom-search-input {
+    float: left;
+    width: 85%;
+    margin-left: 10px;
+    margin-top: -20px;
+    overflow: hidden;
+    color: red;
+    flex-wrap: nowrap;
+}
+
+.mat-card-title {
+    background: #FFFFFF;
+    color: black;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding-bottom: 10px;
+}
+
+.card-evento {
+    border-radius: 5px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    width: calc(50% - 10px);
+    float: left;
+}
+
+.card-evento-data {
+    background-color: #dfe4f0;
+    color: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    text-transform: uppercase;
+}
+
