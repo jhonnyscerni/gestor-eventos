@@ -1,0 +1,49 @@
+.fab-in-tittle {
+    margin-top: -4px; 
+}
+.fab-in-tittle .mat-icon {
+    margin-top: 0px !important;
+}
+
+.list-card {
+    margin-bottom: 0px !important;
+}
+.list-card-field {
+    padding: 0px;
+    @media (max-width: 700px) {
+       // margin-top: 3px;
+    }
+}
+.list-item-resp {
+    @media (max-width: 700px) {
+       // height: 66px;
+    }
+}
+
+.link {
+    /* tira o mouse de drag-and-drop e coloca o ponteiro de link no título do card */
+    cursor: pointer;
+}
+
+.link:hover {
+    /* deixa o texto do link com linha em baixo quando o usuário passa o mouse em cima */
+    text-decoration: underline;
+}
+
+.mat-card-content {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 0px !important;
+    padding-bottom: 5px !important;
+}
+
+
+.mat-card-subtitle {
+    margin-top: 5px !important;
+    margin-left: 0px !important;
+    padding-left: 0px !important;
+}
+
+.fullwidth {
+    width: 100%;
+}

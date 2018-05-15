@@ -11,52 +11,99 @@
       </button>
     </mat-card-title>
     <mat-divider></mat-divider>
+
+
     <mat-card-content>
 
       <div fxLayout="column">
 
         <form autocomplete="off" (ngSubmit)="doSearch()">
-          <div class="row">
-            <div class="col-sm-12 text-center">
 
-              <input type="text" name="participante.nome" [(ngModel)]="filtro.participante.nome" placeholder="Nome">
+          <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
 
-              <input type="text" name="participante.nomeCracha" [(ngModel)]="filtro.participante.nomeCracha" placeholder="Nome Cracha">
+            <!-- NOME -->
+            <mat-input-container floatPlaceholder="auto" fxFlex="25">
+              <input matInput [(ngModel)]="filtro.participante.nome" name="participante.nome" type="text" placeholder="Nome do Participante">
+            </mat-input-container>
 
-              <input type="text" name="participante.cpf" [(ngModel)]="filtro.participante.cpf" placeholder="CPF">
+            <!-- NOME CRACHA -->
+            <mat-input-container floatPlaceholder="auto" fxFlex="25">
+              <input matInput [(ngModel)]="filtro.participante.nomeCracha" name="participante.nomeCracha" type="text" placeholder="Nome do Cracha">
+            </mat-input-container>
 
-              <button name="button" type="submit" class="button-icon">
-                <span>
-                  <i class="fa fa-search icon-search"></i>
-                  <div class="button-icon--text">Pesquisar</div>
-                </span>
+            <!-- CPF -->
+            <mat-input-container floatPlaceholder="auto" fxFlex="25">
+              <input matInput [(ngModel)]="filtro.participante.cpf" name="participante.cpf" type="text" placeholder="Cpf">
+            </mat-input-container>
 
-              </button>
-            </div>
+            <button mat-button mat-raised-button color="primary" type="submit" class="button-icon">
+              <span>
+                <i class="fa fa-search icon-search"></i>
+                <div class="button-icon--text">Pesquisar</div>
+              </span>
+
+            </button>
+
           </div>
         </form>
 
+        <mat-list role="list">
+          <mat-list-item *ngIf="this.inscricaoPage.content.length > 0" role="listitem">
+            <div fxLayout="row" fxLayoutGap="20px" class="fullwidth">
+              <div fxFlex="90" class="fullwidth" fxLayout.xs="column" fxLayoutGap.xs="0px">
+                <div fxFlex="25">
+                  <b>Nome</b>
+                </div>
+                <div fxFlex="25" hide-xs>
+                  <b>Nome Cracha</b>
+                </div>
+                <div fxFlex="40" hide-xs>
+                  <b>E-mail</b>
+                </div>
+                <div fxFlex="10" hide-xs class="inline-text-center">
+                  <b>CPF</b>
+                </div>
 
-        <div class="row">
-          <div class="col-xs-12 col-sm-4" *ngFor="let inscricao of inscricaoPage.content">
-            <div class="single-card">
-              <div class="card-photo">
               </div>
-              <div class="card-content">
-                <h3>
-                  {{inscricao?.participante?.nome}}
-                </h3>
-                <div>{{inscricao?.participante?.nomeCracha}}</div>
-                <div>{{inscricao?.participante?.cpf}}</div>
-                <hr/>
-                <hr/>
+              <div fxFlex="10" class="fullwidth" fxLayoutAlign="center center">
+                <span style="text-align: center;">
+                  <b>Ações</b>
+                </span>
               </div>
             </div>
+          </mat-list-item>
+          <mat-list-item *ngIf="this.inscricaoPage.content.length <= 0" role="listitem" fxLayoutAlign="center center">
+            <span>Ainda não há itens a serem exibidos nesta lista.</span>
+          </mat-list-item>
+          <mat-divider *ngIf="this.inscricaoPage.content.length > 0"></mat-divider>
+          <div fxLayout="column" *ngFor="let item of inscricaoPage.content">
+            <mat-list-item role="listitem" class="list-item-resp">
+              <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
+                <div fxFlex="90" fxLayout.xs="column" fxLayoutGap.xs="0px" [routerLink]="['./' + item?.id]" fxLayoutAlign="center center"
+                  fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp">
+                  <div fxFlex="25" class="list-card-field">{{item?.participante?.nome}}</div>
+                  <div fxFlex="25" class="list-card-field" hide-xs>{{item?.participante?.nomeCracha}}</div>
+                  <div fxFlex="40" class="list-card-field" hide-xs>{{item?.participante?.email}}</div>
+                  <div fxFlex="10" class="list-card-field text-center" hide-xs>{{item?.participante?.cpf}}</div>
+                </div>
+                <div fxFlex="10" class="fullwidth" fxLayoutAlign="center center">
+                  <button mat-icon-button class="color-primary" matTooltip="Editar o Registro" matTooltipPosition="below" [routerLink]="['edit', item?.id]">
+                    <mat-icon>edit</mat-icon>
+                  </button>
+                  <button mat-icon-button (click)="excluirInscricaoByEvento(item?.id)" color="warn" matTooltip="Apagar o Registro" matTooltipPosition="below">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
           </div>
-        </div>
-      </div>
+        </mat-list>
 
+
+      </div>
     </mat-card-content>
+
     <mat-card-footer>
     </mat-card-footer>
   </mat-card>
