@@ -1,9 +1,11 @@
 import { Inscricao } from './../domain/inscricao';
 import { Observable } from 'rxjs/Rx';
-import { Http } from '@angular/http';
+import { Http, URLSearchParams } from '@angular/http';
 import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { DateTimeService } from '../@core/util/date-time.service';
+import { InscricaoFiltro } from '../domain/inscricao-filtro';
+import { Page } from '../@core/model/page';
 
 @Injectable()
 export class InscricaoService {
@@ -17,7 +19,7 @@ export class InscricaoService {
         private http: Http
     ) { }
 
-    getInscricoesByEvento(idEvento: number): Observable<Inscricao[]> {
+    getInscricoesByEvento(idEvento: number): Observable<Page<Inscricao>> {
         return this.http.get(`${environment.urlbase}/eventos/${idEvento}/inscricoes`)
             .map(res => res.json());
     }
@@ -70,5 +72,26 @@ export class InscricaoService {
           }
         }
       }
+
+
+      pesquisa(idEvento: number, filtro: InscricaoFiltro): Observable<Page<Inscricao>> {
+
+        const params = new URLSearchParams();
+    
+        if(filtro.participante.nome) {
+          params.set('participante.nome', filtro.participante.nome);
+        }
+
+        if(filtro.participante.nomeCracha) {
+            params.set('participante.nomeCracha', filtro.participante.nomeCracha);
+          }
+    
+        if(filtro.participante.cpf) {
+          params.set('participante.cpf', filtro.participante.cpf);
+        }
+        return this.http.get(`${environment.urlbase}/eventos/${idEvento}/inscricoes`, {search: params}).map(res => res.json());
+     
+      }
+
 
 }

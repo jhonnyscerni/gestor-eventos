@@ -8,6 +8,8 @@ import { MatSnackBar } from '@angular/material';
 import { Inscricao } from '../../../../../../domain/inscricao';
 
 import * as Moment from 'moment'; /*  biblioteca de formatação de data/hora */
+import { InscricaoFiltro } from '../../../../../../domain/inscricao-filtro';
+import { Page } from '../../../../../../@core/model/page';
 
 @Component({
   selector: 'app-inscricao-list',
@@ -16,26 +18,16 @@ import * as Moment from 'moment'; /*  biblioteca de formatação de data/hora */
 })
 export class InscricaoListComponent implements OnInit {
 
+  inscricaoPage: Page<Inscricao> = new Page<Inscricao>();
+
+  filtro = new InscricaoFiltro();
+
   idEvento: number;
 
   inscricao: Inscricao = new Inscricao();
 
-  configWidthColumns: ITdDataTableColumn[] = [
-    { name: 'id', label: '#', width: 40 },
-    { name: 'participante.nome', label: 'Participante', width: 250 },
-    { name: 'categoriaParticipanteEvento.categoriaParticipante.titulo', label: 'Categoria', width: 100 },
-    { name: 'dtInscricao', label: 'Dt. de Inscrição', width: 120, format: (value) => { return this.dateLayout(value) } },
-    { name: 'dtDeferimento', label: 'Dt. de Deferimento', width: 120, format: (value) => { return this.dateLayout(value) } },
-    { name: 'dtCertificado', label: 'Dt.do Certificado', width: 120, format: (value) => { return this.dateLayout(value) } },
-    { name: 'codigoCertificado', label: 'Cod. Certificado', width: 100 },
-    { name: 'acoes', label: 'Ações', width: 280 },
-  ];
-
-  data = [];
-
-
   constructor(
-    private inscricaoServive: InscricaoService,
+    private inscricaoService: InscricaoService,
     private route: ActivatedRoute,
     private router: Router,
     private title: Title,
@@ -54,9 +46,17 @@ export class InscricaoListComponent implements OnInit {
   }
 
   getInscricoesByEvento() {
-    this.inscricaoServive.getInscricoesByEvento(this.idEvento).subscribe(
-      data => this.data = data
+    this.inscricaoService.getInscricoesByEvento(this.idEvento).subscribe(
+      page => {
+        this.inscricaoPage = page;
+      }
     );
+  }
+
+  doSearch() {
+    this.inscricaoService.pesquisa(this.idEvento, this.filtro).subscribe(page => {
+      this.inscricaoPage = page;
+    })
   }
 
   excluirInscricaoByEvento(id: number) {
@@ -68,7 +68,7 @@ export class InscricaoListComponent implements OnInit {
       acceptButton: 'Sim',
     }).afterClosed().subscribe((aceitou: boolean) => {
       if (aceitou) {
-        this.inscricaoServive.excluirInscricaoByEvento(id)
+        this.inscricaoService.excluirInscricaoByEvento(id)
           .subscribe(() => {
             this.getInscricoesByEvento();
           })
