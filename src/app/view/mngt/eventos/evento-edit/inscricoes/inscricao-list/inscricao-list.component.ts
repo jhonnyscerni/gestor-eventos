@@ -10,6 +10,9 @@ import { Inscricao } from '../../../../../../domain/inscricao';
 import * as Moment from 'moment'; /*  biblioteca de formatação de data/hora */
 import { InscricaoFiltro } from '../../../../../../domain/inscricao-filtro';
 import { Page } from '../../../../../../@core/model/page';
+import { CategoriaParticipanteEventoService } from '../../../../../../service/categoria-participante-evento.service';
+import { CategoriaParticipante } from '../../../../../../domain/categoria-participante';
+import { CategoriaParticipanteEvento } from '../../../../../../domain/categoria-participante-evento';
 
 @Component({
   selector: 'app-inscricao-list',
@@ -26,8 +29,11 @@ export class InscricaoListComponent implements OnInit {
 
   inscricao: Inscricao = new Inscricao();
 
+  categoriasParticipanteEvento: CategoriaParticipanteEvento[] = [];
+
   constructor(
     private inscricaoService: InscricaoService,
+    private categoriaParticipanteEventoService: CategoriaParticipanteEventoService,
     private route: ActivatedRoute,
     private router: Router,
     private title: Title,
@@ -41,8 +47,14 @@ export class InscricaoListComponent implements OnInit {
       this.idEvento = param['id'];
       console.log(`idEvento na area de Inscricoes:` + this.idEvento);
       this.getInscricoesByEvento();
+      this.getCategoriaParticipantesEvento();
       this.inscricao.evento.id = this.idEvento;
     })
+  }
+
+  getCategoriaParticipantesEvento() {
+    this.categoriaParticipanteEventoService.getCategoriaParticipantesEventoByEvento(this.idEvento)
+      .subscribe(categoriasParticipanteEvento => this.categoriasParticipanteEvento = categoriasParticipanteEvento);
   }
 
   getInscricoesByEvento() {

@@ -10,6 +10,7 @@
 }
 .list-card-field {
     padding: 0px;
+    margin-top: 5px;
     @media (max-width: 700px) {
        // margin-top: 3px;
     }
@@ -46,4 +47,18 @@
 
 .fullwidth {
     width: 100%;
+}
+
+.mat-list .mat-list-item, .mat-nav-list .mat-list-item, .mat-selection-list .mat-list-item {
+    font-size: 13px;
+}
+
+.titulo-pesquisa {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mat-list {
+
+    padding-bottom: 20px;
 }

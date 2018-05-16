@@ -19,7 +19,18 @@
 
         <form autocomplete="off" (ngSubmit)="doSearch()">
 
+          <div class="titulo-pesquisa">
+            <h2>Pesquisa por ...</h2>
+
+            <mat-divider></mat-divider>
+          </div>
+
           <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
+
+            <!-- CPF -->
+            <mat-input-container floatPlaceholder="auto" fxFlex="15">
+              <input matInput [(ngModel)]="filtro.participante.cpf" name="participante.cpf" type="text" placeholder="Cpf">
+            </mat-input-container>
 
             <!-- NOME -->
             <mat-input-container floatPlaceholder="auto" fxFlex="25">
@@ -27,22 +38,33 @@
             </mat-input-container>
 
             <!-- NOME CRACHA -->
-            <mat-input-container floatPlaceholder="auto" fxFlex="25">
+            <mat-input-container floatPlaceholder="auto" fxFlex="20">
               <input matInput [(ngModel)]="filtro.participante.nomeCracha" name="participante.nomeCracha" type="text" placeholder="Nome do Cracha">
             </mat-input-container>
 
-            <!-- CPF -->
-            <mat-input-container floatPlaceholder="auto" fxFlex="25">
-              <input matInput [(ngModel)]="filtro.participante.cpf" name="participante.cpf" type="text" placeholder="Cpf">
+            <!-- CATEGORIA -->
+            <!-- CATEGORIA PARTICIPANTE -->
+            <mat-input-container floatPlaceholder="auto" fxFlex="20">
+              <mat-select placeholder="Categoria " name="categoriasParticipanteEvento" [(ngModel)]="filtro.categoriaParticipante.titulo">
+                <mat-option [value]="">
+                  -- Todas as Categorias --
+                </mat-option>
+
+                <mat-option *ngFor="let categoriaParticipanteEvento of categoriasParticipanteEvento" [value]="categoriaParticipanteEvento.categoriaParticipante.titulo">
+                  {{ categoriaParticipanteEvento.categoriaParticipante.titulo }}
+                </mat-option>
+              </mat-select>
             </mat-input-container>
 
-            <button mat-button mat-raised-button color="primary" type="submit" class="button-icon">
-              <span>
-                <i class="fa fa-search icon-search"></i>
-                <div class="button-icon--text">Pesquisar</div>
-              </span>
-
-            </button>
+            <div fxLayout="column">
+              <mat-card-actions>
+                <button mat-button mat-raised-button color="primary" type="submit" class="button-icon">
+                  <span>
+                    <div class="button-icon--text">Pesquisar</div>
+                  </span>
+                </button>
+              </mat-card-actions>
+            </div>
 
           </div>
         </form>
@@ -50,22 +72,42 @@
         <mat-list role="list">
           <mat-list-item *ngIf="this.inscricaoPage.content.length > 0" role="listitem">
             <div fxLayout="row" fxLayoutGap="20px" class="fullwidth">
-              <div fxFlex="90" class="fullwidth" fxLayout.xs="column" fxLayoutGap.xs="0px">
-                <div fxFlex="25">
+              <div fxFlex="100" class="fullwidth" fxLayout.xs="column" fxLayoutGap.xs="0px">
+
+                <div fxFlex="10" hide-xs>
+                  <b>Cpf</b>
+                </div>
+
+                <div fxFlex="20">
                   <b>Nome</b>
                 </div>
-                <div fxFlex="25" hide-xs>
-                  <b>Nome Cracha</b>
-                </div>
-                <div fxFlex="40" hide-xs>
+
+                <div fxFlex="15" hide-xs>
                   <b>E-mail</b>
                 </div>
-                <div fxFlex="10" hide-xs class="inline-text-center">
-                  <b>CPF</b>
+
+                <div fxFlex="10" hide-xs>
+                  <b>Crachá</b>
+                </div>
+
+                <div fxFlex="10" hide-xs>
+                  <b>Categoria</b>
+                </div>
+
+                <div fxFlex="10" hide-xs>
+                  <b>Situação?</b>
+                </div>
+
+                <div fxFlex="10" hide-xs>
+                  <b>Orgão</b>
+                </div>
+
+                <div fxFlex="10" hide-xs>
+                  <b>Inscrição</b>
                 </div>
 
               </div>
-              <div fxFlex="10" class="fullwidth" fxLayoutAlign="center center">
+              <div fxFlex="15" class="fullwidth" fxLayoutAlign="center center">
                 <span style="text-align: center;">
                   <b>Ações</b>
                 </span>
@@ -79,19 +121,31 @@
           <div fxLayout="column" *ngFor="let item of inscricaoPage.content">
             <mat-list-item role="listitem" class="list-item-resp">
               <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
-                <div fxFlex="90" fxLayout.xs="column" fxLayoutGap.xs="0px" [routerLink]="['./' + item?.id]" fxLayoutAlign="center center"
-                  fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp">
-                  <div fxFlex="25" class="list-card-field">{{item?.participante?.nome}}</div>
-                  <div fxFlex="25" class="list-card-field" hide-xs>{{item?.participante?.nomeCracha}}</div>
-                  <div fxFlex="40" class="list-card-field" hide-xs>{{item?.participante?.email}}</div>
-                  <div fxFlex="10" class="list-card-field text-center" hide-xs>{{item?.participante?.cpf}}</div>
+                <div fxFlex="100" fxLayout.xs="column" fxLayoutGap.xs="0px" [routerLink]="['./' + item?.id]" fxLayoutAlign.xs="center start"
+                  class="fullwidth cursor-pointer list-item-resp">
+                  <div fxFlex="10" class="list-card-field" hide-xs>{{item?.participante?.cpf}}</div>
+                  <div fxFlex="20" class="list-card-field">{{item?.participante?.nome}}</div>
+                  <div fxFlex="15" class="list-card-field" hide-xs>{{item?.participante?.email}}</div>
+                  <div fxFlex="10" class="list-card-field" hide-xs>{{item?.participante?.nomeCracha}}</div>
+                  <div fxFlex="10" class="list-card-field" hide-xs>{{item?.categoriaParticipanteEvento?.categoriaParticipante?.titulo}}</div>
+                  <div fxFlex="10" class="list-card-field" hide-xs>{{item?.status}}</div>
+                  <div fxFlex="10" class="list-card-field" hide-xs>{{item?.participante?.instituicaoOrigem}}</div>
+                  <div fxFlex="10" class="list-card-field" hide-xs>{{item?.dtInscricao}}</div>
                 </div>
-                <div fxFlex="10" class="fullwidth" fxLayoutAlign="center center">
+                <div fxFlex="15" class="fullwidth" fxLayoutAlign="center center">
                   <button mat-icon-button class="color-primary" matTooltip="Editar o Registro" matTooltipPosition="below" [routerLink]="['edit', item?.id]">
                     <mat-icon>edit</mat-icon>
                   </button>
                   <button mat-icon-button (click)="excluirInscricaoByEvento(item?.id)" color="warn" matTooltip="Apagar o Registro" matTooltipPosition="below">
                     <mat-icon>delete</mat-icon>
+                  </button>
+
+                  <button mat-icon-button matTooltip="Gerar Crachá" [routerLink]="['gerar-cracha', item?.id]" matTooltipPosition="below">
+                    <i class="material-icons">portrait</i>
+                  </button>
+
+                  <button mat-icon-button matTooltip="Gerar Certificado" [routerLink]="['gerar-certificado', item?.id]" matTooltipPosition="below">
+                    <i class="material-icons">image</i>
                   </button>
                 </div>
               </div>

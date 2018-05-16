@@ -89,6 +89,11 @@ export class InscricaoService {
         if(filtro.participante.cpf) {
           params.set('participante.cpf', filtro.participante.cpf);
         }
+
+        if(filtro.categoriaParticipante.titulo) {
+          params.set('categoriaParticipante.titulo', filtro.categoriaParticipante.titulo);
+        }
+
         return this.http.get(`${environment.urlbase}/eventos/${idEvento}/inscricoes`, {search: params}).map(res => res.json());
      
       }
