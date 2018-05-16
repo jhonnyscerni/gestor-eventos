@@ -1,3 +1,4 @@
+import { AuthGuardUser } from './../security/auth-guard-user';
 import { NgModule, } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { Http, HttpModule } from '@angular/http';
@@ -71,6 +72,7 @@ const CHART_MODULES: any[] = [
   providers:[
     KeycloakService,
     AuthGuardAdmin,
+    AuthGuardUser,
     AuthGuard
   ]
 })

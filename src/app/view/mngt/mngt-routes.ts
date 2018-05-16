@@ -25,7 +25,7 @@ const routes: Routes = [
     { path: 'qr-code', component: LeitorQrcodeComponent },
     {
         path: "",
-        canActivate: [AuthGuard],
+        canActivate: [],
         data: {
             roles: ['admin'],
             mensagem: 'Você nao possui permissao de Administrador!'

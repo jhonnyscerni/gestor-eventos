@@ -1,3 +1,4 @@
+import { AuthGuardUser } from './../../@core/security/auth-guard-user';
 import { InscricaoListComponent } from './inscricoes/inscricao-list/inscricao-list.component';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user.component';
@@ -8,7 +9,7 @@ const routes: Routes = [
 
   {
     path: "",
-    canActivate: [AuthGuard],
+    canActivate: [AuthGuardUser],
     data: {
     }, children: [
 
