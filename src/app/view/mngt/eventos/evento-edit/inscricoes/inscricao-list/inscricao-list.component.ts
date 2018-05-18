@@ -1,7 +1,7 @@
 import { Evento } from './../../../../../../domain/evento';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { ITdDataTableColumn, TdDialogService } from '@covalent/core';
+import { ITdDataTableColumn, TdDialogService, IPageChangeEvent } from '@covalent/core';
 import { InscricaoService } from '../../../../../../service/inscricao.service';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material';
@@ -46,7 +46,7 @@ export class InscricaoListComponent implements OnInit {
     this.route.parent.params.subscribe(param => {
       this.idEvento = param['id'];
       console.log(`idEvento na area de Inscricoes:` + this.idEvento);
-      this.getInscricoesByEvento();
+      this.doSearch();
       this.getCategoriaParticipantesEvento();
       this.inscricao.evento.id = this.idEvento;
     })
@@ -57,18 +57,19 @@ export class InscricaoListComponent implements OnInit {
       .subscribe(categoriasParticipanteEvento => this.categoriasParticipanteEvento = categoriasParticipanteEvento);
   }
 
-  getInscricoesByEvento() {
-    this.inscricaoService.getInscricoesByEvento(this.idEvento).subscribe(
-      page => {
-        this.inscricaoPage = page;
-      }
-    );
-  }
+  //SEM PESQUISA
+
+  // getInscricoesByEvento() {
+  //   this.inscricaoPage = new Page<Inscricao>();
+  //   this.inscricaoService.getInscricaoPaginado(this.idEvento, 1, 0)
+  //   .subscribe((inscricaoPage: Page<Inscricao>) => this.inscricaoPage = inscricaoPage);
+
+  // }
 
   doSearch() {
-    this.inscricaoService.pesquisa(this.idEvento, this.filtro).subscribe(page => {
-      this.inscricaoPage = page;
-    })
+    this.inscricaoPage = new Page<Inscricao>();
+    this.inscricaoService.pesquisa(this.idEvento, this.filtro , 2, 0)
+    .subscribe((inscricaoPage: Page<Inscricao>) => this.inscricaoPage = inscricaoPage);
   }
 
   excluirInscricaoByEvento(id: number) {
@@ -82,7 +83,7 @@ export class InscricaoListComponent implements OnInit {
       if (aceitou) {
         this.inscricaoService.excluirInscricaoByEvento(id)
           .subscribe(() => {
-            this.getInscricoesByEvento();
+            this.doSearch();
           })
       } else {
         console.log('Não aceitou excluir a Inscrição do evento');
@@ -93,5 +94,12 @@ export class InscricaoListComponent implements OnInit {
   public dateLayout(dt: any): String {
     return Moment(dt).format('DD/MM/YYYY [às] HH:mm:ss');
   }
+
+   //PAGINACAO
+   page(event: IPageChangeEvent): void {
+    this.inscricaoService.pesquisa(this.idEvento, this.filtro, 2, event.page - 1)
+      .subscribe(page => this.inscricaoPage = page);
+  }
+
 
 }

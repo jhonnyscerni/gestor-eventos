@@ -155,6 +155,10 @@
         </mat-list>
 
 
+        <td-paging-bar [pageSize]="[2]" [total]="inscricaoPage.totalElements" (change)="page($event)">
+          <span td-paging-bar-label hide-xs>Página:</span> {{inscricaoPage.number + 1}}
+          <span hide-xs>de {{inscricaoPage.totalPages}}</span>
+        </td-paging-bar>
       </div>
     </mat-card-content>
 

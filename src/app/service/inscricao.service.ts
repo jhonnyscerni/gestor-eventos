@@ -23,7 +23,7 @@ export class InscricaoService {
         return this.http.get(`${environment.urlbase}/eventos/${idEvento}/inscricoes`)
             .map(res => res.json());
     }
-
+    
     getParticpanteByInscricao(idInscricao: number): Observable<Inscricao> {
         return this.http.get(`${this.url}/gerar-cracha/${idInscricao}`)
         .map(res => res.json());
@@ -74,7 +74,7 @@ export class InscricaoService {
       }
 
 
-      pesquisa(idEvento: number, filtro: InscricaoFiltro): Observable<Page<Inscricao>> {
+      pesquisa(idEvento: number, filtro: InscricaoFiltro,size: number, page: number): Observable<Page<Inscricao>> {
 
         const params = new URLSearchParams();
     
@@ -94,9 +94,18 @@ export class InscricaoService {
           params.set('categoriaParticipante.titulo', filtro.categoriaParticipante.titulo);
         }
 
-        return this.http.get(`${environment.urlbase}/eventos/${idEvento}/inscricoes`, {search: params}).map(res => res.json());
+        return this.http.get(`${environment.urlbase}/eventos/${idEvento}/inscricoes?page=${page}&size=${size}`, {search: params}).map(res => res.json());
      
       }
+
+      //SEM PESQUISA
+
+      // getInscricaoPaginado(idEvento: number,size: number, page: number):Observable<Page<Inscricao>> {
+      //   return this.http.get(`${environment.urlbase}/eventos/${idEvento}/inscricoes?page=${page}&size=${size}`)
+      //   .map(res => res.json());
+
+      // }
+    
 
 
 }
