@@ -1,0 +1,13 @@
+.mat-list .mat-list-item, .mat-nav-list .mat-list-item, .mat-selection-list .mat-list-item {
+    font-size: 14px;
+}
+
+.titulo-pesquisa {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.mat-list {
+
+    padding-bottom: 20px;
+}

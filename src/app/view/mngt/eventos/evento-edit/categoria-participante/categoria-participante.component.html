@@ -16,8 +16,9 @@
         <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px" fxLayoutGap.xs="0px">
           <!-- CATEGORIA PARTICIPANTE -->
           <mat-input-container floatPlaceholder="auto" fxFlex="40">
-            <mat-select #catParticipanteEvento="ngModel" required placeholder="Categoria de Participante" name="categoriaParticipante" [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante">
-              <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante" >
+            <mat-select #catParticipanteEvento="ngModel" required placeholder="Categoria de Participante" name="categoriaParticipante"
+              [(ngModel)]="categoriaParticipanteEvento.categoriaParticipante">
+              <mat-option *ngFor="let categoriaParticipante of categoriaParticipantes" [value]="categoriaParticipante">
                 {{ categoriaParticipante.titulo }}
               </mat-option>
             </mat-select>
@@ -44,7 +45,7 @@
       </form>
 
       <div fxLayout="column">
-        <td-data-table [data]="data" [columns]="configWidthColumns">
+        <!-- <td-data-table [data]="data" [columns]="configWidthColumns">
           <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
 
             <button mat-icon-button class="color-primary" matTooltip="Editar o Registro" matTooltipPosition="below" (click)="openDialogEditCategoriaParticipante(row.id)">
@@ -57,7 +58,78 @@
 
           </ng-template>
 
-        </td-data-table>
+        </td-data-table> -->
+
+
+        <div class="shadow-divider"></div>
+        <!-- lista de categorias -->
+        <mat-list role="list" *ngIf="this.data.length > 0">
+          <mat-list-item role="listitem">
+            <div fxLayout="row" fxLayoutGap="20px" class="fullwidth">
+              <div fxFlex="90" fxFlex.xs="80" class="fullwidth" fxLayout.xs="column" fxLayoutGap.xs="0px">
+                <div fxFlex="50">
+                  <b>Tipos de Participantes</b>
+                </div>
+                <div fxFlex="50" class="text-center" hide-xs>
+                  <b>Vagas Liberadas</b>
+                </div>
+                <!-- <div fxFlex="25" hide-gt-xs><b>Vagas Liberadas</b></div> -->
+                <!-- <div fxFlex="25" class="text-center" hide-xs><b>Vagas de Espera</b></div> -->
+              </div>
+              <div fxFlex="10" fxFlex.xs="20" class="fullwidth" fxLayoutAlign="center center">
+                <span class="inline-text-center">
+                  <b>Ações</b>
+                </span>
+              </div>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <div fxLayout="column" *ngFor="let item of data">
+            <mat-list-item role="listitem" class="list-item-resp">
+              <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
+                <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center"
+                  fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp">
+                  <div fxFlex="50" class="list-card-field">{{item?.categoriaParticipante.titulo}}</div>
+                  <div fxFlex="50" class="list-card-field text-center">
+                    <span hide-gt-xs>Vagas: </span>{{item?.vagas}}</div>
+                  <!-- <div fxFlex="25" class="list-card-field text-center" hide-xs>{{item?.espera}}</div> -->
+                </div>
+                <div fxFlex="10" fxFlex.xs="20" class="fullwidth" fxLayoutAlign="center center">
+                  <button mat-icon-button class="color-primary" matTooltip="Editar o Registro" matTooltipPosition="below" (click)="openDialogEditCategoriaParticipante(item.id)">
+                    <i class="material-icons">mode_edit</i>
+                  </button>
+                  <button mat-icon-button (click)="excluirCategoriaParticipanteEvento(item.id)" color="warn" matTooltip="Apagar o Registro"
+                    matTooltipPosition="below">
+                    <i class="material-icons">delete_forever</i>
+                  </button>
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </div>
+          <mat-divider></mat-divider>
+          <mat-divider></mat-divider>
+          <mat-list-item role="listitem">
+            <div fxLayout="row" fxLayoutGap="20px" class="fullwidth">
+              <div fxFlex="90" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center" fxLayoutAlign.xs="center start"
+                class="fullwidth">
+                <div fxFlex="50" class="list-card-field" hide-xs>
+                  <b>Total de Vagas</b>
+                </div>
+                <div fxFlex="50" class="list-card-field text-center">
+                  <b>
+                    <span hide-gt-xs>Total de Vagas: </span>{{totalVagas}}</b>
+                </div>
+              </div>
+              <div fxFlex="10" class="fullwidth" fxLayoutAlign="center center">
+                <span>&nbsp;</span>
+              </div>
+            </div>
+          </mat-list-item>
+        </mat-list>
+
+
+
       </div>
 
 

@@ -21,6 +21,12 @@ export class CategoriaParticipanteEventoService {
             .map(res => res.json());
     }
 
+    public getTotalCategoriaParticipantesEventoByEvento(idEvento: number): Observable<any>
+    {
+      return this.http.get(`${environment.urlbase}/eventos/${idEvento}/categoria-participante-evento/total-vagas`)
+            .map(res => res.json());
+    }
+
     getCategoriaParticipanteEvento(id: number): Observable<CategoriaParticipanteEvento> {
         return this.http.get(`${this.url}/${id}`).map((res: any) => {
             const categoriaParticipanteEventoAlterado: CategoriaParticipanteEvento = res.json() as CategoriaParticipanteEvento;

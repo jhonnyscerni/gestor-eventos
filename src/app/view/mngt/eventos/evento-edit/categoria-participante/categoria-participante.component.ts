@@ -27,6 +27,8 @@ export class CategoriaParticipanteComponent implements OnInit {
 
   idCategoriaParticipanteEvento: number;
 
+  totalVagas: number;
+
   q: number;
 
   isNew: boolean;
@@ -62,10 +64,16 @@ export class CategoriaParticipanteComponent implements OnInit {
       this.carregaCategoriaParticipantes();
       this.getCategoriaParticipantesEvento();
       this.processaCategoriaParticipanteEvento();
+      this.getTotalVagas();
       this.categoriaParticipanteEvento.evento.id = this.idEvento;
     });
   }
 
+
+  getTotalVagas(){
+    this.categoriaParticipanteEventoService.getTotalCategoriaParticipantesEventoByEvento(this.idEvento)
+    .subscribe(totalVagas => this.totalVagas = totalVagas);
+  }
 
       /**
   * Captura o id do Componente
@@ -77,6 +85,8 @@ export class CategoriaParticipanteComponent implements OnInit {
     this.isNew = false;
   }
 }
+
+
 
 private editar() {
   this.categoriaParticipanteEventoService.getCategoriaParticipanteEvento(this.idCategoriaParticipanteEvento)
@@ -110,6 +120,7 @@ private editar() {
     this.categoriaParticipanteEventoService.salvar(this.categoriaParticipanteEvento, this.idEvento)
       .subscribe((categoriaParticipanteEvento) => {
         this.getCategoriaParticipantesEvento();
+        this.getTotalVagas();
         this.snackBar.open(`Categoria Participante Evento: ${categoriaParticipanteEvento.categoriaParticipante.titulo}
          salvo com sucesso!`, '', { duration: 10000 });
       });
@@ -137,6 +148,7 @@ private editar() {
         this.categoriaParticipanteEventoService.excluirCategoriaParticipanteEvento(id)
           .subscribe(() => {
             this.getCategoriaParticipantesEvento();
+            this.getTotalVagas();
           })
       } else {
         console.log('Não aceitou excluir o categoria participante evento');
@@ -158,6 +170,7 @@ private editar() {
       .subscribe(categoriaParticipanteEvento => {
         if (categoriaParticipanteEvento) {
           this.getCategoriaParticipantesEvento();
+          this.getTotalVagas();
           this.snackBar.open('Categoria Participante salvo com sucesso', '', { duration: 10000 })
         }
       });
