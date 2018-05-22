@@ -121,7 +121,7 @@
           <div fxLayout="column" *ngFor="let item of inscricaoPage.content">
             <mat-list-item role="listitem" class="list-item-resp">
               <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
-                <div fxFlex="100" fxLayout.xs="column" fxLayoutGap.xs="0px" [routerLink]="['./' + item?.id]" fxLayoutAlign.xs="center start"
+                <div fxFlex="100" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign.xs="center start"
                   class="fullwidth cursor-pointer list-item-resp">
                   <div fxFlex="10" class="list-card-field" hide-xs>{{item?.participante?.cpf}}</div>
                   <div fxFlex="20" class="list-card-field">{{item?.participante?.nome}}</div>
