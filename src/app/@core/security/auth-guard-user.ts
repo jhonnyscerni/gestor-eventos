@@ -12,11 +12,6 @@ export class AuthGuardUser implements CanActivate {
         private keycloakService: KeycloakService){}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-        this.keycloakService.getLoadUserInfo().then(userInfo=>{
-            this.participanteService.buscarParticipanteEmail(userInfo.email, userInfo)
-                .subscribe(res=>{},
-                            e=>{});
-        });
         return true;
     }
 }

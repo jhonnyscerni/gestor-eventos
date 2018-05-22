@@ -1,8 +1,9 @@
-import { InscricaoEditComponent } from './inscricoes/inscricao-edit/inscricao-edit.component';
-import { InscricaoListComponent } from './inscricoes/inscricao-list/inscricao-list.component';
+import { KeycloakService } from './../../@core/security/keycloak.service';
+import { MinhaInscricaoEditComponent } from './minhas-inscricoes/minha-inscricao-edit/minha-inscricao-edit.component';
+
 import { SharedModule } from './../../@core/shared/shared.module';
 import { UserRoutes } from './user.routing';
-import { NgModule, LOCALE_ID, Inject } from '@angular/core';
+import { NgModule, LOCALE_ID, Inject, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
 import { NavViewLayoutComponent } from '../../@core/layout/nav-view-layout/nav-view-layout.component';
@@ -17,7 +18,15 @@ import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ParticipanteService } from '../../service/participante.service';
 import { CategoriaParticipanteEventoService } from '../../service/categoria-participante-evento.service';
-export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meaning of these formats: https://momentjs.com/docs/#/displaying/format/
+import { MinhaInscricaoListComponent } from './minhas-inscricoes/minha-inscricao-list/minha-inscricao-list.component';
+
+
+export function initParticipante(participanteService: ParticipanteService): Function{
+  return () => participanteService.initParticipanteLogado();
+}
+
+
+export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meaning of these formats: https://momentjs.com/docs/#/displaying/format/F
 
   parseInput: 'l LT',
 
@@ -35,6 +44,8 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
 
 };
 
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -47,14 +58,20 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     UserComponent,
     NavViewLayoutComponent,
     MenuLayoutComponent,
-    InscricaoListComponent,
-    InscricaoEditComponent
+    MinhaInscricaoListComponent,
+    MinhaInscricaoEditComponent
   ],
-   providers: [
+  providers: [
     InscricaoService,
     ParticipanteService,
     CategoriaParticipanteEventoService,
     DateTimeService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initParticipante,
+      deps: [ParticipanteService,KeycloakService],
+      multi: true
+    },
     { provide: 'moment', useFactory: (): any => Moment },
 
     { provide: LOCALE_ID, useValue: 'pt-BR' },
@@ -62,17 +79,17 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     { provide: OWL_DATE_TIME_FORMATS, useValue: MY_MOMENT_FORMATS },
   ],
 })
-export class UserModule { 
+export class UserModule {
   constructor(@Inject('moment') public moment: any,
 
-  matIconRegistry: MatIconRegistry,
+    matIconRegistry: MatIconRegistry,
 
-  domSanitizer: DomSanitizer) {
+    domSanitizer: DomSanitizer) {
 
-  /* : declarar matIconRegistry para adicionar os ícones customizados da comunidade de desenvolvimento */
+    /* : declarar matIconRegistry para adicionar os ícones customizados da comunidade de desenvolvimento */
 
-  matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/mdi.svg'));
+    matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/mdi.svg'));
 
-  this.moment.locale('pt-br');
-}
+    this.moment.locale('pt-br');
+  }
 }

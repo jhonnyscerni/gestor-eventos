@@ -1,9 +1,9 @@
 import { AuthGuardUser } from './../../@core/security/auth-guard-user';
-import { InscricaoListComponent } from './inscricoes/inscricao-list/inscricao-list.component';
 import { Routes, RouterModule } from '@angular/router';
 import { UserComponent } from './user.component';
 import { AuthGuard } from '../../@core/security/auth-guard';
-import { InscricaoEditComponent } from './inscricoes/inscricao-edit/inscricao-edit.component';
+import { MinhaInscricaoListComponent } from './minhas-inscricoes/minha-inscricao-list/minha-inscricao-list.component';
+import { MinhaInscricaoEditComponent } from './minhas-inscricoes/minha-inscricao-edit/minha-inscricao-edit.component';
 
 const routes: Routes = [
 
@@ -14,8 +14,8 @@ const routes: Routes = [
     }, children: [
 
       { path: '', component: UserComponent , children: [
-        { path: '', component: InscricaoListComponent },
-        { path: 'inscricao', component: InscricaoEditComponent }
+        { path: '', component: MinhaInscricaoListComponent },
+        { path: 'minha-inscricao/edit/:id', component: MinhaInscricaoEditComponent }
       ]},
     ]
   }
