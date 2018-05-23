@@ -39,6 +39,11 @@ export class CertificadoParticipanteDetailComponent implements OnInit {
     this.title.setTitle(`Gerando Certificado de : ${this.certificado.evento.nome}`);
   }
 
+  atualizarPagina(){
+    if(this.certificado) {
+      this.router.navigate(['certificado','novo']);
+    }
+  }
 
   processaCertificado() {
     return this.certificadoService.getCertificado(this.idCertificado)

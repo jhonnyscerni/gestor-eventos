@@ -18,6 +18,20 @@
 
           <div class="form-group">
             <label for="ModeloCertificadoTexto">Texto para o certificado de participação no evento* </label>
+
+            <div>
+              <div><p style="text-align:center;font-size:16pt">Exemplo: </p></div>
+              <p style="text-align:center">
+                <span style="font-size:16pt">CERTIFICADO</span>
+              </p>
+              <p>
+                <span style="font-size:14pt">Certificamos que {{inscricao?.participante?.nome}} participou do(a) {{inscricao?.evento?.nome}} em {{inscricao?.evento?.local}},
+                  durante o per&iacute;odo de --- a --- , com carga hor&aacute;ria de {{inscricao?.evento?.cargaHoraria}}
+                  hora(s).</span>
+              </p>
+            </div>
+
+            
             <text-editor [elementId]="'ModeloCertificadoTexto'" (onEditorKeyup)="onBodyTextEditorKeyUp($event)">
             </text-editor>
 

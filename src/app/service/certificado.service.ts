@@ -16,7 +16,7 @@ export class CertificadoService {
     ) { }
 
 
-    public getCertificadoByEvento(idEvento: number): Observable<Certificado[]> {
+    public getCertificadoByEvento(idEvento: number): Observable<Certificado> {
         return this.http.get(`${environment.urlbase}/eventos/${idEvento}/certificado`)
             .map(res => res.json());
     }

@@ -53,9 +53,9 @@ const routes: Routes = [
 
                     { path: 'frequencia', component: FrequenciaListComponent },
 
-                    { path: 'certificado/novo', component: CertificadoParticipanteEditComponent },
-                    { path: 'certificado/:id', component: CertificadoParticipanteDetailComponent },
-                    { path: 'certificado/edit/:id', component: CertificadoParticipanteEditComponent },
+                    { path: 'certificado-participante/novo', component: CertificadoParticipanteEditComponent },
+                    { path: 'certificado-participante/:id', component: CertificadoParticipanteDetailComponent },
+                    { path: 'certificado-participante/edit/:id', component: CertificadoParticipanteEditComponent },
                 ]
             },
             {

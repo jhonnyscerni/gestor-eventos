@@ -1,5 +1,6 @@
 import {Component, OnDestroy, AfterViewInit, EventEmitter, Input, Output, OnInit, OnChanges} from '@angular/core';
 import {isNullOrUndefined} from "util";
+import { Inscricao } from '../../../../domain/inscricao';
 
 
 @Component({

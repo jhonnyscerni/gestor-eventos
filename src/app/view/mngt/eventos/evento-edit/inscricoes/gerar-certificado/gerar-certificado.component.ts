@@ -1,3 +1,4 @@
+import { Certificado } from './../../../../../../domain/certificado';
 import { CertificadoService } from './../../../../../../service/certificado.service';
 import { Component, OnInit } from '@angular/core';
 import { Inscricao } from '../../../../../../domain/inscricao';
@@ -15,10 +16,17 @@ export class GerarCertificadoComponent implements OnInit {
 
   idInscricao: number;
 
+
+  idEvento: number;
+
   inscricao: Inscricao = new Inscricao();
+
+  certificado: Certificado = new Certificado();
+
 
   constructor(
     private inscricaoService: InscricaoService,
+    private certificadoService: CertificadoService,
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
@@ -27,9 +35,19 @@ export class GerarCertificadoComponent implements OnInit {
 
   ngOnInit() {
     this.idInscricao = this.route.snapshot.params['id'];
-    this.processaCertificado();
+    this.route.parent.params.subscribe(param => {
+      this.idEvento = param['id'];
+      this.processaCertificado();
+      this.getCertificado();
+      console.log(`id de evento em Facilitador : ` + this.idEvento);
+      this.certificado.evento.id = this.idEvento;
+    });
   }
 
+  getCertificado() {
+      return this.certificadoService.getCertificadoByEvento(this.idEvento)
+      .subscribe(certificado => this.certificado = certificado)
+  }
 
   atualizarTituloCertificado() {
     this.title.setTitle(`Gerando Certificado : ${this.inscricao.participante.nome}`);

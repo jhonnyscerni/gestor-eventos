@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CertificadoService } from '../../../../../../../service/certificado.service';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material';
+import { Inscricao } from '../../../../../../../domain/inscricao';
 
 @Component({
   selector: 'app-certificado-participante-edit',
@@ -20,17 +21,25 @@ export class CertificadoParticipanteEditComponent implements OnInit {
 
   certificado: Certificado = new Certificado();
 
+  inscricao: Inscricao = new Inscricao();
+
   constructor(
     private certificadoService: CertificadoService,
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
     public snackBar: MatSnackBar,
+    
   ) { }
 
 
 
   ngOnInit() {
+    this.inscricao.participante.nome = "{{inscricao.participante.nome}}";
+    this.inscricao.evento.nome = "{{inscricao?.evento?.nome}}";
+    this.inscricao.evento.local = "{{inscricao?.evento?.local}}";
+    this.inscricao.evento.cargaHoraria = "{{inscricao?.evento?.cargaHoraria}}";
+
     this.isNew = true;
     this.title.setTitle('Novo Certificado');
     this.idCertificado = this.route.snapshot.params['id'];
@@ -79,7 +88,7 @@ atualizarTituloEdicao() {
 
   onBodyTextEditorKeyUp(textValue) {
 
-    this.certificado.conteudo = textValue;
+    this.certificado.conteudoCertificado = textValue;
   }
 
 }
