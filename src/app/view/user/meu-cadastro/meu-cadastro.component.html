@@ -1,0 +1,87 @@
+<div main-content flex layout="column" style="height:100%">
+  <div fxLayout="column">
+
+    <div main-content layout="row" layout-align="center start">
+      <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="participanteLogado">
+        <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+          <div flex>
+            <mat-icon>list</mat-icon> Cadastro de Participante
+          </div>
+        </mat-card-title>
+        <mat-divider></mat-divider>
+        <mat-card-content>
+          <!-- FORMULÁRIO -->
+          <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+
+            <!-- FORMULÁRIO -->
+            <div fxLayout="column">
+              <!-- NOME -->
+              <mat-input-container floatPlaceholder="auto" flex="100">
+                <input matInput #nome="ngModel" minlength="5" maxlength="250" [(ngModel)]="participanteLogado.nome" name="nome" type="text"
+                  placeholder="Nome do Participante" required>
+                <mat-error [hidden]="nome.valid || (nome.pristine && !vform.submitted)">
+                  O nome do Participante é um campo obrigatório de 5 até 250 caracteres.
+                </mat-error>
+              </mat-input-container>
+
+              <!-- NOME do CRACHA -->
+              <mat-input-container floatPlaceholder="auto" flex="100">
+                <input matInput #nomeCracha="ngModel" minlength="5" maxlength="250" [(ngModel)]="participanteLogado.nomeCracha" name="nomeCracha"
+                  type="text" placeholder="Nome do Crachá Participante" required>
+                <mat-error [hidden]="nomeCracha.valid || (nomeCracha.pristine && !vform.submitted)">
+                  O nome do Crachá Participante é um campo obrigatório de 5 até 250 caracteres.
+                </mat-error>
+              </mat-input-container>
+
+              <!-- EMAIL -->
+              <mat-input-container floatPlaceholder="auto" flex="100">
+                <input matInput #email="ngModel" [(ngModel)]="participanteLogado.email" name="email" type="email" placeholder="Email do Participante"
+                  required pattern='\S+@\S+\.\S+'>
+                <mat-hint [hidden]="!email.valid">O email do Participante é um campo obrigatório.
+                </mat-hint>
+                <mat-error [hidden]="email.valid || (email.pristine && !vform.submitted)">
+                  Digite um endereço de email válido.
+                </mat-error>
+              </mat-input-container>
+
+              <!-- INSTITUICAO -->
+              <mat-input-container floatPlaceholder="auto" flex="100">
+                <input matInput [(ngModel)]="participanteLogado.instituicaoOrigem" name="instituicaoOrigem" type="text" placeholder="Instituicao e Origem">
+              </mat-input-container>
+
+
+
+              <!-- CPF -->
+              <mat-input-container floatPlaceholder="auto" flex="100">
+                <input matInput [(ngModel)]="participanteLogado.cpf" name="cpf" type="text" placeholder="CPF">
+              </mat-input-container>
+
+              <!-- TITULO DE ELEITOR -->
+              <mat-input-container floatPlaceholder="auto" flex="100">
+                <input matInput [(ngModel)]="participanteLogado.tituloEleitor" name="tituloEleitor" type="text" placeholder="Titulo de Eleitor">
+              </mat-input-container>
+
+
+            </div>
+
+            <div fxLayout="column">
+              <mat-card-actions>
+                <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">SALVAR</button>
+                <a mat-button color="warn" [routerLink]="['']">CANCELAR</a>
+              </mat-card-actions>
+            </div>
+
+
+
+
+          </form>
+        </mat-card-content>
+        <mat-card-footer>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+
+  </div>
+
+
+</div>
