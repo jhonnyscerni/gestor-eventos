@@ -9,6 +9,8 @@ import { ParticipanteService } from '../../../../service/participante.service';
 import { Page } from '../../../../@core/model/page';
 import { Participante } from '../../../../domain/participante';
 
+import * as Moment from 'moment'; /*  biblioteca de formatação de data/hora */
+
 @Component({
   selector: 'app-minha-inscricao-list',
   templateUrl: './minha-inscricao-list.component.html',
@@ -50,5 +52,10 @@ export class MinhaInscricaoListComponent implements OnInit {
       this.inscricaoPage = page;
     })
   }
+
+  public dateLayout(dt: any): String {
+    return Moment(dt).format('dddd, DD [de] MMMM [de] YYYY [às] HH:mm:ss');
+}
+
 
 }

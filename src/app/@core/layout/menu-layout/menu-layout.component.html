@@ -7,38 +7,28 @@
 
 <button mat-button matTooltip="Eventos Disponíveis" matTooltipPosition="below" [mat-menu-trigger-for]="eventosMenu">
     <span hide-xs hide-gt-xs show-gt-sm>EVENTOS</span>
-    
+
     <mat-icon>event</mat-icon>
 </button>
 
 <mat-menu xPosition="after" yPosition="below" #eventosMenu="matMenu" [overlapTrigger]="false">
-
-
-    
-
 
     <a mat-menu-item [href]="getLink('adm/evento/novo')">
         <mat-icon>menu</mat-icon>
         <span>Criar Novo Evento</span>
     </a>
 
-
+    <!-- 
     <button mat-menu-item>
         <mat-icon>menu</mat-icon>
         <span>Agenda</span>
-    </button>
-    <button mat-menu-item>
+    </button> -->
+
+    <a mat-menu-item [href]="getLink('adm/eventos')">
         <mat-icon>menu</mat-icon>
-        <span>Inscrições Abertas</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>menu</mat-icon>
-        <span>Buscar Eventos</span>
-    </button>
-    <button mat-menu-item>
-        <mat-icon>menu</mat-icon>
-        <span>Autenticar Certificado</span>
-    </button>
+        <span>Lista de Eventos</span>
+    </a>
+
 </mat-menu>
 
 <!-- menu: Usuário -->
@@ -52,16 +42,18 @@
 <mat-menu xPosition="after" yPosition="below" #usuarioMenu="matMenu" [overlapTrigger]="false">
     <!-- itens de menu com usuário -->
     <ng-container>
-        <button mat-menu-item>
-            <mat-icon>menu</mat-icon>
-            <span [routerLink]="['/adm/eventos']">Meu Cadastro</span>
-        </button>
-        <button mat-menu-item>
-            <mat-icon>menu</mat-icon>
-            <a [routerLink]="['/']">Inscrições
-            </a>
 
-        </button>
+        <a mat-menu-item [href]="getLink('meu-cadastro/6')">
+            <mat-icon>menu</mat-icon>
+            <span>Meu Cadastro</span>
+        </a>
+
+
+        <a mat-menu-item [href]="getLink('')">
+            <mat-icon>menu</mat-icon>
+            <span>Minhas Inscrições</span>
+        </a>
+
         <button mat-menu-item (click)="sair()">
             <mat-icon>menu</mat-icon>
             <span>Sair</span>
