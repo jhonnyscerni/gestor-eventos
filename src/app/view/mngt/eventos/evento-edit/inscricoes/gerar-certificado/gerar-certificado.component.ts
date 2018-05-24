@@ -7,6 +7,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material';
 
+import * as Moment from 'moment'; /*  biblioteca de formatação de data/hora */
+
 @Component({
   selector: 'app-gerar-certificado',
   templateUrl: './gerar-certificado.component.html',
@@ -58,12 +60,21 @@ export class GerarCertificadoComponent implements OnInit {
         this.inscricao = this.inscricaoService.inscricao;
         this.getCertificado().subscribe(certificado => {
             certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{nome}", this.inscricao.participante.nome);
+            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{evento}", this.inscricao.evento.nome);
+            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{local}", this.inscricao.evento.local);
+            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataInicio}", "12/12/12");
+            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataFim}", "2/12/12");
+            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{cargaHoraria}", this.inscricao.evento.cargaHoraria);
             this.certificado = certificado;
           });
         this.atualizarTituloCertificado();
       })
 
   }
+
+  public dateLayout(dt: any): String {
+    return Moment(dt).format('DD [de] MMMM [de] YYYY [às] HH:mm:ss');
+}
   
 
 

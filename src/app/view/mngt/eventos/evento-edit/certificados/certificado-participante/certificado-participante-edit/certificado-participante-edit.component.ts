@@ -33,15 +33,20 @@ export class CertificadoParticipanteEditComponent implements OnInit {
   ) { }
 
   nome: any;
-
-
+  evento:any;
+  local:any;
+  dataInicio:any;
+  dataFim:any;
+  cargaHoraria:any;
 
   ngOnInit() {
-    this.nome = this.inscricao.participante.nome;
-    this.inscricao.evento.nome = "{{inscricao?.evento?.nome}}";
-    this.inscricao.evento.local = "{{inscricao?.evento?.local}}";
-    this.inscricao.evento.cargaHoraria = "{{inscricao?.evento?.cargaHoraria}}";
 
+    this.nome = "{nome}";
+    this.evento = "{evento}";
+    this.local = "{local}";
+    this.dataInicio = "{dataInicio}";
+    this.dataInicio = "{dataFim}";
+    this.cargaHoraria = "{cargaHoraria}";
     this.isNew = true;
     this.title.setTitle('Novo Certificado');
     this.idCertificado = this.route.snapshot.params['id'];
