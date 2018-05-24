@@ -11,7 +11,7 @@ import {
   CovalentDataTableModule, CovalentMediaModule, CovalentLoadingModule,
   CovalentNotificationsModule, CovalentLayoutModule, CovalentMenuModule,
   CovalentPagingModule, CovalentSearchModule, CovalentStepsModule,
-  CovalentCommonModule, CovalentDialogsModule,
+  CovalentCommonModule, CovalentDialogsModule, CovalentMessageModule,
 } from '@covalent/core';
 import {
   MatButtonModule, MatCardModule, MatIconModule,
@@ -45,7 +45,7 @@ const COVALENT_MODULES: any[] = [
   CovalentDataTableModule, CovalentMediaModule, CovalentLoadingModule,
   CovalentNotificationsModule, CovalentLayoutModule, CovalentMenuModule,
   CovalentPagingModule, CovalentSearchModule, CovalentStepsModule,
-  CovalentCommonModule, CovalentDialogsModule,
+  CovalentCommonModule, CovalentDialogsModule, CovalentMessageModule,
 ];
 
 const CHART_MODULES: any[] = [
