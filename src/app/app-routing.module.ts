@@ -9,8 +9,8 @@ const appRoutes: Routes = [
         path: '',
         component: MainLayoutComponent,
         children: [
-            { path: 'adm', canActivate: [AuthGuard], loadChildren: './view/mngt/mngt.module#MngtModule' },
-            { path: '', canActivate: [AuthGuard], loadChildren: './view/user/user.module#UserModule' },
+            { path: 'adm', loadChildren: './view/mngt/mngt.module#MngtModule' },
+            { path: '', loadChildren: './view/user/user.module#UserModule' },
         ]
     }
 ];

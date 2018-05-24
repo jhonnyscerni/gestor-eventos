@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { Inscricao } from '../../../../domain/inscricao';
 import { InscricaoService } from '../../../../service/inscricao.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -18,29 +18,37 @@ export class MinhaInscricaoListComponent implements OnInit {
 
   idEvento: number;
 
-  inscricaoPage: Page<Inscricao> = new Page<Inscricao>();
+  inscricaoPage: Inscricao[] = [];
 
-  participanteLogado: Participante = new Participante()
+  participanteLogado: any;
 
   constructor(
-    private participanteServive: ParticipanteService,
+    public participanteServive: ParticipanteService,
     private route: ActivatedRoute,
     private router: Router,
     private title: Title,
     public snackBar: MatSnackBar,
     private _dialogService: TdDialogService
-  ) { }
+  ) {
+   }
 
   ngOnInit() {
     this.title.setTitle('Minhas Inscrições');
-    this.participanteLogado = this.participanteServive.getParticipanteLogado();
-    console.log("-------->"+this.participanteLogado);
+     this.participanteServive.getParticipanteLogado().subscribe(participante=>{
+      this.participanteLogado = participante;
+      this.getInscricoesDoParticipante();
+    });
+
+    // this.participanteLogado = this.participanteServive.getParticipanteLogado();
+    // console.log("Construtor");
+    // console.log(this.participanteServive.participante);
+
   }
 
-  // getInscricoesDoParticipante() {
-  //   this.participanteServive.getInscricoesByParticipante(this.participanteLogado.id).subscribe(page => {
-  //     this.inscricaoPage = page;
-  //   })
-  // }
+  getInscricoesDoParticipante() {
+    this.participanteServive.getInscricoesByParticipante(this.participanteLogado.id).subscribe(page => {
+      this.inscricaoPage = page;
+    })
+  }
 
 }

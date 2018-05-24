@@ -1,3 +1,5 @@
+import { LayoutModule } from './../layout/layout.module';
+
 import { AuthGuardUser } from './../security/auth-guard-user';
 import { NgModule, } from '@angular/core';
 import { CommonModule, } from '@angular/common';
@@ -50,6 +52,12 @@ const CHART_MODULES: any[] = [
   NgxChartsModule,
 ];
 
+const OUTERS: any[] = [
+  
+]
+
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -58,6 +66,7 @@ const CHART_MODULES: any[] = [
     COVALENT_MODULES,
     CHART_MODULES,
     FLEX_LAYOUT_MODULES,
+    LayoutModule
   ],
   declarations: [
   ],
@@ -67,7 +76,7 @@ const CHART_MODULES: any[] = [
     COVALENT_MODULES,
     CHART_MODULES,
     FLEX_LAYOUT_MODULES,
-   
+    LayoutModule
   ],
   providers:[
     KeycloakService,

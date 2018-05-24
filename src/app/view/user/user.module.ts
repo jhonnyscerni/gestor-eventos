@@ -6,8 +6,6 @@ import { UserRoutes } from './user.routing';
 import { NgModule, LOCALE_ID, Inject, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { UserComponent } from './user.component';
-import { NavViewLayoutComponent } from '../../@core/layout/nav-view-layout/nav-view-layout.component';
-import { MenuLayoutComponent } from '../../@core/layout/menu-layout/menu-layout.component';
 import { InscricaoService } from '../../service/inscricao.service';
 import { DateTimeService } from '../../@core/util/date-time.service';
 import { OwlDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
@@ -20,10 +18,6 @@ import { ParticipanteService } from '../../service/participante.service';
 import { CategoriaParticipanteEventoService } from '../../service/categoria-participante-evento.service';
 import { MinhaInscricaoListComponent } from './minhas-inscricoes/minha-inscricao-list/minha-inscricao-list.component';
 
-
-export function initParticipante(participanteService: ParticipanteService): Function{
-  return () => participanteService.initParticipanteLogado();
-}
 
 
 export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meaning of these formats: https://momentjs.com/docs/#/displaying/format/F
@@ -56,8 +50,6 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
   ],
   declarations: [
     UserComponent,
-    NavViewLayoutComponent,
-    MenuLayoutComponent,
     MinhaInscricaoListComponent,
     MinhaInscricaoEditComponent
   ],
@@ -66,12 +58,6 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     ParticipanteService,
     CategoriaParticipanteEventoService,
     DateTimeService,
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initParticipante,
-      deps: [ParticipanteService,KeycloakService],
-      multi: true
-    },
     { provide: 'moment', useFactory: (): any => Moment },
 
     { provide: LOCALE_ID, useValue: 'pt-BR' },

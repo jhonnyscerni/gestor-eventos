@@ -15,7 +15,7 @@ export class ParticipanteService {
 
     participante: Participante;
 
-    private participanteLogado: Participante;
+     participanteLogado: Participante;
 
     private url: string = `${environment.urlbase}/participantes`;
 
@@ -55,74 +55,54 @@ export class ParticipanteService {
     return this.http.delete(this.url + '/' + id);
   }
 
-  public getParticipanteLogado(): Participante{
+  public getParticipanteLogado(): Observable<Participante>{
     if(this.participanteLogado){
-
+      return Observable.of(this.participanteLogado);
+    }else if(KeycloakService.auth.authz.tokenParsed.email){
+      return this.getParticipantePorEmail(KeycloakService.auth.authz.tokenParsed.email);
+    }else{
+      return Observable.of(null);
     }
-    return this.participanteLogado;
+    
+  }
+
+  public getParticipantePorEmail(email: string):Observable<Participante>{
+    return this.http.get(`${this.url}/verificar?email=${email}`)
+    .map(res => res.json());
   }
 
   initParticipanteLogado(){
     console.log("ENTROUUUUUUUUU");
     return new Promise((resolve: any)=>{
       this.http.get(`${this.url}/verificar?email=${KeycloakService.auth.authz.tokenParsed.email}`)
-    .map(res => {
-      if(res.status === 200){
-        this.participanteLogado = res.json();
-        console.log(this.participanteLogado);
-      }
-      return this.participanteLogado;
-    })
+    .map(res => res.json())
     .catch(e=>{
       console.log(e);
-      let ob:Observable<Participante> = new Observable();
-      if(e.status === 404){
-        console.log('Participante nao encontrado.');
-        console.log(userInfo);
-        let participante = new Participante;
-        participante.email = KeycloakService.auth.authz.tokenParsed;
-        participante.nome = KeycloakService.auth.authz.tokenParsed.name;
-        participante.cpf = KeycloakService.auth.authz.tokenParsed.cpf;
-        ob = this.salvar(participante).map(participante=>this.participanteLogado = participante);
-      }
-      return ob;
-    }).subscribe(participante=>{},
-                  (err)=> {},
-                  ()=> resolve(true));
-    });
-  }
-
-  buscarParticipanteEmail():Observable<Participante> {
-    console.log("busca por email");
-    return this.http.get(`${this.url}/verificar?email=${KeycloakService.auth.authz.tokenParsed.email}`)
-    .map(res => {
-      if(res.status === 200){
-        this.participanteLogado = res.json();
-        //console.log(this.participanteLogado);
-      }
-      return this.participanteLogado;
-    })
-    .catch(e=>{
-      //console.log(e);
       let ob:Observable<Participante> = new Observable();
       if(e.status === 404){
         //console.log('Participante nao encontrado.');
         //console.log(userInfo);
         let participante = new Participante;
-        participante.email = KeycloakService.auth.authz.tokenParsed;
+        participante.email = KeycloakService.auth.authz.tokenParsed.email;
         participante.nome = KeycloakService.auth.authz.tokenParsed.name;
         participante.cpf = KeycloakService.auth.authz.tokenParsed.cpf;
         ob = this.salvar(participante).map(participante=>this.participanteLogado = participante);
       }
       return ob;
+    }).subscribe(participante=>{
+      this.participanteLogado = participante;
+      console.log("Sub do participante")
+      console.log(participante)
+      console.log(this.participanteLogado);
+      console.log(this.getParticipanteLogado());
+    },
+      (err)=> {}, 
+      ()=> resolve(true)
+  );
     });
   }
 
-
-
-
-  getInscricoesByParticipante(idParticipante: number): Observable<Page<Inscricao>> {
-    console.log(this.participanteLogado);
+  getInscricoesByParticipante(idParticipante: number): Observable<Inscricao[]> {
     return this.http.get(`${environment.urlbase}/inscricoes/minhas-inscricoes?idParticipante=${idParticipante}`)
       .map(res => res.json());
   }

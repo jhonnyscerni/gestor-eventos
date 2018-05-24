@@ -18,7 +18,6 @@ import { CategoriaParticipanteService } from './../../service/categoria-particip
 import { CategoriaParticipanteComponent } from './eventos/evento-edit/categoria-participante/categoria-participante.component';
 import { EventoFormComponent } from './eventos/evento-form/evento-form.component';
 import { EventoNovoComponent } from './eventos/evento-novo/evento-novo.component';
-import { MenuLayoutComponent } from './../../@core/layout/menu-layout/menu-layout.component';
 import { EventoMenuLateralComponent } from './eventos/evento-edit/evento-menu-lateral/evento-menu-lateral.component';
 import { EventoEditComponent } from './eventos/evento-edit/evento-edit.component';
 import { NgModule, LOCALE_ID, Inject } from '@angular/core';
@@ -28,9 +27,6 @@ import { EventoListComponent } from './eventos/evento-list/evento-list.component
 import { mgntRoutes } from './mngt-routes';
 import { EventoService } from '../../service/evento.service';
 import { TipoEventoService } from '../../service/tipo-evento.service';
-import { NavListLayoutComponent } from '../../@core/layout/nav-list-layout/nav-list-layout.component';
-import { NavViewLayoutComponent } from '../../@core/layout/nav-view-layout/nav-view-layout.component';
-
 
 import { DateTimeService } from '../../@core/util/date-time.service';
 
@@ -101,11 +97,8 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     ParticipanteListComponent,
     CertificadoParticipanteEditComponent,
     CertificadoParticipanteDetailComponent,
-    NavListLayoutComponent,
     EventoMenuLateralComponent,
     SafeHtmlPipe,
-    NavViewLayoutComponent,
-    MenuLayoutComponent,
     UnauthorizedComponent,
     EditorComponent,
 ],
@@ -130,7 +123,6 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
   ],
 })
 export class MngtModule {
-
   constructor(@Inject('moment') public moment: any,
 
     matIconRegistry: MatIconRegistry,
@@ -142,9 +134,7 @@ export class MngtModule {
     matIconRegistry.addSvgIconSet(domSanitizer.bypassSecurityTrustResourceUrl('./assets/icons/mdi.svg'));
 
     this.moment.locale('pt-br');
-
   }
-
 
 
 }

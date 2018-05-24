@@ -2,18 +2,26 @@
 
 <!-- menu: Eventos (corrigir: colocar mat-button quando paisagem, colocar mat-icon-button quando retrato) -->
 
+
+<a mat-button [routerLink]="['/']">EDITAR</a>
+
 <button mat-button matTooltip="Eventos Disponíveis" matTooltipPosition="below" [mat-menu-trigger-for]="eventosMenu">
     <span hide-xs hide-gt-xs show-gt-sm>EVENTOS</span>
+    
     <mat-icon>event</mat-icon>
 </button>
 
 <mat-menu xPosition="after" yPosition="below" #eventosMenu="matMenu" [overlapTrigger]="false">
 
+
+    
+
+
     <a mat-menu-item [href]="getLink('adm/evento/novo')">
         <mat-icon>menu</mat-icon>
         <span>Criar Novo Evento</span>
     </a>
-    
+
 
     <button mat-menu-item>
         <mat-icon>menu</mat-icon>
@@ -46,11 +54,13 @@
     <ng-container>
         <button mat-menu-item>
             <mat-icon>menu</mat-icon>
-            <span>Meu Cadastro</span>
+            <span [routerLink]="['/adm/eventos']">Meu Cadastro</span>
         </button>
         <button mat-menu-item>
             <mat-icon>menu</mat-icon>
-            <span>Minhas Inscrições</span>
+            <a [routerLink]="['/']">Inscrições
+            </a>
+
         </button>
         <button mat-menu-item (click)="sair()">
             <mat-icon>menu</mat-icon>

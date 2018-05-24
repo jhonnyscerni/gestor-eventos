@@ -10,50 +10,40 @@ import { forEach } from '@angular/router/src/utils/collection';
 @Injectable()
 export class AuthGuard implements CanActivate {
 
-    constructor(private keycloakService: KeycloakService, public router: Router) {
+    constructor(public router: Router) {
 
     }
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> | boolean {
+    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
 
-        return KeycloakService.init().then(() => {
-            let routeMapping: RouteMapping = this.createRouteMappingFromData(route.data);
-            let isAuthorizedRoute: boolean = false;
+        let routeMapping: RouteMapping = this.createRouteMappingFromData(route.data);
+        let isAuthorizedRoute: boolean = false;
 
-            if(routeMapping.roles.length == 0){
+        for (let role of routeMapping.roles) {
+            if (KeycloakService.hasResourceRoleAngular(role)) {
                 isAuthorizedRoute = true;
+                break;
             }
-
-            for (let role of routeMapping.roles) {
-                if (KeycloakService.hasResourceRoleAngular(role)) {
-                    isAuthorizedRoute = true;
-                    break;
-                }
-            }
-
-            if (!isAuthorizedRoute) {
-                if (routeMapping.mensagem == '') {
-                    this.router.navigate([routeMapping.redirect]);
-                } else {
-                    this.router.navigate([routeMapping.redirect], { queryParams: { msg: routeMapping.mensagem } });
-                }
-            }
-            return isAuthorizedRoute;
         }
 
-        );
-
-
+        if (!isAuthorizedRoute) {
+            if (routeMapping.mensagem == '') {
+                this.router.navigate([routeMapping.redirect]);
+            } else {
+                this.router.navigate([routeMapping.redirect], { queryParams: { msg: routeMapping.mensagem } });
+            }
+        }
+        return isAuthorizedRoute;
 
     }
 
 
 
     /**
-     * Captura as informações da Rota e preserva os valores default
-     * 
-     * @param data informações da Rota
-     */
+    * Captura as informações da Rota e preserva os valores default
+    * 
+    * @param data informações da Rota
+    */
     private createRouteMappingFromData(data: any): RouteMapping {
         let mapping: RouteMapping = new RouteMapping();
 

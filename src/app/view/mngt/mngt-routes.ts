@@ -55,7 +55,7 @@ const routes: Routes = [
 
                     { path: 'certificado-participante/novo', component: CertificadoParticipanteEditComponent },
                     { path: 'certificado-participante/:id', component: CertificadoParticipanteDetailComponent },
-                    { path: 'certificado-participante/edit/:id', component: CertificadoParticipanteEditComponent },
+                    { path: 'certificado-participante/:id/edit', component: CertificadoParticipanteEditComponent },
                 ]
             },
             {

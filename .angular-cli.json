@@ -32,6 +32,7 @@
         "../node_modules/tinymce/plugins/link/plugin.js",
         "../node_modules/tinymce/plugins/paste/plugin.js",
         "../node_modules/tinymce/plugins/table/plugin.js",
+        "../node_modules/tinymce/plugins/textpattern/plugin.js",
         "../node_modules/tinymce/plugins/code/plugin.js"],
       
       "environmentSource": "environments/environment.ts",
