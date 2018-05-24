@@ -43,7 +43,8 @@
               </button>
 
               <a mat-button >GERAR CRACHA</a>
-              <a mat-button >EDITAR DA INSCRICAO</a>
+
+              <a mat-button [routerLink]="['evento', item?.evento?.id, 'minha-inscricao', item?.id]">EDITAR</a>
               <!-- <button mat-button color="primary" [routerLink]="['editar', evento?.id]">EDITAR</button> -->
             </div>
           </mat-card-actions>

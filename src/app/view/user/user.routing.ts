@@ -15,7 +15,8 @@ const routes: Routes = [
 
       { path: '', component: UserComponent , children: [
         { path: '', component: MinhaInscricaoListComponent },
-        { path: 'minha-inscricao/edit/:id', component: MinhaInscricaoEditComponent }
+        { path: 'evento/:idEvento/minha-inscricao', component: MinhaInscricaoEditComponent},
+        { path: 'evento/:idEvento/minha-inscricao/:idInscricao', component: MinhaInscricaoEditComponent},
       ]},
     ]
   }

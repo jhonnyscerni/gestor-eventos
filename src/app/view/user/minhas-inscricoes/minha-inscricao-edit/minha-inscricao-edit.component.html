@@ -1,3 +1,80 @@
-<p>
-  minha-inscricao-edit works!
-</p>
+<div main-content layout="row" layout-align="center start">
+
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="inscricao">
+
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Cadastro de Inscricao
+      </div>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <!-- FORMULÁRIO -->
+      <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
+
+        <!-- FORMULÁRIO -->
+        <div fxLayout="column">
+          <div>
+            <h2>
+              <strong>Evento: </strong> {{evento?.nome}}
+            </h2>
+            <p>
+              <strong>Carga Horaria: </strong>{{evento?.cargaHoraria}}</p>
+            <p>
+              <strong>Local: </strong>{{evento?.local}}</p>
+            <p>
+              <strong>Data Inicio: </strong>{{evento?.dataInicio}}</p>
+            <p>
+              <strong>Data Fim: </strong>{{evento?.dataFim}}</p>
+          </div>
+
+          <mat-divider></mat-divider>
+          <div>
+            <h2>
+              <strong>Nome do Participante: </strong> {{participanteLogado?.nome}}
+            </h2>
+            <p>
+              <strong>CPF: </strong>{{participanteLogado?.cpf}}</p>
+            <p>
+              <strong>Email: </strong>{{participanteLogado?.email}}</p>
+          </div>
+
+
+          <!-- CATEGORIA PARTICIPANTE EVENTO -->
+          <mat-form-field>
+            <mat-select [compareWith]="compareByOptionId" placeholder="Categoria da Inscricao do Participante" name="categoriaParticipanteEvento"
+              [(ngModel)]="inscricao.categoriaParticipanteEvento" required>
+              <mat-option *ngFor="let categoriaParticipanteEvento of categoriaParticipanteEventos" [value]="categoriaParticipanteEvento">
+                {{ categoriaParticipanteEvento.categoriaParticipante.titulo }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+
+          <!-- OBSERVACAO -->
+          <mat-input-container floatPlaceholder="auto" flex="100">
+            <input matInput [(ngModel)]="inscricao.observacao" name="observacao" type="text" placeholder="Observação">
+          </mat-input-container>
+
+
+        </div>
+
+        <div fxLayout="column">
+          <mat-card-actions>
+            <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">INSCREVER</button>
+            <a mat-button color="warn" [routerLink]="['']">CANCELAR</a>
+
+          </mat-card-actions>
+        </div>
+
+
+
+
+      </form>
+
+    </mat-card-content>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+</div>

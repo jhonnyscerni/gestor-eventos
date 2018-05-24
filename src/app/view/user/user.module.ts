@@ -1,3 +1,4 @@
+import { EventoService } from './../../service/evento.service';
 import { KeycloakService } from './../../@core/security/keycloak.service';
 import { MinhaInscricaoEditComponent } from './minhas-inscricoes/minha-inscricao-edit/minha-inscricao-edit.component';
 
@@ -54,6 +55,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     MinhaInscricaoEditComponent
   ],
   providers: [
+    EventoService,
     InscricaoService,
     ParticipanteService,
     CategoriaParticipanteEventoService,
