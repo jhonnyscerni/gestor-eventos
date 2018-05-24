@@ -32,10 +32,12 @@ export class CertificadoParticipanteEditComponent implements OnInit {
     
   ) { }
 
+  nome: any;
+
 
 
   ngOnInit() {
-    this.inscricao.participante.nome = "{{inscricao.participante.nome}}";
+    this.nome = this.inscricao.participante.nome;
     this.inscricao.evento.nome = "{{inscricao?.evento?.nome}}";
     this.inscricao.evento.local = "{{inscricao?.evento?.local}}";
     this.inscricao.evento.cargaHoraria = "{{inscricao?.evento?.cargaHoraria}}";
@@ -76,7 +78,7 @@ onSubmit() {
   
   this.certificadoService.salvar(this.certificado, this.idEvento).subscribe(certificado => {
     this.snackBar.open(`${certificado.id} salvo com sucesso!`, '', { duration: 10000 });
-    this.router.navigate(['certificado', certificado.id]);
+    this.router.navigate(['certificado-participante', certificado.id]);
   });
 
 }

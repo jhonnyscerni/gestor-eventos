@@ -35,18 +35,16 @@ export class GerarCertificadoComponent implements OnInit {
 
   ngOnInit() {
     this.idInscricao = this.route.snapshot.params['id'];
-    this.route.parent.params.subscribe(param => {
+      this.route.parent.params.subscribe(param => {
       this.idEvento = param['id'];
       this.processaCertificado();
-      this.getCertificado();
       console.log(`id de evento em Facilitador : ` + this.idEvento);
       this.certificado.evento.id = this.idEvento;
     });
   }
 
   getCertificado() {
-      return this.certificadoService.getCertificadoByEvento(this.idEvento)
-      .subscribe(certificado => this.certificado = certificado)
+      return this.certificadoService.getCertificadoByEvento(this.idEvento);
   }
 
   atualizarTituloCertificado() {
@@ -58,10 +56,15 @@ export class GerarCertificadoComponent implements OnInit {
       .subscribe(inscricao => {
         this.inscricaoService.inscricao = inscricao;
         this.inscricao = this.inscricaoService.inscricao;
+        this.getCertificado().subscribe(certificado => {
+            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{nome}", this.inscricao.participante.nome);
+            this.certificado = certificado;
+          });
         this.atualizarTituloCertificado();
       })
 
   }
+  
 
 
   print(): void {
