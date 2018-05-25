@@ -1,0 +1,96 @@
+.page-preview {
+    background-color: rgb(204,204,204) !important;
+    padding: 20px;
+    width: auto;
+}
+
+#page-certificado {
+    background: url(/assets/imagens/modelo_certificado.jpg) no-repeat center center;
+}
+
+#page-certificado .codigoValidacao {
+    top: -30px;
+    position: relative;
+    text-align: right;
+    right: -50px;
+}
+
+#page-certificado .texto {
+    margin: 120px 10px 10px 10px;
+    overflow: hidden;
+    padding: 0 85px 85px 85px;
+    text-align: justify;
+}
+
+
+#page-certificado {
+    display: block!important;
+    margin: 0!important;
+    margin-bottom: 0.5cm!important;
+    box-shadow: 0 0 0.5cm rgba(0,0,0,0.8)!important;
+    background-color: #FFF!important;
+    -webkit-background-size: cover!important;
+    -moz-background-size: cover!important;
+    -o-background-size: cover!important;
+    background-size: cover!important;
+    box-sizing: border-box!important;
+    padding: 35px!important;
+    background-origin: content-box!important;
+    width: 29.7cm!important;
+    height: 21cm!important;
+}
+
+@media only screen and (max-width: 1600px) and (min-width: 1301px){
+#page-certificado {
+    zoom: 0.80;
+    -moz-zoom: 0.75;
+    -moz-transform: scale(0.75,0.75);
+    -moz-transform-origin: left top;
+}
+}
+
+div.actions ul {
+    overflow: hidden;
+    padding: 0 !important;
+}
+
+div.actions ul li {
+    float: left;
+    list-style: none outside none;
+    margin: 0 2px 5px 0;
+    padding: 0;
+}
+
+div.actions {
+    margin-top: 0;
+    padding-right: 20px;
+}
+
+
+.info {
+    padding-top: 20px;
+}
+
+.info p {
+    color:#656565;
+    font-size: 12px;
+    display: block;
+
+}
+
+.green {
+    background-color: #5BB75B;
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+
+.cinza {
+    background-color: #656565;
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+

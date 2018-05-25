@@ -46,11 +46,11 @@
         <mat-divider></mat-divider>
         <mat-card-actions>
           <div layout="row" layout-align="end center">
-            <button mat-button color="warn" class="text-upper">
-              GERAR CERTIFICADO
-            </button>
+            <a mat-button class="text-upper" [routerLink]="['evento', item?.evento?.id, 'gerar-certificado', item?.id]">
+              CERTIFICADO
+            </a>
 
-            <a mat-button [routerLink]="['gerar-cracha', item?.id]">GERAR CRACHA</a>
+            <a mat-button [routerLink]="['gerar-cracha', item?.id]">CRACHA</a>
 
             <a mat-button [routerLink]="['evento', item?.evento?.id, 'minha-inscricao', item?.id]">EDITAR</a>
 
