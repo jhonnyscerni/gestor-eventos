@@ -19,6 +19,8 @@ import { ParticipanteService } from '../../service/participante.service';
 import { CategoriaParticipanteEventoService } from '../../service/categoria-participante-evento.service';
 import { MinhaInscricaoListComponent } from './minhas-inscricoes/minha-inscricao-list/minha-inscricao-list.component';
 import { MeuCadastroComponent } from './meu-cadastro/meu-cadastro.component';
+import { MeuCrachaComponent } from './meu-cracha/meu-cracha.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 
 
@@ -49,12 +51,14 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     SharedModule,
     OwlDateTimeModule,
     OwlMomentDateTimeModule,
+    NgxQRCodeModule,
   ],
   declarations: [
     UserComponent,
     MinhaInscricaoListComponent,
     MinhaInscricaoEditComponent,
-    MeuCadastroComponent
+    MeuCadastroComponent,
+    MeuCrachaComponent
 ],
   providers: [
     EventoService,

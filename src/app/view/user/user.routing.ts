@@ -1,3 +1,4 @@
+import { MeuCrachaComponent } from './meu-cracha/meu-cracha.component';
 import { MeuCadastroComponent } from './meu-cadastro/meu-cadastro.component';
 import { AuthGuardUser } from './../../@core/security/auth-guard-user';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,6 +18,7 @@ const routes: Routes = [
       { path: '', component: UserComponent , children: [
         { path: '', component: MinhaInscricaoListComponent },
         { path: 'meu-cadastro', component: MeuCadastroComponent},
+        { path: 'gerar-cracha/:idInscricao', component: MeuCrachaComponent },
         { path: 'evento/:idEvento/minha-inscricao', component: MinhaInscricaoEditComponent},
         { path: 'evento/:idEvento/minha-inscricao/:idInscricao', component: MinhaInscricaoEditComponent},
       ]},
