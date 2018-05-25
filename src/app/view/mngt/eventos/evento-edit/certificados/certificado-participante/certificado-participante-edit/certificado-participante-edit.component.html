@@ -18,11 +18,11 @@
 
           <div class="form-group">
             <label for="ModeloCertificadoTexto">Texto para o certificado de participação no evento* </label>
+            <div><p style="text-align:left;font-size:14pt;font-weight: bold">Exemplo: </p></div>
 
             <div>
-              <div><p style="text-align:center;font-size:16pt">Exemplo: </p></div>
               <p style="text-align:center">
-                <span style="font-size:16pt">CERTIFICADO</span>
+                <span style="font-size:16pt;font-weight: bold">CERTIFICADO</span>
               </p>
               <p>
                 <span style="font-size:14pt">Certificamos que {{nome}} participou do(a) {{evento}} em {{local}}
@@ -34,6 +34,9 @@
             
             <text-editor [value]="defaultBodyValue" [elementId]="'ModeloCertificadoTexto'" (onEditorKeyup)="onBodyTextEditorKeyUp($event)">
             </text-editor>
+
+            <label>* Altere espaçamento, alinhamento, cor e tamanho da fonte para ajustar seu modelo</label>
+            <label>** Os termos entre chaves serão substituídos pelo sistema </label>
 
           </div>
 

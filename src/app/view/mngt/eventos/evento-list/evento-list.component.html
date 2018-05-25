@@ -22,9 +22,10 @@
       </mat-card>
     </div>
 
-    <div fxLayout="column">
 
-      <div layout layout="row" layout-align="center">
+    <div layout="column">
+
+      <div layout-wrap layout="row" layout-align="center">
         <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngFor="let evento of eventoPage.content">
 
           <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
