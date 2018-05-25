@@ -12,7 +12,7 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
 
 
   @Input() elementId: string;
-  @Input() value: any = "";
+  @Input() value: string;
   @Output() onEditorKeyup: EventEmitter<any> = new EventEmitter<any>();
 
   baseURL: string = '/';
@@ -56,9 +56,9 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
 
   ngOnChanges(){
 
-    console.log(this.value);
+    //console.log(this.value);
 
-    if(!isNullOrUndefined(this.editor) && this.value !== "" && !this.didSetValue){
+    if (!isNullOrUndefined(this.editor) && this.value !== "" && !this.didSetValue) {
 
       console.log(this.value);
       this.didSetValue = true;

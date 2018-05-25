@@ -72,12 +72,11 @@ export class ParticipanteService {
   }
 
   initParticipanteLogado(){
-    console.log("ENTROUUUUUUUUU");
     return new Promise((resolve: any)=>{
       this.http.get(`${this.url}/verificar?email=${KeycloakService.auth.authz.tokenParsed.email}`)
     .map(res => res.json())
     .catch(e=>{
-      console.log(e);
+      //console.log(e);
       let ob:Observable<Participante> = new Observable();
       if(e.status === 404){
         //console.log('Participante nao encontrado.');
@@ -91,10 +90,10 @@ export class ParticipanteService {
       return ob;
     }).subscribe(participante=>{
       this.participanteLogado = participante;
-      console.log("Sub do participante")
-      console.log(participante)
-      console.log(this.participanteLogado);
-      console.log(this.getParticipanteLogado());
+      // console.log("Sub do participante")
+      // console.log(participante)
+      // console.log(this.participanteLogado);
+      // console.log(this.getParticipanteLogado());
     },
       (err)=> {}, 
       ()=> resolve(true)
@@ -108,7 +107,7 @@ export class ParticipanteService {
   }
 
   load(): Promise<any> {
-    console.log("Init")
+    //console.log("Init")
     let promise: Promise<any> = new Promise((resolve: any) => {
             this.http.get(`${this.url}/verificar?email=${KeycloakService.auth.authz.tokenParsed.email}`)
                     .map(res => res.json())

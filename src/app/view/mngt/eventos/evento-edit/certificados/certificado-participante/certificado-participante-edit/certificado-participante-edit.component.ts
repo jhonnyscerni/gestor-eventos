@@ -23,6 +23,8 @@ export class CertificadoParticipanteEditComponent implements OnInit {
 
   inscricao: Inscricao = new Inscricao();
 
+  defaultBodyValue: string = "";
+
   constructor(
     private certificadoService: CertificadoService,
     private router: Router,
@@ -74,6 +76,7 @@ private editar() {
   this.certificadoService.getCertificado(this.idCertificado).subscribe( certificado => {
     this.certificadoService.certificado = certificado;
     this.certificado = this.certificadoService.certificado;
+    this.defaultBodyValue = certificado.conteudoCertificado;
     this.atualizarTituloEdicao();
   });
 }
@@ -83,7 +86,7 @@ onSubmit() {
   
   this.certificadoService.salvar(this.certificado, this.idEvento).subscribe(certificado => {
     this.snackBar.open(`${certificado.id} salvo com sucesso!`, '', { duration: 10000 });
-    this.router.navigate(['certificado-participante', certificado.id]);
+   // this.router.navigate(['certificado-participante', certificado.id]);
   });
 
 }
@@ -95,7 +98,8 @@ atualizarTituloEdicao() {
 
   onBodyTextEditorKeyUp(textValue) {
 
-    this.certificado.conteudoCertificado = textValue;
+   //console.log(textValue);
+   this.certificado.conteudoCertificado = textValue;
   }
 
 }
