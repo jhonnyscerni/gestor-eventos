@@ -85,7 +85,7 @@ private editar() {
 onSubmit() {
   
   this.certificadoService.salvar(this.certificado, this.idEvento).subscribe(certificado => {
-    this.snackBar.open(`${certificado.id} salvo com sucesso!`, '', { duration: 10000 });
+    this.snackBar.open(`Modelo Certificado salvo com sucesso!`, '', { duration: 10000 });
    // this.router.navigate(['certificado-participante', certificado.id]);
   });
 

@@ -10,6 +10,7 @@ import { ITdDataTableColumn, TdDialogService } from '@covalent/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar, MatDialog } from '@angular/material';
+import { InscricaoService } from '../../../../../service/inscricao.service';
 
 
 @Component({
@@ -33,6 +34,8 @@ export class CategoriaParticipanteComponent implements OnInit {
 
   isNew: boolean;
 
+  map: Map<number, number> = new Map();
+
   configWidthColumns: ITdDataTableColumn[] = [
     { name: 'id', label: '#', width: 50 },
     { name: 'categoriaParticipante.titulo', label: 'Categoria', width: 600 },
@@ -45,6 +48,7 @@ export class CategoriaParticipanteComponent implements OnInit {
 
   constructor(
     private categoriaParticipanteService: CategoriaParticipanteService,
+    private inscricaoService: InscricaoService,
     private categoriaParticipanteEventoService: CategoriaParticipanteEventoService,
     private router: Router,
     private route: ActivatedRoute,
@@ -66,9 +70,14 @@ export class CategoriaParticipanteComponent implements OnInit {
       this.processaCategoriaParticipanteEvento();
       this.getTotalVagas();
       this.categoriaParticipanteEvento.evento.id = this.idEvento;
+      this.contadoresPorCategoriaParticipanteEvento();
     });
   }
 
+  contadoresPorCategoriaParticipanteEvento(){
+    this.inscricaoService.findCountInscricaoGroupByCategoriaParticipanteEvento(this.idEvento)
+      .subscribe(map => this.map = map);
+  }
 
   getTotalVagas(){
     this.categoriaParticipanteEventoService.getTotalCategoriaParticipantesEventoByEvento(this.idEvento)

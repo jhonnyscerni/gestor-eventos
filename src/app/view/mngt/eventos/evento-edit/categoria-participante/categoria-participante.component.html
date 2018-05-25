@@ -70,9 +70,12 @@
                 <div fxFlex="50">
                   <b>Tipos de Participantes</b>
                 </div>
-                <div fxFlex="50" class="text-center" hide-xs>
+                <div fxFlex="25" class="text-center" hide-xs>
                   <b>Vagas Liberadas</b>
                 </div>
+                <div fxFlex="25" class="text-center" hide-xs>
+                    <b>Vagas Preenchidas</b>
+                  </div>
                 <!-- <div fxFlex="25" hide-gt-xs><b>Vagas Liberadas</b></div> -->
                 <!-- <div fxFlex="25" class="text-center" hide-xs><b>Vagas de Espera</b></div> -->
               </div>
@@ -90,8 +93,10 @@
                 <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center"
                   fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp">
                   <div fxFlex="50" class="list-card-field">{{item?.categoriaParticipante.titulo}}</div>
-                  <div fxFlex="50" class="list-card-field text-center">
+                  <div fxFlex="25" class="list-card-field text-center">
                     <span hide-gt-xs>Vagas: </span>{{item?.vagas}}</div>
+                    <div fxFlex="25" class="list-card-field text-center">
+                        <span hide-gt-xs>Quantidade de Inscritos: </span>{{map[item?.id]}}</div>
                   <!-- <div fxFlex="25" class="list-card-field text-center" hide-xs>{{item?.espera}}</div> -->
                 </div>
                 <div fxFlex="10" fxFlex.xs="20" class="fullwidth" fxLayoutAlign="center center">

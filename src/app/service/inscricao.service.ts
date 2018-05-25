@@ -19,6 +19,12 @@ export class InscricaoService {
         private http: Http
     ) { }
 
+    findCountInscricaoGroupByCategoriaParticipanteEvento(idEvento: number): Observable<Map<number, number>> {
+      return this.http.get(`${environment.urlbase}/eventos/${idEvento}/groupby/categoria-participante-evento`)
+            .map(res => res.json());
+    }
+
+
     getInscricoesByEvento(idEvento: number): Observable<Page<Inscricao>> {
         return this.http.get(`${environment.urlbase}/eventos/${idEvento}/inscricoes`)
             .map(res => res.json());
@@ -98,6 +104,7 @@ export class InscricaoService {
      
       }
 
+    
       //SEM PESQUISA
 
       // getInscricaoPaginado(idEvento: number,size: number, page: number):Observable<Page<Inscricao>> {
