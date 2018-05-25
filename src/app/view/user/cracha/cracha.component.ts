@@ -6,11 +6,11 @@ import { MatSnackBar } from '@angular/material';
 import { Inscricao } from '../../../domain/inscricao';
 
 @Component({
-  selector: 'app-meu-cracha',
-  templateUrl: './meu-cracha.component.html',
-  styleUrls: ['./meu-cracha.component.css']
+  selector: 'app-cracha',
+  templateUrl: './cracha.component.html',
+  styleUrls: ['./cracha.component.css']
 })
-export class MeuCrachaComponent implements OnInit {
+export class CrachaComponent implements OnInit {
 
   participanteLogado: any;
 

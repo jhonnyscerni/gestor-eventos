@@ -1,3 +1,4 @@
+import { CertificadoService } from './../../service/certificado.service';
 import { EventoService } from './../../service/evento.service';
 import { KeycloakService } from './../../@core/security/keycloak.service';
 import { MinhaInscricaoEditComponent } from './minhas-inscricoes/minha-inscricao-edit/minha-inscricao-edit.component';
@@ -19,8 +20,10 @@ import { ParticipanteService } from '../../service/participante.service';
 import { CategoriaParticipanteEventoService } from '../../service/categoria-participante-evento.service';
 import { MinhaInscricaoListComponent } from './minhas-inscricoes/minha-inscricao-list/minha-inscricao-list.component';
 import { MeuCadastroComponent } from './meu-cadastro/meu-cadastro.component';
-import { MeuCrachaComponent } from './meu-cracha/meu-cracha.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
+import { CertificadoComponent } from './certificado/certificado.component';
+import { CrachaComponent } from './cracha/cracha.component';
+import { SafeHtmlPipe } from '../../@core/pipe/safe-html.pipe';
 
 
 
@@ -58,13 +61,16 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     MinhaInscricaoListComponent,
     MinhaInscricaoEditComponent,
     MeuCadastroComponent,
-    MeuCrachaComponent
+    CrachaComponent,
+    CertificadoComponent,
+    SafeHtmlPipe,
 ],
   providers: [
     EventoService,
     InscricaoService,
     ParticipanteService,
     CategoriaParticipanteEventoService,
+    CertificadoService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
 
