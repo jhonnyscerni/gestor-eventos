@@ -23,7 +23,6 @@ import { MeuCadastroComponent } from './meu-cadastro/meu-cadastro.component';
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { CertificadoComponent } from './certificado/certificado.component';
 import { CrachaComponent } from './cracha/cracha.component';
-import { SafeHtmlPipe } from '../../@core/pipe/safe-html.pipe';
 
 
 
@@ -63,7 +62,6 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     MeuCadastroComponent,
     CrachaComponent,
     CertificadoComponent,
-    SafeHtmlPipe,
 ],
   providers: [
     EventoService,

@@ -1,5 +1,4 @@
 import { GerarCertificadoComponent } from './eventos/evento-edit/inscricoes/gerar-certificado/gerar-certificado.component';
-import { SafeHtmlPipe } from './../../@core/pipe/safe-html.pipe';
 import { CertificadoService } from './../../service/certificado.service';
 import { CertificadoParticipanteDetailComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-detail/certificado-participante-detail.component';
 import { CertificadoParticipanteEditComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-edit/certificado-participante-edit.component';
@@ -98,7 +97,6 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     CertificadoParticipanteEditComponent,
     CertificadoParticipanteDetailComponent,
     EventoMenuLateralComponent,
-    SafeHtmlPipe,
     UnauthorizedComponent,
     EditorComponent,
 ],

@@ -24,6 +24,7 @@ import { NgxChartsModule, } from '@swimlane/ngx-charts';
 import { KeycloakService } from '../security/keycloak.service';
 import { AuthGuardAdmin } from '../security/auth-guard-admin';
 import { AuthGuard } from '../security/auth-guard';
+import { SafeHtmlPipe } from '../pipe/safe-html.pipe';
 
 const FLEX_LAYOUT_MODULES: any[] = [
   FlexLayoutModule,
@@ -69,6 +70,7 @@ const OUTERS: any[] = [
     LayoutModule
   ],
   declarations: [
+    SafeHtmlPipe
   ],
   exports: [
     ANGULAR_MODULES,
@@ -76,7 +78,8 @@ const OUTERS: any[] = [
     COVALENT_MODULES,
     CHART_MODULES,
     FLEX_LAYOUT_MODULES,
-    LayoutModule
+    LayoutModule,
+    SafeHtmlPipe,
   ],
   providers:[
     KeycloakService,
