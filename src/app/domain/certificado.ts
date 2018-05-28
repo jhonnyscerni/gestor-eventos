@@ -3,4 +3,5 @@ export class Certificado {
     id?: number;
     conteudoCertificado?: string;
     evento?: Evento = new Evento();
+    imagem?: string;
 }

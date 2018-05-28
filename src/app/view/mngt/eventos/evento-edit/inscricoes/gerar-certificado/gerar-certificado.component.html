@@ -23,16 +23,17 @@
 
 
 
-        <div class="page-preview" id="print-section">
+        <div class="page-preview" id="content" #content>
           <div id="page-certificado">
-            <div class="codigoValidacao">
-              <p style="text-align: right; font-size: 11px; padding-right: 50px;margin-top: 3px;">
-                Acesse
-                <b>https://gestor-eventos/validar-certificado</b> para verificar se este certificado é válido.
-                <b>Código de validação:</b> {{inscricao?.codigoQrCode}} </p>
-            </div>
 
             <div class="texto" [innerHTML]="[certificado?.conteudoCertificado] | safeHtml"></div>
+
+            <div id="editor" style="text-align: center">
+              <h2> DESEMBARGADORA CÉLIA REGINA DE LIMA PINHEIRO
+                <br/> Diretora da Escola Judiciária Eleitoral</h2>
+            </div>
+
+            <p id="editor" style="font-size: 11px; float: right; margin-right: 90px; margin-top: 30px">Validar em http://www.tre-pa.jus.br com o código de autenticação: [{{inscricao?.codigoQrCode}}] </p>
 
           </div>
         </div>
