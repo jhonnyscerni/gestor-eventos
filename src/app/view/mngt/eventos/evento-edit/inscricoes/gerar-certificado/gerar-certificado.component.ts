@@ -62,8 +62,8 @@ export class GerarCertificadoComponent implements OnInit {
             certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{nome}", this.inscricao.participante.nome);
             certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{evento}", this.inscricao.evento.nome);
             certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{local}", this.inscricao.evento.local);
-            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataInicio}", "12/12/12");
-            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataFim}", "2/12/12");
+            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataInicio}", Moment(this.inscricao.evento.inicioEvento).format('DD [de] MMMM [de] YYYY'));
+            certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataFim}", Moment(this.inscricao.evento.fimEvento).format('DD [de] MMMM [de] YYYY'));
             certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{cargaHoraria}", this.inscricao.evento.cargaHoraria);
             this.certificado = certificado;
           });
@@ -71,11 +71,6 @@ export class GerarCertificadoComponent implements OnInit {
       })
 
   }
-
-  public dateLayout(dt: any): String {
-    return Moment(dt).format('DD [de] MMMM [de] YYYY [às] HH:mm:ss');
-}
-  
 
 
   print(): void {
@@ -90,10 +85,6 @@ export class GerarCertificadoComponent implements OnInit {
             background-color: rgb(204,204,204) !important;
             padding: 20px;
             width: auto;
-        }
-        
-        #page-certificado {
-            background: url(/assets/imagens/modelo_certificado.jpg) no-repeat center center;
         }
         
         #page-certificado .codigoValidacao {

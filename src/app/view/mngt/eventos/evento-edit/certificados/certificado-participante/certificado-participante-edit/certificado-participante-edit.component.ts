@@ -47,7 +47,7 @@ export class CertificadoParticipanteEditComponent implements OnInit {
     this.evento = "{evento}";
     this.local = "{local}";
     this.dataInicio = "{dataInicio}";
-    this.dataInicio = "{dataFim}";
+    this.dataFim = "{dataFim}";
     this.cargaHoraria = "{cargaHoraria}";
     this.isNew = true;
     this.title.setTitle('Novo Certificado');
