@@ -24,7 +24,9 @@
 
 
         <div class="page-preview" id="content" #content>
-          <div id="page-certificado">
+
+          <img src=" {{certificado?.imagem}}" id="page-certificado"/>
+          <div id="page-certificado-texto">
 
             <div class="texto" [innerHTML]="[certificado?.conteudoCertificado] | safeHtml"></div>
 
@@ -33,7 +35,7 @@
                 <br/> Diretora da Escola Judiciária Eleitoral</h2>
             </div>
 
-            <p id="editor" style="font-size: 11px; float: right; margin-right: 90px; margin-top: 30px">Validar em http://www.tre-pa.jus.br com o código de autenticação: [{{inscricao?.codigoQrCode}}] </p>
+            <p id="editor" style="font-size: 11px; text-align: right; margin-top: 60px; margin-right: 90px;">Validar em http://www.tre-pa.jus.br com o código de autenticação: [{{inscricao?.codigoQrCode}}] </p>
 
           </div>
         </div>
