@@ -1,4 +1,4 @@
-<div main-content layout="row" layout-align="center start" >
+<div main-content layout="row" layout-align="center start">
 
   <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
 
@@ -20,19 +20,22 @@
             </li>
           </ul>
         </div>
-        <div class="page-preview">
-          <div id="page-certificado" >
-          
-             <!-- <img [src]="imagem" width="100px" height="100px" /> -->
-            <div class="texto" [innerHTML]="certificado.conteudoCertificado | safeHtml"></div>
 
-            <div id="editor" style="text-align: center; margin-top: 100px">
-                <h2> DESEMBARGADORA CÉLIA REGINA DE LIMA PINHEIRO
-                  <br/> Diretora da Escola Judiciária Eleitoral</h2>
-              </div>
-  
-              <p id="editor" style="font-size: 11px; float: right; margin-right: 90px; margin-top: 50px">Validar em http://www.tre-pa.jus.br com o código de autenticação: [{{inscricao?.codigoQrCode}}] </p>
-  
+
+        <div class="page-preview">
+          <img *ngIf="certificado?.imagem"  src=" {{certificado?.imagem}}" id="page-certificado" />
+          <div *ngIf="!certificado?.imagem" id="page-certificado"></div>
+          <div id="page-certificado-texto">
+
+            <div class="texto" [innerHTML]="[certificado?.conteudoCertificado] | safeHtml"></div>
+
+            <div id="editor" style="text-align: center">
+              <h2> DESEMBARGADORA CÉLIA REGINA DE LIMA PINHEIRO
+                <br/> Diretora da Escola Judiciária Eleitoral</h2>
+            </div>
+
+            <p id="editor" style="font-size: 11px; text-align: right; margin-top: 60px; margin-right: 90px;">Validar em http://www.tre-pa.jus.br com o código de autenticação: [{{inscricao?.codigoQrCode}}] </p>
+
           </div>
         </div>
 

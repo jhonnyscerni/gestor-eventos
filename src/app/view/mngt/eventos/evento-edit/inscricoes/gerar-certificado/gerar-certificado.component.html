@@ -25,7 +25,8 @@
 
         <div class="page-preview" id="content" #content>
 
-          <img src=" {{certificado?.imagem}}" id="page-certificado"/>
+          <img *ngIf="certificado?.imagem" src=" {{certificado?.imagem}}" id="page-certificado" />
+          <div *ngIf="!certificado?.imagem" id="page-certificado"></div>
           <div id="page-certificado-texto">
 
             <div class="texto" [innerHTML]="[certificado?.conteudoCertificado] | safeHtml"></div>
