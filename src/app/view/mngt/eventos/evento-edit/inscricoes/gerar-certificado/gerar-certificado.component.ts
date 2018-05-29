@@ -27,6 +27,9 @@ export class GerarCertificadoComponent implements OnInit {
   certificado: Certificado = new Certificado();
 
   value: string ;
+
+  inscricaoQrCode: any;
+
   constructor(
     private inscricaoService: InscricaoService,
     private certificadoService: CertificadoService,
@@ -41,6 +44,7 @@ export class GerarCertificadoComponent implements OnInit {
     this.route.parent.params.subscribe(param => {
       this.idEvento = param['id'];
       this.processaCertificado();
+      this.getQrCode();
       console.log(`id de evento em Facilitador : ` + this.idEvento);
       this.certificado.evento.id = this.idEvento;
     });
@@ -48,6 +52,17 @@ export class GerarCertificadoComponent implements OnInit {
 
   getCertificado() {
     return this.certificadoService.getCertificadoByEvento(this.idEvento);
+  }
+
+  getQrCode() {
+    return this.inscricaoService.getQrCodeByInscricao(this.idInscricao).subscribe(
+      inscricaoQrCode => { 
+        this.inscricaoQrCode = inscricaoQrCode
+        console.log(this.inscricaoQrCode);
+      }
+
+      
+    )
   }
 
   atualizarTituloCertificado() {
