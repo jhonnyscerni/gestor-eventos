@@ -92,6 +92,15 @@ export class GerarCertificadoComponent implements OnInit {
   @ViewChild('content') content: ElementRef;
   print(): void {
 
+    var img = new Image();
+    img.src = this.certificado.imagem;
+    img.addEventListener('load', () => {
+      var canvas = document.createElement("canvas");
+
+      var dataURL = canvas.toDataURL("image/jpeg");
+    })
+   
+
     let doc = new jsPDF("l", "mm", [297, 210]);
 
     let specialElementHandlers = {
@@ -101,7 +110,7 @@ export class GerarCertificadoComponent implements OnInit {
     };
    // let content = this.content.nativeElement;
 
-    let imgData = 'data:image/jpeg;base64,'+ this.certificado.imagem ;
+    let imgData = img.src ;
 
     let content = document.getElementById("content").innerHTML;
 
