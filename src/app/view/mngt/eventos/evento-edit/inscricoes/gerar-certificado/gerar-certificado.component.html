@@ -23,13 +23,12 @@
 
 
 
-        <div class="page-preview" id="content" #content>
-
+        <div class="page-preview">
           <img *ngIf="certificado?.imagem" src=" {{certificado?.imagem}}" id="page-certificado" />
           <div *ngIf="!certificado?.imagem" id="page-certificado"></div>
           <div id="page-certificado-texto">
 
-            <div class="texto" [innerHTML]="[certificado?.conteudoCertificado] | safeHtml"></div>
+            <div class="texto" id="content" #content [innerHTML]="[certificado?.conteudoCertificado] | safeHtml"></div>
 
             <div id="editor" style="text-align: center">
               <h2> DESEMBARGADORA CÉLIA REGINA DE LIMA PINHEIRO

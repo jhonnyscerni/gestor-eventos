@@ -99,7 +99,9 @@ export class GerarCertificadoComponent implements OnInit {
 
       var dataURL = canvas.toDataURL("image/jpeg");
     })
-   
+
+    let imgData = img.src ;
+
 
     let doc = new jsPDF("l", "mm", [297, 210]);
 
@@ -108,13 +110,14 @@ export class GerarCertificadoComponent implements OnInit {
         return true;
       }
     };
-   // let content = this.content.nativeElement;
+    //let content = this.content.nativeElement;
 
-    let imgData = img.src ;
 
     let content = document.getElementById("content").innerHTML;
 
+    if(this.certificado.imagem) {
     doc.addImage(imgData, 'JPEG', 0, 0, 297, 210);
+    }
     doc.fromHTML(content, 35, 70, {
       'width': 230 ,
       'elementHandlers': specialElementHandlers
