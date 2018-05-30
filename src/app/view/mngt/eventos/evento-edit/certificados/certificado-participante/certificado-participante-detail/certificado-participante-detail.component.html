@@ -30,11 +30,11 @@
             <div class="texto" [innerHTML]="[certificado?.conteudoCertificado] | safeHtml"></div>
 
             <div style="text-align:center">
-              <img src="/assets/imagens/assinatura/cert-ass-des-celia-regina.png" width="250px">
+              <img src="{{certificado?.assinatura?.assinatura}}" width="250px">
             </div>
             <div id="editor" style="text-align: center; margin-top: -40px">
-              <h2> DESEMBARGADORA CÉLIA REGINA DE LIMA PINHEIRO
-                <br/> Diretora da Escola Judiciária Eleitoral</h2>
+              <h2> {{certificado?.assinatura?.assinante}}
+                <br/> {{certificado?.assinatura?.cargo}}</h2>
             </div>
 
             <p id="editor" style="font-size: 11px; text-align: right; margin-top: 20px; margin-right: 90px;">Validar em http://www.tre-pa.jus.br com o código de autenticação: [{{inscricao?.codigoQrCode}}] </p>

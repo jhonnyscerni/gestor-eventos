@@ -103,7 +103,7 @@ export class GerarCertificadoComponent implements OnInit {
     let imgData = img.src;
 
     var img2 = new Image();
-    img2.src = "/assets/imagens/assinatura/cert-ass-des-celia-regina.png";
+    img2.src = this.certificado.assinatura.assinatura;
     img2.addEventListener('load', () => {
       var canvas = document.createElement("canvas");
 
@@ -136,8 +136,8 @@ export class GerarCertificadoComponent implements OnInit {
       'elementHandlers': specialElementHandlers
     });
 
-    doc.text('DESEMBARGADORA CÉLIA REGINA DE LIMA PINHEIRO', 75, 160);
-    doc.text('Diretora da Escola Judiciária Eleitoral', 105, 170);
+    doc.text(this.certificado.assinatura.assinante, 75, 160);
+    doc.text(this.certificado.assinatura.cargo, 105, 170);
 
     doc.setFontSize(8)
     doc.text('Validar em http://www.tre-pa.jus.br com o código de autenticação: [' + this.inscricao.codigoQrCode + ']', 140, 190);

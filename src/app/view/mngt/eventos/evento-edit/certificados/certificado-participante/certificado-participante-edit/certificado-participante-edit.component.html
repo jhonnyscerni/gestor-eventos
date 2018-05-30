@@ -34,7 +34,7 @@
             </div>
 
             <!-- ASSINATURAS -->
-            <mat-form-field floatPlaceholder="auto" flex="100">
+            <mat-form-field style="width: 100%" >
               <mat-select [compareWith]="compareByOptionId" placeholder="Assinatura Modelo Certificado" name="assinatura" [(ngModel)]="certificado.assinatura"
                 required>
                 <mat-option *ngFor="let assinatura of assinaturas" [value]="assinatura">
