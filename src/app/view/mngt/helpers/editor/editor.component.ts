@@ -34,7 +34,7 @@ export class EditorComponent implements OnInit, AfterViewInit, OnDestroy, OnChan
       selector: '#' + this.elementId,
       height: 600,
       plugins: ['link', 'paste', 'table', 'code', 'textpattern'],
-      toolbar1: " bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect",
+      toolbar1: " bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontsizeselect",
       skin_url: this.baseURL + 'assets/skins/lightgray',
       setup: editor => {
         this.editor = editor;

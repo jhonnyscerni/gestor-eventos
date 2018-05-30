@@ -26,7 +26,7 @@ export class GerarCertificadoComponent implements OnInit {
 
   certificado: Certificado = new Certificado();
 
-  value: string ;
+  value: string;
 
   inscricaoQrCode: any;
 
@@ -61,7 +61,7 @@ export class GerarCertificadoComponent implements OnInit {
   //       console.log(this.inscricaoQrCode);
   //     }
 
-      
+
   //   )
   // }
 
@@ -89,7 +89,7 @@ export class GerarCertificadoComponent implements OnInit {
 
   }
 
-  @ViewChild('content') content: ElementRef;
+  @ViewChild('conteudoCertificado') conteudoCertificado: ElementRef;
   print(): void {
 
     var img = new Image();
@@ -100,7 +100,17 @@ export class GerarCertificadoComponent implements OnInit {
       var dataURL = canvas.toDataURL("image/jpeg");
     })
 
-    let imgData = img.src ;
+    let imgData = img.src;
+
+    var img2 = new Image();
+    img2.src = "/assets/imagens/assinatura/cert-ass-des-celia-regina.png";
+    img2.addEventListener('load', () => {
+      var canvas = document.createElement("canvas");
+
+      var dataURL = canvas.toDataURL("image/png");
+    })
+
+    let imgData2 = img2.src;
 
 
     let doc = new jsPDF("l", "mm", [297, 210]);
@@ -113,13 +123,16 @@ export class GerarCertificadoComponent implements OnInit {
     //let content = this.content.nativeElement;
 
 
-    let content = document.getElementById("content").innerHTML;
+    let content = document.getElementById("conteudoCertificado").innerHTML;
 
-    if(this.certificado.imagem) {
-    doc.addImage(imgData, 'JPEG', 0, 0, 297, 210);
+    if (this.certificado.imagem) {
+      doc.addImage(imgData, 'JPEG', 0, 0, 297, 210);
     }
-    doc.fromHTML(content, 35, 70, {
-      'width': 230 ,
+
+    doc.addImage(imgData2, 'PNG', 110, 140, 85, 20);
+
+    doc.fromHTML(content, 35, 30, {
+      'width': 230,
       'elementHandlers': specialElementHandlers
     });
 
@@ -127,9 +140,9 @@ export class GerarCertificadoComponent implements OnInit {
     doc.text('Diretora da Escola Judiciária Eleitoral', 105, 170);
 
     doc.setFontSize(8)
-    doc.text('Validar em http://www.tre-pa.jus.br com o código de autenticação: [' +this.inscricao.codigoQrCode+ ']', 140, 190);
+    doc.text('Validar em http://www.tre-pa.jus.br com o código de autenticação: [' + this.inscricao.codigoQrCode + ']', 140, 190);
 
-    doc.save('certificado - '+this.inscricao.participante.nome+".pdf");
+    doc.save('certificado - ' + this.inscricao.participante.nome + ".pdf");
   }
 
   // OUTRA OPCAO DE IMPRESSAO DE CERTIFICADO 
@@ -146,7 +159,7 @@ export class GerarCertificadoComponent implements OnInit {
   //             background-color: rgb(204,204,204) !important;
   //             width: auto;
   //         }
-          
+
   //         #page-certificado-texto {
   //             display: block!important;
   //             margin: 0!important;
@@ -159,15 +172,15 @@ export class GerarCertificadoComponent implements OnInit {
   //             /* background-origin: content-box!important; */
   //             width: 29.7cm!important;
   //         }
-          
+
   //         #page-certificado-texto .texto {
   //             margin: -720px 10px 10px 10px;
   //             overflow: hidden;
   //             padding: 0 85px 85px 85px;
   //             text-align: justify;
   //         }
-          
-          
+
+
   //         #page-certificado {
   //             display: block!important;
   //             margin: 0!important;
@@ -181,7 +194,7 @@ export class GerarCertificadoComponent implements OnInit {
   //             width: 29.7cm!important;
   //             height: 20.9cm!important;
   //         }
-          
+
   //         @media only screen and (max-width: 1600px) and (min-width: 1301px){
   //         #page-certificado {
   //             zoom: 0.80;
@@ -196,36 +209,36 @@ export class GerarCertificadoComponent implements OnInit {
   //             -moz-transform-origin: left top;
   //         }
   //         }
-          
+
   //         div.actions ul {
   //             overflow: hidden;
   //             padding: 0 !important;
   //         }
-          
+
   //         div.actions ul li {
   //             float: left;
   //             list-style: none outside none;
   //             margin: 0 2px 5px 0;
   //             padding: 0;
   //         }
-          
+
   //         div.actions {
   //             margin-top: 0;
   //             padding-right: 20px;
   //         }
-          
-          
+
+
   //         .info {
   //             padding-top: 20px;
   //         }
-          
+
   //         .info p {
   //             color:#656565;
   //             font-size: 12px;
   //             display: block;
-          
+
   //         }
-          
+
   //         .green {
   //             background-color: #5BB75B;
   //             background-repeat: repeat-x;
@@ -233,7 +246,7 @@ export class GerarCertificadoComponent implements OnInit {
   //             color: #FFFFFF;
   //             text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   //         }
-          
+
   //         .cinza {
   //             background-color: #656565;
   //             background-repeat: repeat-x;
@@ -241,8 +254,8 @@ export class GerarCertificadoComponent implements OnInit {
   //             color: #FFFFFF;
   //             text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
   //         }
-          
-          
+
+
   //             </style>
   //           </head>
   //       <body onload="window.print()">${printContents}</body>
