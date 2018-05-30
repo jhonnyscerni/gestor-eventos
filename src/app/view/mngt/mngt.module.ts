@@ -1,3 +1,4 @@
+import { AssinaturaService } from './../../service/assinatura.service';
 import { GerarCertificadoComponent } from './eventos/evento-edit/inscricoes/gerar-certificado/gerar-certificado.component';
 import { CertificadoService } from './../../service/certificado.service';
 import { CertificadoParticipanteDetailComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-detail/certificado-participante-detail.component';
@@ -111,6 +112,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     ParticipanteService,
     FrequenciaService,
     CertificadoService,
+    AssinaturaService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
 

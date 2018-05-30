@@ -1,4 +1,4 @@
-<div main-content layout="row" layout-align="center start" >
+<div main-content layout="row" layout-align="center start">
 
   <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
 
@@ -18,20 +18,32 @@
 
           <div class="form-group">
             <label for="ModeloCertificadoTexto">Texto para o certificado de participação no evento* </label>
-            <div><p style="text-align:left;font-size:14pt;font-weight: bold">Exemplo: </p></div>
+            <div>
+              <p style="text-align:left;font-size:14pt;font-weight: bold">Exemplo: </p>
+            </div>
 
             <div>
               <p style="text-align:center">
                 <span style="font-size:16pt;font-weight: bold">CERTIFICADO</span>
               </p>
               <p>
-                <span style="font-size:14pt">Certificamos que {{nome}} participou do(a) {{evento}} em {{local}}
-                  durante o per&iacute;odo de {{dataInicio}} a {{dataFim}} , com carga hor&aacute;ria de {{cargaHoraria}}
-                  hora(s).</span>
+                <span style="font-size:14pt">Certificamos que {{nome}} participou do(a) {{evento}} em {{local}} durante o per&iacute;odo de {{dataInicio}}
+                  a {{dataFim}} , com carga hor&aacute;ria de {{cargaHoraria}} hora(s).
+                </span>
               </p>
             </div>
 
-            
+            <!-- ASSINATURAS -->
+            <mat-form-field floatPlaceholder="auto" flex="100">
+              <mat-select [compareWith]="compareByOptionId" placeholder="Assinatura Modelo Certificado" name="assinatura" [(ngModel)]="certificado.assinatura"
+                required>
+                <mat-option *ngFor="let assinatura of assinaturas" [value]="assinatura">
+                  {{ assinatura.assinante }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+
             <text-editor [value]="defaultBodyValue" [elementId]="'ModeloCertificadoTexto'" (onEditorKeyup)="onBodyTextEditorKeyUp($event)">
             </text-editor>
 
