@@ -1,49 +1,58 @@
 <div main-content layout="row" layout-align="center start">
 
-    <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-  
-      <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
-        <div flex>
-          <mat-icon>list</mat-icon> Certificado
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Certificado
+      </div>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <div fxLayout="column">
+
+        <div class="actions">
+          <ul>
+
+            <li>
+              <button mat-button color="primary" (click)="print()">
+                <i class="material-icons">print</i> IMPRIMIR</button>
+            </li>
+
+            <li>
+              <a mat-button color="warn" [routerLink]="['']">VOLTAR</a>
+            </li>
+          </ul>
         </div>
-      </mat-card-title>
-      <mat-divider></mat-divider>
-      <mat-card-content>
-        <div fxLayout="column">
-  
-          <div class="actions">
-            <ul>
-  
-              <li>
-                <button mat-button color="primary" (click)="print()">
-                  <i class="material-icons">print</i> IMPRIMIR</button>
-              </li>
-  
-              <li>
-                  <a mat-button color="warn" [routerLink]="['']">VOLTAR</a>
-              </li>
-            </ul>
-          </div>
-  
-  
-  
-          <div class="page-preview" id="print-section">
-            <div id="page-certificado">
-              <div class="codigoValidacao">
-                <p style="text-align: right; font-size: 11px; padding-right: 50px;margin-top: 3px;">
-                  Acesse
-                  <b>https://gestor-eventos/validar-certificado</b> para verificar se este certificado é válido.
-                  <b>Código de validação:</b> {{inscricao?.codigoQrCode}} </p>
-              </div>
-  
-              <div class="texto" [innerHTML]="[certificado?.conteudoCertificado] | safeHtml"></div>
-  
+
+        <div *ngIf="!certificado.id">
+          <span>Ainda não foi liberado o certificado do evento.</span>
+        </div>
+        <div class="page-preview" id="print-section" *ngIf="certificado.id">
+          <img *ngIf="certificado?.imagem" src=" {{certificado?.imagem}}" id="page-certificado" />
+          <div *ngIf="!certificado?.imagem" id="page-certificado"></div>
+          <div id="page-certificado-texto">
+
+            <div id="conteudoCertificado" #conteudoCertificado>
+              <div class="texto" style="font-family: Verdana, Geneva, Tahoma, sans-serif" [innerHTML]="[certificado?.conteudoCertificado] | safeHtml"></div>
             </div>
+
+            <div style="text-align:center">
+              <img src="{{certificado?.assinatura?.assinatura}}" width="250px">
+            </div>
+            <div id="editor" style="text-align: center; margin-top: -40px">
+              <h2> {{certificado?.assinatura?.assinante}}
+                <br/> {{certificado?.assinatura?.cargo}}</h2>
+            </div>
+
+            <p id="editor" style="font-size: 11px; text-align: right; margin-top: 20px; margin-right: 90px;">Validar em http://www.tre-pa.jus.br com o código de autenticação: [{{inscricao?.codigoQrCode}}] </p>
+
           </div>
-  
-  
-  
         </div>
-      </mat-card-content>
-    </mat-card>
-  </div>
+
+
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
