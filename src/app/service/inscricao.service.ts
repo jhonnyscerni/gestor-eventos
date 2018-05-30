@@ -35,10 +35,10 @@ export class InscricaoService {
         .map(res => res.json());
     }
 
-    getQrCodeByInscricao(idInscricao: number): Observable<Inscricao> {
-      return this.http.get(`${this.url}/gerar-qrcode/${idInscricao}`)
-      .map(res => res.json());
-  }
+  //   getQrCodeByInscricao(idInscricao: number): Observable<Inscricao> {
+  //     return this.http.get(`${this.url}/gerar-qrcode/${idInscricao}`)
+  //     .map(res => res.json());
+  // }
 
     getCertificadoByInscricaoByParticpanteByEvento(idInscricao: number): Observable<Inscricao> {
         return this.http.get(`${this.url}/gerar-certificado/${idInscricao}`)
