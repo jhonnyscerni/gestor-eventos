@@ -1,0 +1,60 @@
+.alerta.concluido {
+    background-color: #00C541;
+}
+
+.alerta {
+    width: 100%;
+    min-height: 80px;
+    position: relative;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.mensagem-boleto {
+    margin: 50px 0;
+    text-align: center;
+    color: #A8B1BE;
+}
+
+.alerta-mensagem {
+    font-size: 20px;
+}
+
+.n-inscricao {
+    display: flex;
+    flex-flow: column;
+    margin-left: 70px;
+}
+
+.n-inscricao-title {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.n-inscricao-id {
+    font-size: 34px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.mensagem-boleto p {
+    font-size: 16px;
+    max-width: 900px;
+    margin: 5px auto;
+}
+
+.conteudo {
+    text-align: center;
+    padding-bottom: 40px;
+}
+
+.texto-conteudo {
+
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 10px;
+}

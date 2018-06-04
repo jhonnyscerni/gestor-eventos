@@ -1,3 +1,4 @@
+import { ComprovanteComponent } from './minhas-inscricoes/comprovante/comprovante.component';
 import { CertificadoComponent } from './certificado/certificado.component';
 import { MeuCadastroComponent } from './meu-cadastro/meu-cadastro.component';
 import { AuthGuardUser } from './../../@core/security/auth-guard-user';
@@ -23,6 +24,7 @@ const routes: Routes = [
         { path: 'evento/:idEvento/gerar-certificado/:idInscricao', component: CertificadoComponent},
         { path: 'evento/:idEvento/minha-inscricao', component: MinhaInscricaoEditComponent},
         { path: 'evento/:idEvento/minha-inscricao/:idInscricao', component: MinhaInscricaoEditComponent},
+        { path: 'evento/:idEvento/minha-inscricao/:idInscricao/comprovante', component: ComprovanteComponent},
       ]},
     ]
   }

@@ -1,0 +1,56 @@
+<div main-content layout="row" layout-align="center start">
+
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+    <mat-card-content>
+      <div fxLayout="column">
+
+        <div class="actions">
+          <ul>
+
+
+          </ul>
+        </div>
+
+
+
+        <div class="page-preview" id="print-section">
+          <div class="alerta concluido">
+            <div class="alerta-mensagem">
+              Inscrição realizada com sucesso!
+              <i class="fa fa-check-circle"></i>
+            </div>
+            <div class="n-inscricao">
+              <span class="n-inscricao-title">Nº da Inscrição</span>
+              <span class="n-inscricao-id">{{inscricao?.id}}</span>
+            </div>
+          </div>
+
+          <div class="mensagem-boleto">
+            <p>Sua inscrição já está liberada! O comprovante de inscrição está disponível abaixo e também foi enviado para o
+              seu e-mail. Bom evento!</p>
+          </div>
+
+          <div class="conteudo">
+            <div class="texto-conteudo"> <strong>Evento: </strong>{{inscricao?.evento.nome}} </div>
+            <div class="texto-conteudo"> <strong>Nome: </strong>{{inscricao?.participante.nome}} </div>
+            <div class="texto-conteudo"> <strong>Cpf: </strong>{{inscricao?.participante.cpf}} </div>
+            <div class="texto-conteudo"> <strong>E-mail: </strong>{{inscricao?.participante.email}} </div>
+            <div class="texto-conteudo"> <strong>Data Inscrição: </strong>{{ dateLayout(inscricao?.dtInscricao)}} </div>
+            <div class="texto-conteudo"> <strong>Data Inicio do Evento: </strong>{{ dateLayout(inscricao?.evento.inicioEvento)}} </div> 
+          </div>
+
+        </div>
+
+
+        <div fxLayout="column">
+          <mat-card-actions style="text-align: center">
+            <a mat-button color="background-color-primary" [routerLink]="['']">IR PARA MINHAS INSCRIÇÕES</a>
+          </mat-card-actions>
+        </div>
+
+
+
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

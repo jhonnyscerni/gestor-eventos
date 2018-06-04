@@ -23,6 +23,8 @@ export class MinhaInscricaoEditComponent implements OnInit {
 
   idInscricao: number;
 
+  idInscricaoComprovante: number;
+
   inscricao: Inscricao = new Inscricao();
 
 
@@ -54,12 +56,12 @@ export class MinhaInscricaoEditComponent implements OnInit {
     this.processaInscricao();
     this.getCategoriaParticipantesEvento();
     this.getEvento();
-    this.participanteServive.getParticipanteLogado().subscribe(participante=>{
+    this.participanteServive.getParticipanteLogado().subscribe(participante => {
       this.participanteLogado = participante;
       this.inscricao.participante = this.participanteLogado;
     });
     this.inscricao.evento.id = this.idEvento;
-   }
+  }
 
   /**
 * Captura o id do Componente
@@ -83,7 +85,10 @@ export class MinhaInscricaoEditComponent implements OnInit {
 
   onSubmit() {
     this.inscricaoService.salvar(this.inscricao, this.idEvento).subscribe(inscricao => {
+      console.log(inscricao.id);
       this.snackBar.open(`${inscricao.participante.nome} salvo com sucesso!`, '', { duration: 10000 });
+      this.router.navigate(['evento', this.idEvento, 'minha-inscricao', inscricao.id, 'comprovante']);
+      // this.router.navigate(['/']);
     });
 
   }
