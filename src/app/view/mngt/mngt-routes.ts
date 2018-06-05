@@ -54,6 +54,8 @@ const routes: Routes = [
                     { path: 'frequencia', component: FrequenciaListComponent },
 
                     { path: 'certificado-participante/:id/edit', component: CertificadoParticipanteEditComponent },
+                    { path: 'certificado-participante/novo', component: CertificadoParticipanteEditComponent },
+                    { path: 'certificado-participante/:id', component: CertificadoParticipanteDetailComponent },
                 
                     {
                         path: 'certificado-participante', canActivate: [GuardCertificado], children: [

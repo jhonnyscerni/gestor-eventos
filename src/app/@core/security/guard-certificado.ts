@@ -14,8 +14,6 @@ export class GuardCertificado implements CanActivate {
 
     certificado: Certificado = new Certificado();
 
-    pagina: any = "novo";
-
     constructor(
         public router: Router,
         private certificadoService: CertificadoService) {
@@ -24,6 +22,7 @@ export class GuardCertificado implements CanActivate {
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
 
+        let pagina: any ;
         this.idEvento = route.parent.params['id'];
 
         this.certificadoService.getCertificadoByEvento(this.idEvento)
@@ -31,11 +30,12 @@ export class GuardCertificado implements CanActivate {
                 this.certificadoService.certificado = certificado;
                 this.certificado = this.certificadoService.certificado;
                 if (this.certificado.id) {
-                    this.pagina = this.certificado.id
-                    this.router.navigate(['adm','evento','edit', this.idEvento ,'certificado-participante', this.pagina]);
+                    pagina = this.certificado.id
+                    this.router.navigate(['adm','evento','edit', this.idEvento ,'certificado-participante', pagina]);
                 }
                 else {
-                    this.router.navigate(['adm','evento','edit', this.idEvento ,'certificado-participante', this.pagina]);
+                    pagina = "novo"
+                    this.router.navigate(['adm','evento','edit', this.idEvento ,'certificado-participante', pagina]);
                 }
             })
         return true;

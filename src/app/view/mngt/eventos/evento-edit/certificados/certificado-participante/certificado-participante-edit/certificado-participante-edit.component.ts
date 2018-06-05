@@ -98,7 +98,7 @@ export class CertificadoParticipanteEditComponent implements OnInit {
 
     this.certificadoService.salvar(this.certificado, this.idEvento).subscribe(certificado => {
       this.snackBar.open(`Modelo Certificado salvo com sucesso!`, '', { duration: 10000 });
-      // this.router.navigate(['certificado-participante', certificado.id]);
+      this.router.navigate(['adm','evento','edit', this.idEvento, 'certificado-participante', certificado.id]);
     });
 
   }
