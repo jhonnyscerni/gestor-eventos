@@ -2,7 +2,7 @@
 
 <!-- menu: Eventos (corrigir: colocar mat-button quando paisagem, colocar mat-icon-button quando retrato) -->
 
-<button mat-button matTooltip="Eventos Disponíveis" matTooltipPosition="below" [mat-menu-trigger-for]="eventosMenu">
+<button mat-button matTooltip="Eventos Disponíveis" matTooltipPosition="below" [mat-menu-trigger-for]="eventosMenu" *ngIf="isAdmin">
     <span hide-xs hide-gt-xs show-gt-sm>EVENTOS</span>
 
     <mat-icon>event</mat-icon>

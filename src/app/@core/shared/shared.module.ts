@@ -1,3 +1,4 @@
+import { UnauthorizedComponent } from './../../view/unauthorized/unauthorized.component';
 import { LayoutModule } from './../layout/layout.module';
 
 import { AuthGuardUser } from './../security/auth-guard-user';
@@ -70,7 +71,8 @@ const OUTERS: any[] = [
     LayoutModule
   ],
   declarations: [
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    UnauthorizedComponent
   ],
   exports: [
     ANGULAR_MODULES,

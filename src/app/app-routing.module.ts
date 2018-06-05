@@ -1,3 +1,4 @@
+import { UnauthorizedComponent } from './view/unauthorized/unauthorized.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -9,8 +10,16 @@ const appRoutes: Routes = [
         path: '',
         component: MainLayoutComponent,
         children: [
-            { path: 'adm', loadChildren: './view/mngt/mngt.module#MngtModule' },
+            {   path: 'adm', 
+                loadChildren: './view/mngt/mngt.module#MngtModule', 
+                canActivate: [AuthGuard], 
+                data: {
+                    roles:["admin"],
+                    mensagem: "Necessario permissao de ADMIN para acessar esta pagina."
+                } 
+            },
             { path: '', loadChildren: './view/user/user.module#UserModule' },
+            { path: 'unauthorized', component: UnauthorizedComponent },
         ]
     }
 ];

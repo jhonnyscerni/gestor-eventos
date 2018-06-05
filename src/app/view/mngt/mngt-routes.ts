@@ -2,7 +2,6 @@ import { GerarCertificadoComponent } from './eventos/evento-edit/inscricoes/gera
 import { CertificadoParticipanteDetailComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-detail/certificado-participante-detail.component';
 import { CertificadoParticipanteEditComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-edit/certificado-participante-edit.component';
 import { ParticipanteEditComponent } from './participantes/participante-edit/participante-edit.component';
-import { UnauthorizedComponent } from './../unauthorized/unauthorized.component';
 import { AuthGuardAdmin } from './../../@core/security/auth-guard-admin';
 import { FrequenciaListComponent } from './eventos/evento-edit/frequencia/frequencia-list/frequencia-list.component';
 import { InscricaoEditComponent } from './eventos/evento-edit/inscricoes/inscricao-edit/inscricao-edit.component';
@@ -66,7 +65,6 @@ const routes: Routes = [
             { path: '', redirectTo: 'eventos' }
         ]
     },
-    { path: 'unauthorized', component: UnauthorizedComponent },
     { path: '**', redirectTo: 'adm/eventos' }//Rota padrão
 
 ];

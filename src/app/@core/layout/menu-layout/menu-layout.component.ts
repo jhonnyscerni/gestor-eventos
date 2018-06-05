@@ -15,6 +15,8 @@ export class MenuLayoutComponent implements OnInit {
 
   participanteLogado: any;
 
+  isAdmin: boolean = false;
+
   constructor(
     private participanteService: ParticipanteService,
     private keycloakService: KeycloakService,
@@ -27,6 +29,8 @@ export class MenuLayoutComponent implements OnInit {
     this.keycloakService.getLoadUserInfo().then(info=>{
       this.userInfo = info;
     });
+
+    this.isAdmin = KeycloakService.hasResourceRoleAngular("admin");
   }
 
   getLink(route: string) {
