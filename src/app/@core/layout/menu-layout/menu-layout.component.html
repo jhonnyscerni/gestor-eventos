@@ -10,21 +10,16 @@
 
 <mat-menu xPosition="after" yPosition="below" #eventosMenu="matMenu" [overlapTrigger]="false">
 
-    <a mat-menu-item [href]="getLink('adm/evento/novo')">
+    <a mat-menu-item [routerLinkActive]="['active-section', 'color-primary']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/eventos']">
+        <mat-icon>menu</mat-icon>
+        <span>Lista de Eventos</span>
+    </a>
+    <a mat-menu-item [routerLinkActive]="['active-section', 'color-primary']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/evento/novo']">
         <mat-icon>menu</mat-icon>
         <span>Criar Novo Evento</span>
     </a>
 
-    <!-- 
-    <button mat-menu-item>
-        <mat-icon>menu</mat-icon>
-        <span>Agenda</span>
-    </button> -->
 
-    <a mat-menu-item [href]="getLink('adm/eventos')">
-        <mat-icon>menu</mat-icon>
-        <span>Lista de Eventos</span>
-    </a>
 
 </mat-menu>
 
@@ -40,13 +35,12 @@
     <!-- itens de menu com usuário -->
     <ng-container>
 
-        <a mat-menu-item [href]="getLink('meu-cadastro')">
+        <a mat-menu-item [routerLinkActive]="['active-section', 'color-primary']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/meu-cadastro']">
             <mat-icon>menu</mat-icon>
             <span>Meu Cadastro</span>
         </a>
 
-
-        <a mat-menu-item [href]="getLink('')">
+        <a mat-menu-item [routerLinkActive]="['active-section', 'color-primary']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/']">
             <mat-icon>menu</mat-icon>
             <span>Minhas Inscrições</span>
         </a>
