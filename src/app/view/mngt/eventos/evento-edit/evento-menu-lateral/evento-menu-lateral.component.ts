@@ -15,7 +15,6 @@ export class EventoMenuLateralComponent implements OnInit {
 
   certificado: Certificado = new Certificado();
 
-  pagina: any = "novo";
 
   constructor(
     public media: TdMediaService,
@@ -34,10 +33,6 @@ export class EventoMenuLateralComponent implements OnInit {
       .subscribe(certificado => {
         this.certificadoService.certificado = certificado;
         this.certificado = this.certificadoService.certificado;
-        if(this.certificado.id) {
-          this.pagina = this.certificado.id;
-        }
-        
       })
   }
 }

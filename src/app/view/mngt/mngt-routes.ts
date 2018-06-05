@@ -1,3 +1,4 @@
+import { GuardCertificado } from './../../@core/security/guard-certificado';
 import { GerarCertificadoComponent } from './eventos/evento-edit/inscricoes/gerar-certificado/gerar-certificado.component';
 import { CertificadoParticipanteDetailComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-detail/certificado-participante-detail.component';
 import { CertificadoParticipanteEditComponent } from './eventos/evento-edit/certificados/certificado-participante/certificado-participante-edit/certificado-participante-edit.component';
@@ -52,9 +53,16 @@ const routes: Routes = [
 
                     { path: 'frequencia', component: FrequenciaListComponent },
 
-                    { path: 'certificado-participante/novo', component: CertificadoParticipanteEditComponent },
-                    { path: 'certificado-participante/:id', component: CertificadoParticipanteDetailComponent },
                     { path: 'certificado-participante/:id/edit', component: CertificadoParticipanteEditComponent },
+                
+                    {
+                        path: 'certificado-participante', canActivate: [GuardCertificado], children: [
+                            { path: 'novo', component: CertificadoParticipanteEditComponent },
+                            { path: ':id', component: CertificadoParticipanteDetailComponent },
+
+                        ]
+                    },
+
                 ]
             },
             {

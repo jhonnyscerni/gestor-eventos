@@ -1,3 +1,4 @@
+import { GuardCertificado } from './../security/guard-certificado';
 import { UnauthorizedComponent } from './../../view/unauthorized/unauthorized.component';
 import { LayoutModule } from './../layout/layout.module';
 
@@ -87,7 +88,9 @@ const OUTERS: any[] = [
     KeycloakService,
     AuthGuardAdmin,
     AuthGuardUser,
-    AuthGuard
+    AuthGuard,
+    GuardCertificado
+
   ]
 })
 export class SharedModule { }
