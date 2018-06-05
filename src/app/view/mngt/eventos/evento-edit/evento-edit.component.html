@@ -1,14 +1,29 @@
 <nav-list-layout layout="column" flex style="height:100%">
-  <!-- MENU LATERAL -->
-  <div sidenav layout="column" flex style="height:100%">
-      <!-- LISTAGEM  -->
-       <evento-menu-lateral></evento-menu-lateral>
-      <!-- <app-material-list layout="column" flex style="height:100%" layout-fill></app-material-list> -->
+    <!-- MENU LATERAL -->
+    <div sidenav layout="column" flex style="height:100%">
+        <!-- LISTAGEM  -->
+        <evento-menu-lateral></evento-menu-lateral>
+        <!-- <app-material-list layout="column" flex style="height:100%" layout-fill></app-material-list> -->
 
-  </div>
-  <div main-content flex layout="column" style="height:100%">
-       <router-outlet></router-outlet>
-      <!-- <evento-form></evento-form> -->
-  </div>
-  
+    </div>
+    <div main-content flex layout="column" style="height:100%">
+
+        <mat-toolbar>
+            <mat-toolbar-row>
+                <!-- o botão para mostrar/esconder o menu lateral de gerência do evento só aparece quando o evento já tem id -->
+                <button mat-icon-button>
+                    <mat-icon>list</mat-icon>
+                </button>
+                <div td-toolbar-content layout="row" layout-align="start center" flex>
+                   <span> <strong>EVENTO:  </strong>{{evento.nome}}</span>
+
+                </div>
+            </mat-toolbar-row>
+        </mat-toolbar>
+
+
+        <router-outlet></router-outlet>
+        <!-- <evento-form></evento-form> -->
+    </div>
+
 </nav-list-layout>
