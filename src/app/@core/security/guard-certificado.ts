@@ -32,10 +32,12 @@ export class GuardCertificado implements CanActivate {
                 if (this.certificado.id) {
                     pagina = this.certificado.id
                     this.router.navigate(['adm','evento','edit', this.idEvento ,'certificado-participante', pagina]);
+                    pagina = "";
                 }
                 else {
                     pagina = "novo"
                     this.router.navigate(['adm','evento','edit', this.idEvento ,'certificado-participante', pagina]);
+                    pagina = "";
                 }
             })
         return true;
