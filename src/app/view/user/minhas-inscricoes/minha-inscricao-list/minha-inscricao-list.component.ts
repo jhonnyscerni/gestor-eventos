@@ -24,6 +24,8 @@ export class MinhaInscricaoListComponent implements OnInit {
 
   participanteLogado: any;
 
+  participanteInscrito: Participante = new Participante();
+
   constructor(
     public participanteServive: ParticipanteService,
     private route: ActivatedRoute,
@@ -32,20 +34,20 @@ export class MinhaInscricaoListComponent implements OnInit {
     public snackBar: MatSnackBar,
     private _dialogService: TdDialogService
   ) {
-   }
+  }
 
   ngOnInit() {
     this.title.setTitle('Minhas Inscrições');
-     this.participanteServive.getParticipanteLogado().subscribe(participante=>{
+    this.participanteServive.getParticipanteLogado().subscribe(participante => {
       this.participanteLogado = participante;
+      this.participanteInscrito = this.participanteLogado;
       this.getInscricoesDoParticipante();
+
+      console.log(this.participanteInscrito)
     });
-
-    // this.participanteLogado = this.participanteServive.getParticipanteLogado();
-    // console.log("Construtor");
-    // console.log(this.participanteServive.participante);
-
   }
+
+
 
   getInscricoesDoParticipante() {
     this.participanteServive.getInscricoesByParticipante(this.participanteLogado.id).subscribe(page => {
@@ -55,7 +57,7 @@ export class MinhaInscricaoListComponent implements OnInit {
 
   public dateLayout(dt: any): String {
     return Moment(dt).format('dddd, DD [de] MMMM [de] YYYY [às] HH:mm:ss');
-}
+  }
 
 
 }

@@ -6,9 +6,9 @@
   </mat-card>
 </div>
 
-<div layout="row" layout-align="center">
+<div layout="row" layout-align="center" *ngIf="participanteInscrito.instituicaoOrigem == null || participanteInscrito.nomeCracha == null" >
   <mat-card flex-gt-xs="85" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-    <td-message label="Alerta!" sublabel="Atualize Seus Dados de Cadastro" color="primary" icon="warning">
+    <td-message label="Alerta!" sublabel="Atualize Seus Dados de Cadastro" color="accent" icon="warning">
       <button td-message-actions mat-button [routerLink]="['meu-cadastro']">ATUALIZAR</button>
     </td-message>
   </mat-card>
