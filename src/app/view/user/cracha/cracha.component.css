@@ -1,0 +1,27 @@
+.mat-card mat-card-content {
+    padding: 0;
+    margin: 0 auto;
+}
+
+.content_print {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nomeParticipante {
+    margin-top: 15% !important;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.instituicaoOrigem {
+    margin-bottom: 15% !important;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+}

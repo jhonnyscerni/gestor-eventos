@@ -131,7 +131,7 @@ export class GerarCertificadoComponent implements OnInit {
 
     doc.addImage(imgData2, 'PNG', 110, 140, 85, 20);
 
-    doc.fromHTML(content, 35, 30, {
+    doc.fromHTML(content, 35, 45, {
       'width': 230,
       'elementHandlers': specialElementHandlers
     });
