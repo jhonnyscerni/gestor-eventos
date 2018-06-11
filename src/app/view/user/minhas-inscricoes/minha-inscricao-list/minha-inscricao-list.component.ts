@@ -22,9 +22,8 @@ export class MinhaInscricaoListComponent implements OnInit {
 
   inscricaoPage: Inscricao[] = [];
 
-  participanteLogado: any;
+  participanteLogado:  Participante = new Participante();;
 
-  participanteInscrito: Participante = new Participante();
 
   constructor(
     public participanteServive: ParticipanteService,
@@ -40,10 +39,7 @@ export class MinhaInscricaoListComponent implements OnInit {
     this.title.setTitle('Minhas Inscrições');
     this.participanteServive.getParticipanteLogado().subscribe(participante => {
       this.participanteLogado = participante;
-      this.participanteInscrito = this.participanteLogado;
       this.getInscricoesDoParticipante();
-
-      console.log(this.participanteInscrito)
     });
   }
 

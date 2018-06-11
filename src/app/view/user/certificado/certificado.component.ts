@@ -58,8 +58,8 @@ processaCertificado() {
           certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{nome}", this.inscricao.participante.nome);
           certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{evento}", this.inscricao.evento.nome);
           certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{local}", this.inscricao.evento.local);
-          certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataInicio}", "12/12/12");
-          certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataFim}", "2/12/12");
+          certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataInicio}", Moment(this.inscricao.evento.inicioEvento).format('DD [de] MMMM [de] YYYY'));
+          certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{dataFim}", Moment(this.inscricao.evento.fimEvento).format('DD [de] MMMM [de] YYYY'));
           certificado.conteudoCertificado = certificado.conteudoCertificado.replace("{cargaHoraria}", this.inscricao.evento.cargaHoraria);
           this.certificado = certificado;
         });
