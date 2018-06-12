@@ -13,69 +13,43 @@
 
     <div fxLayout="column">
 
-        <div layout layout="row" layout-align="center">
-            <div id="print-section" style="width: 100%">
-
-                <div style="
-                    align-items: center;
-                    display: flex;
-                    flex-direction: row;
-                    flex-wrap: wrap;
-                    justify-content: center;">
-                    <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-
-                        <div style="border: 1px solid #cecece; ">
-                            <mat-card-content>
-                                <div style="text-align: center">
-                                    <img [routerLink]="['/']" src="/assets/imagens/logo_tre.png" style="width: 80%;margin-top: 20px; cursor: pointer;">
-                                </div>
-                            </mat-card-content>
-                            <mat-card-content>
-                                <p mat-line style="
-                                            text-align: center;
-                                            font-family: Arial, Helvetica, sans-serif;
-                                            font-size: 20px;
-                                            font-weight: bold;
-                                            margin-top: 20px;
-                                            text-transform: uppercase;">
-                                    {{ inscricao?.participante.nomeCracha }}
-                                </p>
-
-                                <hr style="height:2px; border:none; color:#cecece; background-color:#cecece; margin-top: 0px; margin-bottom: 0px;" />
-
-                                <ngx-qrcode style="text-align: center" [qrc-element-type]="elementType" [qrc-value]="value" qrc-class="aclass" qrc-errorCorrectionLevel="L">
-                                </ngx-qrcode>
-                            </mat-card-content>
-                            <mat-card-content>
-                                <p mat-line style="
-                                            text-align: center;
-                                            font-family: Arial, Helvetica, sans-serif;
-                                            font-size: 16px;">
-                                    <strong>Instituicao de Origem:</strong> {{ inscricao?.participante.instituicaoOrigem}}</p>
-                                <p mat-line style=" 
-                                            text-align: center;
-                                            font-family: Arial, Helvetica, sans-serif;
-                                            font-size: 16px;">
-                                    <strong>Cpf:</strong> {{ inscricao?.participante.cpf}}</p>
-                                <p mat-line style=" 
-                                            text-align: center;
-                                            font-family: Arial, Helvetica, sans-serif;
-                                            font-size: 16px;">
-                                    <strong>Codigo da Inscrição:</strong>
-                                </p>
-                                <p mat-line style=" 
-                                            text-align: center;
-                                            font-family: Arial, Helvetica, sans-serif;
-                                            font-size: 16px;">
-                                    {{ inscricao?.codigoQrCode}}</p>
-
-                            </mat-card-content>
-                        </div>
-                    </mat-card>
+            <div layout layout="row" layout-align="center">
+                <div id="print-section" style="width: 100%">
+    
+                    <div class="content_print">
+                        <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+    
+                            <div style="border: 1px solid #cecece; ">
+                                <mat-card-content>
+                                    <div style="text-align: center">
+                                        <img *ngIf="cracha?.imagemTopo"  src="{{cracha?.imagemTopo}}" style="width: 100%;">
+                                        <img *ngIf="!cracha?.imagemTopo"  src="/assets/imagens/logo_tre.png" style="width: 70%; padding: 40px 0 0 0">
+                                    </div>
+                                </mat-card-content>
+                                <mat-card-content>
+                                    <p class="nomeParticipante">
+                                        {{ inscricao?.participante.nome }}
+                                    </p>
+                                    <ngx-qrcode style="text-align: center" [qrc-element-type]="elementType" [qrc-value]="value" qrc-class="aclass" qrc-errorCorrectionLevel="L">
+                                    </ngx-qrcode>
+                                </mat-card-content>
+                                <mat-card-content>
+                                    <p mat-line class="instituicaoOrigem">
+                                        <strong>Instituicao de Origem:</strong> {{ inscricao?.participante.instituicaoOrigem}}</p>
+    
+                                </mat-card-content>
+    
+                                <mat-card-content>
+                                    <div style="text-align: center">
+                                        <img *ngIf="cracha?.imagemRodape" src="{{cracha?.imagemRodape}}" style="width: 100%;">
+                                    </div>
+                                </mat-card-content>
+                            </div>
+                        </mat-card>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
     <mat-card flex-gt-xs="100" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
         <mat-card-actions>

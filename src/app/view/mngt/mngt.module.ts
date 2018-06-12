@@ -45,6 +45,7 @@ import { GerarCrachaComponent } from './eventos/evento-edit/inscricoes/gerar-cra
 import { LeitorQrcodeComponent } from './leitor-qrcode/leitor-qrcode.component';
 import { FrequenciaService } from '../../service/frequencia.service';
 import { EditorComponent } from './helpers/editor/editor.component';
+import { CrachaService } from '../../service/cracha.service';
 // import { OwlDateTimeModule, OWL_DATE_TIME_LOCALE, OwlNativeDateTimeModule, OWL_DATE_TIME_FORMATS } from 'ng-pick-datetime';
 
 export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meaning of these formats: https://momentjs.com/docs/#/displaying/format/
@@ -111,6 +112,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     FrequenciaService,
     CertificadoService,
     AssinaturaService,
+    CrachaService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
 
