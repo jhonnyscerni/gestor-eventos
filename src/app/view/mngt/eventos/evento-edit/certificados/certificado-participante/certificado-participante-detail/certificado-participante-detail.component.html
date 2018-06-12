@@ -4,7 +4,7 @@
 
     <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
       <div flex>
-        <mat-icon>list</mat-icon> Certificado
+        <mat-icon>list</mat-icon> Certificado -  {{certificado?.liberado == true ? "Liberado" : "Não Liberado"}}
       </div>
     </mat-card-title>
     <mat-divider></mat-divider>
@@ -16,7 +16,11 @@
               <a mat-button class="cinza" [routerLink]="['edit']">Editar</a>
             </li>
             <li>
-              <a mat-button href="#" id="ln_liberar_certificado" class="green">Liberar certificados agora</a>
+              <a mat-button (click)="liberarCertificado()" id="ln_liberar_certificado" class="green">Liberar certificados agora</a>
+            </li>
+
+            <li>
+              <a mat-button (click)="NaoliberarCertificado()" id="ln_nao_liberar_certificado" class="cinza"> Não Liberar certificados agora</a>
             </li>
           </ul>
         </div>

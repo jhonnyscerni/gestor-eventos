@@ -28,13 +28,18 @@ export class CertificadoParticipanteDetailComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
-    private _sanitizer: DomSanitizer
+    private _sanitizer: DomSanitizer,
+    public snackBar: MatSnackBar,
   ) { }
 
   ngOnInit() {
     this.title.setTitle('Nova Inscricao');
     this.idCertificado = this.route.snapshot.params['id'];
-    this.processaCertificado();
+    this.route.parent.params.subscribe(param => {
+      this.idEvento = param['id'];
+      this.processaCertificado();
+      this.certificado.evento.id = this.idEvento;
+    });
   }
 
 
@@ -58,6 +63,24 @@ export class CertificadoParticipanteDetailComponent implements OnInit {
         this.imagem = this._sanitizer.bypassSecurityTrustStyle(`data:image/jpeg;base64,${this.certificado.imagem}`);
         // console.log(this.imagem);
       })
+
+  }
+
+  liberarCertificado() {
+    this.certificado.liberado = true;
+    this.certificadoService.salvar(this.certificado, this.idEvento).subscribe(certificado => {
+      this.snackBar.open(`Modelo Certificado Liberado!`, '', { duration: 10000 });
+      this.router.navigate(['adm','evento','edit', this.idEvento, 'certificado-participante', certificado.id]);
+    });
+
+  }
+
+  NaoliberarCertificado() {
+    this.certificado.liberado = false;
+    this.certificadoService.salvar(this.certificado, this.idEvento).subscribe(certificado => {
+      this.snackBar.open(`Modelo Certificado Não Liberado!`, '', { duration: 10000 });
+      this.router.navigate(['adm','evento','edit', this.idEvento, 'certificado-participante', certificado.id]);
+    });
 
   }
 

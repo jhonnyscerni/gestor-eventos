@@ -25,10 +25,10 @@
           </ul>
         </div>
 
-        <div *ngIf="!certificado.id">
+        <div *ngIf="certificado.liberado == false">
           <span>Ainda não foi liberado o certificado do evento.</span>
         </div>
-        <div class="page-preview" id="print-section" *ngIf="certificado.id">
+        <div class="page-preview" id="print-section" *ngIf="certificado.liberado == true">
           <img *ngIf="certificado?.imagem" src=" {{certificado?.imagem}}" id="page-certificado" />
           <div *ngIf="!certificado?.imagem" id="page-certificado"></div>
           <div id="page-certificado-texto">

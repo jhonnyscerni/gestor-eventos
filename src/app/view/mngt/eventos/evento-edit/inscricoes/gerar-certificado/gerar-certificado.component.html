@@ -17,13 +17,19 @@
             <li>
               <button mat-button color="primary" (click)="print()">
                 <i class="material-icons">print</i> IMPRIMIR</button>
+
+                <a mat-button color="warn" [routerLink]="['/adm/evento/edit', idEvento, 'inscricoes']">VOLTAR</a>
+
             </li>
           </ul>
         </div>
 
+        <div *ngIf="certificado.liberado == false">
+          <span>Ainda não foi liberado o certificado do evento.</span>
+        </div>
 
 
-        <div class="page-preview" id="print-section">
+        <div class="page-preview" id="print-section" *ngIf="certificado.liberado == true">
           <img *ngIf="certificado?.imagem" src=" {{certificado?.imagem}}" id="page-certificado" />
           <div *ngIf="!certificado?.imagem" id="page-certificado"></div>
           <div id="page-certificado-texto">

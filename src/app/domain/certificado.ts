@@ -5,5 +5,6 @@ export class Certificado {
     conteudoCertificado?: string;
     evento?: Evento = new Evento();
     imagem?: string;
+    liberado?: boolean;
     assinatura?: Assinatura = new Assinatura();
 }
