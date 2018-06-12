@@ -57,6 +57,10 @@
 
                 <button mat-button color="primary" (click)="print()">
                     <i class="material-icons">print</i> IMPRIMIR</button>
+
+
+                <a mat-button color="warn" [routerLink]="['/adm/evento/edit', idEvento, 'inscricoes']">VOLTAR</a>
+
             </div>
         </mat-card-actions>
     </mat-card>
