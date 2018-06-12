@@ -4,10 +4,17 @@
 
 
 
-<button mat-button matTooltip="Participantes"  matTooltipPosition="below" [routerLinkActive]="['active-section', 'color-primary']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/participantes']"  *ngIf="isAdmin">
-        <span hide-xs hide-gt-xs show-gt-sm>PARTICIPANTES</span>
-        <mat-icon svgIcon="account"></mat-icon>
-    </button>
+<button mat-button matTooltip="Leitor Qr-Code" matTooltipPosition="below" [routerLinkActive]="['active-section', 'color-primary']"
+    [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/qr-code']" *ngIf="isAdmin">
+    <span hide-xs hide-gt-xs show-gt-sm>LEITOR DE QR-CODE</span>
+    <mat-icon svgIcon="qrcode-scan" matListIcon></mat-icon>
+</button>
+
+<button mat-button matTooltip="Participantes" matTooltipPosition="below" [routerLinkActive]="['active-section', 'color-primary']"
+    [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/participantes']" *ngIf="isAdmin">
+    <span hide-xs hide-gt-xs show-gt-sm>PARTICIPANTES</span>
+    <mat-icon svgIcon="account"></mat-icon>
+</button>
 
 <button mat-button matTooltip="Eventos Disponíveis" matTooltipPosition="below" [mat-menu-trigger-for]="eventosMenu" *ngIf="isAdmin">
     <span hide-xs hide-gt-xs show-gt-sm>EVENTOS</span>

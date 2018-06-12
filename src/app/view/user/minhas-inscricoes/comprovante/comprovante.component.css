@@ -58,3 +58,11 @@
     text-transform: uppercase;
     padding: 10px;
 }
+
+.cinza {
+    background-color: #656565;
+    background-repeat: repeat-x;
+    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+    color: #FFFFFF;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}

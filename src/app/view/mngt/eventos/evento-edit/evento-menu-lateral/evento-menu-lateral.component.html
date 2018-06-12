@@ -1,53 +1,53 @@
 <mat-nav-list dense td-sidenav-content>
-    <h3 matSubheader>Edição do Evento</h3>
-    <a mat-list-item routerLinkActive="color-primary active-section" [routerLink]="['/adm/evento/edit', id, 'geral']">
-      <mat-icon svgIcon="information" matListIcon></mat-icon>
-      Informações Gerais
-    </a>
-    <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/adm/evento/edit', id, 'vagas']">
-      <mat-icon svgIcon="account-group" matListIcon></mat-icon>
-      Categorias de Inscrição
-    </a>
-    <!-- <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+  <h3 matSubheader>Edição do Evento</h3>
+  <a mat-list-item routerLinkActive="color-primary active-section" [routerLink]="['/adm/evento/edit', id, 'geral']">
+    <mat-icon svgIcon="information" matListIcon></mat-icon>
+    Informações Gerais
+  </a>
+  <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/adm/evento/edit', id, 'vagas']">
+    <mat-icon svgIcon="account-group" matListIcon></mat-icon>
+    Categorias de Inscrição
+  </a>
+  <!-- <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
       <mat-icon svgIcon="web" matListIcon></mat-icon>
       Página do Evento
     </a> -->
-    <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/evento/edit', id, 'facilitadores']">
-      <mat-icon svgIcon="account-circle" matListIcon></mat-icon>
-      Facilitadores
-    </a>
-    <!-- <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+  <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/evento/edit', id, 'facilitadores']">
+    <mat-icon svgIcon="account-circle" matListIcon></mat-icon>
+    Facilitadores
+  </a>
+  <!-- <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
       <mat-icon svgIcon="calendar" matListIcon></mat-icon>
       Atividades
     </a> -->
-    <!-- <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+  <!-- <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
       <mat-icon svgIcon="clipboard-account" matListIcon></mat-icon>
       Crachá
     </a> -->
-    <a mat-list-item  [routerLinkActive]="['active-section', 'color-primary']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/evento/edit', id, 'certificado-participante']">
-      <mat-icon svgIcon="certificate" matListIcon></mat-icon>
-      Modelo do Certificado
-    </a> 
+  <a mat-list-item [routerLinkActive]="['active-section', 'color-primary']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/evento/edit', id, 'certificado-participante']">
+    <mat-icon svgIcon="certificate" matListIcon></mat-icon>
+    Modelo do Certificado
+  </a>
 
-    <h3 matSubheader>Gestão do Evento</h3>
-    <a mat-list-item [routerLinkActive]="['active-section', 'color-primary']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/evento/edit', id, 'inscricoes']">
-      <mat-icon svgIcon="account-edit" matListIcon></mat-icon>
-      Inscrições
-    </a>
-    <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/evento/edit', id, 'frequencia']">
-      <mat-icon svgIcon="account-check" matListIcon></mat-icon>
-      Frequência
-    </a>
-     <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
-      <mat-icon svgIcon="email" matListIcon></mat-icon>
-      Mail
-    </a> 
-    <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['/../../../adm/qr-code']">
-      <mat-icon svgIcon="qrcode-scan" matListIcon></mat-icon>
-      Leitor de Qr-Code
-    </a>
-    <a mat-list-item>
-      <mat-icon svgIcon="settings" matListIcon></mat-icon>
-      Configurações
-    </a>
-  </mat-nav-list>
+  <h3 matSubheader>Gestão do Evento</h3>
+  <a mat-list-item [routerLinkActive]="['active-section', 'color-primary']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/evento/edit', id, 'inscricoes']">
+    <mat-icon svgIcon="account-edit" matListIcon></mat-icon>
+    Inscrições
+  </a>
+  <a mat-list-item [routerLinkActive]="['active-section']" [routerLinkActiveOptions]="{exact:false}" [routerLink]="['/adm/evento/edit', id, 'frequencia']">
+    <mat-icon svgIcon="account-check" matListIcon></mat-icon>
+    Frequência
+  </a>
+  <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+    <mat-icon svgIcon="email" matListIcon></mat-icon>
+    Mail
+  </a>
+  <a mat-list-item [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="['']">
+    <mat-icon svgIcon="open-in-new" matListIcon></mat-icon>
+    Relatórios
+  </a>
+  <a mat-list-item>
+    <mat-icon svgIcon="settings" matListIcon></mat-icon>
+    Configurações
+  </a>
+</mat-nav-list>
