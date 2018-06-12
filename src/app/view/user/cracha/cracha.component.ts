@@ -1,9 +1,12 @@
+import { CrachaService } from './../../../service/cracha.service';
+import { Participante } from './../../../domain/participante';
 import { Component, OnInit } from '@angular/core';
 import { InscricaoService } from '../../../service/inscricao.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material';
 import { Inscricao } from '../../../domain/inscricao';
+import { Cracha } from '../../../domain/cracha';
 
 @Component({
   selector: 'app-cracha',
@@ -12,17 +15,23 @@ import { Inscricao } from '../../../domain/inscricao';
 })
 export class CrachaComponent implements OnInit {
 
-  participanteLogado: any;
+  participanteLogado: Participante = new Participante();
+
+  idEvento: number;
 
   inscricao: Inscricao = new Inscricao();
 
+  cracha: Cracha = new Cracha();
+
   idInscricao: number;
+
   value: string;
 
   elementType = 'url';
 
   constructor(
     private inscricaoService: InscricaoService,
+    private crachaService: CrachaService,
     private router: Router,
     private route: ActivatedRoute,
     private title: Title,
@@ -31,8 +40,14 @@ export class CrachaComponent implements OnInit {
 
   ngOnInit() {
     this.idInscricao = this.route.snapshot.params['idInscricao'];
+    this.idEvento = this.route.snapshot.params['idEvento'];
     this.processaCracha();
+    this.cracha.evento.id = this.idEvento;
   }
+
+  getCracha() {
+    return this.crachaService.getCrachaByEvento(this.idEvento);
+}
 
   atualizarTituloGerarCracha() {
     this.title.setTitle(`Gerando Cracha de : ${this.inscricao.participante.nome}`);
@@ -45,6 +60,9 @@ export class CrachaComponent implements OnInit {
         this.inscricaoService.inscricao = inscricao;
         this.inscricao = this.inscricaoService.inscricao;
         this.value = this.inscricao.codigoQrCode;
+        this.getCracha().subscribe(cracha => {
+          this.cracha = cracha;
+        });
         this.atualizarTituloGerarCracha();
       })
 

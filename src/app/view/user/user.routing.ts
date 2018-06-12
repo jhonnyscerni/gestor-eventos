@@ -20,7 +20,7 @@ const routes: Routes = [
       { path: '', component: UserComponent , children: [
         { path: '', component: MinhaInscricaoListComponent },
         { path: 'meu-cadastro', component: MeuCadastroComponent},
-        { path: 'gerar-cracha/:idInscricao', component: CrachaComponent },
+        { path: 'evento/:idEvento/gerar-cracha/:idInscricao', component: CrachaComponent },
         { path: 'evento/:idEvento/gerar-certificado/:idInscricao', component: CertificadoComponent},
         { path: 'evento/:idEvento/minha-inscricao', component: MinhaInscricaoEditComponent},
         { path: 'evento/:idEvento/minha-inscricao/:idInscricao', component: MinhaInscricaoEditComponent},

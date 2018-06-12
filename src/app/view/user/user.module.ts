@@ -1,3 +1,4 @@
+import { CrachaService } from './../../service/cracha.service';
 import { CertificadoService } from './../../service/certificado.service';
 import { EventoService } from './../../service/evento.service';
 import { KeycloakService } from './../../@core/security/keycloak.service';
@@ -71,6 +72,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     ParticipanteService,
     CategoriaParticipanteEventoService,
     CertificadoService,
+    CrachaService,
     DateTimeService,
     { provide: 'moment', useFactory: (): any => Moment },
 
