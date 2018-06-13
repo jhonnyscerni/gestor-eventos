@@ -106,6 +106,7 @@ export class CategoriaParticipanteComponent implements OnInit {
     this.categoriaParticipanteEventoService.getCategoriaParticipantesEventoByEvento(this.idEvento)
       .subscribe(data => {
         this.data = data;
+        this.totalVagas = 0;
         for (let categoria of this.data) {
           this.totalVagas = +this.totalVagas + +categoria.vagas;
         }
