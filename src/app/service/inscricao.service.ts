@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 import { DateTimeService } from '../@core/util/date-time.service';
 import { InscricaoFiltro } from '../domain/inscricao-filtro';
 import { Page } from '../@core/model/page';
+import { ErrorHandlerService } from './error-handler.service';
 
 @Injectable()
 export class InscricaoService {
@@ -15,6 +16,7 @@ export class InscricaoService {
     private url: string = `${environment.urlbase}/inscricoes`;
 
     constructor(
+        private errorHandlerService: ErrorHandlerService,
         private dtService: DateTimeService,
         private http: Http
     ) { }
@@ -64,7 +66,15 @@ export class InscricaoService {
                 .map(res => res.json());
         } else {
             return this.http.post(`${environment.urlbase}/eventos/${idEvento}/inscricao`, inscricao)
-                .map(res => res.json());
+                .map(res => res.json())
+                .catch((error: any) => {
+                  if (error.status == 400) {
+                    // this.alertService.showError(error.statusText);
+                    this.errorHandlerService.handle(error);
+                } 
+        
+                return Observable.throw(error);
+                } );
         }
     }
 

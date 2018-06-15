@@ -1,9 +1,10 @@
+import { ErrorHandlerService } from './../../service/error-handler.service';
 import { GuardCertificado } from './../security/guard-certificado';
 import { UnauthorizedComponent } from './../../view/unauthorized/unauthorized.component';
 import { LayoutModule } from './../layout/layout.module';
 
 import { AuthGuardUser } from './../security/auth-guard-user';
-import { NgModule, } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule, } from '@angular/common';
 import { Http, HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -89,7 +90,8 @@ const OUTERS: any[] = [
     AuthGuardAdmin,
     AuthGuardUser,
     AuthGuard,
-    GuardCertificado
+    GuardCertificado,
+    ErrorHandlerService
 
   ]
 })
