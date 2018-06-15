@@ -70,7 +70,7 @@ export class InscricaoService {
                 .catch((error: any) => {
                   if (error.status == 400) {
                     // this.alertService.showError(error.statusText);
-                    this.errorHandlerService.handle(error);
+                    this.errorHandlerService.handle(error._body);
                 } 
         
                 return Observable.throw(error);
