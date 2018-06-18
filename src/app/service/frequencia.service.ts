@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Frequencia } from '../domain/frequencia';
 import { ErrorHandlerService } from './error-handler.service';
+import { Page } from '../@core/model/page';
 
 @Injectable()
 export class FrequenciaService {
@@ -17,20 +18,20 @@ export class FrequenciaService {
 
     presenca(uuid: string): Observable<any> {
         return this.http.post(`${this.url}/create/${uuid}`, null)
-        .map(res => res.json())
-        .catch((error: any) => {
-            if (error.status == 400) {
-              // this.alertService.showError(error.statusText);
-              this.errorHandlerService.handle(error._body);
-          } 
-  
-          return Observable.throw(error);
-          } );
+            .map(res => res.json())
+            .catch((error: any) => {
+                if (error.status == 400) {
+                    // this.alertService.showError(error.statusText);
+                    this.errorHandlerService.handle(error._body);
+                }
+
+                return Observable.throw(error);
+            });
     }
 
 
-     getFrequenciaByEvento(idEvento: number): Observable<Frequencia[]> {
-        return this.http.get(`${environment.urlbase}/eventos/${idEvento}/frequencia`)
+    getFrequenciaByEvento(idEvento: number, size: number, page: number): Observable<Page<Frequencia>> {
+        return this.http.get(`${environment.urlbase}/eventos/${idEvento}/frequencia?page=${page}&size=${size}`)
             .map(res => res.json());
     }
 
@@ -41,7 +42,7 @@ export class FrequenciaService {
 
     excluirFrequenciaByEvento(idInscricao: number) {
         return this.http.delete(`${this.url}/${idInscricao}`);
-     }
+    }
 
 
 }

@@ -11,7 +11,7 @@
     <mat-card-content>
 
       <div fxLayout="column">
-        <td-data-table [data]="data" [columns]="configWidthColumns">
+        <td-data-table [data]="data.content" [columns]="configWidthColumns">
 
           <ng-template tdDataTableTemplate="acoes" let-value="value" let-row="row">
 
@@ -24,6 +24,11 @@
           </ng-template>
 
         </td-data-table>
+
+        <td-paging-bar [pageSize]="[5]" [total]="data.totalElements" (change)="page($event)">
+          <span td-paging-bar-label hide-xs>Página:</span> {{data.number + 1}}
+          <span hide-xs>de {{data.totalPages}}</span>
+        </td-paging-bar>
       </div>
 
     </mat-card-content>

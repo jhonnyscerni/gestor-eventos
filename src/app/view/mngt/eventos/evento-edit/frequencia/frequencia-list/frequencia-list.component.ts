@@ -1,12 +1,13 @@
 import { Frequencia } from './../../../../../../domain/frequencia';
 import { Component, OnInit } from '@angular/core';
-import { ITdDataTableColumn, TdDialogService } from '@covalent/core';
+import { ITdDataTableColumn, TdDialogService, IPageChangeEvent } from '@covalent/core';
 
 import * as Moment from 'moment'; /*  biblioteca de formatação de data/hora */
 import { FrequenciaService } from '../../../../../../service/frequencia.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { MatSnackBar } from '@angular/material';
+import { Page } from '../../../../../../@core/model/page';
 
 @Component({
   selector: 'app-frequencia-list',
@@ -28,7 +29,7 @@ export class FrequenciaListComponent implements OnInit {
     { name: 'acoes', label: 'Ações', width: 150 },
   ];
 
-  data = [];
+  data: Page<Frequencia> = new Page<Frequencia>();
 
   constructor(
     private frequenciaServive: FrequenciaService,
@@ -50,8 +51,8 @@ export class FrequenciaListComponent implements OnInit {
   }
 
   getFrequenciaByEvento() {
-    this.frequenciaServive.getFrequenciaByEvento(this.idEvento).subscribe(
-      data => this.data = data
+    this.frequenciaServive.getFrequenciaByEvento(this.idEvento, 5, 0).subscribe(
+      (data: Page<Frequencia>) => this.data = data
     );
   }
 
@@ -77,6 +78,14 @@ export class FrequenciaListComponent implements OnInit {
 
   public dateLayout(dt: any): String {
     return Moment(dt).format('DD/MM/YYYY [às] HH:mm:ss');
+  }
+
+   //PAGINACAO
+   page(event: IPageChangeEvent): void {
+
+    this.frequenciaServive.getFrequenciaByEvento(this.idEvento, 5, event.page - 1).subscribe(
+      (data: Page<Frequencia>) => this.data = data
+    );
   }
 
 }
