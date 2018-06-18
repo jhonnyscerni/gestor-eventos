@@ -1,3 +1,4 @@
+import { FrequenciaComponent } from './frequencia/frequencia.component';
 import { ComprovanteComponent } from './minhas-inscricoes/comprovante/comprovante.component';
 import { CertificadoComponent } from './certificado/certificado.component';
 import { MeuCadastroComponent } from './meu-cadastro/meu-cadastro.component';
@@ -20,6 +21,7 @@ const routes: Routes = [
       { path: '', component: UserComponent , children: [
         { path: '', component: MinhaInscricaoListComponent },
         { path: 'meu-cadastro', component: MeuCadastroComponent},
+        { path: 'evento/:idEvento/frequencia/:idInscricao', component: FrequenciaComponent },
         { path: 'evento/:idEvento/gerar-cracha/:idInscricao', component: CrachaComponent },
         { path: 'evento/:idEvento/gerar-certificado/:idInscricao', component: CertificadoComponent},
         { path: 'evento/:idEvento/minha-inscricao', component: MinhaInscricaoEditComponent},

@@ -1,0 +1,65 @@
+<div main-content layout="row" layout-align="center start">
+
+  <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="frequencia">
+
+    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
+      <div flex>
+        <mat-icon>list</mat-icon> Minhas Frequências
+      </div>
+    </mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+
+      <div fxLayout="column">
+
+        <div class="shadow-divider"></div>
+
+        <mat-list-item *ngIf="this.data.length <= 0" role="listitem" fxLayoutAlign="center center">
+            <span>Ainda não há itens a serem exibidos nesta lista.</span>
+          </mat-list-item>
+        <!-- lista de categorias -->
+        <mat-list role="list" *ngIf="this.data.length > 0">
+          <mat-list-item role="listitem">
+            <div fxLayout="row" fxLayoutGap="20px" class="fullwidth">
+              <div fxFlex="90" fxFlex.xs="80" class="fullwidth" fxLayout.xs="column" fxLayoutGap.xs="0px">
+                <div fxFlex="50">
+                  <b>Data da Frequencia</b>
+                </div>
+                <div fxFlex="25" class="text-center" hide-xs>
+                  <b>Turno</b>
+                </div>
+                <div fxFlex="25" class="text-center" hide-xs>
+                  <b>Codigo de Inscricao</b>
+                </div>
+                <!-- <div fxFlex="25" hide-gt-xs><b>Vagas Liberadas</b></div> -->
+                <!-- <div fxFlex="25" class="text-center" hide-xs><b>Vagas de Espera</b></div> -->
+              </div>
+            </div>
+          </mat-list-item>
+          <mat-divider></mat-divider>
+          <div fxLayout="column" *ngFor="let item of data">
+            <mat-list-item role="listitem" class="list-item-resp">
+              <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
+                <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center" fxLayoutAlign.xs="center start"
+                  class="fullwidth cursor-pointer list-item-resp">
+                  <div fxFlex="50" class="list-card-field">{{item?.dataFrequencia}}</div>
+                  <div fxFlex="25" class="list-card-field text-center">
+                    <span hide-gt-xs>Turno: </span>{{item?.frequenciaTurno}}</div>
+                  <div fxFlex="25" class="list-card-field text-center">
+                    <span hide-gt-xs>Codigo QrCode: </span>{{item?.inscricao.codigoQrCode}}</div>
+                  <!-- <div fxFlex="25" class="list-card-field text-center" hide-xs>{{item?.espera}}</div> -->
+                </div>
+              </div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+          </div>
+          <mat-divider></mat-divider>
+        </mat-list>
+      </div>
+
+
+    </mat-card-content>
+    <mat-card-footer>
+    </mat-card-footer>
+  </mat-card>
+</div>

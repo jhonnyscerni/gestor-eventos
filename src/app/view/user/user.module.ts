@@ -25,6 +25,8 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { CertificadoComponent } from './certificado/certificado.component';
 import { CrachaComponent } from './cracha/cracha.component';
 import { ComprovanteComponent } from './minhas-inscricoes/comprovante/comprovante.component';
+import { FrequenciaComponent } from './frequencia/frequencia.component';
+import { FrequenciaService } from '../../service/frequencia.service';
 
 
 
@@ -65,6 +67,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     ComprovanteComponent,
     CrachaComponent,
     CertificadoComponent,
+    FrequenciaComponent
 ],
   providers: [
     EventoService,
@@ -74,6 +77,7 @@ export const MY_MOMENT_FORMATS: any = { // See the Moment.js docs for the meanin
     CertificadoService,
     CrachaService,
     DateTimeService,
+    FrequenciaService,
     { provide: 'moment', useFactory: (): any => Moment },
 
     { provide: LOCALE_ID, useValue: 'pt-BR' },

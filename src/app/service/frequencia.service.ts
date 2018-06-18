@@ -34,6 +34,11 @@ export class FrequenciaService {
             .map(res => res.json());
     }
 
+    getFrequenciaByEventoByInscricao(idEvento: number, idInscricao: number): Observable<Frequencia[]> {
+        return this.http.get(`${environment.urlbase}/eventos/${idEvento}/frequencia/${idInscricao}`)
+            .map(res => res.json());
+    }
+
     excluirFrequenciaByEvento(idInscricao: number) {
         return this.http.delete(`${this.url}/${idInscricao}`);
      }

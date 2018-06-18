@@ -1,12 +1,12 @@
 <div layout="row" layout-align="center">
   <mat-card flex-gt-xs="85" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
     <mat-card-title>
-      <mat-icon>list</mat-icon> Minhas Inscricoes
+      <mat-icon>list</mat-icon> Minhas Inscrições
     </mat-card-title>
   </mat-card>
 </div>
 
-<div layout="row" layout-align="center" *ngIf="participanteLogado.instituicaoOrigem == null || participanteLogado.nomeCracha == null" >
+<div layout="row" layout-align="center" *ngIf="participanteLogado.instituicaoOrigem == null || participanteLogado.nomeCracha == null">
   <mat-card flex-gt-xs="85" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
     <td-message label="Alerta!" sublabel="Atualize Seus Dados de Cadastro" color="accent" icon="warning">
       <button td-message-actions mat-button [routerLink]="['meu-cadastro']">ATUALIZAR</button>
@@ -46,6 +46,11 @@
         <mat-divider></mat-divider>
         <mat-card-actions>
           <div layout="row" layout-align="end center">
+
+            <a mat-button class="text-upper" [routerLink]="['evento', item?.evento?.id, 'frequencia', item?.id]">
+              FREQUÊNCIA
+            </a>
+
             <a mat-button class="text-upper" [routerLink]="['evento', item?.evento?.id, 'gerar-certificado', item?.id]">
               CERTIFICADO
             </a>
