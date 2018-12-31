@@ -1,67 +1,83 @@
-<div layout="row" layout-align="center">
+<div class="page-header" style="background-color: #f8f8fa;background-image:none; border-bottom: solid 1px #dde7f5;">
+  <div class="container">
+    <div class="row">
+      <div class="page-header-inner col-sm-12 hidden-xs clearfix">
+        <h1 class="kill-top-margin"> <mat-icon>event</mat-icon> Minhas Inscrições</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <div layout="row" layout-align="center">
   <mat-card flex-gt-xs="85" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
     <mat-card-title>
       <mat-icon>list</mat-icon> Minhas Inscrições
     </mat-card-title>
   </mat-card>
-</div>
+</div> -->
 
-<div layout="row" layout-align="center" *ngIf="participanteLogado.instituicaoOrigem == null || participanteLogado.nomeCracha == null">
-  <mat-card flex-gt-xs="85" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
-    <td-message label="Alerta!" sublabel="Atualize Seus Dados de Cadastro" color="accent" icon="warning">
-      <button td-message-actions mat-button [routerLink]="['meu-cadastro']">ATUALIZAR</button>
-    </td-message>
-  </mat-card>
-</div>
+<div style="background: #FFFFFF">
+  <div class="container">
+    <div layout="row" layout-align="center" *ngIf="participanteLogado.instituicaoOrigem == null || participanteLogado.nomeCracha == null">
+      <mat-card flex-gt-xs="100" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
+        <td-message label="Alerta!" sublabel="Atualize Seus Dados de Cadastro" color="accent" icon="warning">
+          <button td-message-actions mat-button [routerLink]="['meu-cadastro']">ATUALIZAR</button>
+        </td-message>
+      </mat-card>
+    </div>
 
 
-<div layout="column">
-  <div layout-wrap layout="row" layout-align="center">
-    <mat-card flex-gt-xs="40" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngFor="let item of inscricaoPage"
-      style="padding-bottom:40px;">
-      <!-- <mat-card-header>
+    <div layout="column">
+      <div layout-wrap layout="row" >
+        <mat-card flex-gt-xs="35" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngFor="let item of inscricaoPage"
+          style="padding-bottom:40px;">
+          <!-- <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div> -->
-      <mat-card-title>
-        <i class="material-icons">event</i> {{item?.evento.nome}}
-      </mat-card-title>
-      <mat-divider></mat-divider>
-      <!-- </mat-card-header> -->
-      <mat-card-content>
-        <p mat-line>
-          <strong>Tipo do Evento: </strong>{{item?.evento.tipoDeEvento.nomeSingular}}</p>
-        <p mat-line>
-          <strong>Carga Horaria: </strong>{{item?.evento.cargaHoraria}}</p>
-        <p mat-line>
-          <strong>Inicio do Evento: </strong>{{dateLayout(item?.evento.inicioEvento)}}</p>
-        <p mat-line>
-          <strong>Fim do Evento: </strong>{{dateLayout(item?.evento.fimEvento)}}</p>
-        <p mat-line>
-          <strong>Local: </strong>{{item?.evento.local}}</p>
-        <mat-divider></mat-divider>
-        <p>
-          {{item?.evento?.descricao}}
-        </p>
-      </mat-card-content>
-      <div style="position:absolute; bottom:0; width:100%;">
-        <mat-divider></mat-divider>
-        <mat-card-actions>
-          <div layout="row" layout-align="end center">
+            <div class="card-photo">
+                <img class="card-img-top" src="../../../../../assets/imagens/01.jpg" alt="">
+              </div>
+          <mat-card-title style="font-size: 14px">
+            {{item?.evento.nome}}
+          </mat-card-title>
+          <mat-divider></mat-divider>
+          <!-- </mat-card-header> -->
+          <mat-card-content>
+            <p mat-line>
+              <strong>Tipo do Evento: </strong>{{item?.evento.tipoDeEvento.nomeSingular}}</p>
+            <p mat-line>
+              <strong>Carga Horaria: </strong>{{item?.evento.cargaHoraria}}</p>
+            <p mat-line>
+              <strong>Inicio do Evento: </strong>{{dateLayout(item?.evento.inicioEvento)}}</p>
+            <p mat-line>
+              <strong>Fim do Evento: </strong>{{dateLayout(item?.evento.fimEvento)}}</p>
+            <p mat-line>
+              <strong>Local: </strong>{{item?.evento.local}}</p>
+            
+          </mat-card-content>
+          <div style="position:absolute; bottom:0; width:100%;">
+            <mat-divider></mat-divider>
+            <mat-card-actions>
+              <div layout="row" layout-align="end center">
 
-            <a mat-button class="text-upper" [routerLink]="['evento', item?.evento?.id, 'frequencia', item?.id]">
-              FREQUÊNCIA
-            </a>
+                <a mat-button class="text-upper" [routerLink]="['evento', item?.evento?.id, 'frequencia', item?.id]">
+                  FREQUÊNCIA
+                </a>
 
-            <a mat-button class="text-upper" [routerLink]="['evento', item?.evento?.id, 'gerar-certificado', item?.id]">
-              CERTIFICADO
-            </a>
+                <a mat-button class="text-upper" [routerLink]="['evento', item?.evento?.id, 'gerar-certificado', item?.id]">
+                  CERTIFICADO
+                </a>
 
-            <a mat-button [routerLink]="['evento', item?.evento?.id,'gerar-cracha', item?.id]">CRACHA</a>
+                <a mat-button [routerLink]="['evento', item?.evento?.id,'gerar-cracha', item?.id]">CRACHA</a>
 
-            <a mat-button [routerLink]="['evento', item?.evento?.id, 'minha-inscricao', item?.id , 'comprovante']">DETALHES</a>
+                <a mat-button [routerLink]="['evento', item?.evento?.id, 'minha-inscricao', item?.id , 'comprovante']">DETALHES</a>
 
+              </div>
+            </mat-card-actions>
           </div>
-        </mat-card-actions>
+        </mat-card>
       </div>
-    </mat-card>
+    </div>
   </div>
 </div>

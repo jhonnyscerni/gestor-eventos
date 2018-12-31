@@ -22,7 +22,7 @@ export class FrequenciaListComponent implements OnInit {
 
   configWidthColumns: ITdDataTableColumn[] = [
     { name: 'id', label: '#', width: 50 },
-    { name: 'inscricao.participante.nomeCracha', label: 'Nome', width: 280 },
+    { name: 'inscricao.participante.nome', label: 'Nome', width: 280 },
     { name: 'dataFrequencia', label: 'Data da Frequencia', width: 120, format: (value) => { return this.dateLayout(value) } },
     { name: 'frequenciaTurno', label: 'Turno', width: 150 },
     { name: 'inscricao.codigoQrCode', label: 'Codigo de Inscricao', width: 250},
