@@ -130,7 +130,7 @@
                   <div fxFlex="10" class="list-card-field" hide-xs>{{item?.categoriaParticipanteEvento?.categoriaParticipante?.titulo}}</div>
                   <div fxFlex="10" class="list-card-field" hide-xs>{{item?.status}}</div>
                   <div fxFlex="10" class="list-card-field" hide-xs>{{item?.participante?.instituicaoOrigem}}</div>
-                  <div fxFlex="10" class="list-card-field" hide-xs>{{item?.dtInscricao}}</div>
+                  <div fxFlex="10" class="list-card-field" hide-xs>{{dateLayout(item?.dtInscricao)}}</div>
                 </div>
                 <div fxFlex="15" class="fullwidth" fxLayoutAlign="center center">
                   <button mat-icon-button class="color-primary" matTooltip="Editar o Registro" matTooltipPosition="below" [routerLink]="['edit', item?.id]">
