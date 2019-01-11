@@ -1,6 +1,22 @@
 <nav-view-layout layout="column" flex style="height:100%">
 
+ 
+
   <div main-content flex layout="column" style="height:100%">
+      <mat-toolbar>
+          <mat-toolbar-row>
+    
+            <div td-toolbar-content layout="row" layout-align="start center" flex>
+              <div class="container">
+                <div class="row">
+                  <div class="page-header-inner col-sm-12 hidden-xs clearfix" style="margin-left: 25%">
+                      <mat-icon>list</mat-icon> Lista de Participantes
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-toolbar-row>
+        </mat-toolbar>
     <div fxLayout="column">
 
 
@@ -8,15 +24,6 @@
 
         <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
 
-          <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
-            <div flex>
-              <mat-icon>list</mat-icon> Lista de Participantes
-            </div>
-            <!-- <button mat-mini-fab class="fab-in-tittle" matTooltip="Adicionar um Novo Registro" matTooltipPosition="below" [routerLink]="['../participante/novo']">
-              <mat-icon>add</mat-icon>
-            </button> -->
-          </mat-card-title>
-          <mat-divider></mat-divider>
           <mat-card-content>
 
             <div layout="row" layout-align="center">

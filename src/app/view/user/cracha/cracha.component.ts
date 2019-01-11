@@ -77,7 +77,7 @@ export class CrachaComponent implements OnInit {
       <html>
         <head>
     
-          <title>Sistema Seven - Imprimir Crachá </title>
+          <title>Sistema Siberius - Imprimir Crachá </title>
           <style>
           .content_print { 
             width: 50%;

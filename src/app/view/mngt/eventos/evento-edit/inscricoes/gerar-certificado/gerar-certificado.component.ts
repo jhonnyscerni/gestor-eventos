@@ -140,7 +140,7 @@ export class GerarCertificadoComponent implements OnInit {
     doc.text(this.certificado.assinatura.cargo, 105, 170);
 
     doc.setFontSize(8)
-    doc.text('Validar em http://www.seven.jus.br com o código de autenticação: [' + this.inscricao.codigoQrCode + ']', 140, 190);
+    doc.text('Validar em http://www.siberius.com.br com o código de autenticação: [' + this.inscricao.codigoQrCode + ']', 140, 190);
 
     doc.save('certificado - ' + this.inscricao.participante.nome + ".pdf");
   }

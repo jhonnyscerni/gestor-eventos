@@ -3,16 +3,26 @@
 
 
   <div main-content flex layout="column" style="height:100%">
-      <div fxLayout="column">
+      <mat-toolbar>
+          <mat-toolbar-row>
+    
+            <div td-toolbar-content layout="row" layout-align="start center" flex>
+              <div class="container">
+                <div class="row">
+                  <div class="page-header-inner col-sm-12 hidden-xs clearfix" style="margin-left: 25%">
+                      <mat-icon>list</mat-icon> Cadastro de Participante 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </mat-toolbar-row>
+        </mat-toolbar> 
+    <div fxLayout="column">
 
       <div main-content layout="row" layout-align="center start">
+     
           <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="participante">
-              <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
-                <div flex>
-                  <mat-icon>list</mat-icon> Cadastro de Participante 
-                </div>
-              </mat-card-title>
-              <mat-divider></mat-divider>
+            
           <mat-card-content>
             <!-- FORMULÁRIO -->
             <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">

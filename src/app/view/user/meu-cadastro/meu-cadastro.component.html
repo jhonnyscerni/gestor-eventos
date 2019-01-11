@@ -1,14 +1,23 @@
 <div main-content flex layout="column" style="height:100%">
+  <mat-toolbar>
+    <mat-toolbar-row>
+
+      <div td-toolbar-content layout="row" layout-align="start center" flex>
+        <div class="container">
+          <div class="row">
+            <div class="page-header-inner col-sm-12 hidden-xs clearfix" style="margin-left: 25%">
+              <mat-icon>list</mat-icon> Cadastro de Participante
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
   <div fxLayout="column">
 
     <div main-content layout="row" layout-align="center start">
       <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="participanteLogado">
-        <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
-          <div flex>
-            <mat-icon>list</mat-icon> Cadastro de Participante
-          </div>
-        </mat-card-title>
-        <mat-divider></mat-divider>
+
         <mat-card-content>
           <!-- FORMULÁRIO -->
           <form #vform="ngForm" autocomplete="off" (ngSubmit)="onSubmit()">
@@ -17,8 +26,8 @@
             <div fxLayout="column">
               <!-- NOME -->
               <mat-input-container floatPlaceholder="auto" flex="100">
-                <input matInput #nome="ngModel" minlength="5" maxlength="250" [(ngModel)]="participanteLogado.nome" name="nome" type="text"
-                  placeholder="Nome do Participante" required>
+                <input matInput #nome="ngModel" minlength="5" maxlength="250" [(ngModel)]="participanteLogado.nome"
+                  name="nome" type="text" placeholder="Nome do Participante" required>
                 <mat-error [hidden]="nome.valid || (nome.pristine && !vform.submitted)">
                   O nome do Participante é um campo obrigatório de 5 até 250 caracteres.
                 </mat-error>
@@ -26,8 +35,8 @@
 
               <!-- NOME do CRACHA -->
               <mat-input-container floatPlaceholder="auto" flex="100">
-                <input matInput #nomeCracha="ngModel" minlength="5" maxlength="250" [(ngModel)]="participanteLogado.nomeCracha" name="nomeCracha"
-                  type="text" placeholder="Nome do Crachá Participante" required>
+                <input matInput #nomeCracha="ngModel" minlength="5" maxlength="250" [(ngModel)]="participanteLogado.nomeCracha"
+                  name="nomeCracha" type="text" placeholder="Nome do Crachá Participante" required>
                 <mat-error [hidden]="nomeCracha.valid || (nomeCracha.pristine && !vform.submitted)">
                   O nome do Crachá Participante é um campo obrigatório de 5 até 250 caracteres.
                 </mat-error>
@@ -35,8 +44,8 @@
 
               <!-- EMAIL -->
               <mat-input-container floatPlaceholder="auto" flex="100">
-                <input matInput #email="ngModel" [(ngModel)]="participanteLogado.email" name="email" type="email" placeholder="Email do Participante"
-                  required pattern='\S+@\S+\.\S+'>
+                <input matInput #email="ngModel" [(ngModel)]="participanteLogado.email" name="email" type="email"
+                  placeholder="Email do Participante" required pattern='\S+@\S+\.\S+'>
                 <mat-hint [hidden]="!email.valid">O email do Participante é um campo obrigatório.
                 </mat-hint>
                 <mat-error [hidden]="email.valid || (email.pristine && !vform.submitted)">
@@ -46,7 +55,8 @@
 
               <!-- INSTITUICAO -->
               <mat-input-container floatPlaceholder="auto" flex="100">
-                <input matInput [(ngModel)]="participanteLogado.instituicaoOrigem" name="instituicaoOrigem" type="text" placeholder="Instituicao e Origem" required>
+                <input matInput [(ngModel)]="participanteLogado.instituicaoOrigem" name="instituicaoOrigem" type="text"
+                  placeholder="Instituicao e Origem" required>
               </mat-input-container>
 
 
@@ -58,7 +68,8 @@
 
               <!-- TITULO DE ELEITOR -->
               <mat-input-container floatPlaceholder="auto" flex="100">
-                <input matInput [(ngModel)]="participanteLogado.tituloEleitor" name="tituloEleitor" type="text" placeholder="Titulo de Eleitor">
+                <input matInput [(ngModel)]="participanteLogado.tituloEleitor" name="tituloEleitor" type="text"
+                  placeholder="Titulo de Eleitor">
               </mat-input-container>
 
 

@@ -1,13 +1,17 @@
-<div main-content layout="row" layout-align="center start">
 
+    <!--<mat-toolbar>
+        <mat-toolbar-row>
+            <button mat-icon-button>
+                <mat-icon>list</mat-icon>
+            </button>
+            <div td-toolbar-content layout="row" layout-align="start center" flex>
+               <span> <strong>INSCRIÇÃO DO EVENTO</strong></span>
+
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>-->
+    <div main-content layout="row" layout-align="center start">
   <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="inscricao">
-
-    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
-      <div flex>
-        <mat-icon>list</mat-icon> Cadastro de Inscricao
-      </div>
-    </mat-card-title>
-    <mat-divider></mat-divider>
     <mat-card-content>
 
       <!-- FORMULÁRIO -->
@@ -15,57 +19,71 @@
 
         <!-- FORMULÁRIO -->
         <div fxLayout="column">
-          <div>
+          <div style="padding: 10px 80px;">
             <h2>
-              <strong>Evento: </strong> {{evento?.nome}}
+              <i class="fa fa-calendar" aria-hidden="true"></i><strong style="margin-left: 10px">Evento: </strong>
+              {{evento?.nome}}
             </h2>
             <p>
-              <strong>Carga Horaria: </strong>{{evento?.cargaHoraria}}</p>
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              <strong style="margin-left: 16px">Carga Horaria: </strong>{{evento?.cargaHoraria}}</p>
             <p>
-              <strong>Local: </strong>{{evento?.local}}</p>
+              <i class="fa fa-map-marker"></i>
+
+              <strong style="margin-left: 20px">Local: </strong>{{evento?.local}}</p>
             <p>
-              <strong>Data Inicio: </strong>{{evento?.dataInicio}}</p>
+              <i class="fa fa-calendar"></i>
+              <strong style="margin-left: 16px">Data Inicio: </strong>{{evento?.dataInicio}}</p>
             <p>
-              <strong>Data Fim: </strong>{{evento?.dataFim}}</p>
+              <i class="fa fa-calendar"></i>
+              <strong style="margin-left: 16px">Data Fim: </strong>{{evento?.dataFim}}</p>
           </div>
 
           <mat-divider></mat-divider>
-          <div>
-            <h2>
-              <strong>Nome do Participante: </strong> {{participanteLogado?.nome}}
-            </h2>
+          <div style="border-top: 1px solid #dddddd;padding: 10px 80px;">
+            <h2><i class="fa fa-info" aria-hidden="true"></i>
+              <strong style="margin-left: 20px">Informação do participante</strong></h2>
+            <h3>
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <strong style="margin-left: 18px">Nome do Participante: </strong> {{participanteLogado?.nome}}
+            </h3>
             <p>
-              <strong>CPF: </strong>{{participanteLogado?.cpf}}</p>
+              <i class="fa fa-file-text-o" aria-hidden="true"></i>
+              <strong style="margin-left: 18px">CPF: </strong>{{participanteLogado?.cpf}}</p>
             <p>
-              <strong>Email: </strong>{{participanteLogado?.email}}</p>
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              <strong style="margin-left: 17px">Email: </strong>{{participanteLogado?.email}}</p>
           </div>
 
 
           <!-- CATEGORIA PARTICIPANTE EVENTO -->
-          <mat-form-field>
-            <mat-select [compareWith]="compareByOptionId" placeholder="Categoria da Inscricao do Participante" name="categoriaParticipanteEvento"
-              [(ngModel)]="inscricao.categoriaParticipanteEvento" required>
-              <mat-option *ngFor="let categoriaParticipanteEvento of categoriaParticipanteEventos" [value]="categoriaParticipanteEvento">
-                {{ categoriaParticipanteEvento.categoriaParticipante.titulo }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
+          <div style="padding: 10px 80px;">
+            <mat-form-field style="width: 50%">
+              <mat-select [compareWith]="compareByOptionId" placeholder="Categoria da Inscricao do Participante" name="categoriaParticipanteEvento"
+                [(ngModel)]="inscricao.categoriaParticipanteEvento" required>
+                <mat-option *ngFor="let categoriaParticipanteEvento of categoriaParticipanteEventos" [value]="categoriaParticipanteEvento">
+                  {{ categoriaParticipanteEvento.categoriaParticipante.titulo }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
 
 
-          <!-- OBSERVACAO -->
-          <mat-input-container floatPlaceholder="auto" flex="100">
-            <input matInput [(ngModel)]="inscricao.observacao" name="observacao" type="text" placeholder="Observação">
-          </mat-input-container>
+            <!-- OBSERVACAO -->
+            <mat-input-container floatPlaceholder="auto" flex="100" style="width: 50%">
+              <input matInput [(ngModel)]="inscricao.observacao" name="observacao" type="text" placeholder="Observação">
+            </mat-input-container>
 
-
+          </div>
         </div>
 
         <div fxLayout="column">
-          <mat-card-actions>
-            <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">INSCREVER</button>
-            <a mat-button color="warn" [routerLink]="['']">CANCELAR</a>
+          <div style="padding: 10px 80px;">
+            <mat-card-actions>
+              <button mat-button mat-raised-button [disabled]="!vform.form.valid" color="primary" type="submit">INSCREVER</button>
+              <a mat-button color="warn" [routerLink]="['']">CANCELAR</a>
 
-          </mat-card-actions>
+            </mat-card-actions>
+          </div>
         </div>
 
 

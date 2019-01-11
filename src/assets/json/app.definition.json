@@ -1,11 +1,11 @@
 {
     "nome": "Sistema de Eventos",
-    "sigla": "SEVEN",
-    "descricao": "Portal de Eventos do Tribunal Regional Eleitoral, com Módulo de Gestão de Eventos e Certificados.",
+    "sigla": "SIBERIUS",
+    "descricao": "",
 
-    "tituloJanela": "Eventos do TRE-PA",
-    "tituloWeb": "Eventos do Tribunal Regional Eleitoral do Pará",
-    "tituloApp": "Eventos do TRE-PA",
+    "tituloJanela": "",
+    "tituloWeb": "",
+    "tituloApp": "",
 
     "versao": "3.0",
     "primeiroAno": 2007,
@@ -45,19 +45,14 @@
       }
     ],
 
-    "repositorio": "https://git.tre-pa.jus.br/scdw/seven-frontend.git",
+    "repositorio": "",
 
     "autor": {
-        "instituicao": "Tribunal Regional Eleitoral do Pará",
-        "url": "http://www.tre-pa.jus.br",
-        "departamento": "STI/COSIS/SCDW",
+        "instituicao": "Siberius",
+        "url": "http://www.siberius.com.br",
+        "departamento": "",
         "equipe": [
-        "Eduardo Alcântara <eduardo.alcantara@tre-pa.gov.br>",
-        "Jhonny Scerni <jhonny.scerni@tre-pa.gov.br>",
-        "Marco Fagundes <marco.fagundes@tre-pa.gov.br>",
-        "Natalia Souto <nataliasouto@tre-pa.gov.br>",
-        "Osiel da Silva <osilva@tre-pa.gov.br>",
-        "Rodrigo Maia <rmaia@tre-pa.gov.br>"
+        "Jhonny Scerni <jhonny.scerni@tre-pa.gov.br>"
         ]
     },
 

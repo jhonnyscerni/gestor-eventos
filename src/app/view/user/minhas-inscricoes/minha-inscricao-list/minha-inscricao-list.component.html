@@ -1,11 +1,19 @@
+<mat-toolbar>
+    <mat-toolbar-row>
+        
+        <div td-toolbar-content layout="row" layout-align="start center" flex>
+            <div class="container">
+                <div class="row">
+                  <div class="page-header-inner col-sm-12 hidden-xs clearfix">
+                    <h3 class="kill-top-margin"> <mat-icon>event</mat-icon> Minhas Inscrições</h3>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
 <div class="page-header" style="background-color: #f8f8fa;background-image:none; border-bottom: solid 1px #dde7f5;">
-  <div class="container">
-    <div class="row">
-      <div class="page-header-inner col-sm-12 hidden-xs clearfix">
-        <h1 class="kill-top-margin"> <mat-icon>event</mat-icon> Minhas Inscrições</h1>
-      </div>
-    </div>
-  </div>
+
 </div>
 
 
@@ -18,8 +26,8 @@
   </mat-card>
 </div> -->
 
-<div style="background: #FFFFFF">
-  <div class="container">
+<div style="height:100% ;background:#FFFFFF; margin-top: 2px">
+  <div class="container" >
     <div layout="row" layout-align="center" *ngIf="participanteLogado.instituicaoOrigem == null || participanteLogado.nomeCracha == null">
       <mat-card flex-gt-xs="100" flex-xs="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']">
         <td-message label="Alerta!" sublabel="Atualize Seus Dados de Cadastro" color="accent" icon="warning">

@@ -1,15 +1,18 @@
-<div main-content flex layout="column" style="height:100%">
-
-
-    <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="inscricao">
-
-        <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
-            <div flex>
-                <mat-icon>list</mat-icon> Crachá - {{inscricao?.participante.nome}}
+<mat-toolbar>
+        <mat-toolbar-row>
+  
+          <div td-toolbar-content layout="row" layout-align="start center" flex>
+            <div class="container">
+              <div class="row">
+                <div class="page-header-inner col-sm-12 hidden-xs clearfix">
+                        <mat-icon>list</mat-icon> Crachá - {{inscricao?.participante.nome}}
+                </div>
+              </div>
             </div>
-        </mat-card-title>
-        <mat-divider></mat-divider>
-    </mat-card>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+<div main-content flex layout="column" style="height:100%">
 
     <div fxLayout="column">
 

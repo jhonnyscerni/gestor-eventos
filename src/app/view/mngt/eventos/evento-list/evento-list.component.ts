@@ -28,7 +28,7 @@ export class EventoListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._titleService.setTitle( 'SEVEN2018' );
+    this._titleService.setTitle( 'Siberius' );
 
     this.eventoService.getEventos().subscribe(page => {
       this.eventoPage = page;
