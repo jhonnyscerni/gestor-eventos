@@ -1,13 +1,20 @@
+<mat-toolbar>
+  <mat-toolbar-row>
+
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <div class="container" style=" margin-left: 4%;">
+        <div class="row">
+          <div class="page-header-inner col-sm-12 hidden-xs clearfix">
+            <mat-icon>list</mat-icon> Minhas Frequências
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
 <div main-content layout="row" layout-align="center start">
 
   <mat-card flex-gt-xs="90" flex="100" tdMediaToggle="gt-xs" [mediaClasses]="['push']" *ngIf="frequencia">
-
-    <mat-card-title class="background-color-primary list-card fullwidth" fxLayout="row">
-      <div flex>
-        <mat-icon>list</mat-icon> Minhas Frequências
-      </div>
-    </mat-card-title>
-    <mat-divider></mat-divider>
     <mat-card-content>
 
       <div fxLayout="column">
@@ -15,8 +22,8 @@
         <div class="shadow-divider"></div>
 
         <mat-list-item *ngIf="this.data.length <= 0" role="listitem" fxLayoutAlign="center center">
-            <span>Ainda não há itens a serem exibidos nesta lista.</span>
-          </mat-list-item>
+          <span>Ainda não há itens a serem exibidos nesta lista.</span>
+        </mat-list-item>
         <!-- lista de categorias -->
         <mat-list role="list" *ngIf="this.data.length > 0">
           <mat-list-item role="listitem">
@@ -40,8 +47,8 @@
           <div fxLayout="column" *ngFor="let item of data">
             <mat-list-item role="listitem" class="list-item-resp">
               <div fxLayout="row" fxLayoutGap="20px" class="fullwidth list-item-resp">
-                <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center" fxLayoutAlign.xs="center start"
-                  class="fullwidth cursor-pointer list-item-resp">
+                <div fxFlex="90" fxFlex.xs="80" fxLayout.xs="column" fxLayoutGap.xs="0px" fxLayoutAlign="center center"
+                  fxLayoutAlign.xs="center start" class="fullwidth cursor-pointer list-item-resp">
                   <div fxFlex="50" class="list-card-field">{{dateLayout(item?.dataFrequencia)}}</div>
                   <div fxFlex="25" class="list-card-field text-center">
                     <span hide-gt-xs>Turno: </span>{{item?.frequenciaTurno}}</div>
@@ -58,9 +65,9 @@
       </div>
 
       <mat-card-actions>
-          <div layout="row" layout-align="center">
-              <a mat-button [routerLink]="['']">VOLTAR</a>
-          </div>
+        <div layout="row" layout-align="center">
+          <a mat-button [routerLink]="['']">VOLTAR</a>
+        </div>
       </mat-card-actions>
     </mat-card-content>
     <mat-card-footer>
