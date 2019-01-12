@@ -5,10 +5,9 @@
 
 export const environment = {
   production: false,
-  urlbase: "http://localhost:8080/seven-service",
-  //urlbase: "http://dev.tre-pa.jus.br/seven-frontend/api",
-  keycloak_installation: { url: 'http://localhost:8081/auth', realm: 'Seven', clientId: 'seven-angular' },
+  urlbase: "http://localhost:8080/siberius-service",
+  keycloak_installation: { url: 'http://localhost:8081/auth', realm: 'Siberius', clientId: 'siberius-angular' },
   keycloak_redirect_uri: "/",
-  keycloak_clientId_sboot: 'seven-backend',
-  keycloak_clientId_angular: 'seven-angular'
+  keycloak_clientId_sboot: 'siberius-sboot',
+  keycloak_clientId_angular: 'siberius-angular'
 };
