@@ -13,6 +13,10 @@ export class InscricaoService {
 
     inscricao: Inscricao;
 
+    participanteLogado: any;
+
+    idEvento: number;
+
     private url: string = `${environment.urlbase}/inscricoes`;
 
     constructor(
@@ -57,6 +61,11 @@ export class InscricaoService {
 
     excluirInscricaoByEvento(idInscricao: number) {
        return this.http.delete(`${this.url}/${idInscricao}`);
+    }
+
+    getVerificaInscricaoParticipanteLogado(participanteLogado:any , idEvento:number){
+      return this.http.get(`${this.url}/verifica-inscricao?idParticipante=${participanteLogado}&idEvento=${idEvento}`)
+        .map(res => res.json());
     }
 
     public salvar(inscricao: Inscricao, idEvento: number): Observable<Inscricao> {
