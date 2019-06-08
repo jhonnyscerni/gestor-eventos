@@ -4,7 +4,7 @@ import { Component, VERSION, OnInit, ViewChild } from '@angular/core';
 // import { ZXingScannerComponent } from './modules/zxing-scanner/zxing-scanner.module';
 
 import { Result } from '@zxing/library';
-import { ZXingScannerComponent } from '@zxing/ngx-scanner/app/modules/zxing-scanner/zxing-scanner.module';
+import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { MatSnackBar } from '@angular/material';
 import { Title } from '@angular/platform-browser';
 import { Inscricao } from '../../../domain/inscricao';
