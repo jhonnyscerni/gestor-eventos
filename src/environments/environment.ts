@@ -5,7 +5,7 @@
 
 export const environment = {
   production: false,
-  urlbase: "http://localhost:8080/siberius-service",
+  urlbase: "http://localhost:8080/seven-service",
   keycloak_installation: { url: 'http://localhost:8081/auth', realm: 'Siberius', clientId: 'siberius-angular' },
   keycloak_redirect_uri: "/",
   keycloak_clientId_sboot: 'siberius-sboot',
